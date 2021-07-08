@@ -1,0 +1,22 @@
+h1 {
+	color: rgb(237, 76, 71);
+}
+
+hr.style {
+	width: 80px;
+	border: solid 3px red;
+}
+
+.text_body {
+	width: 75%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 60px;
+	position: relative;
+	top: 80px;	
+	height: 1200px;
+}
+
+.answer {
+	color: gray;
+}

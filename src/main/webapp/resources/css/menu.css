@@ -1,0 +1,136 @@
+@charset "UTF-8";
+
+.base_top {
+	width: 100%;
+	height: 80px;
+	position: fixed;
+	top: 0%; 
+	left : 0%;
+	z-index: 2;
+}
+
+.title {
+	font-size: 26px;
+	font-weight: bold;
+	color: white;
+	position: relative;
+	bottom: 3px;
+	margin-left: 15px;
+}
+
+.title > a{
+	color: white;
+    text-decoration: none;
+}
+
+.title > a:hover{
+	color: #ebebebc9;
+}
+
+.main_menu {
+	width: 100%;
+	height: 80px;
+	display: flex;
+}
+
+.top_left {
+	background-color: rgba(60, 60, 60);
+	width: 15%;
+	height: 80px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.top_center {
+	background-color: rgba(60, 60, 60);
+	width: 70%;
+	height: 80px;
+}
+
+.top_right {
+	background-color: rgba(60, 60, 60);
+	width: 15%;
+	height: 80px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	justify-content: center;
+}
+
+.login_box {
+	display: flex;
+}
+
+.sub_menu {
+	position: relative;
+	width: 100%;
+	height: 190px;
+	display: none;
+}
+
+.sub_inner {
+	width: 100%;
+	height: 190px;
+	z-index: 1;
+	display: flex;
+	flex-direction: row;
+}
+
+.sub_left {
+	display: inline;
+	width: 15%;
+	height: 190px;
+	background-color: rgba(255, 255, 255, 0.9);
+}
+
+.sub_center {
+	display: flex;
+	width: 70%;
+	height: 190px;
+	background-color: rgba(255, 255, 255, 0.9);
+	justify-content: center;
+}
+
+.sub_center_section {
+	margin-top: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	padding-right: 10px;
+	width: 17%;
+	height: 160px;
+	border-color: rgba(60, 60, 60, 0.5);
+	border-right-style: solid;
+	border-width: 1px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.sub_center_section_last {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width: 17%;
+	height: 160px;
+	position: relative;
+	right: 15px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.sub_right {
+	display: inline;
+	width: 15%;
+	height: 190px;
+	background-color: rgba(255, 255, 255, 0.9);
+}
+
+.cl-effect-13 {
+	position: relative !important;
+	top: 5px !important;
+	display: flex !important;
+	justify-content: center !important;
+	height: 50px !important;
+	display: flex !important;
+}

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- menu css -->
+<link rel="shortcut icon" href="../favicon.ico">
+<link rel="stylesheet" type="text/css" href="../../css/normalize.css" />
+<link rel="stylesheet" type="text/css" href="../../css/demo.css" />
+<link rel="stylesheet" type="text/css" href="../../css/component.css" />
+<link rel="stylesheet" type="text/css" href="../../css/menu.css" />
+<link rel="stylesheet" type="text/css" href="../../css/FAQ.css" />
+<script src="../../js/modernizr.custom.js"></script>
+<!-- menu css끝 -->
+
+<!-- bootstrap link -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+	crossorigin="anonymous"></script>
+<!-- bootstrap link끝 -->
+
+
+</head>
+
+<body>
+	<!-- base페이지입니다. -->
+	<div class="base_top">
+		<div class="main_menu">
+			<div class="top_left">
+				<span class="title"><a href="../base2.html">DA 관리 프로그램</a></span>
+			</div>
+			<div class="top_center" onmouseleave="out()">
+				<section class="color-6">
+					<nav class="cl-effect-13">
+						<a href="#" onmouseover="loginbox()">자산관리</a> <a href="#"
+							onmouseover="loginbox()">위험관리</a> <a href="#"
+							onmouseover="loginbox()">취약점관리</a> <a href="#"
+							onmouseover="loginbox()">회원관리</a>
+
+					</nav>
+				</section>
+			</div>
+			<div class="top_right">
+				<div class="login_box">
+					<button type="button" class="btn btn-outline-secondary"
+						style="margin-right: 10px;"
+						onclick="location.href = './login.html' ">login</button>
+					<button type="button" class="btn btn-outline-danger"
+						onclick="location.href = './join.html' ">Join</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="sub_menu" id="submenu">
+			<div class="sub_inner">
+				<div class="sub_left"></div>
+				<div class="sub_center" onmouseover="loginbox()"
+					onmouseleave="out()">
+					<div class="sub_center_section">
+						<nav class="cl-effect-3">
+							<a href="./DA/DA_list.html">자산 정보관리</a> <a
+								href="./DA/DA_register.html">단계적 보안성 평가</a> <a
+								href="./code/code_list.html">공통 코드 관리</a>
+
+						</nav>
+					</div>
+					<div class="sub_center_section">
+						<nav class="cl-effect-3">
+							<a href="#">통제항목</a> <a href="#">통제항목 적용관리</a>
+						</nav>
+					</div>
+					<div class="sub_center_section">
+						<nav class="cl-effect-3">
+							<a href="#">신규취약점 관리</a> <a href="#">조치권고</a> <a href="#">이행계획</a>
+
+						</nav>
+					</div>
+					<div class="sub_center_section_last">
+						<nav class="cl-effect-3">
+							<a href="#">정보수정</a> <a href="#">FAQ</a>
+						</nav>
+					</div>
+				</div>
+				<div class="sub_right"></div>
+			</div>
+
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		function MM_changeProp(objId, x, theProp, theValue) { //v9.0
+			var obj = null;
+			with (document) {
+				if (getElementById)
+					obj = getElementById(objId);
+			}
+			if (obj) {
+				if (theValue == true || theValue == false)
+					eval("obj.style." + theProp + "=" + theValue);
+				else
+					eval("obj.style." + theProp + "='" + theValue + "'");
+			}
+		}
+		function loginbox() {
+			var obj = document.getElementById("submenu");
+			obj.style.display = "block"; // 블록 박스로 변경
+		}
+		function out() {
+			var obj = document.getElementById("submenu");
+			obj.style.display = "none"; // 안보이게
+		}
+	</script>
+
+	<div class='text_body'>
+		<h1>자주 묻는 질문</h1>
+		<hr class="style">
+		대부분의 문제에 대한 해결책을 아래 항목에서 찾을 수 있습니다. 그 밖의 항목에 대해서는 피드백을 주세요.
+		<p>
+			<br> <br>
+		<h4>1. 자산 보안성 평가의 절차는 어떻게 되나요?</h4>
+		<br>
+		<p class="answer">
+			자산 보안성 평가의 절차는 평가 방식에 따라 <b>'EP -> BOP -> INDIRECT'</b>로 이루어지며 한 방향
+			평가 방식 입니다. <br> 따라서 평가 도중에는 중간 저장이 불가능하며 평가 도중 뒤로 넘어갈 수 없습니다.
+		</p>
+		<br> <br>
+		<h4>2. 자산 단계적 보안성 평가는 중간 저장이 불가한가요?</h4>
+		<br>
+		<p class="answer">
+			단계적 보안성 평가는 EP, BOP, Indirect를 한번에 분류하기 때문에 도중에 그만둘 수 없으며,<br>
+			사이트를 나갈경우 이전까지 평가한 내용은 저장되지 않습니다.
+		</p>
+		<br> <br>
+		<h4>3. 일반 사용자는 어디까지 권한이 허용되나요?</h4>
+		<br>
+		<p class="answer">
+			일반사용자는 자산정보관리, 통제항목 관리, 신규 취약점 관리, 조치권고 이행계획에서 수정만 가능하며, <br>나머지
+			기능(단계적 보안성 평가, 통제항목 적용관리, 조치권고)에서 수정, 삭제 둘 다 불가합니다.
+		</p>
+		<br> <br>
+		<h4>4. 관리자가 내가 등록한 계획을 수정할 수 있나요?</h4>
+		<br>
+		<p class="answer">
+			관리자는 일반사용자가 등록한 계획을 수정, 삭제할 수 없습니다. <br>이는 조치권고 이행계획 등록 내역을
+			지속적으로 관리하기 위함입니다.
+		</p>
+		<br> <br>
+		<h4>5. 추가 기능을 요청하고 싶어요.</h4>
+		<br>
+		<p class="answer">
+			추가 기능을 요청하고 싶다면 우리에게 연락을 해주십시오. 내부 회의에 걸쳐 적극적으로 반영하겠습니다. <br>이메일
+			주소는 <a href="#"> EWSN123@gmail.com</a> 입니다.
+		</p>
+		<br> <br>
+
+		<h4>6. 회원정보를 잃었어요.</h4>
+		<br>
+		<p class="answer">
+			우리 프로그램은 일반 사용자가 회원정보를 수정하는 것 이외에 회원정보 찾는 것을 불가능하게 설계 되어있습니다. <br>
+			따라서 회원정보를 잃었다면 관리자에게 직접 연락을 주십시오. 관리자 이메일 주소는 <a href="#">
+				EWSN_Manage@gmail.com</a> 입니다.
+		</p>
+
+
+	</div>
+</body>
+</html>

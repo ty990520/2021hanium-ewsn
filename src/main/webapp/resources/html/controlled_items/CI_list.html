@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- menu css -->
+<link rel="shortcut icon" href="../favicon.ico">
+<link rel="stylesheet" type="text/css" href="../../css/normalize.css" />
+<link rel="stylesheet" type="text/css" href="../../css/demo.css" />
+<link rel="stylesheet" type="text/css" href="../../css/component.css" />
+<link rel="stylesheet" type="text/css" href="../../css/menu.css" />
+<script src="../../js/modernizr.custom.js"></script>
+<!-- menu css끝 -->
+<!-- CSS only -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
+	crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+	crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="../../css/list.css" />
+<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+a {
+	color: #0066CC;
+	text-decoration: underline
+}
+
+.pagination {
+	margin: 50px 0 100px 0;
+	justify-content: center;
+}
+
+.page-link {
+	margin: 0;
+	font-size: 1rem;
+	color: #dc3545;
+}
+
+.page-link:hover {
+	color: #dc3545;
+}
+
+.page-item.active .page-link {
+	z-index: 3;
+	color: #fff;
+	background-color: #dc3545;
+	border-color: #dc3545;
+}
+
+.table_button_group {
+	bottom: 30px;
+}
+</style>
+</head>
+<body>
+	<!-- base페이지입니다. -->
+	<div class="base_top">
+		<div class="main_menu">
+			<div class="top_left">
+				<span class="title"><a href="../base2.html">DA 관리 프로그램</a></span>
+			</div>
+			<div class="top_center" onmouseleave="out()">
+				<section class="color-6">
+					<nav class="cl-effect-13">
+						<a href="#" onmouseover="loginbox()">자산관리</a> <a href="#"
+							onmouseover="loginbox()">위험관리</a> <a href="#"
+							onmouseover="loginbox()">취약점관리</a> <a href="#"
+							onmouseover="loginbox()">회원관리</a>
+
+					</nav>
+				</section>
+			</div>
+			<div class="top_right">
+				<div class="login_box">
+					<button type="button" class="btn btn-outline-secondary"
+						style="margin-right: 10px;"
+						onclick="location.href = '../user/login.html' ">login</button>
+					<button type="button" class="btn btn-outline-danger"
+						onclick="location.href = '../user/join.html' ">Join</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="sub_menu" id="submenu">
+			<div class="sub_inner">
+				<div class="sub_left"></div>
+				<div class="sub_center" onmouseover="loginbox()"
+					onmouseleave="out()">
+					<div class="sub_center_section">
+						<nav class="cl-effect-3">
+							<a href="../DA/DA_list.html">자산 정보관리</a> <a
+								href="../DA/DA_register.html">단계적 보안성 평가</a> <a
+								href="../code/code_list.html">공통 코드 관리</a>
+
+						</nav>
+					</div>
+					<div class="sub_center_section">
+						<nav class="cl-effect-3">
+							<a href="#">통제항목</a> <a href="./CI_list.html">통제항목 적용관리</a>
+						</nav>
+					</div>
+					<div class="sub_center_section">
+						<nav class="cl-effect-3">
+							<a href="#">신규취약점 관리</a> <a href="#">조치권고</a> <a href="#">이행계획</a>
+
+						</nav>
+					</div>
+					<div class="sub_center_section_last">
+						<nav class="cl-effect-3">
+							<a href="#">정보수정</a> <a href="#">FAQ</a>
+						</nav>
+					</div>
+				</div>
+				<div class="sub_right"></div>
+			</div>
+
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		function MM_changeProp(objId, x, theProp, theValue) { //v9.0
+			var obj = null;
+			with (document) {
+				if (getElementById)
+					obj = getElementById(objId);
+			}
+			if (obj) {
+				if (theValue == true || theValue == false)
+					eval("obj.style." + theProp + "=" + theValue);
+				else
+					eval("obj.style." + theProp + "='" + theValue + "'");
+			}
+		}
+		function loginbox() {
+			var obj = document.getElementById("submenu");
+			obj.style.display = "block"; // 블록 박스로 변경
+		}
+		function out() {
+			var obj = document.getElementById("submenu");
+			obj.style.display = "none"; // 안보이게
+		}
+	</script>
+	<!-- base끝 -->
+	<div class="right-container">
+		<h1>
+			<b>사이버통제항목 적용관리 </b>
+		</h1>
+		<hr>
+		<form class="center_form">
+			<select name="search" id="">
+				<option value="DAName">자산명</option>
+				<option value="DAId">자산번호</option>
+			</select> <input type="search" name="" value="" placeholder="자산명 입력">
+			<button type="button" name="button" class="btn btn-outline-secondary">검색</button>
+		</form>
+		<p>자산번호를 선택하면 자세한 정보를 확인할 수 있습니다.</p>
+		<table class="table table-bordered">
+			<tr class="table-light">
+
+				<th style="width: 30px;">Id</th>
+				<th>자산명</th>
+				<th>버전</th>
+				<th>점검일</th>
+			</tr>
+			<tr>
+				<td style="width: 30px;">1</td>
+				<td>발전소경보계</td>
+				<td><a href="Cl_select_print.html">발전소경보계통_2020_1</a></td>
+				<td>2020.08.28</td>
+
+
+			</tr>
+			<tr>
+				<td style="width: 30px;">2</td>
+				<td>터빈제어설</td>
+				<td><a href="Cl_select_print.html">터빈제어설비_2020_2</a></td>
+				<td>2O20.07.15</td>
+			</tr>
+			<tr>
+				<td style="width: 30px;">3</td>
+				<td>유지보수PC</td>
+				<td><a href="Cl_select_print.html">유지보수PC</a></td>
+				<td>2020.06.01</td>
+
+			</tr>
+			<tr>
+				<td style="width: 30px;">4</td>
+				<td>자동지진정지통</td>
+				<td><a href="Cl_select_print.html">자동지진정지계통_2020_2</a></td>
+				<td>2O20.05.11</td>
+
+			</tr>
+			<tr>
+				<td style="width: 30px;">5</td>
+				<td>자동지진정지계통</td>
+				<td><a href="Cl_select_print.html">자동지진정지계통_2020_1</a></td>
+				<td>2O20.05.11</td>
+
+
+			</tr>
+			<tr>
+				<td style="width: 30px;">6</td>
+				<td>터빈제어설비</td>
+				<td><a href="Cl_select_print.html">터빈제어설비_2020_1</a></td>
+				<td>2O20.05.02</td>
+
+			</tr>
+			<tr>
+				<td style="width: 30px;">7</td>
+				<td>유지보수PC</td>
+				<td><a href="Cl_select_print.html">유지보수PC_2020_1</a></td>
+				<td>2O20.02.11</td>
+			</tr>
+		</table>
+		<br>
+
+		
+		<div class="table_button_group">
+			<button type="button" class="btn btn-danger"
+				onclick="location.href='./CI_list_apply.html' ">평가하기</button>
+			<br>
+		</div>
+<nav class="pagination_nav" aria-label="...">
+			<ul class="pagination">
+				<li class="page-item disabled"><a class="page-link" href="#"
+					tabindex="-1" aria-disabled="true">이전</a></li>
+				<li class="page-item"><a class="page-link" href="#">1</a></li>
+				<li class="page-item active" aria-current="page"><a
+					class="page-link" href="#">2</a></li>
+				<li class="page-item"><a class="page-link" href="#">3</a></li>
+				<li class="page-item"><a class="page-link" href="#">다음</a></li>
+			</ul>
+
+		</nav>
+	</div>
+</body>
+</html>

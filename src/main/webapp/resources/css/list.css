@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+
+.center_form {
+	float: right;
+}
+
+.table-bordered {
+	position: relative;
+	top: 15px;
+}
+
+.table_button_group {
+	float: right;
+	position: relative;
+	top: 30px;
+}
+
+.btn-outline-secondary {
+	padding: 3px 12px;
+	font-size: small;
+}

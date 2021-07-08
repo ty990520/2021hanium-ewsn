@@ -1,0 +1,118 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+img {
+	margin-top: 120px;
+	width: 25%;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
+ul>li {
+	list-style: none
+}
+
+a {
+	text-decoration: none;
+}
+
+h2 {
+	color: navy;
+	font-weight: 800;
+	margin-left: 20px;
+}
+h7 {
+	color: #6c757d;
+}
+hr.one {
+	width: 700px;
+	color: gray;
+	border: thin solid lightgray;
+}
+
+hr.two {
+	width: 100%;
+	color: navy;
+	border: thin solid navy;
+}
+
+.clearfix::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+ul.clearfix{
+    margin: 50px auto 50px auto;
+    width: 100%;
+}
+
+#joinForm {
+	margin: auto;
+	padding: 20px 0;
+	width: 60%;
+}
+
+ul.join_box {
+	border: 1px solid #ddd;
+	background-color: #fff;
+	padding: 2rem 3rem 2rem 3rem;
+}
+
+.checkBox, .checkBox>ul {
+	position: relative;
+}
+
+.checkBox>ul>li {
+	margin: auto;
+	width: 50%;
+}
+
+.checkBox>ul>li:first-child {
+	padding: 15px;
+	font-weight: 600;
+	color: #888;
+}
+
+.checkBox>ul>li:nth-child(2) {
+	position: absolute;
+	top: 50%;
+	right: 30px;
+	margin-top: -12px;
+	right: 30px;
+	margin-top: -12px;
+}
+
+.checkBox textarea {
+	width: 96%;
+	height: 90px;
+	margin: 0 47px 0 47px;
+	background-color: #f7f7f7;
+	color: #888;
+	border: none;
+}
+
+.footBtwrap {
+	margin-top: 45px;
+}
+
+.footBtwrap>li {
+	float: left;
+	width: 50%;
+	height: 60px;
+}
+
+.footBtwrap>li>button {
+	width: 80%;
+	font-size: 20px;
+	text-align: center;
+	line-height: 60px;
+	font-weight: 600;
+}
+
+.btn-light{
+	color: #484848;
+}

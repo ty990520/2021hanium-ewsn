@@ -1,0 +1,14 @@
+
+/* 검색창*/
+
+.lookfor_input {
+	width: 200px;
+	border: none;
+	padding: 7px;
+	
+}
+
+textarea{
+	border:none;
+	width: 100%;
+}

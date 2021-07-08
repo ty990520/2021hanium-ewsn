@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<!-- menu css -->
+<link rel="shortcut icon" href="../favicon.ico">
+<link rel="stylesheet" type="text/css" href="../../css/normalize.css" />
+<link rel="stylesheet" type="text/css" href="../../css/demo.css" />
+<link rel="stylesheet" type="text/css" href="../../css/component.css" />
+<link rel="stylesheet" type="text/css" href="../../css/menu.css" />
+<script src="../../js/modernizr.custom.js"></script>
+<!-- menu css끝 -->
+<!-- CSS only -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
+	crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+	crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+<link rel="stylesheet" type="text/css" href="../../css/table.css" />
+<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+<title>sw관리 프로그램</title>
+<style>
+.process-image {
+	float: right;
+}
+
+h1 {
+	margin-bottom: 0px;
+}
+
+.detail-list {
+	margin: 30px auto;
+	width: 90%;
+}
+</style>
+</head>
+<body>
+	<!-- base페이지입니다. -->
+	<div class="base_top">
+		<div class="main_menu">
+			<div class="top_left">
+				<span class="title"><a href="../base2.html">DA 관리 프로그램</a></span>
+			</div>
+			<div class="top_center" onmouseleave="out()">
+				<section class="color-6">
+					<nav class="cl-effect-13">
+						<a href="#" onmouseover="loginbox()">자산관리</a> <a href="#"
+							onmouseover="loginbox()">위험관리</a> <a href="#"
+							onmouseover="loginbox()">취약점관리</a> <a href="#"
+							onmouseover="loginbox()">회원관리</a>
+
+					</nav>
+				</section>
+			</div>
+			<div class="top_right">
+				<div class="login_box">
+					<button type="button" class="btn btn-outline-secondary"
+						style="margin-right: 10px;"
+						onclick="location.href = '../user/login.html' ">login</button>
+					<button type="button" class="btn btn-outline-danger"
+						onclick="location.href = '../user/join.html' ">Join</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="sub_menu" id="submenu">
+			<div class="sub_inner">
+				<div class="sub_left"></div>
+				<div class="sub_center" onmouseover="loginbox()"
+					onmouseleave="out()">
+					<div class="sub_center_section">
+						<nav class="cl-effect-3">
+							<a href="../DA/DA_list.html">자산 정보관리</a> <a
+								href="../SecurityAssessment/SA_list.html">단계적 보안성 평가</a> <a
+								href="../code/code_list.html">공통 코드 관리</a>
+
+						</nav>
+					</div>
+					<div class="sub_center_section">
+						<nav class="cl-effect-3">
+							<a href="#">통제항목</a> <a href="#">통제항목 적용관리</a>
+						</nav>
+					</div>
+					<div class="sub_center_section">
+						<nav class="cl-effect-3">
+							<a href="#">신규취약점 관리</a> <a href="#">조치권고</a> <a href="#">이행계획</a>
+
+						</nav>
+					</div>
+					<div class="sub_center_section_last">
+						<nav class="cl-effect-3">
+							<a href="#">정보수정</a> <a href="#">FAQ</a>
+						</nav>
+					</div>
+				</div>
+				<div class="sub_right"></div>
+			</div>
+
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		function MM_changeProp(objId, x, theProp, theValue) { //v9.0
+			var obj = null;
+			with (document) {
+				if (getElementById)
+					obj = getElementById(objId);
+			}
+			if (obj) {
+				if (theValue == true || theValue == false)
+					eval("obj.style." + theProp + "=" + theValue);
+				else
+					eval("obj.style." + theProp + "='" + theValue + "'");
+			}
+		}
+		function loginbox() {
+			var obj = document.getElementById("submenu");
+			obj.style.display = "block"; // 블록 박스로 변경
+		}
+		function out() {
+			var obj = document.getElementById("submenu");
+			obj.style.display = "none"; // 안보이게
+		}
+	</script>
+	<!-- base끝 -->
+	<div class="right-container">
+		<h1>
+			<b>단계적 보안성 평가 선택정보 출력</b> <img alt="" src="../../img/process3.png"
+				width="15%" class="process-image">
+		</h1>
+
+		<br>
+		<table class="detail-list">
+
+			<tr>
+				<td class="detail-title">안전/보안 관련 지시/경고 기능 수행 여부</td>
+				<td colspan="3">Y</td>
+			</tr>
+			<tr>
+				<td class="detail-title">안전/보안 관련 지시/경고 기능 수행 관련내용</td>
+				<td colspan="3">안전해야 함</td>
+			</tr>
+			<tr>
+				<td class="detail-title">안전/보안 관련 지시/경고 기능 대체 수단 존재 여부</td>
+				<td colspan="3">N</td>
+			</tr>
+			<tr>
+				<td class="detail-title">안전/보안 관련 지시/경고 기능 대체 수단 관련 내용</td>
+				<td colspan="3">해당 기기는 대체 수단이 없음</td>
+			</tr>
+			<tr>
+				<td class="detail-title">손상여부 탐지방법 존재 여부</td>
+				<td colspan="3">Y</td>
+			</tr>
+			<tr>
+				<td class="detail-title">손상여부 탐지방법 관련 내용</td>
+				<td colspan="3">손상 여부를 탐지함</td>
+			</tr>
+			<tr>
+				<td class="detail-title">손상여부 탐지 근거 문서</td>
+				<td colspan="3">손상 여부 탐지 보고서</td>
+			</tr>
+			<tr>
+				<td class="detail-title">손상탐지 시간 내 평가 기준 존재 여부</td>
+				<td colspan="3">Y</td>
+			</tr>
+			<tr>
+				<td class="detail-title">손상탐지 시간 내 평가 기준 내용</td>
+				<td colspan="3">2시간 이내로 함</td>
+			</tr>
+			<tr>
+				<td class="detail-title">손상탐지 시간 내 평가 기준 근거 문서</td>
+				<td colspan="3">손상탐지 표준기준을 따름</td>
+			</tr>
+			<tr>
+				<td class="detail-title">안전/보안 관련 지시/경고 기능 대체 수단 관련 내용</td>
+				<td colspan="3">해당 기기는 대체 수단이 없음</td>
+			</tr>
+			<tr>
+				<td class="detail-title">교육 훈련 계획 존재 여부</td>
+				<td colspan="3">N</td>
+			</tr>
+			<tr>
+				<td class="detail-title">교육 훈련 내용</td>
+				<td colspan="3">교육은 따로 하지 않음</td>
+			</tr>
+			<tr>
+				<td class="detail-title">교육 훈련 근거 문서</td>
+				<td colspan="3">문서 없음</td>
+			</tr>
+		</table>
+
+		<br>
+		
+		<br>
+		<!--right-container-->
+	</div>
+</body>
+<script>
+	$("#modal_open_btn").click(function() {
+		$("#modal1").attr("style", "display:block");
+	});
+
+	$("#modal_close_btn").click(function() {
+		$("#modal1").attr("style", "display:none");
+	});
+	function modal(x, y) {
+		$("#modal" + x).attr("style", "display:none");
+		$("#modal" + y).attr("style", "display:block");
+	}
+</script>
+
+</html>

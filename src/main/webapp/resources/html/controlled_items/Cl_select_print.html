@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- menu css -->
+<link rel="shortcut icon" href="../favicon.ico">
+<link rel="stylesheet" type="text/css" href="../../css/normalize.css" />
+<link rel="stylesheet" type="text/css" href="../../css/demo.css" />
+<link rel="stylesheet" type="text/css" href="../../css/component.css" />
+<link rel="stylesheet" type="text/css" href="../../css/menu.css" />
+<script src="../../js/modernizr.custom.js"></script>
+<!-- menu css끝 -->
+<!-- CSS only -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
+	crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+	crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="../../css/list.css" />
+<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+a {
+	text-decoration: none;
+	color: black;
+}
+</style>
+</head>
+<body>
+	<!-- base페이지입니다. -->
+	<div class="base_top">
+		<div class="main_menu">
+			<div class="top_left">
+				<span class="title"><a href="../base2.html">DA 관리 프로그램</a></span>
+			</div>
+			<div class="top_center" onmouseleave="out()">
+				<section class="color-6">
+					<nav class="cl-effect-13">
+						<a href="#" onmouseover="loginbox()">자산관리</a> <a href="#"
+							onmouseover="loginbox()">위험관리</a> <a href="#"
+							onmouseover="loginbox()">취약점관리</a> <a href="#"
+							onmouseover="loginbox()">회원관리</a>
+
+					</nav>
+				</section>
+			</div>
+			<div class="top_right">
+				<div class="login_box">
+					<button type="button" class="btn btn-outline-secondary"
+						style="margin-right: 10px;"
+						onclick="location.href = '../user/login.html' ">login</button>
+					<button type="button" class="btn btn-outline-danger"
+						onclick="location.href = '../user/join.html' ">Join</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="sub_menu" id="submenu">
+			<div class="sub_inner">
+				<div class="sub_left"></div>
+				<div class="sub_center" onmouseover="loginbox()"
+					onmouseleave="out()">
+					<div class="sub_center_section">
+						<nav class="cl-effect-3">
+							<a href="../DA/DA_list.html">자산 정보관리</a> <a
+								href="../DA/DA_register.html">단계적 보안성 평가</a> <a
+								href="../code/code_list.html">공통 코드 관리</a>
+
+						</nav>
+					</div>
+					<div class="sub_center_section">
+						<nav class="cl-effect-3">
+							<a href="#">통제항목</a> <a href="./CI_list.html">통제항목 적용관리</a>
+						</nav>
+					</div>
+					<div class="sub_center_section">
+						<nav class="cl-effect-3">
+							<a href="#">신규취약점 관리</a> <a href="#">조치권고</a> <a href="#">이행계획</a>
+
+						</nav>
+					</div>
+					<div class="sub_center_section_last">
+						<nav class="cl-effect-3">
+							<a href="#">정보수정</a> <a href="#">FAQ</a>
+						</nav>
+					</div>
+				</div>
+				<div class="sub_right"></div>
+			</div>
+
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		function MM_changeProp(objId, x, theProp, theValue) { //v9.0
+			var obj = null;
+			with (document) {
+				if (getElementById)
+					obj = getElementById(objId);
+			}
+			if (obj) {
+				if (theValue == true || theValue == false)
+					eval("obj.style." + theProp + "=" + theValue);
+				else
+					eval("obj.style." + theProp + "='" + theValue + "'");
+			}
+		}
+		function loginbox() {
+			var obj = document.getElementById("submenu");
+			obj.style.display = "block"; // 블록 박스로 변경
+		}
+		function out() {
+			var obj = document.getElementById("submenu");
+			obj.style.display = "none"; // 안보이게
+		}
+	</script>
+	<!-- base끝 -->
+	<div class="right-container">
+		<h1>
+			<b>사이버통제항목 선택정보 출력  </b>
+		</h1>
+		<hr>
+		
+		
+		<table class="table table-bordered">
+			<tr>
+				<td class="table-light" colspan="2">점일일자</td>
+				<td colspan="2">2020-03-31</td>
+				<td class="table-light" colspan="2">버전</td>
+				<td colspan="2">제어봉구동장치 2020_1</td>
+
+			</tr>
+
+		</table>
+
+		<table class="table table-bordered">
+			<tr class="table-light">
+				<th style="text-align: center;">평가 자산 상세 내역</th>
+
+			</tr>
+		</table>
+
+
+		<table class="table table-bordered">
+
+			<tr>
+				<td class="table-light" colspan="2">자산</td>
+				<td colspan="6">제어봉구동장치 PLC</td>
+
+			</tr>
+
+			<tr>
+				<td class="table-light">발전</td>
+				<td>수력</td>
+				<td class="table-light">발전소 위치</td>
+				<td>한강</td>
+				<td class="table-light">자산번호</td>
+				<td>H-01-0001</td>
+				<td class="table-light">자산식별 상세 유형</td>
+				<td>DP-DA</td>
+
+			</tr>
+
+		</table>
+
+		<table class="table table-bordered">
+			<tr class="table-light">
+				<th style="text-align: center;">제어봉구동장치 PLC의 보안조치 적용결과</th>
+
+			</tr>
+		</table>
+
+		<table class="table table-bordered">
+			<tr class="table-light">
+				<th>분야번호</th>
+				<th>통제항목 분류</th>
+				<th>상세분류</th>
+				<th>이행여부</th>
+				<th>적용내용</th>
+			</tr>
+			<tr>
+
+				<td>1</td>
+				<td>기술적</td>
+				<td>접근통제</td>
+				<td style="text-align: center;"> Y</td>
+				<td>제어시스템 개발자, 운영자, 관리자에 대한 접근권한을 분리하고 있음</td>
+
+
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>기술</td>
+				<td>감사 및 책임</td>
+				<td style="text-align: center;"> Y</td>
+				<td>제어시스템 계정의 접근 여부를 주기적으로 감사하고 있으며, 부적절한 접근에 대해 통제하고 있음</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>기술</td>
+				<td>시스템 통신의 보호</td>
+				<td style="text-align: center;"> Y</td>
+				<td>제어 네트워크 외부와 물리적 일방향 환경을 구축하였음</td>
+
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>운영적</td>
+				<td>형상관</td>
+				<td style="text-align: center;"> Y</td>
+				<td>제어시스템에 대한 최신 업데이트, 보안패치를 안전하게 적용하기 위한 절차를 수립하였음</td>
+
+			</tr>
+		</table>
+		
+	</div>
+</body>
+</html>

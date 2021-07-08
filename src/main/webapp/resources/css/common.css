@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+body{
+	
+}
+
+.right-container {
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 60px;
+	position: relative;
+	top: 80px;
+}

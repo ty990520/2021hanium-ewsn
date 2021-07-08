@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- menu css -->
+<link rel="shortcut icon" href="../favicon.ico">
+<link rel="stylesheet" type="text/css" href="../../css/normalize.css" />
+<link rel="stylesheet" type="text/css" href="../../css/demo.css" />
+<link rel="stylesheet" type="text/css" href="../../css/component.css" />
+<link rel="stylesheet" type="text/css" href="../../css/menu.css" />
+<script src="../../js/modernizr.custom.js"></script>
+<!-- menu css끝 -->
+<!-- CSS only -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+	integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+	crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+	integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+	integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+	crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="../../css/list.css" />
+<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+a {
+	text-decoration: none;
+	color: black;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+.pagination {
+	margin: 50px 0 100px 0;
+	justify-content: center;
+}
+
+.page-link {
+	margin: 0;
+	font-size: 1rem;
+	color: #dc3545;
+}
+
+.page-link:hover {
+	color: #dc3545;
+}
+.page-item.active .page-link {
+	z-index: 3;
+	color: #fff;
+	background-color: #dc3545;
+	border-color: #dc3545;
+}
+</style>
+</head>
+<body>
+	<!-- base페이지입니다. -->
+	<div class="base_top">
+		<div class="main_menu">
+			<div class="top_left">
+				<span class="title"><a href="../base2.html">DA 관리 프로그램</a></span>
+			</div>
+			<div class="top_center" onmouseleave="out()">
+				<section class="color-6">
+					<nav class="cl-effect-13">
+						<a href="#" onmouseover="loginbox()">자산관리</a> <a href="#"
+							onmouseover="loginbox()">위험관리</a> <a href="#"
+							onmouseover="loginbox()">취약점관리</a> <a href="#"
+							onmouseover="loginbox()">회원관리</a>
+
+					</nav>
+				</section>
+			</div>
+			<div class="top_right">
+				<div class="login_box">
+					<button type="button" class="btn btn-outline-secondary"
+						style="margin-right: 10px;"
+						onclick="location.href = '../user/login.html' ">login</button>
+					<button type="button" class="btn btn-outline-danger"
+						onclick="location.href = '../user/join.html' ">Join</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="sub_menu" id="submenu">
+			<div class="sub_inner">
+				<div class="sub_left"></div>
+				<div class="sub_center" onmouseover="loginbox()"
+					onmouseleave="out()">
+					<div class="sub_center_section">
+						<nav class="cl-effect-3">
+							<a href="../DA/DA_list.html">자산 정보관리</a> <a
+								href="../SecurityAssessment/SA_list.html">단계적 보안성 평가</a> <a
+								href="../code/code_list.html">공통 코드 관리</a>
+
+						</nav>
+					</div>
+					<div class="sub_center_section">
+						<nav class="cl-effect-3">
+							<a href="#">통제항목</a> <a href="#">통제항목 적용관리</a>
+						</nav>
+					</div>
+					<div class="sub_center_section">
+						<nav class="cl-effect-3">
+							<a href="#">신규취약점 관리</a> <a href="#">조치권고</a> <a href="#">이행계획</a>
+
+						</nav>
+					</div>
+					<div class="sub_center_section_last">
+						<nav class="cl-effect-3">
+							<a href="#">정보수정</a> <a href="#">FAQ</a>
+						</nav>
+					</div>
+				</div>
+				<div class="sub_right"></div>
+			</div>
+
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		function MM_changeProp(objId, x, theProp, theValue) { //v9.0
+			var obj = null;
+			with (document) {
+				if (getElementById)
+					obj = getElementById(objId);
+			}
+			if (obj) {
+				if (theValue == true || theValue == false)
+					eval("obj.style." + theProp + "=" + theValue);
+				else
+					eval("obj.style." + theProp + "='" + theValue + "'");
+			}
+		}
+		function loginbox() {
+			var obj = document.getElementById("submenu");
+			obj.style.display = "block"; // 블록 박스로 변경
+		}
+		function out() {
+			var obj = document.getElementById("submenu");
+			obj.style.display = "none"; // 안보이게
+		}
+	</script>
+	<!-- base끝 -->
+	<div class="right-container">
+		<h1>
+			<b>DA 정보 관리</b>
+		</h1>
+		<hr>
+		<form class="center_form">
+			<select name="search" id="">
+				<option value="DAName">자산명</option>
+				<option value="DAId">자산번호</option>
+			</select> <input type="search" name="" value="" placeholder="자산명 입력">
+			<button type="button" name="button" class="btn btn-outline-secondary">검색</button>
+		</form>
+		<p>자산번호를 선택하면 자세한 정보를 확인할 수 있습니다.</p>
+		<BR>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th style="width: 30px;">Id</th>
+					<th>자산번호</th>
+					<th>자산명</th>
+					<th>자산기능</th>
+					<th>기능유형</th>
+					<th>영향성 분석</th>
+					<th>설비유형</th>
+					<th>설비사용목적</th>
+					<th>시스템S/W유형</th>
+					<th>통신I/F</th>
+					<th>사용여부</th>
+				</tr>
+			</thead>
+			<tbody id="table_body">
+				<tr onclick="location.href = 'DA_detail.html' ">
+					<td style="width: 30px;">1</td>
+					<td>H-01-0001</td>
+					<td>PC</td>
+					<td>Win 7</td>
+					<td>Support</td>
+					<td>Support function</td>
+					<td>PLC</td>
+					<td>발전연관장비</td>
+					<td>Windows</td>
+					<td>Ethernet</td>
+					<td>O</td>
+				</tr>
+				<tr onclick="location.href = 'DA_detail.html' ">
+					<td style="width: 30px;">2</td>
+					<td>H-01-0002</td>
+					<td>PC</td>
+					<td>Win 7</td>
+					<td>Safety</td>
+					<td>Important to Safety</td>
+					<td>DCS</td>
+					<td>유지보수장비</td>
+					<td>Windows</td>
+					<td>Ethernet</td>
+					<td>O</td>
+				</tr>
+				<tr onclick="location.href = 'DA_detail.html' ">
+					<td style="width: 30px;">3</td>
+					<td>H-01-0003</td>
+					<td>PC</td>
+					<td>Win XP</td>
+					<td>Safety</td>
+					<td>Safety Related</td>
+					<td>Pc/server</td>
+					<td>발전연관장비</td>
+					<td>Firmware</td>
+					<td>Hard Wiring</td>
+					<td>O</td>
+				</tr>
+				<tr onclick="location.href = 'DA_detail.html' ">
+					<td style="width: 30px;">4</td>
+					<td>H-01-0004</td>
+					<td>PC</td>
+					<td>Win XP</td>
+					<td>Security</td>
+					<td>Safety Related</td>
+					<td>Pc/server</td>
+					<td>발전연관장비</td>
+					<td>Firmware</td>
+					<td>Serial</td>
+					<td>O</td>
+				</tr>
+				<tr onclick="location.href = 'DA_detail.html' ">
+					<td style="width: 30px;">5</td>
+					<td>H-01-0005</td>
+					<td>PC</td>
+					<td>Win 2003</td>
+					<td>Safety</td>
+					<td>Support function</td>
+					<td>Pc/server</td>
+					<td>발전연관장비</td>
+					<td>Windows</td>
+					<td>Ethernet</td>
+					<td>O</td>
+				</tr>
+				<tr onclick="location.href = 'DA_detail.html' ">
+					<td style="width: 30px;">6</td>
+					<td>H-01-0006</td>
+					<td>PC</td>
+					<td>Win 2003</td>
+					<td>Support</td>
+					<td>Important to Safety</td>
+					<td>PLC</td>
+					<td>유지보수장비</td>
+					<td>Windows</td>
+					<td>Hard Wiring</td>
+					<td>O</td>
+				</tr>
+				<tr onclick="location.href = 'DA_detail.html' ">
+					<td style="width: 30px;">7</td>
+					<td>H-01-0007</td>
+					<td>PC</td>
+					<td>Win 2003</td>
+					<td>Security</td>
+					<td>Safety Related</td>
+					<td>DCS</td>
+					<td>유지보수장비</td>
+					<td>Firmware</td>
+					<td>Serial</td>
+					<td>O</td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+
+		<div class="table_button_group">
+			<button type="button" class="btn btn-danger"
+				onclick="location.href='DA_register.html' ">등록</button>
+			<button type="button" class="btn btn-secondary">수정</button>
+		</div>
+		<nav class="pagination_nav" aria-label="...">
+			<ul class="pagination">
+				<li class="page-item disabled"><a class="page-link" href="#"
+					tabindex="-1" aria-disabled="true">이전</a></li>
+				<li class="page-item"><a class="page-link" href="#">1</a></li>
+				<li class="page-item active" aria-current="page"><a
+					class="page-link" href="#">2</a></li>
+				<li class="page-item"><a class="page-link" href="#">3</a></li>
+				<li class="page-item"><a class="page-link" href="#">다음</a></li>
+			</ul>
+			<br>
+		</nav>
+	</div>
+
+
+</body>
+</html>
