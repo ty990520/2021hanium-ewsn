@@ -4,14 +4,10 @@
 <meta charset="utf-8">
 <!-- menu css -->
 <link rel="shortcut icon" href="../favicon.ico">
-<link rel="stylesheet" type="text/css"
-	href="../../css/normalize.css" />
-<link rel="stylesheet" type="text/css"
-	href="../../css/demo.css" />
-<link rel="stylesheet" type="text/css"
-	href="../../css/component.css" />
-<link rel="stylesheet" type="text/css"
-	href="../../css/menu.css" />
+<link rel="stylesheet" type="text/css" href="../../css/normalize.css" />
+<link rel="stylesheet" type="text/css" href="../../css/demo.css" />
+<link rel="stylesheet" type="text/css" href="../../css/component.css" />
+<link rel="stylesheet" type="text/css" href="../../css/menu.css" />
 <script src="../../js/modernizr.custom.js"></script>
 <!-- menu css끝 -->
 <!-- CSS only -->
@@ -25,20 +21,37 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
 	crossorigin="anonymous"></script>
-<link rel="stylesheet" type="text/css"
-	href="../../css/common.css" />
-	<link rel="stylesheet" type="text/css"
-	href="../../css/table.css" />
+<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+<link rel="stylesheet" type="text/css" href="../../css/table.css" />
 <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 <title>sw관리 프로그램</title>
+<style>
+.table-light {
+	width: 13%;
+	vertical-align: middle;
+	text-align: center;
+}
+.table {
+	width: 90%;
+}
 
+.table-cover {
+	padding-top: 30px;
+	display: flex;
+	justify-content: center;
+}
+
+#function {
+	height: 100px;
+}
+</style>
 </head>
 <body>
 	<!-- base페이지입니다. -->
 	<div class="base_top">
 		<div class="main_menu">
 			<div class="top_left">
-			<span class="title"><a href="../base2.html">DA 관리 프로그램</a></span>
+				<span class="title"><a href="../base2.html">DA 관리 프로그램</a></span>
 			</div>
 			<div class="top_center" onmouseleave="out()">
 				<section class="color-6">
@@ -69,10 +82,9 @@
 					onmouseleave="out()">
 					<div class="sub_center_section">
 						<nav class="cl-effect-3">
-							<a href="../DA/DA_list.html">자산 정보관리</a>
-							<a href="../SecurityAssessment/SA_list.html">단계적
-								보안성 평가</a> <a href="../code/code_list.html">공통
-								코드 관리</a>
+							<a href="../DA/DA_list.html">자산 정보관리</a> <a
+								href="../SecurityAssessment/SA_list.html">단계적 보안성 평가</a> <a
+								href="../code/code_list.html">공통 코드 관리</a>
 
 						</nav>
 					</div>
@@ -128,57 +140,57 @@
 			<b>DA 정보 관리</b>
 		</h1>
 		<hr>
-		<table class="detail-list">
-			<tr>
-				<td class="detail-title">발전소 구분</td>
-				<td>수력</td>
-				<td class="detail-title">발전소 상세구분</td>
-				<td>한강</td>
-				<td class="detail-title">영향성 분석</td>
-				<td>Safety</td>
-			</tr>
-			<tr>
-				<td class="detail-title">자산명</td>
-				<td>주급수계통</td>
-				<td class="detail-title">설비유형</td>
-				<td>PC/Server</td>
-				<td class="detail-title">설비사용목적</td>
-				<td>발전연관 장비</td>
-			</tr>
-			<tr>
-				<td class="detail-title">기능유형</td>
-				<td>Safety</td>
-				<td class="detail-title">시스템S/W유형</td>
-				<td id="right">Windows</td>
-				<td class="small-td" id="side"></td>
-				<td class="small-td" id="left"></td>
-			</tr>
-			<tr>
-				<td class="detail-title">자산기능</td>
-				<td colspan="5">원자력의 기둥을 맡고 있음</td>
+		<div class="table-cover">
+			<table class="table table-bordered">
+				<tr>
+					<th class="table-light">발전소 구분</th>
+					<td>수력</td>
+					<th class="table-light">발전소 상세구분</th>
+					<td>한강</td>
+					<th class="table-light">영향성 분석</th>
+					<td>Safety</td>
+				</tr>
+				<tr>
+					<th class="table-light">자산명</th>
+					<td>주급수계통</td>
+					<th class="table-light">설비유형</th>
+					<td>PC/Server</td>
+					<th class="table-light">설비사용목적</th>
+					<td>발전연관 장비</td>
+				</tr>
+				<tr>
+					<th class="table-light">기능유형</th>
+					<td colspan="2">Safety</td>
+					<th class="table-light">시스템S/W유형</th>
+					<td colspan="2">Windows</td>
+				</tr>
+				<tr>
+					<th class="table-light" id="function">자산기능</th>
+					<td colspan="5">원자력의 기둥을 맡고 있음</td>
 
-			</tr>
-	
-		</table>
-		<table class="detail-list">
-			<tr>
-				<td class="detail-title">통신 I/F</td>
-				<td>Hard Wiring</td>
-				<td class="detail-title">저장장치</td>
-				<td>메모리카드</td>
-			</tr>
-			<tr>
-				<td class="detail-title">운영데이터 수정가능여부</td>
-				<td>N</td>
-				<td class="detail-title">수정 가능한 운영데이터</td>
-				<td>Control Logic</td>
-			</tr>
-			<tr>
-				<td class="detail-title">HMI유형</td>
-				<td colspan="3">External</td>
-			</tr>
-		</table>
+				</tr>
 
+
+				<tr>
+					<th class="table-light">통신 I/F</th>
+					<td colspan="2">Hard Wiring</td>
+					<th class="table-light">저장장치</th>
+					<td colspan="2">메모리카드</td>
+				</tr>
+				<tr>
+					<th class="table-light">운영데이터<br>수정가능여부
+					</th>
+					<td colspan="2">N</td>
+					<th class="table-light">수정 가능한<br>운영데이터
+			
+							<td colspan="2">Control Logic</td>
+			</tr>
+			<tr>
+				<th class="table-light">HMI유형</th>
+				<td colspan="5">External</td>
+			</tr>
+		</table>
+</div>
 		<br>
 		<div class="table_button_group">
 			<button type="button" class="btn btn-secondary">수정</button>
