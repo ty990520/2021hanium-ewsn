@@ -46,7 +46,7 @@ hr.two {
 	clear: both;
 }
 
-#joinForm {
+.joinForm {
 	margin: auto;
 	padding: 20px 0;
 	width: 60%;

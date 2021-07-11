@@ -13,14 +13,24 @@
 <!-- menu css끝 -->
 
 <!-- bootstrap link -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+	integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
 	crossorigin="anonymous">
 <script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+	crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+	integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+	integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
 	crossorigin="anonymous"></script>
 <!-- bootstrap link끝 -->
 
@@ -29,10 +39,18 @@
 <style>
 .text_body {
 	width: 100%;
-	height: 1500px;
+	height: 2300px;
 	position: relative;
 	top: 80px;
 	left: 0px;
+}
+
+.top_img {
+	width: 100%;
+}
+
+a:hover {
+	text-decoration: none;
 }
 </style>
 </head>
@@ -94,9 +112,9 @@
 					</div>
 					<div class="sub_center_section_last">
 						<nav class="cl-effect-3">
-							<a href="./user/user_list.html">사원 조회</a> 
-							<a href="./user/admin_menu.html">관리자페이지</a> 
-							<a href="./user/FNQ.html">FAQ</a>
+							<a href="./user/user_list.html">사원 조회</a> <a
+								href="./user/admin_menu.html">관리자페이지</a> <a
+								href="./user/FNQ.html">FAQ</a>
 						</nav>
 					</div>
 				</div>
@@ -131,8 +149,153 @@
 	</script>
 	<!-- base끝 -->
 	<div class="text_body">
-		<img alt="" src="../img/home.png" width="100%">
-	</div>
+		<div class="top_img">
+			<img alt="" src="../img/backgroud_image.png" width="100%">
+		</div>
+		<div class="content_div">
+			<div class="comment">
+				<p id="welcome_title">
+					<b>환영합니다!</b>
+				</p>
+				<br>
+				<h7>DA 관리 프로그램은 디지털자산 정보 및 단계적 평가(손실 영향 평가)를 통해 자산을 분류하고, <BR>
+				이에 맞는 점검 항목으로 평가하는 프로그램입니다.</h7>
+				<br> <br> <br> <br> <br>
+				<h4 class="message2">
+					<b>단계적 보안성 평가는 다음 순으로 진행됩니다.</b>
+				</h4>
+				<BR> <BR> <BR> <br> <img alt=""
+					src="../img/home_content_img.png" width="55%"> <BR> <BR>
+				<BR> <br> <br>
+				<h4 class="message2">
+					<b>DA 관리 프로그램에서는 다음과 같은 기능을 제공하고 있습니다.</b>
+				</h4>
 
+			</div>
+
+			<div class="main_div">
+
+				<div class="card_div">
+					<a href="DA/DA_list.html"><div class="card" style="width: 18rem;">
+							<img src="../img/home1.png" class="card-img-top" alt="..." style="height: 190px;">
+							<div class="card-body">
+								<h4>
+									<b>DA 정보 관리</b>
+								</h4>
+								<p class="card-text">회사의 디지털 자산을 등록하고 관리할 수 있습니다.</p>
+							</div>
+						</div></a> 
+						<a href="SecurityAssessment/SA_list.html"><div class="card" style="width: 18rem;">
+							<img src="../img/home2.png" class="card-img-top" alt="..." style="height: 190px;">
+							<div class="card-body">
+								<h4>
+									<b>단계적 보안성 평가</b>
+								</h4>
+								<p class="card-text">등록된 디지털 자산에 대해 단계적 보안성 평가를 진행합니다.</p>
+							</div>
+						</div></a> 
+						<a href="controlled_items/CI_list.html"><div class="card" style="width: 18rem;">
+							<img src="../img/home3.png" class="card-img-top" alt="..." style="height: 190px;">
+							<div class="card-body">
+								<h4>
+									<b>통제항목 관리</b>
+								</h4>
+								<p class="card-text">회사 내에서 공통적으로 사용하는 코드를 관리합니다.</p>
+							</div>
+						</div></a> 
+						<a href="vulnerability/new_vulnerability_list.html"><div class="card" style="width: 18rem;">
+							<img src="../img/home4.jpg" class="card-img-top" alt="..." style="height: 190px;">
+							<div class="card-body">
+								<h4>
+									<b>신규취약점 관리</b>
+								</h4>
+								<p class="card-text">획득한 신규 취약점 정보를 등록하고 조치를 취할 수 있습니다.</p>
+							</div>
+						</div></a> 
+						<a href="vulnerability/vul_action_recomm_list.html"><div class="card" style="width: 18rem;">
+							<img src="../img/home5.png" class="card-img-top" alt="..." style="height: 190px;">
+							<div class="card-body"> 
+								<h4>
+									<b>취약점 조치 권고</b>
+								</h4>
+								<p class="card-text">취약점에 영향을 받는 설비에 대해 조치 권고를 발행할 수 있습니다.</p>
+							</div>
+						</div></a>
+						 <a href="vulnerability/vul_imple_plan_list.html"><div class="card" style="width: 18rem;">
+							<img src="../img/home6.png" class="card-img-top" alt="..." style="height: 190px;">
+							<div class="card-body">
+								<h4>
+									<b>이행 계획 및 결과</b>
+								</h4>
+								<p class="card-text">발행된 조치 권고에 대한 이행 계획 및 결과를 관리할 수 있습니다.</p>
+							</div>
+						</div></a>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class="footer">
+	<p>Copyright © DA Management Program All Rights Reserved.</p>
+	<p>Develop by team EWSN</p>
+	</div>
 </body>
+<style>
+.content_div {
+	width: 100%;
+	height: 1500px;
+}
+
+.comment {
+	padding: 80px 0 70px 0;
+	text-align: center;
+}
+
+#welcome_title {
+	font-size: -webkit-xxx-large;
+}
+
+.message2 {
+	color: #464646;
+}
+
+.main_div {
+	display: flex;
+	justify-content: space-around;
+}
+
+.card_div {
+	width: 70%;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: space-around;
+	display: flex;
+	flex-direction: row;
+	color:black;
+}
+.card_div >a{
+color:black;
+}
+.card {
+	margin: 30px;
+}
+
+.card:hover {
+	box-shadow: 1px 1px 20px #ddd;
+	display: flex;
+	align-items: center;
+	-webkit-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+}
+
+.footer {
+	width: 100%;
+	height: 150px;
+	background-color: gray;
+	color: white;
+	text-align: center;
+	display: flex;
+    flex-direction: column-reverse;
+}
+</style>
 </html>
