@@ -10,7 +10,7 @@
     <bean id="dataSource"
         class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
-        <property name="url" value="jdbc:mysql://ewsndatabase.ckksvxfrug4p.ap-northeast-2.rds.amazonaws.com:3306/webservice?useSSL=false"></property>
+        <property name="url" value="jdbc:mysql://ewsndatabase.ckksvxfrug4p.ap-northeast-2.rds.amazonaws.com:3306/ewsn?useSSL=false"></property>
         <property name="username" value="root"></property>
         <property name="password" value="ewsnroot"></property>
     </bean>      
@@ -30,5 +30,5 @@
 		class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg  ref="sqlSessionFactory"></constructor-arg>
 	</bean>	
+	<mybatis-spring:scan base-package="com.hanium.mapper" />
 </beans>
-<mybatis-spring:scan base-package="com.hanium.mapper" />
