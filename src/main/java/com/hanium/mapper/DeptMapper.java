@@ -4,6 +4,6 @@ import java.util.List;
 
 import com.hanium.domain.DeptVO;
 
-public class DeptMapper {
+public interface DeptMapper {
 	public List<DeptVO> getList();
 }
