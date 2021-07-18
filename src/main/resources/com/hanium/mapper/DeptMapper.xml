@@ -6,4 +6,19 @@
 	<select id="getList" resultType="com.hanium.domain.DeptVO">
 		select * from dept;
 	</select>
+	<select id="read" resultType="com.hanium.domain.DeptVO">
+		select * from dept where deptcode =
+		#{deptcode}
+	</select>
+	<insert id="insert">
+		insert into dept (deptcode,deptptype,deptname)
+		values
+		(#{deptcode},#{deptptype},#{deptname})
+	</insert>
+	<update id="update">
+		update dept
+		set deptptype=#{deptptype},
+		deptname=#{deptname}
+		where deptcode=#{deptcode}
+	</update>
 </mapper>
