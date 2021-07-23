@@ -18,9 +18,12 @@ public class BOPServiceTests {
 	@Setter(onMethod_ = {@Autowired})
 	private BOPService service;
 	
+	@Setter(onMethod_ = {@Autowired})
+	private SecurityAssessmentService service2;
+	
 	@Test
 	public void testExist() {
-		log.info(service);
-		assertNotNull(service);	//null이 아님을 시험
+		log.info(service2);
+		assertNotNull(service2);	//null이 아님을 시험
 	}
 }
