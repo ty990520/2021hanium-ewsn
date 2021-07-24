@@ -11,6 +11,7 @@ import com.hanium.domain.BOPVO;
 import com.hanium.domain.EPVO;
 import com.hanium.domain.EmpVO;
 import com.hanium.domain.IndirectVO;
+import com.hanium.domain.UserVO;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -32,6 +33,9 @@ public class BOPMapperTests {
 	
 	@Setter(onMethod_ = @Autowired)
 	private EmpMapper mapper4;
+	
+	@Setter(onMethod_ = @Autowired)
+	private UserMapper mapper5;
 	
 	@Test
 	public void testInsert() {
@@ -93,5 +97,21 @@ public class BOPMapperTests {
 		mapper4.insert(emp);
 
 		log.info(emp);
+	}
+	
+	@Test
+	public void testInsert5() {
+		UserVO user = new UserVO();
+
+		user.setUserid("AA01-210724");
+		user.setUserptype("원자력");
+		user.setUserdept("관리자그룹");
+		user.setUsername("박태영");
+		user.setUserpw("12341234");
+		user.setUseremail("ty990520@naver.com");
+		
+		mapper5.insert(user);
+
+		log.info(user);
 	}
 }
