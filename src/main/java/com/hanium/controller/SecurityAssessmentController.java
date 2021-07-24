@@ -7,20 +7,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.hanium.domain.DeptVO;
-import com.hanium.service.DeptService;
+import com.hanium.domain.SecurityAssessmentVO;
+import com.hanium.service.SecurityAssessmentService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
 @Controller
 @Log4j
-@RequestMapping("/dept/*")
+@RequestMapping("/SecurityAssessment/*")
 @AllArgsConstructor
-public class DeptController {
+public class SecurityAssessmentController {
+	private SecurityAssessmentService service;
 	
-	private DeptService service;
-
 	@GetMapping("/list")
 	public void list(Model model) { // addAttribute메소드를 이용해 Model객체에 담아서 전달
 		log.info("[CONTROLLER]get list...");
@@ -28,26 +27,24 @@ public class DeptController {
 	}
 	
 	@PostMapping("/register")	//글을 등록하는 경우에는 get방식이 아니라 post방식을 사용한다.
-	public String register(DeptVO dept) {	//RedirectAttributes : 
-	    log.info("[CONTROLLER]register : "+dept);
-	    service.register(dept);
-	    //rttr.addFlashAttribute("result",dept.getDeptcode());
-	    //return "redirect:/dept/list";
+	public String register(SecurityAssessmentVO sa) {	//RedirectAttributes : 
+	    log.info("[CONTROLLER]register : "+sa);
+	    service.register(sa);
+	    //rttr.addFlashAttribute("result",sa.getsacode());
+	    //return "redirect:/sa/list";
 	    return "success";
 	}
 	
 	@GetMapping("/get")
-	public void get(@RequestParam("deptcode") String deptcode, Model model) {
+	public void get(@RequestParam("SA_no") Long SA_no, Model model) {
 	    log.info("[ CONTROLLER ] get ……..");
-	    model.addAttribute("dept", service.get(deptcode));
+	    model.addAttribute("sa", service.get(SA_no));
 	}
 	
 	@PostMapping("/modify")
-	public String modify(DeptVO dept) {
-	    log.info("[ CONTROLLER ] modify:" + dept);
-	    service.modify(dept);
+	public String modify(SecurityAssessmentVO sa) {
+	    log.info("[ CONTROLLER ] modify:" + sa);
+	    service.modify(sa);
 	    return "success";
 	}
-	
-	
 }

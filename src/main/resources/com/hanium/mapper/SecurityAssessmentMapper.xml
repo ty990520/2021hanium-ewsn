@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hanium.mapper.SecurityAssessmentMapper">
+	<select id="getList" resultType="com.hanium.domain.SecurityAssessmentVO">
+		select * from SecurityAssessment;
+	</select>
+	<select id="read" resultType="com.hanium.domain.SecurityAssessmentVO">
+		select * from SecurityAssessment where SA_no =
+		#{SA_no}
+	</select>
+	<insert id="insert" useGeneratedKeys="true" keyProperty="SA_no">
+		insert into SecurityAssessment
+		(SA_daID,SA_IdentifyType) 
+		values (#{SA_daID},#{SA_IdentifyType})
+	</insert>
+	<update id="update">
+		update SecurityAssessment
+		set SA_daID=#{SA_daID},
+		SA_IdentifyType=#{SA_IdentifyType}
+		where SA_no=#{SA_no}
+	</update>
+</mapper>
