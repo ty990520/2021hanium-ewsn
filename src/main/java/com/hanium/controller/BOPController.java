@@ -15,7 +15,7 @@ import lombok.extern.log4j.Log4j;
 
 @Controller
 @Log4j
-@RequestMapping("/bop/*")
+@RequestMapping("/BOP/*")
 @AllArgsConstructor
 public class BOPController {
 private BOPService service;
