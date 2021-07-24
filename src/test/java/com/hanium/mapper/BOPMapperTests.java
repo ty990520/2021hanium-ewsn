@@ -9,6 +9,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.hanium.domain.BOPVO;
 import com.hanium.domain.EPVO;
+import com.hanium.domain.EmpVO;
 import com.hanium.domain.IndirectVO;
 
 import lombok.Setter;
@@ -28,6 +29,9 @@ public class BOPMapperTests {
 
 	@Setter(onMethod_ = @Autowired)
 	private IndirectMapper mapper3;
+	
+	@Setter(onMethod_ = @Autowired)
+	private EmpMapper mapper4;
 	
 	@Test
 	public void testInsert() {
@@ -77,5 +81,17 @@ public class BOPMapperTests {
 		mapper3.insert(ind);
 
 		log.info(ind);
+	}
+	
+	@Test
+	public void testInsert4() {
+		EmpVO emp = new EmpVO();
+
+		emp.setEmpDeptCode("AA01");
+		emp.setEmpid("AA01-210724");
+		
+		mapper4.insert(emp);
+
+		log.info(emp);
 	}
 }
