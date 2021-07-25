@@ -76,11 +76,9 @@ a:hover {
 			</div>
 			<div class="top_right">
 				<div class="login_box">
-					<button type="button" class="btn btn-outline-secondary"
-						style="margin-right: 10px;"
-						onclick="location.href='./user/login.html' ">로그인</button>
-					<button type="button" class="btn btn-outline-danger"
-						onclick="location.href='./user/join.html' ">회원가입</button>
+					<button id="loginBtn" type="button" class="btn btn-outline-secondary"
+						style="margin-right: 10px;">로그인</button>
+					<button id="joinBtn" type="button" class="btn btn-outline-danger">회원가입</button>
 				</div>
 			</div>
 		</div>
@@ -148,5 +146,13 @@ a:hover {
 			var obj = document.getElementById("submenu");
 			obj.style.display = "none"; // 안보이게
 		}
+		
+		$("#loginBtn").on("click", function() {
+			self.location = "/user/login";
+		})
+		
+		$("#joinBtn").on("click", function() {
+			self.location = "/user/join";
+		})
 	</script>
 	<!-- base끝 -->

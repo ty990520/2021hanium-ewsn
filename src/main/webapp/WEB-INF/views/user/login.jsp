@@ -14,7 +14,7 @@
 }
 </style>
 </head>
-<div class="wrap"float:left;>
+<div class="wrap">
 	<div class="login">
 		<h2>로그인</h2>
 
