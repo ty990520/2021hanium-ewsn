@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hanium.mapper.RepresentCodeMapper">
+	<select id="getList" resultType="com.hanium.domain.RepresentCodeVO">
+		select * from RepresentCode;
+	</select>
+	<select id="read" resultType="com.hanium.domain.RepresentCodeVO">
+		select * from RepresentCode where R_code =
+		#{R_code}
+	</select>
+	<insert id="insert">
+		insert into RepresentCode (R_code,R_codeName,D_code,D_codeName)
+		values
+		(#{R_code},#{R_codeName},#{D_code},#{D_codeName})
+	</insert>
+	<update id="update">
+		update RepresentCode
+		set R_codeName=#{R_codeName},
+		D_codeNamee=#{D_codeName}
+		where R_code=#{R_code}
+	</update>
+</mapper>

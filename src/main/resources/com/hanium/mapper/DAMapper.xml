@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hanium.mapper.DAMapper">
+	<select id="getList" resultType="com.hanium.domain.DAVO">
+		select * from DA;
+	</select>
+	<select id="read" resultType="com.hanium.domain.DAVO">
+		select * from DA where daid =
+		#{daid}
+	</select>
+	<insert id="insert">
+		insert into DA
+		(daid,daname,daptype,daPDetailType,daFunc,daFuncType,daImpact,daFacilitiesType,
+		daFacilitiesPurposeOfUse, daSystemSW,daReportIF,daStorageDevice,
+		daModifyOPAvailability,daModifiableOperationData,daHMIType,daIdentifyType,daUse, daManufacturer, daModel, daRegistrarID, daLastUpdateID,daRegDate, daUpdateDate)
+		values
+		(#{daid},#{daname},#{daptype},#{daPDetailType},#{daFunc},#{daFuncType},#{daImpact},
+		#{daFacilitiesType},#{daFacilitiesPurposeOfUse},#{daSystemSW},#{daReportIF},#{daStorageDevice},
+		#{daModifyOPAvailability},#{daModifiableOperationData},#{daHMIType},#{daIdentifyType},#{daUse},
+		#{daManufacturer},#{daModel},#{daRegistrarID},#{daLastUpdateID},
+		#{daRegDate},#{daUpdateDate})
+	</insert>
+	<update id="update">
+		update DA
+		set
+		daname=#{daname},
+		daptype=#{daptype}
+		daPDetailType=#{daPDetailType}
+		daFunc=#{daFunc}
+		daFuncType=#{daFuncType}
+		daImpact=#{daImpact}
+		daFacilitiesType=#{daFacilitiesType}
+		daFacilitiesPurposeOfUse=#{daFacilitiesPurposeOfUse}
+		daSystemSW=#{daSystemSW}
+		daReportIF=#{daReportIF}
+		daStorageDevice=#{daStorageDevice}
+		daModifyOPAvailability=#{daModifyOPAvailability}
+		daModifiableOperationData=#{daModifiableOperationData}
+		daHMIType=#{daHMIType}
+		daIdentifyType=#{daIdentifyType}
+		daUse=#{daUse}
+		daManufacturer=#{daManufacturer}
+		daModel=#{daModel}
+		daRegistrarID=#{daRegistrarID}
+		daLastUpdateID=#{daLastUpdateID}
+		daRegDate=#{daRegDate}
+		daUpdateDate=#{daUpdateDate}
+		where daid=#{daid}
+	</update>
+</mapper>

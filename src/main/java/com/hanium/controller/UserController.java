@@ -24,7 +24,7 @@ public class UserController {
 	@PostMapping({"/join2"})
 	public void login() {}
 	
-	@GetMapping({"/join","login"})
+	@GetMapping({"/join","login","join3"})
 	public void join() {}
 	
 	@GetMapping("/list")

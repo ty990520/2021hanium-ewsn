@@ -39,12 +39,20 @@ h2 {
 		</ul>
 
 		<ul class="footBtwrap clearfix">
-			<li><button type="button" class="btn btn-light btn-lg" value="login">로그인</button></li>
-			<li><button type="button" class="btn btn-danger btn-lg" value="/">메인화면으로 이동</button></li>
+			<li><button type="button" class="btn btn-light btn-lg" id="loginBtn1">로그인</button></li>
+			<li><button type="button" class="btn btn-danger btn-lg" id="homeBtn">메인화면으로 이동</button></li>
 		</ul>
 	</form>
 
+<BR><BR>
 
-
-	<script src="main.js"></script>
+	<script>
+	$("#loginBtn1").on("click", function() {
+		self.location = "/user/login";
+	})
+	
+	$("#homeBtn").on("click", function() {
+		self.location = "/";
+	})
+	</script>
 <%@include file="../includes/footer.jsp"%>
