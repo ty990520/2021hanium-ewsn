@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hanium.mapper.IndirectMapper">
+	<select id="getList" resultType="com.hanium.domain.IndirectVO">
+		select * from Indirect;
+	</select>
+	<select id="read" resultType="com.hanium.domain.IndirectVO">
+		select * from Indirect where indirectNo = #{indirectNo}
+	</select>
+	<insert id="insert" useGeneratedKeys="true" keyProperty="indirectNo">
+		insert into Indirect
+		(indIWPerformContent,
+		indIWAlterContent,
+		indDmgDetectContent,
+		indDmgDetectDoc,
+		indDmgDetectASContent,
+		indDmgDetectASDoc,
+		indETContent,
+		indETDoc,
+		indSA_no
+		)
+		values (#{indIWPerformContent}, #{indIWAlterContent},
+		#{indDmgDetectContent}, #{indDmgDetectDoc},#{indDmgDetectASContent},
+		#{indDmgDetectASDoc}, #{indETContent}, #{indETDoc}, #{indSA_no})
+	</insert>
+	<update id="update">
+		update Indirect
+		set
+		indIWPerformContent=#{indIWPerformContent},
+		indIWAlterContent=#{indIWAlterContent}
+		indDmgDetectContent=#{indDmgDetectContent}
+		indDmgDetectDoc=#{indDmgDetectDoc}
+		indDmgDetectASContent=#{indDmgDetectASContent}
+		indDmgDetectASDoc=#{indDmgDetectASDoc}
+		indETContent=#{indETContent}
+		indETDoc=#{indETDoc}
+		indSA_no=#{indSA_no}
+		where
+		indirectNo=#{indirectNo}
+	</update>
+</mapper>

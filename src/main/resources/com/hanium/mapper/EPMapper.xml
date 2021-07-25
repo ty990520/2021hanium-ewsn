@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hanium.mapper.EPMapper">
+	<select id="getList" resultType="com.hanium.domain.EPVO">
+		select * from EP;
+	</select>
+	<select id="read" resultType="com.hanium.domain.EPVO">
+		select * from EP where epNo =
+		#{epNo}
+	</select>
+	<insert id="insert">
+		insert into EP (epAlterContent,epAlterTypeComment,epAlterDoc,epDmgDetMContent,epDmgDoc,epETContent,epETDoc,epSA_no)
+		values
+		(#{epAlterContent},#{epAlterTypeComment},#{epAlterDoc},#{epDmgDetMContent},#{epDmgDoc},#{epETContent},#{epETDoc},#{epSA_no})
+	</insert>
+	<update id="update">
+		update EP
+		set epAlterContent=#{epAlterContent},
+		epAlterTypeComment=#{epAlterTypeComment}
+		epAlterDoc=#{epAlterDoc}
+		epDmgDetMContent=#{epDmgDetMContent}
+		epDmgDoc=#{epDmgDoc}
+		epETContent=#{epETContent}
+		epETDoc=#{epETDoc}
+		epSA_no=#{epSA_no}
+		where epNo=#{epNo}
+	</update>
+</mapper>
