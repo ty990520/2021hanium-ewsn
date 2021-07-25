@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hanium.mapper.ActionImplementMapper">
+	<select id="getList" resultType="com.hanium.domain.ActionImplementVO">
+		select * from ActionImplement;
+	</select>
+	<select id="read" resultType="com.hanium.domain.ActionImplementVO">
+		select * from ActionImplement where AI_no = #{AI_no}
+	</select>
+	<insert id="insert" useGeneratedKeys="true" keyProperty="AI_no">
+		insert into ActionImplement
+		(AI_no,AI_check,AI_impossibleReason,AI_AlterMeasures,AI_result,AI_finishDate)
+		values (#{AI_no},#{AI_check}, #{AI_impossibleReason}, #{AI_AlterMeasures}, #{AI_result}, #{AI_finishDate})
+	</insert>
+	<update id="update">
+		update ActionImplement
+		set AI_check=#{AI_check},
+		AI_impossibleReason=#{AI_impossibleReason}
+		AI_AlterMeasures=#{AI_AlterMeasures}
+		AI_result=#{AI_result}
+		AI_finishDate=#{AI_finishDate}
+		where AI_no=#{AI_no}
+	</update>
+</mapper>

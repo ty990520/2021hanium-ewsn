@@ -34,7 +34,7 @@ public class BOPControllerTest {
 
 	@Test
 	public void testList() throws Exception {
-		log.info("[CONTROLLER]testList : "+mockMvc.perform(MockMvcRequestBuilders.get("/user/list"))	//[CONTROLLER]testList :org.springframework.test.web.servlet.MockMvc$1@3aa41da1
+		log.info("[CONTROLLER]testList : "+mockMvc.perform(MockMvcRequestBuilders.get("/ValTargetFacility/list"))	//[CONTROLLER]testList :org.springframework.test.web.servlet.MockMvc$1@3aa41da1
 				.andReturn()	//[CONTROLLER]testList : org.springframework.test.web.servlet.DefaultMvcResult@3c3c4a71
 				.getModelAndView()	//[CONTROLLER]testList : ModelAndView [view="board/list"; model={list=[BoardVO(bno=1, title=테스트제목, content=테스트내용, writer=user00, regdate=Fri Jul 02 15:01:38 KST 2021, updateDate=Fri Jul 02 15:01:38 KST 2021), BoardVO(bno=2,  ...)]}]
 				.getModelMap());	//[CONTROLLER]testList : {list=[BoardVO(bno=1, title=테스트제목, content=테스트내용, writer=user00, regdate=Fri Jul 02 15:01:38 KST 2021, updateDate=Fri Jul 02 15:01:38 KST 2021), BoardVO(bno=2, ...)]}
