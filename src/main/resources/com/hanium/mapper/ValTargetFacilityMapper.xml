@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hanium.mapper.ValTargetFacilityMapper">
+	<select id="getList" resultType="com.hanium.domain.ValTargetFacilityVO">
+		select * from ValTargetFacility;
+	</select>
+	<select id="read" resultType="com.hanium.domain.ValTargetFacilityVO">
+		select * from ValTargetFacility where Vul_targetId =
+		#{Vul_targetId}
+	</select>
+	<insert id="insert">
+		insert into Vulnerability (Vul_targetId,Vul_daID,Vul_daName,ValFacilitiesRegDate)
+		values
+		(#{Vul_targetId},#{Vul_daID},#{Vul_daName},#{ValFacilitiesRegDate})
+	</insert>
+	<update id="update">
+		update ValTargetFacility
+		set Vul_daID=#{Vul_daID},
+		Vul_daName=#{Vul_daName}
+		ValFacilitiesRegDate=#{ValFacilitiesRegDate}
+		where Vul_targetId=#{Vul_targetId}
+	</update>
+</mapper>

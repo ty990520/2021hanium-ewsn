@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.hanium.domain.UserVO;
-import com.hanium.mapper.UserMapper;
+import com.hanium.mapper.UserMapperMapper;
 
 import lombok.AllArgsConstructor;
 
@@ -13,7 +13,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class UserServiceImpl implements UserService {
 
-	private UserMapper mapper;
+	private UserMapperMapper mapper;
 
 	@Override
 	public void register(UserVO user) {
