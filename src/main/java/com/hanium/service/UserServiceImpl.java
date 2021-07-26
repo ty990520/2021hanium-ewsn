@@ -35,4 +35,14 @@ public class UserServiceImpl implements UserService {
 		return mapper.getList();
 	}
 
+	@Override
+	public List<UserVO> getUserRequest() {
+		return mapper.getUserRequest();
+	}
+
+	@Override
+	public List<UserVO> getAdminRequest() {
+		return mapper.getAdminRequest();
+	}
+
 }

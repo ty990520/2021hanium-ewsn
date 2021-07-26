@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -91,7 +93,7 @@ a:hover {
 					<div class="sub_center_section">
 						<nav class="cl-effect-3">
 							<a href="./DA/DA_list.html">자산 정보관리</a> <a
-								href="./SecurityAssessment/SA_list.html">단계적보안성 평가</a> <a
+								href="/SecurityAssessment/SA_list.html">단계적보안성 평가</a> <a
 								href="./code/Code_reList.html">공통코드 관리</a>
 
 						</nav>
@@ -113,8 +115,8 @@ a:hover {
 					<div class="sub_center_section_last">
 						<nav class="cl-effect-3">
 							<a href="./user/user_list.html">사원 조회</a> <a
-								href="./user/admin_menu.html">관리자페이지</a> <a
-								href="./user/FNQ.html">FAQ</a>
+								href="/user/admin_menu">관리자페이지</a> <a
+								href="/FAQ">FAQ</a>
 						</nav>
 					</div>
 				</div>

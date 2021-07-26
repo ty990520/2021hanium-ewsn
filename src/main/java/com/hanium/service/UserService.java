@@ -9,4 +9,6 @@ public interface UserService {
 	public UserVO get(String userid);			//글 조회
 	public boolean modify(UserVO user);		//수정
 	public List<UserVO> getList();	
+	public List<UserVO> getUserRequest();	
+	public List<UserVO> getAdminRequest();	
 }

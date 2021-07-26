@@ -20,3 +20,34 @@
 	padding: 3px 12px;
 	font-size: small;
 }
+<style>
+a {
+	text-decoration: none;
+	color: black;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+.pagination {
+	margin: 50px 0 100px 0;
+	justify-content: center;
+}
+
+.page-link {
+	margin: 0;
+	font-size: 1rem;
+	color: #dc3545;
+}
+
+.page-link:hover {
+	color: #dc3545;
+}
+
+.page-item.active .page-link {
+	z-index: 3;
+	color: #fff;
+	background-color: #dc3545;
+	border-color: #dc3545;
+}

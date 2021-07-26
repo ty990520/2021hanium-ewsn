@@ -24,12 +24,22 @@ public class UserController {
 	@PostMapping({"/join2"})
 	public void login() {}
 	
-	@GetMapping({"/join","login","join3"})
+	@GetMapping({"/join","login","join3","admin_menu"})
 	public void join() {}
 	
 	@GetMapping("/list")
 	public void list(Model model) {
 		model.addAttribute("list", service.getList());
+	}
+	
+	@GetMapping("/user_request")
+	public void userRequestlist(Model model) {
+		model.addAttribute("userRequest", service.getUserRequest());
+	}
+	
+	@GetMapping("/admin_request")
+	public void adminRequestlist(Model model) {
+		model.addAttribute("adminRequest", service.getAdminRequest());
 	}
 
 	@PostMapping("/register")
