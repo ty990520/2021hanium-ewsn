@@ -7,6 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import com.hanium.domain.ActionVO;
 import com.hanium.domain.BOPVO;
 import com.hanium.domain.EPVO;
 import com.hanium.domain.EmpVO;
@@ -36,6 +37,9 @@ public class BOPMapperTests {
 	
 	@Setter(onMethod_ = @Autowired)
 	private UserMapper mapper5;
+	
+	@Setter(onMethod_ = @Autowired)
+	private ActionMapper mapper7;
 	
 	@Test
 	public void testInsert() {
@@ -113,5 +117,16 @@ public class BOPMapperTests {
 		mapper5.insert(user);
 
 		log.info(user);
+	}
+	
+	@Test
+	public void testInsert7() {
+		ActionVO ac = new ActionVO();
+
+		ac.setAC_no(1L);
+		
+		mapper7.insert(ac);
+
+		log.info(ac);
 	}
 }
