@@ -1,3 +1,4 @@
+<%@page import="com.hanium.domain.UserVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="../includes/header.jsp"%>
@@ -11,7 +12,7 @@
 <div class="modal fade" id="staticBackdrop" data-backdrop="static"
 	data-keyboard="false" tabindex="-1"
 	aria-labelledby="staticBackdropLabel" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered">
+	<div class="modal-dialog modal-dialog-centered" id="modal_this">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="staticBackdropLabel">사번 인증</h5>
@@ -21,9 +22,7 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<span id="user_yes">사번 인증이 완료되었습니다. </span> <span id="user_no">확인할
-					수 없는 사번입니다. <BR> 다음 평가로 넘어갑니다.
-				</span>
+				<span id="user_valid">사번 인증이 완료되었습니다.</span>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-danger" data-dismiss="modal"
@@ -62,21 +61,37 @@
 			</tr>
 		</thead>
 		<tbody id="table_body">
-		 <c:forEach items="${userRequest}" var="request" varStatus="status">
-			<tr>
-				<td style="width: 30px;"><c:out value="${status.count}"/></td>
-				<td><fmt:formatDate pattern="yyyy-MM-dd" value="${request.reqdate}"/></td>
-				<td><c:out value="${request.userptype}"/></td>
-				<td><c:out value="${request.userdept}"/></td>
-				<td><c:out value="${request.userid}"/></td>
-				<td><button type="button" class="btn btn-danger"
-						data-toggle="modal" id="assess_btn" data-target="#staticBackdrop">인증</button></th>
-				<td><c:out value="${request.username}"/></td>
-				<td><button type="button" class="btn btn-success"
-						onclick="accept()">승인</button></td>
-			</tr>
+			<c:forEach items="${userRequest}" var="request" varStatus="status">
+				<tr>
+					<td style="width: 30px;"><c:out value="${status.count}" /></td>
+					<td><fmt:formatDate pattern="yyyy-MM-dd"
+							value="${request.reqdate}" /></td>
+					<td><c:out value="${request.userptype}" /></td>
+					<td><c:out value="${request.userdept}" /></td>
+					<td><c:out value="${request.userid}" /></td>
+					<td><c:if test="${request.valid eq false}">
+							<button class="btn btn-danger" data-oper="valid"
+								data-toggle="modal" id="assess_btn"
+								data-target="#staticBackdrop"
+								onclick="validate('${request.userid}')">인증</button>
+						</c:if> <c:if test="${request.valid eq true}">
+							<button class="btn btn-danger" data-oper="valid"
+								data-toggle="modal" id="assess_btn"
+								data-target="#staticBackdrop" disabled="disabled">완료</button>
+						</c:if></td>
+					<td><c:out value="${request.username}" /></td>
+					<c:if test="${request.valid eq true}">
+						<td><button type="submit" class="btn btn-success"
+								data-oper="permission" onclick="accept('${request.userid}')">승인 확인</button></td>
+
+					</c:if>
+					<c:if test="${request.valid eq false}">
+						<td><button type="submit" class="btn btn-success"
+								onclick="accept()" disabled="disabled">인증 필요</button></td>
+					</c:if>
+				</tr>
 			</c:forEach>
-			
+
 		</tbody>
 	</table>
 	<br>
@@ -90,54 +105,69 @@
 			<li class="page-item"><a class="page-link" href="#">3</a></li>
 			<li class="page-item"><a class="page-link" href="#">다음</a></li>
 		</ul>
-		<br><br>
+		<br> <br>
 	</nav>
 </div>
 <br>
 
 </body>
 <script>
-	/*사원정보 테이블에 존재하는 사번인지 비교하여 상황별 메시지 띄움*/
-	var flag = 1; //판별 신호 (1=ep, 0=bop검사)
-
-	$("#assess_btn").on("click", function() {
-		console.log(flag);
-		/*flag = 1;
-		var radios = $(":radio[value='Y']");
-		for (var i = 0; i < radios.length; i++) {
-			var $this = $(radios[i]);
-			
-			// (영향성 분석 = Emergency Preparedness Function) AND
-			if(!$this.is(":checked"))
-				flag = 0;
-		}*/
-
-		if (flag == 0) {
-			$("#user_no").show();
-			$("#user_yes").hide();
-			//location.href="./SA_BOP.html"
-
-		} else if (flag == 1) {
-			$("#user_yes").show();
-			$("#user_no").hide();
-			//$("modal_ok").on("click",function() {location.href="./SA_list.html"});
-		}
-
-	});
-
-	$("#modal_ok").on("click", function() {
-		if (flag == 1) {
-			location.reload();
-		}
-	});
-
-	function accept() {
-		if (confirm("사용자를 승인하시겠습니까?") == true) {
-			alert("승인이 완료되었습니다.");
-			location.reload();
-		} else {
-			return;
-		}
+	/*사번 인증*/
+	function validate(id) {
+		alert(id);
+		$.ajax({
+			contentType : "application/json; charset=utf-8;",
+			type : "GET",
+			url : "/user/valid",
+			data : {
+				"userid" : id
+			},
+			success : function(response) {
+				conlose.log(response);
+				alert(response);
+				/*if (response == "success") {
+					$("#user_valid").text("성공");
+				} else
+					$("#user_valid").text("실패");*/
+				//인증 비활성화
+				//승인 활성화
+			},
+			error : function(request, status, error) {
+				alert("code:" + request.status + "\n" + "message:"
+						+ request.responseText + "\n" + "error:" + error);
+			}
+		})
 	}
+	
+	/*$(document).ready(
+			function() {
+				var formObj = $("#button_form");
+				$('button').on(
+						"click",
+						function(e) { //모든 button태그에 대한 클릭 이벤트 처리
+							e.preventDefault(); //버튼의 기본 submit() 동작 막기
+							var operation = $(this).data("oper"); //data-oper 값 읽어오기
+							console.log(operation);
+
+							if (operation === 'valid') {
+								formObj.attr("action", "/user/valid").attr(
+										"method", "get");
+								$("#modal_ok").on("click", function() {
+									formObj.submit();
+								})
+							} else if (operation === 'permission') {
+								if (confirm("사용자를 승인하시겠습니까?") == true) {
+									alert("승인이 완료되었습니다.");
+									formObj.attr("action", "/user/permission")
+											.attr("method", "post");
+									formObj.submit();
+								} else {
+									return;
+								}
+								//move to list
+							}
+
+						})
+			})*/
 </script>
 <%@include file="../includes/footer.jsp"%>

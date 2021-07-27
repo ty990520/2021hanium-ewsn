@@ -45,4 +45,14 @@ public class UserServiceImpl implements UserService {
 		return mapper.getAdminRequest();
 	}
 
+	@Override
+	public boolean setUserValid(UserVO user) {
+		return mapper.userValidityCheck(user)==1;
+	}
+
+	@Override
+	public boolean setUserPermission(UserVO user) {
+		return mapper.userPermission(user)==1;
+	}
+
 }

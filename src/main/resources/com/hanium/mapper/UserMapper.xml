@@ -4,9 +4,11 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hanium.mapper.UserMapper">
 	<select id="getList" resultType="com.hanium.domain.UserVO">
-		select * from user where permission=1;
+		select * from user where
+		permission=1;
 	</select>
-	<select id="getUserRequest" resultType="com.hanium.domain.UserVO">
+	<select id="getUserRequest"
+		resultType="com.hanium.domain.UserVO">
 		<![CDATA[
 			SELECT userid,userptype,userdept,username,permission,valid,reqdate 
 			from user 
@@ -41,5 +43,19 @@
 		userbirth=#{userbirth}
 		userphone=#{userphone}
 		where userid=#{userid}
+	</update>
+	<update id="userValidityCheck">
+		UPDATE user
+		SET valid = 1
+		WHERE userid IN (select userid
+		from ( SELECT *
+		FROM user u
+		JOIN emp e ON e.empid = u.userid) tmp) and userid=#{userid}
+	</update>
+	<update id="userPermission">
+		update user
+		set permission=1
+		where userid=#{userid} and
+		valid=1;
 	</update>
 </mapper>

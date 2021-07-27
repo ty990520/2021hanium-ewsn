@@ -11,4 +11,6 @@ public interface UserMapper {
 	public UserVO read(String userid);
 	public void insert(UserVO user);	
 	public int update(UserVO user);
+	public int userValidityCheck(UserVO user);
+	public int userPermission(UserVO user);
 }

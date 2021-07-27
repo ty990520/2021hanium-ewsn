@@ -11,4 +11,6 @@ public interface UserService {
 	public List<UserVO> getList();	
 	public List<UserVO> getUserRequest();	
 	public List<UserVO> getAdminRequest();	
+	public boolean setUserValid(UserVO user);	//사번 인증 (유효성 검사)
+	public boolean setUserPermission(UserVO user);		//유저 승인
 }
