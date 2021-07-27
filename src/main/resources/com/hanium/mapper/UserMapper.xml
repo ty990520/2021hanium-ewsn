@@ -4,14 +4,40 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hanium.mapper.UserMapper">
 	<select id="getList" resultType="com.hanium.domain.UserVO">
-		select * from user;
+		select * from user where
+		permission=1;
+	</select>
+	<select id="getUserRequest"
+		resultType="com.hanium.domain.UserVO">
+		<![CDATA[
+			SELECT userid,userptype,userdept,username,permission,valid,reqdate 
+			from user 
+			where permission=0 and userdept!="관리자 그룹"
+		]]>
+	</select>
+	<select id="getAdminRequest"
+		resultType="com.hanium.domain.UserVO">
+		<![CDATA[
+			SELECT userid,userptype,username,permission,valid,reqdate 
+			from user 
+			where permission=0 and userdept="관리자 그룹"
+		]]>
+	</select>
+	<select id="findUserValidity"
+		resultType="com.hanium.domain.UserVO">
+		SELECT *
+		FROM user, emp, dept
+		WHERE user.userid = emp.empid and dept.deptcode = emp.empDeptCode and
+		(dept.deptname = user.userdept and dept.deptptype = user.userptype)
+		and userid=#{userid}
 	</select>
 	<select id="read" resultType="com.hanium.domain.UserVO">
 		select * from user where userid =
 		#{userid}
 	</select>
 	<insert id="insert">
-		insert into user (userid,userptype,userdept,username,userpw,useremail,userbirth,userphone)
+		insert into user
+		(userid,userptype,userdept,username,userpw,useremail,userbirth,userphone)
 		values
 		(#{userid},#{userptype},#{userdept},#{username},#{userpw},#{useremail},#{userbirth},#{userphone})
 	</insert>
@@ -25,5 +51,16 @@
 		userbirth=#{userbirth}
 		userphone=#{userphone}
 		where userid=#{userid}
+	</update>
+	<update id="userValidityCheck">
+		UPDATE user
+		SET valid=1
+		WHERE userid = #{userid}
+	</update>
+	<update id="userPermission">
+		update user
+		set permission=1
+		where userid=#{userid} and
+		valid=1;
 	</update>
 </mapper>

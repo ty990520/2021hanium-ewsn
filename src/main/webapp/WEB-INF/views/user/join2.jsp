@@ -60,7 +60,7 @@ h5 {
 						<span class="box gender_code"> <select name="userdept"
 							class="sel" onchange="chageDeptSelect(this)">
 								<option>부서</option>
-								<option value="관리자그룹">관리자그룹</option>
+								<option value="관리자 그룹">관리자 그룹</option>
 								<option value="사이버보안 담당 그룹">사이버보안 담당 그룹</option>
 								<option value="설비운영 그룹">설비운영 그룹</option>
 						</select>

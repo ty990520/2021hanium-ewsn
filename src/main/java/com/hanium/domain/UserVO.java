@@ -1,5 +1,7 @@
 package com.hanium.domain;
 
+import java.util.Date;
+
 import lombok.Data;
 
 @Data
@@ -12,4 +14,7 @@ public class UserVO {
 	private String useremail;
 	private String userbirth;
 	private String userphone;
+	private boolean valid;
+	private boolean permission;
+	private Date reqdate;
 }

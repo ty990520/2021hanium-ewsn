@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.hanium.domain.DeptVO;
+import com.hanium.domain.UserVO;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -19,6 +20,9 @@ import lombok.extern.log4j.Log4j;
 public class DeptServiceTests {
 	@Setter(onMethod_ = {@Autowired})
 	private DeptService service;
+	
+	@Setter(onMethod_ = {@Autowired})
+	private UserService service2;
 	
 	@Test
 	public void testExist() {
@@ -55,5 +59,14 @@ public class DeptServiceTests {
 		}
 		dept.setDeptptype("화력");
 		log.info("MODIFY RESULT: " + service.modify(dept));
+	}
+	
+	@Test	//글 수정
+	public void testValidUpdate() {
+		UserVO user = service2.get("AA02-210725");
+		if (user == null) {
+			return;
+		}
+		log.info("MODIFY RESULT: " + service2.setUserValid(user));
 	}
 }

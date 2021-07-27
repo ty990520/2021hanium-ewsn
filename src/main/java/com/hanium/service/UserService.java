@@ -9,4 +9,9 @@ public interface UserService {
 	public UserVO get(String userid);			//글 조회
 	public boolean modify(UserVO user);		//수정
 	public List<UserVO> getList();	
+	public List<UserVO> getUserRequest();	
+	public List<UserVO> getAdminRequest();	
+	public boolean findUserValidity(String userid);		//사번 인증 (유효성확인)
+	public boolean setUserValid(UserVO user);	//사번 인증 (valid체크)
+	public boolean setUserPermission(UserVO user);		//유저 승인
 }

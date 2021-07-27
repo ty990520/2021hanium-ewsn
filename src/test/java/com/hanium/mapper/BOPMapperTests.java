@@ -36,7 +36,7 @@ public class BOPMapperTests {
 	private EmpMapper mapper4;
 	
 	@Setter(onMethod_ = @Autowired)
-	private UserMapperMapper mapper5;
+	private UserMapper mapper5;
 	
 	@Setter(onMethod_ = @Autowired)
 	private ActionMapper mapper7;
