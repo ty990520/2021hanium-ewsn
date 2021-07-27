@@ -26,7 +26,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-danger" data-dismiss="modal"
-					id="modal_ok">닫기</button>
+					id="modal_ok" onclick="location.reload();">닫기</button>
 			</div>
 		</div>
 	</div>
@@ -75,19 +75,17 @@
 								data-target="#staticBackdrop"
 								onclick="validate('${request.userid}')">인증</button>
 						</c:if> <c:if test="${request.valid eq true}">
-							<button class="btn btn-danger" data-oper="valid"
-								data-toggle="modal" id="assess_btn"
-								data-target="#staticBackdrop" disabled="disabled">완료</button>
+							<button class="btn btn-danger" disabled="disabled">완료</button>
 						</c:if></td>
 					<td><c:out value="${request.username}" /></td>
 					<c:if test="${request.valid eq true}">
-						<td><button type="submit" class="btn btn-success"
-								data-oper="permission" onclick="accept('${request.userid}')">승인 확인</button></td>
+						<td><button class="btn btn-success" data-oper="permission"
+								onclick="permiss('${request.userid}')">승인 확인</button></td>
 
 					</c:if>
 					<c:if test="${request.valid eq false}">
-						<td><button type="submit" class="btn btn-success"
-								onclick="accept()" disabled="disabled">인증 필요</button></td>
+						<td><button type="button" class="btn btn-success"
+								disabled="disabled">인증 필요</button></td>
 					</c:if>
 				</tr>
 			</c:forEach>
@@ -114,7 +112,6 @@
 <script>
 	/*사번 인증*/
 	function validate(id) {
-		alert(id);
 		$.ajax({
 			contentType : "application/json; charset=utf-8;",
 			type : "GET",
@@ -123,14 +120,12 @@
 				"userid" : id
 			},
 			success : function(response) {
-				conlose.log(response);
-				alert(response);
-				/*if (response == "success") {
-					$("#user_valid").text("성공");
+				//conlose.log(response);
+				if (response == "success") {
+					$("#user_valid").text("인증에 성공하였습니다.");
 				} else
-					$("#user_valid").text("실패");*/
-				//인증 비활성화
-				//승인 활성화
+					$("#user_valid").text("인증에 실패하였습니다.");
+
 			},
 			error : function(request, status, error) {
 				alert("code:" + request.status + "\n" + "message:"
@@ -138,7 +133,33 @@
 			}
 		})
 	}
-	
+
+	/*유저 승인*/
+	function permiss(id) {
+		if (confirm("사용자를 승인하시겠습니까?") == true) {
+			$.ajax({
+				contentType : "application/json; charset=utf-8;",
+				type : "GET",
+				url : "/user/permission",
+				data : {
+					"userid" : id
+				},
+				success : function(response) {
+					//conlose.log(response);
+					alert("승인이 완료되었습니다.");
+					location.reload();
+				},
+				error : function(request, status, error) {
+					alert("code:" + request.status + "\n" + "message:"
+							+ request.responseText + "\n" + "error:" + error);
+				}
+			})
+		} else {
+			return;
+		}
+
+	}
+
 	/*$(document).ready(
 			function() {
 				var formObj = $("#button_form");

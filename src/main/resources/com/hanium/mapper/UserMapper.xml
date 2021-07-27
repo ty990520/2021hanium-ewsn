@@ -23,6 +23,14 @@
 			where permission=0 and userdept="관리자 그룹"
 		]]>
 	</select>
+	<select id="findUserValidity"
+		resultType="com.hanium.domain.UserVO">
+		SELECT *
+		FROM user, emp, dept
+		WHERE user.userid = emp.empid and dept.deptcode = emp.empDeptCode and
+		(dept.deptname = user.userdept and dept.deptptype = user.userptype)
+		and userid=#{userid}
+	</select>
 	<select id="read" resultType="com.hanium.domain.UserVO">
 		select * from user where userid =
 		#{userid}
@@ -46,11 +54,8 @@
 	</update>
 	<update id="userValidityCheck">
 		UPDATE user
-		SET valid = 1
-		WHERE userid IN (select userid
-		from ( SELECT *
-		FROM user u
-		JOIN emp e ON e.empid = u.userid) tmp) and userid=#{userid}
+		SET valid=1
+		WHERE userid = #{userid}
 	</update>
 	<update id="userPermission">
 		update user

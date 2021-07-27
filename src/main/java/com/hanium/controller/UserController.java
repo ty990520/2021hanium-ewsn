@@ -66,24 +66,34 @@ public class UserController {
 	@ResponseBody
 	@RequestMapping(value = "/valid")
 	public String valid(@RequestParam("userid") String userid) {
+		userid = userid.toString();
+		log.info("-------------------------------");
+		log.info("[ CONTROLLER ] " + userid);
+		UserVO user = service.get(userid);
+		log.info(user.getUsername());
+
+		// 1. 사번 유효성 검증
+		if (service.findUserValidity(userid)) {
+			log.info("[ CONTROLLER ] 사번이 유효합니다.");
+			// 2. user valid check
+			service.setUserValid(user);
+			return "success";
+
+		} else {
+			log.info("[ CONTROLLER ] 사번이 유효하지 않음");
+			return "fail";
+		}
+	}
+
+	@ResponseBody
+	@RequestMapping("/permission")
+	public String permission(@RequestParam("userid") String userid) {
 		userid=userid.toString();
 		log.info("-------------------------------");
 		log.info("[ CONTROLLER ] "+userid);
 		UserVO user = service.get(userid);
 		log.info(user.getUsername());
-		
-		log.info("[ CONTROLLER ] validCheck:" + userid);
-		//service.setUserValid(user);
-		
+		service.setUserPermission(user);
 		return "success";
-	}
-
-	@PostMapping("/permission")
-	public String permission(UserVO user, RedirectAttributes rttr) {
-		log.info("[ CONTROLLER ] permission:" + user);
-		if (service.setUserPermission(user)) {
-			rttr.addFlashAttribute("result", "success");
-		}
-		return "redirect:/user/user_request";
 	}
 }

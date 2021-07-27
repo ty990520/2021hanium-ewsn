@@ -55,4 +55,13 @@ public class UserServiceImpl implements UserService {
 		return mapper.userPermission(user)==1;
 	}
 
+	@Override
+	public boolean findUserValidity(String userid) {
+		UserVO validUser = mapper.findUserValidity(userid);
+		if(validUser==null) {
+			return false;
+		}
+		else
+			return true;
+	}
 }
