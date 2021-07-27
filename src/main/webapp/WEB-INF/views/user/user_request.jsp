@@ -80,7 +80,7 @@
 					<td><c:out value="${request.username}" /></td>
 					<c:if test="${request.valid eq true}">
 						<td><button class="btn btn-success" data-oper="permission"
-								onclick="permiss('${request.userid}')">승인 확인</button></td>
+								onclick="permiss('${request.userid}')">유저 승인</button></td>
 
 					</c:if>
 					<c:if test="${request.valid eq false}">
@@ -89,7 +89,6 @@
 					</c:if>
 				</tr>
 			</c:forEach>
-
 		</tbody>
 	</table>
 	<br>
@@ -159,36 +158,5 @@
 		}
 
 	}
-
-	/*$(document).ready(
-			function() {
-				var formObj = $("#button_form");
-				$('button').on(
-						"click",
-						function(e) { //모든 button태그에 대한 클릭 이벤트 처리
-							e.preventDefault(); //버튼의 기본 submit() 동작 막기
-							var operation = $(this).data("oper"); //data-oper 값 읽어오기
-							console.log(operation);
-
-							if (operation === 'valid') {
-								formObj.attr("action", "/user/valid").attr(
-										"method", "get");
-								$("#modal_ok").on("click", function() {
-									formObj.submit();
-								})
-							} else if (operation === 'permission') {
-								if (confirm("사용자를 승인하시겠습니까?") == true) {
-									alert("승인이 완료되었습니다.");
-									formObj.attr("action", "/user/permission")
-											.attr("method", "post");
-									formObj.submit();
-								} else {
-									return;
-								}
-								//move to list
-							}
-
-						})
-			})*/
 </script>
 <%@include file="../includes/footer.jsp"%>

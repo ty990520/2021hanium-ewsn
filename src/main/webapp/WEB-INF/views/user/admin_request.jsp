@@ -7,11 +7,11 @@
 <link rel="stylesheet" type="text/css"
 	href="../../../resources/css/common.css" />
 </head>
-<!-- modal -->
+<!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-backdrop="static"
 	data-keyboard="false" tabindex="-1"
 	aria-labelledby="staticBackdropLabel" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered">
+	<div class="modal-dialog modal-dialog-centered" id="modal_this">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="staticBackdropLabel">사번 인증</h5>
@@ -21,13 +21,11 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<span id="user_yes">사번 인증이 완료되었습니다. </span> <span id="user_no">확인할
-					수 없는 사번입니다. <BR> 다음 평가로 넘어갑니다.
-				</span>
+				<span id="user_valid">사번 인증이 완료되었습니다.</span>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-danger" data-dismiss="modal"
-					id="modal_ok">닫기</button>
+					id="modal_ok" onclick="location.reload();">닫기</button>
 			</div>
 		</div>
 	</div>
@@ -68,11 +66,24 @@
 				<td><c:out value="${request.userptype}"/></td>
 
 				<td><c:out value="${request.userid}"/></td>
-				<td><button type="button" class="btn btn-danger"
-						data-toggle="modal" id="assess_btn" data-target="#staticBackdrop">인증</button></th>
+				<td><c:if test="${request.valid eq false}">
+							<button class="btn btn-danger" data-oper="valid"
+								data-toggle="modal" id="assess_btn"
+								data-target="#staticBackdrop"
+								onclick="validate('${request.userid}')">인증</button>
+						</c:if> <c:if test="${request.valid eq true}">
+							<button class="btn btn-danger" disabled="disabled">완료</button>
+						</c:if></td>
 				<td><c:out value="${request.username}"/></td>
-				<td><button type="button" class="btn btn-success"
-						onclick="accept()">승인</button></td>
+				<c:if test="${request.valid eq true}">
+						<td><button class="btn btn-success" data-oper="permission"
+								onclick="permiss('${request.userid}')">유저 승인</button></td>
+
+					</c:if>
+					<c:if test="${request.valid eq false}">
+						<td><button type="button" class="btn btn-success"
+								disabled="disabled">인증 필요</button></td>
+					</c:if>
 			</tr>
 			</c:forEach>
 		</tbody>
@@ -94,47 +105,54 @@
 
 </body>
 <script>
-	/*사원정보 테이블에 존재하는 사번인지 비교하여 상황별 메시지 띄움*/
-	var flag = 1; //판별 신호 (1=ep, 0=bop검사)
+/*사번 인증*/
+function validate(id) {
+	$.ajax({
+		contentType : "application/json; charset=utf-8;",
+		type : "GET",
+		url : "/user/valid",
+		data : {
+			"userid" : id
+		},
+		success : function(response) {
+			//conlose.log(response);
+			if (response == "success") {
+				$("#user_valid").text("인증에 성공하였습니다.");
+			} else
+				$("#user_valid").text("인증에 실패하였습니다.");
 
-	$("#assess_btn").on("click", function() {
-		console.log(flag);
-		/*flag = 1;
-		var radios = $(":radio[value='Y']");
-		for (var i = 0; i < radios.length; i++) {
-			var $this = $(radios[i]);
-			
-			// (영향성 분석 = Emergency Preparedness Function) AND
-			if(!$this.is(":checked"))
-				flag = 0;
-		}*/
-
-		if (flag == 0) {
-			$("#user_no").show();
-			$("#user_yes").hide();
-			//location.href="./SA_BOP.html"
-
-		} else if (flag == 1) {
-			$("#user_yes").show();
-			$("#user_no").hide();
-			//$("modal_ok").on("click",function() {location.href="./SA_list.html"});
+		},
+		error : function(request, status, error) {
+			alert("code:" + request.status + "\n" + "message:"
+					+ request.responseText + "\n" + "error:" + error);
 		}
+	})
+}
 
-	});
-
-	$("#modal_ok").on("click", function() {
-		if (flag == 1) {
-			location.reload();
-		}
-	});
-
-	function accept() {
-		if (confirm("사용자를 승인하시겠습니까?") == true) {
-			alert("승인이 완료되었습니다.");
-			location.reload();
-		} else {
-			return;
-		}
+/*유저 승인*/
+function permiss(id) {
+	if (confirm("사용자를 승인하시겠습니까?") == true) {
+		$.ajax({
+			contentType : "application/json; charset=utf-8;",
+			type : "GET",
+			url : "/user/permission",
+			data : {
+				"userid" : id
+			},
+			success : function(response) {
+				//conlose.log(response);
+				alert("승인이 완료되었습니다.");
+				location.reload();
+			},
+			error : function(request, status, error) {
+				alert("code:" + request.status + "\n" + "message:"
+						+ request.responseText + "\n" + "error:" + error);
+			}
+		})
+	} else {
+		return;
 	}
+
+}
 </script>
 <%@include file="../includes/footer.jsp"%>
