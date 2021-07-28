@@ -44,7 +44,7 @@ h5 {
 							<label for="userptype">발전소 구분</label>
 						</h6>
 						<span class="box gender_code"> <select name="userptype"
-							class="sel" name="">
+							class="sel">
 								<option>발전소 구분</option>
 								<option value="수력">수력</option>
 								<option value="원자력">원자력</option>

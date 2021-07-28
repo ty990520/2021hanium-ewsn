@@ -26,7 +26,7 @@ public class DeptMapperTests {
 
 	@Test
 	public void testGetList() {
-		mapper.getList().forEach(dept -> log.info(dept.getDeptcode()));
+		mapper.getDept().forEach(dept -> log.info(dept));
 	}
 
 	@Test
@@ -61,6 +61,12 @@ public class DeptMapperTests {
 	}
 
 	@Test
+	public void testUpdateDept() {
+		log.info("UPDATE COUNT : " + mapper2.updateDept("원자력", "사이버보안 담당 그룹", "2222"));
+		// 정상적으로 update되었으면 1을 반환함
+	}
+	
+	@Test
 	public void testValidUpdate() {
 		//UserVO user = mapper2.read("AA02-210725");
 		UserVO user = mapper2.findUserValidity("222-210725");
@@ -75,5 +81,13 @@ public class DeptMapperTests {
 		//log.info(mapper2.findUserValidity().toString());
 		// log.info("UPDATE COUNT : "+mapper2.userValidityCheck(user));
 		// 정상적으로 update되었으면 1을 반환함
+	}
+	
+	@Test
+	public void testLogin(){
+		UserVO user = mapper2.login("AA02-210725", "2222");
+		log.info(user);
+		
+		
 	}
 }

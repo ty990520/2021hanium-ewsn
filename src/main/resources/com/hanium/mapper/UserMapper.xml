@@ -27,13 +27,21 @@
 		resultType="com.hanium.domain.UserVO">
 		SELECT *
 		FROM user, emp, dept
-		WHERE user.userid = emp.empid and dept.deptcode = emp.empDeptCode and
-		(dept.deptname = user.userdept and dept.deptptype = user.userptype)
+		WHERE user.userid = emp.empid
+		and dept.deptcode = emp.empDeptCode and
+		(dept.deptname = user.userdept
+		and dept.deptptype = user.userptype)
 		and userid=#{userid}
 	</select>
 	<select id="read" resultType="com.hanium.domain.UserVO">
 		select * from user where userid =
 		#{userid}
+	</select>
+	<select id="login" resultType="com.hanium.domain.UserVO">
+		SELECT *
+		FROM user
+		WHERE
+		userid=#{userid} and userpw=#{userpw} and permission=1;
 	</select>
 	<insert id="insert">
 		insert into user
@@ -57,10 +65,9 @@
 		SET valid=1
 		WHERE userid = #{userid}
 	</update>
-	<update id="userPermission">
-		update user
-		set permission=1
-		where userid=#{userid} and
-		valid=1;
+	<update id="updateDept">
+		UPDATE user
+		SET userptype = #{userptype} , userdept=#{userdept}
+		WHERE userid = #{userid};
 	</update>
 </mapper>

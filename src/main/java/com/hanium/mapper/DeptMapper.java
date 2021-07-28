@@ -6,6 +6,7 @@ import com.hanium.domain.DeptVO;
 
 public interface DeptMapper {
 	public List<DeptVO> getList();
+	public List<String> getDept();
 	public DeptVO read(String deptcode);
 	public void insert(DeptVO dept);	
 	public int update(DeptVO dept);

@@ -69,4 +69,9 @@ public class DeptServiceTests {
 		}
 		log.info("MODIFY RESULT: " + service2.setUserValid(user));
 	}
+	
+	@Test
+	public void testlogin() {
+		log.info(service2.login("AA02-210725", "1222"));
+	}
 }

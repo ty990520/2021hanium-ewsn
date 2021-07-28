@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
@@ -111,7 +112,7 @@ a:hover {
 					</div>
 					<div class="sub_center_section_last">
 						<nav class="cl-effect-3">
-							<a href="./user/user_list.html">사원 조회</a> <a
+							<a href="/user/list">사원 조회</a> <a
 								href="/user/admin_menu">관리자페이지</a> <a
 								href="/FAQ">FAQ</a>
 						</nav>

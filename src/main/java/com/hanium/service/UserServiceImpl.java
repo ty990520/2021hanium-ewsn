@@ -64,4 +64,19 @@ public class UserServiceImpl implements UserService {
 		else
 			return true;
 	}
+
+	@Override
+	public boolean login(String userid, String userpw) {
+		UserVO user = mapper.login(userid, userpw);
+		if(user==null) {
+			return false;
+		}
+		else
+			return true;
+	}
+
+	@Override
+	public boolean updateUserDept(String userptype, String userdept, String userid) {
+		return mapper.updateDept(userptype, userdept, userid)==1;
+	}
 }
