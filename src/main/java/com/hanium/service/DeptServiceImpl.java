@@ -41,4 +41,9 @@ public class DeptServiceImpl implements DeptService{
 		return mapper.getList();
 	}
 
+	@Override
+	public List<String> getDeptList() {
+		return mapper.getDept();
+	}
+
 }

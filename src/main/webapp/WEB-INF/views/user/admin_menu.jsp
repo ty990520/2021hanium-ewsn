@@ -9,7 +9,7 @@
 
 </head>
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1"
+<div class="modal fade" id="transferDeptModal" tabindex="-1"
 	aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content">
@@ -21,34 +21,40 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<form>
+				<form id="updateDeptForm" action="/user/update_userdept"
+					method="post">
 					<div class="form-group">
-						<label for="recipient-name" class="col-form-label">기존에 등록된
-							사원에 대해 부서 이동</label> <input type="text" class="form-control"
-							id="recipient-name"> <br>
-						<button type="button" class="btn btn-danger" style="float: right;">사원
-							조회</button>
+						<label for="recipient-name" class="col-form-label"><b>기존에
+								등록된 사원에 대해 부서 이동</b></label> <input type="text" class="form-control"
+							name="userid" id="inputUserid" placeholder="사번 입력"><label
+							for="recipient-name" class="col-form-label"><span
+							id="userSearch" style="color: #8e9092; display: none;">유저조회결과</span></label>
+						<br>
+						<button type="button" class="btn btn-danger" style="float: right;"
+							onclick="findUser()">사원 조회</button>
 					</div>
 					<br>
 					<hr>
 					<br>
 					<div class="form-group">
-						<label for="message-text" class="col-form-label">해당 사원을 다음
-							부서로 이동</label> <select class="custom-select" id="inputGroupSelect01">
-							<option selected>발전소 구분</option>
-							<option value="1">수력</option>
-							<option value="2">원자력</option>
-							<option value="3">화력</option>
+						<label for="message-text" class="col-form-label"><b>해당
+								사원을 다음 부서로 이동</b></label> <select class="custom-select" disabled="disabled"
+							id="inputGroupSelect01" name="userptype">
+							<option selected disabled="disabled">발전소 구분</option>
+							<option value="수력">수력</option>
+							<option value="원자력">원자력</option>
+							<option value="화력">화력</option>
 						</select>
 
 
 					</div>
 					<div class="form-group">
-						<select class="custom-select" id="inputGroupSelect01">
-							<option selected>부서명</option>
-							<option value="1">관리자그룹</option>
-							<option value="2">사이버보안 담당 그룹</option>
-							<option value="3">설비운영 그룹</option>
+						<select class="custom-select" id="inputGroupSelect02"
+							disabled="disabled" name="userdept">
+							<option selected disabled="disabled">부서명</option>
+							<c:forEach items="${deptList}" var="dept" varStatus="status">
+								<option value="${dept}"><c:out value="${dept}" /></option>
+							</c:forEach>
 						</select>
 
 
@@ -57,7 +63,8 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-				<button type="button" class="btn btn-danger">부서 이동</button>
+				<button type="button" class="btn btn-danger"
+					onclick="transferDept()">부서 이동</button>
 			</div>
 		</div>
 	</div>
@@ -68,7 +75,7 @@
 		<h1>관리자 페이지</h1>
 		<p>관리자는 다음 기능을 사용할 수 있습니다.</p>
 		<br>
-		<div class="box" onclick="location.href='../code/Code_reEnroll.html'">
+		<div class="box" onclick="location.href='/code/reEnroll'">
 			<div class="inner_box">
 				<div class="img">
 					<img src="../../../resources/img/check.png">
@@ -79,7 +86,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="box" data-toggle="modal" data-target="#exampleModal"
+		<div class="box" data-toggle="modal" data-target="#transferDeptModal"
 			data-whatever="@getbootstrap">
 			<div class="inner_box">
 				<div class="img">
@@ -114,7 +121,7 @@
 				</div>
 			</div>
 		</div>
-		<br><br>
+		<br> <br>
 	</div>
 </div>
 
@@ -134,21 +141,67 @@
 		}
 	});
 
-	function accept() {
-		if (confirm("사용자를 승인하시겠습니까?") == true) {
-			alert("승인이 완료되었습니다.");
-			location.reload();
-		} else {
-			return;
-		}
-	}
-	
 	$("#user_req").on("click", function() {
 		self.location = "/user/user_request";
 	})
-	
+
 	$("#admin_req").on("click", function() {
 		self.location = "/user/admin_request";
 	})
+
+	function findUser() {
+		var id = $("#inputUserid").val();
+		$.ajax({
+			contentType : "application/json; charset=utf-8;",
+			dataType : "json",
+			type : "GET",
+			url : "/user/findUserDept",
+			data : {
+				"userid" : id
+
+			},
+			success : function(data) {
+				if (!data) {
+					alert("존재하지 않는 사번입니다");
+					$("#userSearch").css('display', 'none')
+					return false;
+				}
+				console.log(data);
+				$("#userSearch").text(
+						data.username + "님(" + data.userid + ")은 현재 "
+								+ data.userptype + " 발전소 " + data.userdept
+								+ " 소속입니다.");
+				$("#userSearch").css('display', 'block')
+				$("#inputGroupSelect01").attr("disabled", false);
+				$("#inputGroupSelect02").attr("disabled", false);
+
+				/*var html = '';
+				html += '<form class="form-signin" action="" id="ajax">';
+				html += '사번<input type="text" class="form-control"  name="name" value="'+data.userid+'">';
+				html += '<input type="text" class="form-control" name=id" value="'+data.userptype+'">';
+				html += '이메일<input type="text" class="form-control"  name="email" value="'+data.userdept+'">';
+				html += '비밀번호<input type="text" class="form-control" name="password" value="'+data.username+'">';
+				html += '</form>';
+				$("#container").after(html);*/
+
+			},
+			error : function(request, status, error) {
+				alert("존재하지 않는 사번입니다");
+				$("#userSearch").css('display', 'none');
+				$("#inputGroupSelect01").attr("disabled", true);
+				$("#inputGroupSelect02").attr("disabled", true);
+			}
+		})
+	}
+
+	function transferDept() {
+		var formObj = $("#updateDeptForm");
+		if (confirm("해당 사원의 부서를 이동시키겠습니까?") == true) {
+			alert("부서 이동이 완료되었습니다.");
+			formObj.submit();
+		} else {
+			return false;
+		}
+	}
 </script>
 <%@include file="../includes/footer.jsp"%>

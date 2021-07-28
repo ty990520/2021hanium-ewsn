@@ -40,7 +40,8 @@
 	<select id="login" resultType="com.hanium.domain.UserVO">
 		SELECT *
 		FROM user
-		WHERE userid=#{userid} and userpw=#{userpw} and permission=1;
+		WHERE
+		userid=#{userid} and userpw=#{userpw} and permission=1;
 	</select>
 	<insert id="insert">
 		insert into user
@@ -64,10 +65,9 @@
 		SET valid=1
 		WHERE userid = #{userid}
 	</update>
-	<update id="userPermission">
-		update user
-		set permission=1
-		where userid=#{userid} and
-		valid=1;
+	<update id="updateDept">
+		UPDATE user
+		SET userptype = #{userptype} , userdept=#{userdept}
+		WHERE userid = #{userid};
 	</update>
 </mapper>

@@ -26,7 +26,7 @@ public class DeptMapperTests {
 
 	@Test
 	public void testGetList() {
-		mapper.getList().forEach(dept -> log.info(dept.getDeptcode()));
+		mapper.getDept().forEach(dept -> log.info(dept));
 	}
 
 	@Test
@@ -60,6 +60,12 @@ public class DeptMapperTests {
 		// 정상적으로 update되었으면 1을 반환함
 	}
 
+	@Test
+	public void testUpdateDept() {
+		log.info("UPDATE COUNT : " + mapper2.updateDept("원자력", "사이버보안 담당 그룹", "2222"));
+		// 정상적으로 update되었으면 1을 반환함
+	}
+	
 	@Test
 	public void testValidUpdate() {
 		//UserVO user = mapper2.read("AA02-210725");

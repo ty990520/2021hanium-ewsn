@@ -10,6 +10,11 @@
 		select * from dept where deptcode =
 		#{deptcode}
 	</select>
+	<select id="getDept" resultType="String">
+		SELECT distinct deptname
+		FROM
+		dept;
+	</select>
 	<insert id="insert">
 		insert into dept (deptcode,deptptype,deptname)
 		values
@@ -21,4 +26,5 @@
 		deptname=#{deptname}
 		where deptcode=#{deptcode}
 	</update>
+
 </mapper>
