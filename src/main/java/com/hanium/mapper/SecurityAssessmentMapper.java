@@ -2,10 +2,11 @@ package com.hanium.mapper;
 
 import java.util.List;
 
+import com.hanium.domain.SecurityAssessDTO;
 import com.hanium.domain.SecurityAssessmentVO;
 
 public interface SecurityAssessmentMapper {
-	public List<SecurityAssessmentVO> getList();
+	public List<SecurityAssessDTO> getList();
 	public SecurityAssessmentVO read(Long SA_no);
 	public void insert(SecurityAssessmentVO sa);	
 	public int update(SecurityAssessmentVO sa);

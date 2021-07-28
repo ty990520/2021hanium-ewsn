@@ -6,7 +6,8 @@ import com.hanium.domain.UserVO;
 
 public interface UserService {
 	public void register(UserVO user);		//등록
-	public UserVO get(String userid);			//글 조회
+	public UserVO get(String userid);			//유저만 가져옴
+	public UserVO findNotOnlyUser(String userid);	//회원가입한 모든 사람(미승인자도 포함) id조회
 	public boolean modify(UserVO user);		//수정
 	public List<UserVO> getList();	
 	public List<UserVO> getUserRequest();	

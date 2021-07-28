@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.hanium.domain.SecurityAssessDTO;
 import com.hanium.domain.SecurityAssessmentVO;
 import com.hanium.mapper.SecurityAssessmentMapper;
 
@@ -16,6 +17,7 @@ import lombok.extern.log4j.Log4j;
 public class SecurityAssessmentServiceImpl implements SecurityAssessmentService{
 
 	private SecurityAssessmentMapper mapper;
+	
 	@Override
 	public void register(SecurityAssessmentVO sa) {
 		mapper.insert(sa);
@@ -32,7 +34,7 @@ public class SecurityAssessmentServiceImpl implements SecurityAssessmentService{
 	}
 
 	@Override
-	public List<SecurityAssessmentVO> getList() {
+	public List<SecurityAssessDTO> getList() {
 		return mapper.getList();
 	}
 

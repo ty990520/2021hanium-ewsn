@@ -12,7 +12,7 @@
 		<![CDATA[
 			SELECT userid,userptype,userdept,username,permission,valid,reqdate 
 			from user 
-			where permission=0 and userdept!="관리자 그룹"
+			where permission=0 and userdept!="관리자 그룹" order by reqdate desc;
 		]]>
 	</select>
 	<select id="getAdminRequest"
@@ -20,7 +20,7 @@
 		<![CDATA[
 			SELECT userid,userptype,username,permission,valid,reqdate 
 			from user 
-			where permission=0 and userdept="관리자 그룹"
+			where permission=0 and userdept="관리자 그룹" order by reqdate desc;
 		]]>
 	</select>
 	<select id="findUserValidity"
@@ -33,9 +33,13 @@
 		and dept.deptptype = user.userptype)
 		and userid=#{userid}
 	</select>
-	<select id="read" resultType="com.hanium.domain.UserVO">
+	<select id="read" resultType="com.hanium.domain.UserVO"><!-- login -->
 		select * from user where userid =
-		#{userid}
+		#{userid} and valid=1 and permission=1;
+	</select>
+	<select id="get" resultType="com.hanium.domain.UserVO">
+		select * from user where userid =
+		#{userid};
 	</select>
 	<select id="login" resultType="com.hanium.domain.UserVO">
 		SELECT *

@@ -92,7 +92,7 @@ public class UserController {
 		userid = userid.toString();
 		log.info("-------------------------------");
 		log.info("[ CONTROLLER ] " + userid);
-		UserVO user = service.get(userid);
+		UserVO user = service.findNotOnlyUser(userid);
 		log.info(user.getUsername());
 
 		// 1. 사번 유효성 검증
