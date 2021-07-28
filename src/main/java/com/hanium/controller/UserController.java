@@ -96,4 +96,27 @@ public class UserController {
 		service.setUserPermission(user);
 		return "success";
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/user_login", produces = "application/text; charset=UTF-8")
+	public String login(@RequestParam("userid") String userid, @RequestParam("userpw") String userpw) {
+		log.info(userid+","+userpw);
+		UserVO user = service.get(userid);
+		log.info(user);
+		if(user==null) {
+			log.info("[ CONTROLLER ] 로그인 실패");
+			return "로그인에 실패하였습니다.";
+		}
+		else {
+			if (service.login(userid, userpw)) {
+				String username = user.getUsername();
+				log.info("[ CONTROLLER ] 로그인 성공 : "+username);
+				return username+"님 환영합니다!";
+
+			} else {
+				log.info("[ CONTROLLER ] 로그인 실패");
+				return "실패";
+			}
+		}
+	}
 }

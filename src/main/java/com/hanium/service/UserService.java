@@ -14,4 +14,5 @@ public interface UserService {
 	public boolean findUserValidity(String userid);		//사번 인증 (유효성확인)
 	public boolean setUserValid(UserVO user);	//사번 인증 (valid체크)
 	public boolean setUserPermission(UserVO user);		//유저 승인
+	public boolean login(String userid, String userpw);
 }

@@ -2,6 +2,8 @@ package com.hanium.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.hanium.domain.UserVO;
 
 public interface UserMapper {
@@ -14,4 +16,5 @@ public interface UserMapper {
 	public int update(UserVO user);
 	public int userValidityCheck(UserVO user);
 	public int userPermission(UserVO user);
+	public UserVO login(@Param("userid") String userid, @Param("userpw") String userpw);
 }
