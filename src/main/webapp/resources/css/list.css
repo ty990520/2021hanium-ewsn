@@ -1,6 +1,8 @@
 @charset "UTF-8";
 
-
+.table{
+	text-align: center;
+}
 .center_form {
 	float: right;
 }
@@ -49,4 +51,8 @@ a:hover {
 	color: #fff;
 	background-color: #dc3545;
 	border-color: #dc3545;
+}
+
+.modal-body {
+    text-align: center;
 }

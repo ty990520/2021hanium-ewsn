@@ -35,7 +35,8 @@
 	</select>
 	<select id="read" resultType="com.hanium.domain.UserVO"><!-- login -->
 		select * from user where userid =
-		#{userid} and valid=1 and permission=1;
+		#{userid} and valid=1 and
+		permission=1;
 	</select>
 	<select id="get" resultType="com.hanium.domain.UserVO">
 		select * from user where userid =
@@ -69,9 +70,16 @@
 		SET valid=1
 		WHERE userid = #{userid}
 	</update>
+	<update id="userPermission">
+		update user
+		set permission=1
+		where userid=#{userid} and
+		valid=1;
+	</update>
 	<update id="updateDept">
 		UPDATE user
-		SET userptype = #{userptype} , userdept=#{userdept}
+		SET userptype = #{userptype} ,
+		userdept=#{userdept}
 		WHERE userid = #{userid};
 	</update>
 </mapper>

@@ -20,7 +20,7 @@ import lombok.extern.log4j.Log4j;
 public class SecurityAssessmentController {
 	private SecurityAssessmentService service;
 	
-	@GetMapping({"/ep_detail"})
+	@GetMapping({"/ep_detail","assessEP","assessBOP","assessIndirect"})
 	public void ep_detail() {
 		
 	}

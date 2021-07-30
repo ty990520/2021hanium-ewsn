@@ -9,7 +9,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- menu css -->
-<link rel="shortcut icon" href="/resources/favicon.ico">
 <link rel="stylesheet" type="text/css" href="/resources/css/normalize.css" />
 <link rel="stylesheet" type="text/css" href="/resources/css/demo.css" />
 <link rel="stylesheet" type="text/css" href="/resources/css/component.css" />
@@ -39,6 +38,7 @@
 
 
 <style>
+
 .text_body {
 	width: 100%;
 	height: 2500px;
@@ -54,6 +54,10 @@
 a:hover {
 	text-decoration: none;
 }
+select{
+  height: 30px;
+}
+
 </style>
 </head>
 <body>

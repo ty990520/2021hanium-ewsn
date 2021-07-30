@@ -90,20 +90,17 @@ public class UserController {
 	@RequestMapping(value = "/valid")
 	public String valid(@RequestParam("userid") String userid) {
 		userid = userid.toString();
-		log.info("-------------------------------");
-		log.info("[ CONTROLLER ] " + userid);
 		UserVO user = service.findNotOnlyUser(userid);
-		log.info(user.getUsername());
 
 		// 1. 사번 유효성 검증
 		if (service.findUserValidity(userid)) {
-			log.info("[ CONTROLLER ] 사번이 유효합니다.");
+			//log.info("[ CONTROLLER ] 사번이 유효합니다.");
 			// 2. user valid check
 			service.setUserValid(user);
 			return "success";
 
 		} else {
-			log.info("[ CONTROLLER ] 사번이 유효하지 않음");
+			//log.info("[ CONTROLLER ] 사번이 유효하지 않음");
 			return "fail";
 		}
 	}
@@ -114,7 +111,7 @@ public class UserController {
 		userid = userid.toString();
 		log.info("-------------------------------");
 		log.info("[ CONTROLLER ] " + userid);
-		UserVO user = service.get(userid);
+		UserVO user = service.findNotOnlyUser(userid);
 		log.info(user.getUsername());
 		service.setUserPermission(user);
 		return "success";

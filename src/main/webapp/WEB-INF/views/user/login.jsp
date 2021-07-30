@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
 <%@include file="../includes/header.jsp"%>
 <head>
 <link rel="stylesheet" href="../../../resources/css/login.css">
-
+<link rel="stylesheet" href="../../../resources/css/alert.css">
 <style>
 .text_body {
 	width: 100%;
@@ -13,6 +12,8 @@
 	top: 80px;
 	left: 0px;
 }
+
+
 </style>
 </head>
 <div class="wrap">
@@ -26,12 +27,16 @@
 			</div>
 			<div class="login_pw">
 
-				<input type="password" name="userpw" id="userpw" placeholder="비밀번호 입력">
+				<input type="password" name="userpw" id="userpw"
+					placeholder="비밀번호 입력">
+			</div>
+			<div class="notify">
+				<span id="notifyType" class=""></span>
 			</div>
 
-
 			<div class="submit">
-				<input type="button" value="로그인" onclick="login()">
+				<input class="buutton" type="button" value="로그인" onclick="login()">
+
 			</div>
 
 			<div class="login_etc">
@@ -41,15 +46,16 @@
 				</div>
 			</div>
 		</div>
-	</form> 
+	</form>
 </div>
+
 <script>
-/*login*/
- /*사번 인증*/
+	/*login*/
+	/*사번 인증*/
 	function login() {
-		 var userid  = $('#userid').val() ;
-         var userpw = $('#userpw').val() ;
-         //alert(userid+","+userpw);
+		var userid = $('#userid').val();
+		var userpw = $('#userpw').val();
+		//alert(userid+","+userpw);
 		$.ajax({
 			contentType : "application/json; charset=UTF-8",
 			type : "get",
@@ -59,8 +65,16 @@
 				"userpw" : userpw
 			},
 			success : function(response) {
-		        alert( response );
+				//alert(response);
 				
+				document.getElementById("notifyType").innerHTML = response;
+				$(".notify").toggleClass("active");
+				  $("#notifyType").toggleClass("success");
+
+				  setTimeout(function(){
+				    $(".notify").removeClass("active");
+				    $("#notifyType").removeClass("success");
+				  },2000);
 			},
 			error : function(request, status, error) {
 				alert("code:" + request.status + "\n" + "message:"
@@ -75,6 +89,10 @@
 		} else {
 			return;
 		}
+	}
+	
+	function loginbtn(){
+		  
 	}
 </script>
 <%@include file="../includes/footer.jsp"%>

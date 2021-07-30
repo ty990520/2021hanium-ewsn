@@ -97,6 +97,8 @@ public class DeptMapperTests {
 		// 정상적으로 update되었으면 1을 반환함
 	}
 	
+	
+	
 	@Test
 	public void testLogin(){
 		UserVO user = mapper2.login("AA02-210725", "2222");
