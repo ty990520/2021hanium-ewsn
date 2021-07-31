@@ -9,7 +9,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- menu css -->
-<link rel="shortcut icon" href="/resources/favicon.ico">
 <link rel="stylesheet" type="text/css" href="/resources/css/normalize.css" />
 <link rel="stylesheet" type="text/css" href="/resources/css/demo.css" />
 <link rel="stylesheet" type="text/css" href="/resources/css/component.css" />
@@ -39,6 +38,7 @@
 
 
 <style>
+
 .text_body {
 	width: 100%;
 	height: 2500px;
@@ -54,6 +54,10 @@
 a:hover {
 	text-decoration: none;
 }
+select{
+  height: 30px;
+}
+
 </style>
 </head>
 <body>
@@ -91,7 +95,7 @@ a:hover {
 					<div class="sub_center_section">
 						<nav class="cl-effect-3">
 							<a href="./DA/DA_list.html">자산 정보관리</a> <a
-								href="/SecurityAssessment/SA_list.html">단계적보안성 평가</a> <a
+								href="/SecurityAssessment/list">단계적보안성 평가</a> <a
 								href="./code/Code_reList.html">공통코드 관리</a>
 
 						</nav>

@@ -23,10 +23,24 @@ public class DeptMapperTests {
 
 	@Setter(onMethod_ = @Autowired)
 	private UserMapper mapper2;
+	
+	@Setter(onMethod_ = @Autowired)
+	private SecurityAssessmentMapper mapper3;
 
 	@Test
 	public void testGetList() {
 		mapper.getDept().forEach(dept -> log.info(dept));
+	}
+	
+	@Test
+	public void testSAlist() {
+		mapper3.getList().forEach(dept -> log.info(dept));
+	}
+
+	@Test
+	public void testGetUser() {
+		UserVO user = mapper2.get("11111"); // 원하는 bno값을 입력함, 임의로 bno = 5라고 가정
+		log.info(user.getUsername());
 	}
 
 	@Test
@@ -34,7 +48,7 @@ public class DeptMapperTests {
 		DeptVO dept = mapper.read("AA01"); // 원하는 bno값을 입력함, 임의로 bno = 5라고 가정
 		log.info(dept.getDeptptype() + " " + dept.getDeptname());
 	}
-
+	
 	@Test
 	public void testInsert() {
 		DeptVO dept = new DeptVO();
@@ -82,6 +96,8 @@ public class DeptMapperTests {
 		// log.info("UPDATE COUNT : "+mapper2.userValidityCheck(user));
 		// 정상적으로 update되었으면 1을 반환함
 	}
+	
+	
 	
 	@Test
 	public void testLogin(){

@@ -12,6 +12,7 @@ public interface UserMapper {
 	public List<UserVO> getAdminRequest();
 	public UserVO findUserValidity(String userid);
 	public UserVO read(String userid);
+	public UserVO get(String userid);
 	public void insert(UserVO user);	
 	public int update(UserVO user);
 	public int updateDept(@Param("userptype") String userptype,@Param("userdept") String userdept,@Param("userid") String userid);

@@ -22,7 +22,11 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<span id="user_valid">사번 인증이 완료되었습니다.</span>
+				<span id="user_valid">
+					<div class="spinner-border text-danger" role="status">
+						<span class="sr-only">Loading...</span>
+					</div>
+				</span>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-danger" data-dismiss="modal"

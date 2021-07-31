@@ -1,0 +1,33 @@
+@charset "UTF-8";
+h1 {
+	margin-bottom: 0px;
+}
+
+.detail-list {
+	margin: 30px auto;
+	width: 90%;
+}
+
+.process-image {
+	float: right;
+}
+
+.table-light {
+	width: 15%;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.table {
+	width: 85%;
+}
+
+.table-cover {
+padding-top:30px;
+	display: flex;
+	justify-content: center;
+}
+
+th.table-light {
+    vertical-align: middle;
+}

@@ -20,6 +20,21 @@ import lombok.extern.log4j.Log4j;
 public class SecurityAssessmentController {
 	private SecurityAssessmentService service;
 	
+	@GetMapping({"/ep_detail","assessEP","assessBOP","assessIndirect"})
+	public void ep_detail() {
+		
+	}
+	
+	@GetMapping({"/bop_detail"})
+	public void bop_detail() {
+		
+	}
+	
+	@GetMapping({"/indirect_detail"})
+	public void indirect_detail() {
+		
+	}
+	
 	@GetMapping("/list")
 	public void list(Model model) { // addAttribute메소드를 이용해 Model객체에 담아서 전달
 		log.info("[CONTROLLER]get list...");

@@ -21,7 +21,11 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<span id="user_valid">사번 인증이 완료되었습니다.</span>
+				<span id="user_valid">
+					<div class="spinner-border text-danger" role="status">
+						<span class="sr-only">Loading...</span>
+					</div>
+				</span>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-danger" data-dismiss="modal"
@@ -59,14 +63,15 @@
 			</tr>
 		</thead>
 		<tbody id="table_body">
-		 <c:forEach items="${adminRequest}" var="request" varStatus="status">
-			<tr>
-				<td style="width: 30px;"><c:out value="${status.count}"/></td>
-				<td><fmt:formatDate pattern="yyyy-MM-dd" value="${request.reqdate}"/></td>
-				<td><c:out value="${request.userptype}"/></td>
+			<c:forEach items="${adminRequest}" var="request" varStatus="status">
+				<tr>
+					<td style="width: 30px;"><c:out value="${status.count}" /></td>
+					<td><fmt:formatDate pattern="yyyy-MM-dd"
+							value="${request.reqdate}" /></td>
+					<td><c:out value="${request.userptype}" /></td>
 
-				<td><c:out value="${request.userid}"/></td>
-				<td><c:if test="${request.valid eq false}">
+					<td><c:out value="${request.userid}" /></td>
+					<td><c:if test="${request.valid eq false}">
 							<button class="btn btn-danger" data-oper="valid"
 								data-toggle="modal" id="assess_btn"
 								data-target="#staticBackdrop"
@@ -74,8 +79,8 @@
 						</c:if> <c:if test="${request.valid eq true}">
 							<button class="btn btn-danger" disabled="disabled">완료</button>
 						</c:if></td>
-				<td><c:out value="${request.username}"/></td>
-				<c:if test="${request.valid eq true}">
+					<td><c:out value="${request.username}" /></td>
+					<c:if test="${request.valid eq true}">
 						<td><button class="btn btn-success" data-oper="permission"
 								onclick="permiss('${request.userid}')">유저 승인</button></td>
 
@@ -84,7 +89,7 @@
 						<td><button type="button" class="btn btn-success"
 								disabled="disabled">인증 필요</button></td>
 					</c:if>
-			</tr>
+				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
@@ -105,54 +110,53 @@
 
 </body>
 <script>
-/*사번 인증*/
-function validate(id) {
-	$.ajax({
-		contentType : "application/json; charset=utf-8;",
-		type : "GET",
-		url : "/user/valid",
-		data : {
-			"userid" : id
-		},
-		success : function(response) {
-			//conlose.log(response);
-			if (response == "success") {
-				$("#user_valid").text("인증에 성공하였습니다.");
-			} else
-				$("#user_valid").text("인증에 실패하였습니다.");
-
-		},
-		error : function(request, status, error) {
-			alert("code:" + request.status + "\n" + "message:"
-					+ request.responseText + "\n" + "error:" + error);
-		}
-	})
-}
-
-/*유저 승인*/
-function permiss(id) {
-	if (confirm("사용자를 승인하시겠습니까?") == true) {
+	/*사번 인증*/
+	function validate(id) {
 		$.ajax({
 			contentType : "application/json; charset=utf-8;",
 			type : "GET",
-			url : "/user/permission",
+			url : "/user/valid",
 			data : {
 				"userid" : id
 			},
 			success : function(response) {
 				//conlose.log(response);
-				alert("승인이 완료되었습니다.");
-				location.reload();
+				if (response == "success") {
+					$("#user_valid").text("인증에 성공하였습니다.");
+				} else
+					$("#user_valid").text("인증에 실패하였습니다.");
 			},
 			error : function(request, status, error) {
 				alert("code:" + request.status + "\n" + "message:"
 						+ request.responseText + "\n" + "error:" + error);
 			}
 		})
-	} else {
-		return;
 	}
 
-}
+	/*유저 승인*/
+	function permiss(id) {
+		if (confirm("사용자를 승인하시겠습니까?") == true) {
+			$.ajax({
+				contentType : "application/json; charset=utf-8;",
+				type : "GET",
+				url : "/user/permission",
+				data : {
+					"userid" : id
+				},
+				success : function(response) {
+					//conlose.log(response);
+					alert("승인이 완료되었습니다.");
+					location.reload();
+				},
+				error : function(request, status, error) {
+					alert("code:" + request.status + "\n" + "message:"
+							+ request.responseText + "\n" + "error:" + error);
+				}
+			})
+		} else {
+			return;
+		}
+
+	}
 </script>
 <%@include file="../includes/footer.jsp"%>

@@ -1,34 +1,19 @@
 @charset "UTF-8";
+
+body{
+	background-color:#dee2e673;
+}
 .register_box {
-padding-top : 60px;
-padding-bottom : 30px;
+	padding-bottom: 30px;
 	/*border-style: solid;*/
-	background-color :  rgba(60, 60, 60, 0.05);
-	border-color: rgba(60, 60, 60, 0.4); border-width : 1px;
-	border-radius: 3px; width : 100%;
-	display: flex;
-	justify-content: center;
+	
 	align-items: stretch;
 	width: 100%;
-	border-width: 1px;
-}
 
-.register_box_inner {
-	padding-left: 10px;
-	padding-right: 30px;
-	width: 30%;
-	border-right-style: solid;
-	border-color: rgb(60 60 60 / 13%); border-width : 1px;
-	margin: 10px;
-	border-width: 1px;
-}
-
-.register_box_inner_last {
-	padding-left: 10px;
-	padding-right: 10px;
-	width: 30%;
-	height: inherit;
-	margin: 10px;
+	font-size: large;
+	
+	width: 80%;
+	margin: auto;
 }
 
 .register_box_inner_detail {
@@ -40,7 +25,6 @@ padding-bottom : 30px;
 .register_box_inner_flexdirection_row {
 	margin-right: 15px;
 	height: auto;
-	
 }
 
 .input_width100 {

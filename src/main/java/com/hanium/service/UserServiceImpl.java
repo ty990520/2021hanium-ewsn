@@ -79,4 +79,9 @@ public class UserServiceImpl implements UserService {
 	public boolean updateUserDept(String userptype, String userdept, String userid) {
 		return mapper.updateDept(userptype, userdept, userid)==1;
 	}
+
+	@Override
+	public UserVO findNotOnlyUser(String userid) {
+		return mapper.get(userid);
+	}
 }

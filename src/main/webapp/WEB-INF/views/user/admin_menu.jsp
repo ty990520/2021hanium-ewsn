@@ -63,8 +63,8 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-				<button type="button" class="btn btn-danger"
-					onclick="transferDept()">부서 이동</button>
+				<button type="button" class="btn btn-danger" id="transferBtn"
+					onclick="transferDept()" disabled="disabled">부서 이동</button>
 			</div>
 		</div>
 	</div>
@@ -174,6 +174,7 @@
 				$("#userSearch").css('display', 'block')
 				$("#inputGroupSelect01").attr("disabled", false);
 				$("#inputGroupSelect02").attr("disabled", false);
+				$("#transferBtn").attr("disabled", false);
 
 				/*var html = '';
 				html += '<form class="form-signin" action="" id="ajax">';
@@ -190,6 +191,7 @@
 				$("#userSearch").css('display', 'none');
 				$("#inputGroupSelect01").attr("disabled", true);
 				$("#inputGroupSelect02").attr("disabled", true);
+				$("#transferBtn").attr("disabled", true);
 			}
 		})
 	}
