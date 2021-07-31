@@ -10,6 +10,19 @@
 .assess_btn {
 	float: right;
 }
+
+#selectDA_modal tr:hover {
+	background-color: rgba(0,0,0,.075);
+}
+
+.h5box{
+border: 0.2rem solid;
+border-color: #d6d6d661;
+    padding-bottom: 1rem;
+    padding-top: 1.5rem;
+        border-radius: 5px;
+        color:#7c7c7c;
+}
 </style>
 
 </head>
@@ -28,48 +41,54 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				단계적 보안성 평가를 진행할 DA를 선택해주세요.
+				<div class="h5box"><h6><b>단계적 보안성 평가를 진행할 DA를 선택해주세요.</b></h6></div>
+				<br>
 				<form class="center_form">
 					<div style="float: right;">
 						<select name="search" id="">
-							<option class="dropdown-item"value="DAName">자산명</option>
-							<option class="dropdown-item"value="DAId">자산번호</option>
-							<option class="dropdown-item"value="daImpact">영향성분석</option>
+							<option class="dropdown-item" value="DAName">자산명</option>
+							<option class="dropdown-item" value="DAId">자산번호</option>
+							<option class="dropdown-item" value="daImpact">영향성분석</option>
 						</select> <input type="search" name="" value="" placeholder="자산명 입력">
 						<button type="button" name="button"
 							class="btn btn-outline-secondary">검색</button>
 					</div>
 				</form>
-				<br><br><br><br>
+				<br> <br> 
 				<table class="table table-hover">
-		<thead>
-			<tr>
-				<th scope="col" style="width: 30px;">Id</th>
-				<th scope="col">자산번호</th>
-				<th scope="col">자산명</th>
-				<th scope="col">영향성분석</th>
-				<th scope="col">단계적 보안성 평가 여부</th>
-			</tr>
-		</thead>
-		<tbody id="selectDA_modal">
-			<c:forEach items="${list}" var="da" varStatus="status">
-				<tr onclick="SA_detail(<c:out value="${status.index}"/>)">
-					<td scope="row" style="width: 30px;"><c:out
-							value="${status.count}" /></td>
-					<td><c:out value="${da.SA_daID}" /></td>
-					<td><c:out value="${da.daname}" /></td>
-					<td><c:out value="${da.daptype}" /></td>
-					<td>미완료</td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+					<thead>
+						<tr>
+							<th scope="col" style="width: 30px;">Id</th>
+							<th scope="col">자산번호</th>
+							<th scope="col">자산명</th>
+							<th scope="col">영향성분석</th>
+							<th scope="col">단계적 보안성 평가 여부</th>
+						</tr>
+					</thead>
+					<tbody id="selectDA_modal">
+						<c:forEach items="${list}" var="da" varStatus="status">
+							<tr class="modal_items"
+								onclick="select(<c:out
+								value="${status.index}" />, '<c:out value="${da.SA_daID}" />')">
+								<td scope="row" style="width: 30px;"><c:out
+										value="${status.count}" /></td>
+								<td><c:out value="${da.SA_daID}" /></td>
+								<td><c:out value="${da.daname}" /></td>
+								<td><c:out value="${da.daptype}" /></td>
+								<td></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
 			</div>
 
+
 			<div class="modal-footer">
+			<br>
+			<b><span style="color:#dc3545;" id="select_da">평가할 자산을 선택해주세요.</span></b>
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-				<button type="button" class="btn btn-danger"
-					onclick="location.href = './SA_EP.html' ">평가시작</button>
+				<button type="button" class="btn btn-danger" id="start"
+					onclick="location.href = './SA_EP.html' " disabled="disabled">평가시작</button>
 			</div>
 		</div>
 	</div>
@@ -168,6 +187,25 @@
 			alert("Direct DA정보는 제공되지 않습니다.");
 		}
 
+	}
+	
+	function select(val, daname){
+		var target = document.getElementsByClassName("modal_items");
+		//var selected_da = document.getElementsById("select_da");
+		//console.log($(".modal_items")[val])
+		/*for(int i=0; i<target.length; i++){
+			if(i==val){
+				target[i].style.backgroundColor = "red";
+			}else
+				target[i].style.backgroundColor = "white";		
+		}*/
+		target[val].style.backgroundColor = "rgb(146 171 198 / 25%)";
+		 $( '#select_da' ).text( daname+"자산을 평가합니다." );
+		 $("#start").attr("disabled", false);
+		for(var i=0 ;i<target.length ; i++ ){
+			if(i!=val)
+				target[i].style.backgroundColor = "transparent";
+		}
 	}
 </script>
 <%@include file="../includes/footer.jsp"%>
