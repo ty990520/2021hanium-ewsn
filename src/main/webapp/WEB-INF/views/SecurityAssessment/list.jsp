@@ -12,16 +12,16 @@
 }
 
 #selectDA_modal tr:hover {
-	background-color: rgba(0,0,0,.075);
+	background-color: rgba(0, 0, 0, .075);
 }
 
-.h5box{
-border: 0.2rem solid;
-border-color: #d6d6d661;
-    padding-bottom: 1rem;
-    padding-top: 1.5rem;
-        border-radius: 5px;
-        color:#7c7c7c;
+.h5box {
+	border: 0.2rem solid;
+	border-color: #d6d6d661;
+	padding-bottom: 1rem;
+	padding-top: 1.5rem;
+	border-radius: 5px;
+	color: #7c7c7c;
 }
 </style>
 
@@ -41,7 +41,11 @@ border-color: #d6d6d661;
 				</button>
 			</div>
 			<div class="modal-body">
-				<div class="h5box"><h6><b>단계적 보안성 평가를 진행할 DA를 선택해주세요.</b></h6></div>
+				<div class="h5box">
+					<h6>
+						<b>단계적 보안성 평가를 진행할 DA를 선택해주세요.</b>
+					</h6>
+				</div>
 				<br>
 				<form class="center_form">
 					<div style="float: right;">
@@ -54,7 +58,7 @@ border-color: #d6d6d661;
 							class="btn btn-outline-secondary">검색</button>
 					</div>
 				</form>
-				<br> <br> 
+				<br> <br>
 				<table class="table table-hover">
 					<thead>
 						<tr>
@@ -84,8 +88,8 @@ border-color: #d6d6d661;
 
 
 			<div class="modal-footer">
-			<br>
-			<b><span style="color:#dc3545;" id="select_da">평가할 자산을 선택해주세요.</span></b>
+				<br> <b><span style="color: #dc3545;" id="select_da">평가할
+						자산을 선택해주세요.</span></b>
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
 				<button type="button" class="btn btn-danger" id="start"
 					onclick="location.href = './SA_EP.html' " disabled="disabled">평가시작</button>
