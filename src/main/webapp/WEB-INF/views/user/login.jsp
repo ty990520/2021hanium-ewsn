@@ -90,9 +90,6 @@
 			return;
 		}
 	}
-	
-	function loginbtn(){
-		  
-	}
+
 </script>
 <%@include file="../includes/footer.jsp"%>

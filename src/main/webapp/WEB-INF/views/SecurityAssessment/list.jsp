@@ -6,6 +6,7 @@
 	href="../../../resources/css/list.css" />
 <link rel="stylesheet" type="text/css"
 	href="../../../resources/css/common.css" />
+<link rel="stylesheet" href="../../../resources/css/alert.css">
 <style>
 .assess_btn {
 	float: right;
@@ -23,9 +24,16 @@
 	border-radius: 5px;
 	color: #7c7c7c;
 }
+
+.notify {
+	z-index: 1051;
+}
 </style>
 
 </head>
+<div class="notify">
+	<span id="notifyType" class=""></span>
+</div>
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-backdrop="static"
 	data-keyboard="false" tabindex="-1"
@@ -92,7 +100,7 @@
 						자산을 선택해주세요.</span></b>
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
 				<button type="button" class="btn btn-danger" id="start"
-					onclick="location.href = './SA_EP.html' " disabled="disabled">평가시작</button>
+					onclick="assessStart()" disabled="disabled">평가시작</button>
 			</div>
 		</div>
 	</div>
@@ -129,7 +137,8 @@
 		</thead>
 		<tbody id="table_body">
 			<c:forEach items="${list}" var="da" varStatus="status">
-				<tr onclick="SA_detail(<c:out value="${status.index}"/>)">
+				<tr
+					onclick="SA_detail(<c:out value="${status.index}"/>,<c:out value="${da.SA_no}"/>)">
 					<td scope="row" style="width: 30px;"><c:out
 							value="${status.count}" /></td>
 					<td><c:out value="${da.SA_daID}" /></td>
@@ -169,8 +178,10 @@
 		$('#myInput').trigger('focus')
 	})
 
+	
 	/* 식별상세유형 판별해서 디테일 페이지 링크 연결 */
-	function SA_detail(val) {
+	function SA_detail(val, SA_no) {
+		//alert(SA_no);
 		var rows = document.getElementById("table_body").getElementsByTagName("tr");
 		
 		var str = [];
@@ -182,19 +193,23 @@
 			//console.log(str[i]);
 		}
 		if (str[val] == "EP DA") {
-			location.href = "/SecurityAssessment/ep_detail";
+			location.href = "/SecurityAssessment/ep_detail?epNo="+SA_no;
 		} else if (str[val] == "BOP DA") {
-			location.href = "/SecurityAssessment/bop_detail";
+			location.href = "/SecurityAssessment/bop_detail?bnoNo="+SA_no;
 		} else if (str[val] == "Indirect DA") {
-			location.href = "/SecurityAssessment/indirect_detail";
-		} else if (str[val] == "Direct DA") { /* 아직 direct DA는 어떻게 할지 고민 */
+			location.href = "/SecurityAssessment/indirect_detail?IndirectNo="+SA_no;
+		} else if (str[val] == "Direct DA") {
 			alert("Direct DA정보는 제공되지 않습니다.");
 		}
 
 	}
 	
+	var daId;
+	var flag=0;	//평가 루트 1:ep부터, 2:bop부터, 3:indirect부터 
+	
 	function select(val, daname){
 		var target = document.getElementsByClassName("modal_items");
+		daId=daname;
 		//var selected_da = document.getElementsById("select_da");
 		//console.log($(".modal_items")[val])
 		/*for(int i=0; i<target.length; i++){
@@ -210,6 +225,20 @@
 			if(i!=val)
 				target[i].style.backgroundColor = "transparent";
 		}
+	}
+	
+	function assessStart(){
+		document.getElementById("notifyType").innerHTML = daId+"의 단계적 보안성 평가를 시작합니다.";
+		$(".notify").toggleClass("active");
+		  $("#notifyType").toggleClass("success");
+
+		  setTimeout(function(){
+		    $(".notify").removeClass("active");
+		    $("#notifyType").removeClass("success");
+		  },1600);
+		  
+		  setTimeout(function(){location.href = "/SecurityAssessment/assessEP";},1800);
+		  
 	}
 </script>
 <%@include file="../includes/footer.jsp"%>

@@ -41,6 +41,14 @@ public class BOPMapperTests {
 	@Setter(onMethod_ = @Autowired)
 	private ActionMapper mapper7;
 	
+	
+	@Test
+	public void testGetUser() {
+		BOPVO bop = mapper.read(5L); // 원하는 bno값을 입력함, 임의로 bno = 5라고 가정
+		log.info(bop.getBopPlantStatusInfo());
+	}
+
+	
 	@Test
 	public void testInsert() {
 		BOPVO bop = new BOPVO();
@@ -49,7 +57,7 @@ public class BOPMapperTests {
 		bop.setBopDeepProtectiContent("---TEST---");
 		bop.setBopPlantStatusInfo("---TEST---");
 		bop.setBopPowergenStop("---TEST---");
-		bop.setBopSA_no(1L);
+		//bop.setBopSA_no(1L);
 		mapper.insert(bop);
 
 		log.info(bop);
@@ -66,7 +74,6 @@ public class BOPMapperTests {
 		ep.setEpDmgDoc("----TEST----");
 		ep.setEpETContent("----TEST----");
 		ep.setEpETDoc("----TEST----");
-		ep.setEpSA_no(4L);
 		mapper2.insert(ep);
 
 		log.info(ep);
@@ -84,7 +91,7 @@ public class BOPMapperTests {
 		ind.setIndETDoc("----TEST----");
 		ind.setIndIWAlterContent("----TEST----");
 		ind.setIndIWPerformContent("----TEST----");
-		ind.setIndSA_no(5L);
+		//ind.setIndSA_no(5L);
 
 		mapper3.insert(ind);
 

@@ -5,7 +5,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hanium.domain.IndirectVO;
 import com.hanium.service.IndirectService;
@@ -31,10 +30,10 @@ private IndirectService service;
 		return "success";
 	}
 	
-	@GetMapping("/get")
+	/*@GetMapping("/get")
 	public void get(@RequestParam("IndirectNo") Long IndirectNo, Model model) {
 		model.addAttribute("Indirect", service.get(IndirectNo));
-	} 
+	} */
 	
 	@PostMapping("/modify")
 	public String modify(IndirectVO ind) {

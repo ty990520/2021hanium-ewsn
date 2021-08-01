@@ -5,7 +5,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hanium.domain.BOPVO;
 import com.hanium.service.BOPService;
@@ -35,11 +34,11 @@ private BOPService service;
 	    return "success";
 	}
 	
-	@GetMapping("/get")
+	/*@GetMapping("/get")
 	public void get(@RequestParam("bnoNo") Long bnoNo, Model model) {
 	    log.info("[ CONTROLLER ] get ……..");
 	    model.addAttribute("dept", service.get(bnoNo));
-	}
+	}*/
 	
 	@PostMapping("/modify")
 	public String modify(BOPVO bop) {

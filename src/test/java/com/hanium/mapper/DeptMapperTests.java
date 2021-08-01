@@ -8,6 +8,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.hanium.domain.DeptVO;
+import com.hanium.domain.EPVO;
 import com.hanium.domain.UserVO;
 
 import lombok.Setter;
@@ -26,6 +27,9 @@ public class DeptMapperTests {
 	
 	@Setter(onMethod_ = @Autowired)
 	private SecurityAssessmentMapper mapper3;
+	
+	@Setter(onMethod_ = @Autowired)
+	private EPMapper mapper4;
 
 	@Test
 	public void testGetList() {
@@ -37,6 +41,12 @@ public class DeptMapperTests {
 		mapper3.getList().forEach(dept -> log.info(dept));
 	}
 
+	@Test
+	public void testEPList() {
+		EPVO ep = mapper4.read(4L);
+		log.info(ep.getEpAlterContent());
+	}
+	
 	@Test
 	public void testGetUser() {
 		UserVO user = mapper2.get("11111"); // 원하는 bno값을 입력함, 임의로 bno = 5라고 가정

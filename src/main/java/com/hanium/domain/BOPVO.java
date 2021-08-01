@@ -9,5 +9,4 @@ public class BOPVO {
 	private String bopPowergenStop;
 	private String bopPlantStatusInfo;
 	private String bopDeepProtectiContent;
-	private Long bopSA_no;
 }
