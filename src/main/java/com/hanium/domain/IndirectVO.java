@@ -13,6 +13,4 @@ public class IndirectVO {
 	private String indDmgDetectASDoc;
 	private String indETContent;
 	private String indETDoc;
-	private Long indSA_no;
-
 }

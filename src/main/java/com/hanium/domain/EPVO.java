@@ -12,5 +12,4 @@ public class EPVO {
 	private String epDmgDoc;
 	private String epETContent;
 	private String epETDoc;
-	private Long epSA_no;
 }

@@ -25,15 +25,15 @@
 				<tr>
 
 					<th class="table-light">내용</th>
-					<td colspan="6">타 발전소의 지진감시값 사용</td>
+					<td colspan="6"><c:out value='${EP.epAlterContent}'/></td>
 				</tr>
 				<tr>
 					<th class="table-light">내용 유형</th>
-					<td colspan="6">해당 디지털 자산은 지진감시 값을 취득 및 저장 분석할 수 있는 노트북이다.</td>
+					<td colspan="6"><c:out value='${EP.epAlterTypeComment}'/></td>
 				</tr>
 				<tr>
 					<th class="table-light">근거 문서 유형</th>
-					<td colspan="6">OO발전소 지진감시 설비 운영 절차서</td>
+					<td colspan="6"><c:out value='${EP.epAlterDoc}'/></td>
 				</tr>
 				<tr>
 					<th rowspan="3" class="table-light">손상여부 탐지방법</th>
@@ -42,12 +42,12 @@
 				</tr>
 				<tr>
 					<th class="table-light">내용</th>
-					<td colspan="6">발전소 제어실 경보 시스템을 통해 탐지 가능</td>
+					<td colspan="6"><c:out value='${EP.epDmgDetMContent}'/></td>
 				</tr>
 				<tr>
 					<th class="table-light">근거 문서</th>
 
-					<td colspan="6">OO발전소 경보 지침</td>
+					<td colspan="6"><c:out value='${EP.epDmgDoc}'/></td>
 				</tr>
 				<tr>
 					<th rowspan="3" class="table-light">교육훈련 계획</th>
@@ -56,11 +56,11 @@
 				</tr>
 				<tr>
 					<th class="table-light">내용</th>
-					<td colspan="6">타 발전소의 지진감시값 사용</td>
+					<td colspan="6"><c:out value='${EP.epETContent}'/></td>
 				</tr>
 				<tr>
 					<th class="table-light">근거문서</th>
-					<td colspan="6">발전소 교육 훈련 결과 보고서</td>
+					<td colspan="6"><c:out value='${EP.epETDoc}'/></td>
 				</tr>
 			</table>
 		</div>

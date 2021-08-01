@@ -23,7 +23,7 @@
 				</tr>
 				<tr>
 					<th class="table-light">수행 관련 내용</th>
-					<td colspan="3">안전해야 함</td>
+					<td colspan="3"><c:out value='${Indirect.indIWPerformContent}'/></td>
 				</tr>
 				<tr>
 					<th class="table-light">대체 수단 존재 여부</th>
@@ -31,7 +31,7 @@
 				</tr>
 				<tr>
 					<th class="table-light">대체 수단 관련 내용</th>
-					<td colspan="3">해당 기기는 대체 수단이 없음</td>
+					<td colspan="3"><c:out value='${Indirect.indIWAlterContent}'/></td>
 				</tr>
 				<tr>
 					<th class="table-light" rowspan="3">손상여부 탐지방법</th>
@@ -40,11 +40,11 @@
 				</tr>
 				<tr>
 					<th class="table-light">관련 내용</th>
-					<td colspan="3">손상 여부를 탐지함</td>
+					<td colspan="3"><c:out value='${Indirect.indDmgDetectContent}'/></td>
 				</tr>
 				<tr>
 					<th class="table-light">근거 문서</th>
-					<td colspan="3">손상 여부 탐지 보고서</td>
+					<td colspan="3"><c:out value='${Indirect.indDmgDetectDoc}'/></td>
 				</tr>
 				<tr>
 					<th class="table-light" rowspan="3">손상탐지 시간 내<br>평가 기준</th>
@@ -53,11 +53,11 @@
 				</tr>
 				<tr>
 					<th class="table-light">관련 내용</th>
-					<td colspan="3">2시간 이내로 함</td>
+					<td colspan="3"><c:out value='${Indirect.indDmgDetectASContent}'/></td>
 				</tr>
 				<tr>
 					<th class="table-light">근거 문서</th>
-					<td colspan="3">손상탐지 표준기준을 따름</td>
+					<td colspan="3"><c:out value='${Indirect.indDmgDetectASDoc}'/></td>
 				</tr>
 				<tr>
 					<th class="table-light" rowspan="3">교육 훈련</th>
@@ -66,11 +66,11 @@
 				</tr>
 				<tr>
 					<th class="table-light">내용</th>
-					<td colspan="3">교육은 따로 하지 않음</td>
+					<td colspan="3"><c:out value='${Indirect.indETContent}'/></td>
 				</tr>
 				<tr>
 					<th class="table-light">근거 문서</th>
-					<td colspan="3">문서 없음</td>
+					<td colspan="3"><c:out value='${Indirect.indETDoc}'/></td>
 				</tr>
 			</table>
 		</div>

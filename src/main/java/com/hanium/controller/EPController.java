@@ -5,7 +5,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hanium.domain.EPVO;
 import com.hanium.service.EPService;
@@ -31,10 +30,10 @@ public class EPController {
 		return "success";
 	}
 	
-	@GetMapping("/get")
+	/*@GetMapping("/get")
 	public void get(@RequestParam("epNo") Long epNo, Model model) {
 		model.addAttribute("EP", service.get(epNo));
-	} 
+	} */
 	
 	@PostMapping("/modify")
 	public String modify(EPVO ep) {
