@@ -20,25 +20,32 @@ import lombok.extern.log4j.Log4j;
 public class DAController {
 private DAService service;
 	
-	@GetMapping("/list")
+	//@RequestMapping()
+
+	@GetMapping("/DA_list")
 	public void list(Model model) {	//addAttribute메소드를 이용해 Model객체에 담아서 전달
-		log.info("[CONTROLLER]get list...");
+		//log.info("[CONTROLLER]get list...");
 		model.addAttribute("list",service.getList());	//Model에 bopVO의 목록을 담아서 전달
 	}
 	
+	@GetMapping("/DA_register")
+	public void register_page() {
+		
+	}
+	
 	@PostMapping("/register")	//글을 등록하는 경우에는 get방식이 아니라 post방식을 사용한다.
-	public String register(DAVO da) {	//RedirectAttributes : 
+	public String register(DAVO da ) {	//RedirectAttributes : 
 	    log.info("[CONTROLLER]register : "+da);
 	    service.register(da);
 	    //rttr.addFlashAttribute("result",dept.getDeptcode());
 	    //return "redirect:/dept/list";
-	    return "success";
+	    return "redirect:/DA/DA_list";
 	}
 	
-	@GetMapping("/get")
+	@GetMapping("/DA_detail")
 	public void get(@RequestParam("daid") String daid, Model model) {
 	    log.info("[ CONTROLLER ] get ……..");
-	    model.addAttribute("DA", service.get(daid));
+	    model.addAttribute("da", service.get(daid));
 	}
 	
 	@PostMapping("/modify")

@@ -30,6 +30,7 @@ h7 {
 }
 </style>
 </head>
+
 	<div class="img">
 		<img src="../../../resources/img/join.png">
 	</div>
