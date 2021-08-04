@@ -75,6 +75,9 @@
 				    $(".notify").removeClass("active");
 				    $("#notifyType").removeClass("success");
 				  },2000);
+				  
+				  if(response!="로그인에 실패하였습니다.")
+				  	setTimeout(function(){location.href = "/";},2200);
 			},
 			error : function(request, status, error) {
 				alert("code:" + request.status + "\n" + "message:"

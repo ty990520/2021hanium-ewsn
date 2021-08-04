@@ -9,21 +9,21 @@
 	<select id="read" resultType="com.hanium.domain.IndirectVO">
 		select * from Indirect where indirectNo = #{indirectNo}
 	</select>
-	<insert id="insert" useGeneratedKeys="true" keyProperty="indirectNo">
+	<insert id="insert">
 		insert into Indirect
-		(indIWPerformContent,
+		(indirectNo,
+		indIWPerformContent,
 		indIWAlterContent,
 		indDmgDetectContent,
 		indDmgDetectDoc,
 		indDmgDetectASContent,
 		indDmgDetectASDoc,
 		indETContent,
-		indETDoc,
-		indSA_no
+		indETDoc
 		)
-		values (#{indIWPerformContent}, #{indIWAlterContent},
+		values (#{indirectNo}, #{indIWPerformContent}, #{indIWAlterContent},
 		#{indDmgDetectContent}, #{indDmgDetectDoc},#{indDmgDetectASContent},
-		#{indDmgDetectASDoc}, #{indETContent}, #{indETDoc}, #{indSA_no})
+		#{indDmgDetectASDoc}, #{indETContent}, #{indETDoc})
 	</insert>
 	<update id="update">
 		update Indirect

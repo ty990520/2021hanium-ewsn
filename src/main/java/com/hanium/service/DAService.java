@@ -8,5 +8,6 @@ public interface DAService {
 	public void register(DAVO da);		//등록
 	public DAVO get(String daid);			//글 조회
 	public boolean modify(DAVO da);		//수정
+	public boolean updateIdentifyType(String daIdentifyType, String daid);
 	public List<DAVO> getList();			//리스트 조회
 }
