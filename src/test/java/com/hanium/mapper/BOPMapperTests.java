@@ -66,7 +66,7 @@ public class BOPMapperTests {
 	@Test
 	public void testInsert2() {
 		EPVO ep = new EPVO();
-
+		//ep.setEpNo("H03-F391");
 		ep.setEpAlterContent("----TEST----");
 		ep.setEpAlterDoc("----TEST----");
 		ep.setEpAlterTypeComment("----TEST----");

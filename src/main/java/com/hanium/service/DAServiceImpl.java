@@ -37,4 +37,9 @@ public class DAServiceImpl implements DAService{
 		return mapper.getList();
 	}
 
+	@Override
+	public boolean updateIdentifyType(String daIdentifyType, String daid) {
+		return mapper.updateIdentifyType(daIdentifyType, daid)==1;
+	}
+
 }

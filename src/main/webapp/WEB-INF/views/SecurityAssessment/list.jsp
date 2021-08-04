@@ -74,19 +74,20 @@
 							<th scope="col">자산번호</th>
 							<th scope="col">자산명</th>
 							<th scope="col">영향성분석</th>
-							<th scope="col">단계적 보안성 평가 여부</th>
+
 						</tr>
 					</thead>
 					<tbody id="selectDA_modal">
-						<c:forEach items="${list}" var="da" varStatus="status">
+						<c:forEach items="${undecide}" var="da" varStatus="status">
 							<tr class="modal_items"
 								onclick="select(<c:out
-								value="${status.index}" />, '<c:out value="${da.SA_daID}" />')">
+								value="${status.index}" />, '<c:out value="${da.daid}" />', '<c:out value="${da.daImpact}" />')">
 								<td scope="row" style="width: 30px;"><c:out
 										value="${status.count}" /></td>
-								<td><c:out value="${da.SA_daID}" /></td>
+								<td><c:out value="${da.daid}" /></td>
 								<td><c:out value="${da.daname}" /></td>
-								<td><c:out value="${da.daptype}" /></td>
+								<td><c:out value="${da.daImpact}" /></td>
+
 								<td></td>
 							</tr>
 						</c:forEach>
@@ -136,7 +137,7 @@
 			</tr>
 		</thead>
 		<tbody id="table_body">
-			<c:forEach items="${list}" var="da" varStatus="status">
+			<c:forEach items="${decide}" var="da" varStatus="status">
 				<tr
 					onclick="SA_detail(<c:out value="${status.index}"/>,<c:out value="${da.SA_no}"/>)">
 					<td scope="row" style="width: 30px;"><c:out
@@ -195,9 +196,9 @@
 		if (str[val] == "EP DA") {
 			location.href = "/SecurityAssessment/ep_detail?epNo="+SA_no;
 		} else if (str[val] == "BOP DA") {
-			location.href = "/SecurityAssessment/bop_detail?bnoNo="+SA_no;
+			location.href = "/SecurityAssessment/bop_detail?bopNo="+SA_no;
 		} else if (str[val] == "Indirect DA") {
-			location.href = "/SecurityAssessment/indirect_detail?IndirectNo="+SA_no;
+			location.href = "/SecurityAssessment/indirect_detail?indirectNo="+SA_no;
 		} else if (str[val] == "Direct DA") {
 			alert("Direct DA정보는 제공되지 않습니다.");
 		}
@@ -207,17 +208,17 @@
 	var daId;
 	var flag=0;	//평가 루트 1:ep부터, 2:bop부터, 3:indirect부터 
 	
-	function select(val, daname){
+	function select(val, daname, daImpact){
 		var target = document.getElementsByClassName("modal_items");
 		daId=daname;
-		//var selected_da = document.getElementsById("select_da");
-		//console.log($(".modal_items")[val])
-		/*for(int i=0; i<target.length; i++){
-			if(i==val){
-				target[i].style.backgroundColor = "red";
-			}else
-				target[i].style.backgroundColor = "white";		
-		}*/
+		
+		if(daImpact=="Emergency Preparedness Function"){
+			flag = 1;
+		}else if(daImpact=="Important to Safety"){
+			flag = 2;
+		}else{
+			flag = 3;
+		}
 		target[val].style.backgroundColor = "rgb(146 171 198 / 25%)";
 		 $( '#select_da' ).text( daname+"자산을 평가합니다." );
 		 $("#start").attr("disabled", false);
@@ -237,8 +238,15 @@
 		    $("#notifyType").removeClass("success");
 		  },1600);
 		  
-		  setTimeout(function(){location.href = "/SecurityAssessment/assessEP";},1800);
 		  
+		  if(flag==1){
+			  setTimeout(function(){location.href = "/SecurityAssessment/assessEP?daid="+daId;},1800);
+			}else if(flag==2){
+				setTimeout(function(){location.href = "/SecurityAssessment/assessBOP?daid="+daId;},1800);
+			}else{
+				setTimeout(function(){location.href = "/SecurityAssessment/assessIndirect?daid="+daId;},1800);
+			}
+
 	}
 </script>
 <%@include file="../includes/footer.jsp"%>

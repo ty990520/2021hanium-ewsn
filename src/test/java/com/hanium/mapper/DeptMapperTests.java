@@ -9,6 +9,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.hanium.domain.DeptVO;
 import com.hanium.domain.EPVO;
+import com.hanium.domain.SecurityAssessmentVO;
 import com.hanium.domain.UserVO;
 
 import lombok.Setter;
@@ -71,6 +72,17 @@ public class DeptMapperTests {
 		log.info(dept.getDeptcode() + ":" + dept.getDeptptype() + ":" + dept.getDeptname());
 	}
 
+	@Test
+	public void testSAInsert() {
+		SecurityAssessmentVO SA = new SecurityAssessmentVO();
+		SA.setSA_daID("H03-F391");
+		SA.setSA_IdentifyType("EP DA");
+		mapper3.insert(SA);
+
+		log.info(SA.getSA_no() + ":" + SA.getSA_daID() + ":" + SA.getSA_IdentifyType());
+	}
+
+	
 	@Test
 	public void testUpdate() {
 		DeptVO dept = new DeptVO();

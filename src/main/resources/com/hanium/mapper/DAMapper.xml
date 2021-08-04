@@ -14,7 +14,9 @@
 		insert into DA
 		(daid,daname,daptype,daPDetailType,daFunc,daFuncType,daImpact,daFacilitiesType,
 		daFacilitiesPurposeOfUse, daSystemSW,daReportIF,daStorageDevice,
-		daModifyOPAvailability,daModifiableOperationData,daHMIType,daIdentifyType,daUse, daManufacturer, daModel, daRegistrarID, daLastUpdateID,daRegDate, daUpdateDate)
+		daModifyOPAvailability,daModifiableOperationData,daHMIType,daIdentifyType,daUse,
+		daManufacturer, daModel, daRegistrarID, daLastUpdateID,daRegDate,
+		daUpdateDate)
 		values
 		(#{daid},#{daname},#{daptype},#{daPDetailType},#{daFunc},#{daFuncType},#{daImpact},
 		#{daFacilitiesType},#{daFacilitiesPurposeOfUse},#{daSystemSW},#{daReportIF},#{daStorageDevice},
@@ -48,5 +50,10 @@
 		daRegDate=#{daRegDate}
 		daUpdateDate=#{daUpdateDate}
 		where daid=#{daid}
+	</update>
+	<update id="updateIdentifyType">
+		UPDATE DA
+		SET daIdentifyType=#{daIdentifyType}
+		WHERE daid=#{daid};
 	</update>
 </mapper>

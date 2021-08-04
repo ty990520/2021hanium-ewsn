@@ -32,4 +32,6 @@ public class BOPServiceTests {
 		log.info(userservice);
 		assertNotNull(userservice);	//null이 아님을 시험
 	}
+	
+	
 }

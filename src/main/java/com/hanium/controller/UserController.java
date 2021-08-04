@@ -134,7 +134,7 @@ public class UserController {
 
 			} else {
 				log.info("[ CONTROLLER ] 로그인 실패");
-				return "실패";
+				return "로그인에 실패하였습니다.";
 			}
 		}
 	}

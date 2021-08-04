@@ -6,8 +6,10 @@
 	<select id="getList"
 		resultType="com.hanium.domain.SecurityAssessDTO">
 		SELECT *
-		FROM (SELECT max(SA_no) as SA_no, SA_daID,SA_date,SA_IdentifyType
-		FROM SecurityAssessment WHERE SA_IdentifyType!=''
+		FROM (SELECT max(SA_no) as SA_no,
+		SA_daID,SA_date,SA_IdentifyType
+		FROM SecurityAssessment WHERE
+		SA_IdentifyType!=''
 		GROUP BY SA_daID) as sa, DA
 		WHERE SA_daID=DA.daid;
 	</select>
@@ -16,11 +18,20 @@
 		select * from SecurityAssessment where SA_no =
 		#{SA_no}
 	</select>
+	<select id="getSA_no"
+		resultType="com.hanium.domain.SecurityAssessmentVO">
+		SELECT SA_no FROM SecurityAssessment where SA_daID=#{SA_daID};
+	</select>
+	<select id="identifyType_is_null"
+		resultType="com.hanium.domain.DAVO">
+		SELECT * FROM DA WHERE daIdentifyType IS NULL;
+	</select>
 	<insert id="insert" useGeneratedKeys="true" keyProperty="SA_no">
 		insert
 		into SecurityAssessment
 		(SA_daID,SA_IdentifyType)
-		values (#{SA_daID},#{SA_IdentifyType})
+		values
+		(#{SA_daID},#{SA_IdentifyType})
 	</insert>
 	<update id="update">
 		update SecurityAssessment

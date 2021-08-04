@@ -10,10 +10,10 @@
 		select * from BOP where bopNo =
 		#{bopNo}
 	</select>
-	<insert id="insert" useGeneratedKeys="true" keyProperty="bopNo">
+	<insert id="insert">
 		insert into BOP
-		(bopAdverseEffectsContent,bopPowergenStop,bopPlantStatusInfo,bopDeepProtectiContent,bopSA_no)
-		values (#{bopAdverseEffectsContent}, #{bopPowergenStop}, #{bopPlantStatusInfo}, #{bopDeepProtectiContent}, #{bopSA_no})
+		(bopNo,bopAdverseEffectsContent,bopPowergenStop,bopPlantStatusInfo,bopDeepProtectiContent)
+		values (#{bopNo},#{bopAdverseEffectsContent}, #{bopPowergenStop}, #{bopPlantStatusInfo}, #{bopDeepProtectiContent})
 	</insert>
 	<update id="update">
 		update BOP

@@ -11,9 +11,9 @@
 		#{epNo}
 	</select>
 	<insert id="insert">
-		insert into EP (epAlterContent,epAlterTypeComment,epAlterDoc,epDmgDetMContent,epDmgDoc,epETContent,epETDoc,epSA_no)
+		insert into EP (epNo,epAlterContent,epAlterTypeComment,epAlterDoc,epDmgDetMContent,epDmgDoc,epETContent,epETDoc)
 		values
-		(#{epAlterContent},#{epAlterTypeComment},#{epAlterDoc},#{epDmgDetMContent},#{epDmgDoc},#{epETContent},#{epETDoc},#{epSA_no})
+		(#{epNo},#{epAlterContent},#{epAlterTypeComment},#{epAlterDoc},#{epDmgDetMContent},#{epDmgDoc},#{epETContent},#{epETDoc})
 	</insert>
 	<update id="update">
 		update EP
@@ -24,7 +24,6 @@
 		epDmgDoc=#{epDmgDoc}
 		epETContent=#{epETContent}
 		epETDoc=#{epETDoc}
-		epSA_no=#{epSA_no}
 		where epNo=#{epNo}
 	</update>
 </mapper>
