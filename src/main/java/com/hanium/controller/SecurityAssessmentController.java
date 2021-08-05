@@ -58,6 +58,18 @@ public class SecurityAssessmentController {
 			log.info("register success");
 		return "redirect:/SecurityAssessment/list";
 	}
+	
+	@GetMapping("/registerDirect")
+	public String registerIndirect(@RequestParam("daid") String daid) {
+		log.info(daid);
+		SecurityAssessmentVO sa = new SecurityAssessmentVO();
+		sa.setSA_daID(daid);
+		sa.setSA_IdentifyType("Direct DA");
+		service.register(sa);
+		
+		service5.updateIdentifyType("Direct DA", daid);
+		return "redirect:/SecurityAssessment/list";
+	}
 
 	@GetMapping({ "/ep_detail" })
 	public void ep_detail(@RequestParam("epNo") Long epNo, Model model) {

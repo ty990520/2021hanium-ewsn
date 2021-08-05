@@ -189,7 +189,7 @@
 	function assess_btn() {
 		var daid = $('#daid').val();
 		console.log(daid);
-
+		
 		flag = 1;
 		var radios = $(":radio[value='Y']");
 		for (var i = 0; i < radios.length; i++) {

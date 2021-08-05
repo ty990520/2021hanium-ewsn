@@ -111,10 +111,10 @@
 
 				<div class="register_box_inner_flexdirection_row">
 					<p>1-1. DA 손상시 안전시스템에 악영향 여부</p>
-					<input type="radio" name="group1" value="Y" onclick="btnActive()"
-						checked="checked" class="radio_size"> Y &nbsp; <input
-						type="radio" name="group1" value="N" class="radio_size"
-						onclick="btnDisabled()"> N
+					<input type="radio" name="group1" value="Y" onclick="btnDisabled()"
+						 class="radio_size"> Y &nbsp; <input
+						type="radio" name="group1" value="N" class="radio_size" checked="checked"
+						onclick="btnActive()"> N
 				</div>
 			</div>
 			<br>
@@ -183,10 +183,10 @@
 			<div class="register_box_inner_detail">
 				<div class="register_box_inner_flexdirection_row">
 					<p>4-1. 심층 방호 관련 여부</p>
-					<input type="radio" name="group4" value="Y" onclick="btnActive4()"
-						checked="checked" class="radio_size"> Y &nbsp; <input
-						type="radio" name="group4" value="N" class="radio_size"
-						onclick="btnDisabled4()"> N
+					<input type="radio" name="group4" value="Y" onclick="btnDisabled4()"
+						class="radio_size"> Y &nbsp; <input
+						type="radio" name="group4" value="N" class="radio_size" checked="checked" 
+						onclick="btnActive4()"> N
 				</div>
 			</div>
 			<br>
