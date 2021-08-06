@@ -25,19 +25,23 @@ private ActionRecommendService service;
 		log.info("[CONTROLLER]get list...");
 		model.addAttribute("list",service.getList());
 	}
-	
+	@GetMapping("/register")
+	public void register_page() {
+		
+	}
 	@PostMapping("/register")	//글을 등록하는 경우에는 get방식이 아니라 post방식을 사용한다.
 	public String register(ActionRecommendVO ar) {	//RedirectAttributes : 
 	    log.info("[CONTROLLER]register : "+ar);
 	    service.register(ar);
 	    //rttr.addFlashAttribute("result",dept.getDeptcode());
 	    //return "redirect:/dept/list";
-	    return "success";
+	    return "redirect:/ActionRecommend/list";
 	}
 	
 	@GetMapping("/get")
 	public void get(@RequestParam("AR_no") Long AR_no, Model model) {
-		model.addAttribute("ar", service.get(AR_no));
+		model.addAttribute("ar_no", service.get(AR_no));
+		//log.info(service.get(AR_no).getRegistrarID());
 	}
 	
 	@PostMapping("/modify")
