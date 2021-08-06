@@ -5,8 +5,6 @@
 <link rel="stylesheet" type="text/css" href="../../../resources/css/common.css" />
 <link rel="stylesheet" type="text/css" href="../../../resources/css/table.css" />
 </head>
-
-
 <div class="right-container">
 	<h1>
 		<b>DA 정보 관리</b>
