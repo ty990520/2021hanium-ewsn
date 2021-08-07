@@ -1,6 +1,4 @@
-package com.hanium.controller;
-
-import com.hanium.domain.Criteria;
+package com.hanium.domain;
 
 import lombok.Getter;
 import lombok.ToString;

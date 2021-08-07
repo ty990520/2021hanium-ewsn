@@ -40,8 +40,8 @@ private ActionRecommendService service;
 	
 	@GetMapping("/get")
 	public void get(@RequestParam("AR_no") Long AR_no, Model model) {
-		model.addAttribute("ar_no", service.get(AR_no));
-		//log.info(service.get(AR_no).getRegistrarID());
+		model.addAttribute("ar", service.get(AR_no));
+		model.addAttribute("RegistrarID", service.get(AR_no).getRegistrarID());
 	}
 	
 	@PostMapping("/modify")

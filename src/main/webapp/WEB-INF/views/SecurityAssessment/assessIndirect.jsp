@@ -7,6 +7,9 @@
 <link rel="stylesheet" type="text/css"
 	href="../../../resources/css/register.css" />
 <style>
+body{
+	background-color:#dee2e673;
+}
 .process-image {
 	float: right;
 }

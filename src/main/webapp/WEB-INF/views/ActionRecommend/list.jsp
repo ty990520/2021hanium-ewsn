@@ -1,27 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="../includes/header.jsp"%>
-<link rel="stylesheet" type="text/css" href="../../css/list.css" />
-<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+<link rel="stylesheet" type="text/css" href="../../../resources/css/list.css" />
+<link rel="stylesheet" type="text/css" href="../../../resources/css/common.css" />
 <title>Insert title here</title>
 <style>
-a {
-	text-decoration: none;
-	color: black;
-}
 
-a:hover {
-	text-decoration: none;
-}
-
-.modal-footer {
-	border-top: none;
+.btn {
+	float: right;
 }
 </style>
 </head>
 <div class="right-container">
 	<h1>
-		<b>조치권고</b>
+		<b>조치권고
+		<button type="button" class="btn btn-danger" data-toggle="modal"
+			data-target="#staticBackdrop"
+			onclick="location.href='/ActionRecommend/register' ">등록하기</button>
+		</b>
 	</h1>
 	<hr>
 	<form class="center_form">
@@ -58,11 +54,7 @@ a:hover {
 		</tbody>
 	</table>
 	<br>
-	<div class="table_button_group">
-		<button type="button" class="btn btn-danger" data-toggle="modal"
-			data-target="#staticBackdrop"
-			onclick="location.href='/ActionRecommend/register' ">등록</button>
-	</div>
+<br><br><br><br><br>
 </div>
 <script>
    $('#myModal').on('shown.bs.modal', function() {

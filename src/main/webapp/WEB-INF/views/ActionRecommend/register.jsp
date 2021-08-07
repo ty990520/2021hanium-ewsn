@@ -3,15 +3,16 @@
 <%@include file="../includes/header.jsp"%>
 
 <head>
-<link rel="stylesheet" type="text/css" href="../../css/list.css" />
-<link rel="stylesheet" type="text/css" href="../../css/common.css" />
-<link rel="stylesheet" type="text/css" href="../../css/register.css" />
+<link rel="stylesheet" type="text/css" href="../../../resources/css/list.css" />
+<link rel="stylesheet" type="text/css" href="../../../resources/css/common.css" />
+<link rel="stylesheet" type="text/css" href="../../../resources/css/register.css" />
 <title>Insert title here</title>
 <style>
 a {
 	text-decoration: none;
 	color: black;
 }
+
 td.table-light {
 width: 80px;
 vertical-align: middle;
@@ -29,10 +30,7 @@ text-align: center;
 		<table class="table table-bordered">
 			<tr>
 				<td class="table-light" colspan="2">권고발행번호</td>
-				<td colspan="2">21-0001</td>
-				<td class="table-light" colspan="2">발행일자</td>
-				<td colspan="2"><!-- input type="text"
-					class="vulner_register_input" placeholder="발행일자"></td> -->
+				<td colspan="6">21-0001</td>
 			</tr>
 			<tr>
 				<td class="table-light" colspan="2">발행부서</td>
@@ -73,6 +71,7 @@ text-align: center;
 		
 		<div class="table_button_group">
 			<button type="submit" class="btn btn-danger" onclick="register()">등록</button>
+			<br><br><br><br><br><br><br><br>
 		</div>
 		</form>
 	</div>

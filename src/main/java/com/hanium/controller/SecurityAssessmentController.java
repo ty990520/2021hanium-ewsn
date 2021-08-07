@@ -11,6 +11,7 @@ import com.hanium.domain.BOPVO;
 import com.hanium.domain.Criteria;
 import com.hanium.domain.EPVO;
 import com.hanium.domain.IndirectVO;
+import com.hanium.domain.PageDTO;
 import com.hanium.domain.SecurityAssessmentVO;
 import com.hanium.service.BOPService;
 import com.hanium.service.DAService;
