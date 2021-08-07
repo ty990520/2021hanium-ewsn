@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.hanium.domain.Criteria;
 import com.hanium.domain.DAVO;
 import com.hanium.mapper.DAMapper;
 
@@ -33,13 +34,20 @@ public class DAServiceImpl implements DAService{
 	}
 
 	@Override
-	public List<DAVO> getList() {
-		return mapper.getList();
+	public List<DAVO> getList(Criteria cri) {
+		return mapper.getListWithPaging(cri);
 	}
 
 	@Override
 	public boolean updateIdentifyType(String daIdentifyType, String daid) {
 		return mapper.updateIdentifyType(daIdentifyType, daid)==1;
 	}
+
+	@Override
+	public int count() {
+		return mapper.count();
+	}
+	
+	
 
 }

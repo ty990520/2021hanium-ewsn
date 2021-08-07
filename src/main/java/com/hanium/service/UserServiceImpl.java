@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.hanium.domain.Criteria;
 import com.hanium.domain.UserVO;
 import com.hanium.mapper.UserMapper;
 
@@ -31,8 +32,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<UserVO> getList() {
-		return mapper.getList();
+	public List<UserVO> getList(Criteria cri) {
+		return mapper.getListWithPaging(cri);
 	}
 
 	@Override
@@ -83,5 +84,10 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserVO findNotOnlyUser(String userid) {
 		return mapper.get(userid);
+	}
+
+	@Override
+	public int count() {
+		return mapper.count();
 	}
 }

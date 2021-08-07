@@ -11,6 +11,7 @@ public interface SecurityAssessmentMapper {
 	public List<SecurityAssessDTO> getList();
 	public List<SecurityAssessDTO> getListWithPaging(Criteria cri);
 	public List<DAVO> identifyType_is_null();
+	//public List<DAVO> identifyType_is_nullWithPaging(Criteria cri);
 	public SecurityAssessmentVO read(Long SA_no);
 	public SecurityAssessmentVO getSA_no(String SA_daID);
 	public void insert(SecurityAssessmentVO sa);	

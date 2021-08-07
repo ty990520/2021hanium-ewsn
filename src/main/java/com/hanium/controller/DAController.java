@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.hanium.domain.Criteria;
 import com.hanium.domain.DAVO;
+import com.hanium.domain.PageDTO;
 import com.hanium.service.DAService;
 
 import lombok.AllArgsConstructor;
@@ -23,15 +25,14 @@ private DAService service;
 	//@RequestMapping()
 
 	@GetMapping("/DA_list")
-	public void list(Model model) {	//addAttribute메소드를 이용해 Model객체에 담아서 전달
-		//log.info("[CONTROLLER]get list...");
-		model.addAttribute("list",service.getList());	//Model에 bopVO의 목록을 담아서 전달
+	public void list(Criteria cri,Model model) {	//addAttribute메소드를 이용해 Model객체에 담아서 전달
+		log.info("[CONTROLLER]get list..."+ service.count());
+		model.addAttribute("pageMaker", new PageDTO(cri,service.count()));
+		model.addAttribute("list",service.getList(cri));	//Model에 bopVO의 목록을 담아서 전달
 	}
 	
 	@GetMapping("/DA_register")
-	public void register_page() {
-		
-	}
+	public void register_page() {}
 	
 	@PostMapping("/register")	//글을 등록하는 경우에는 get방식이 아니라 post방식을 사용한다.
 	public String register(DAVO da ) {	//RedirectAttributes : 

@@ -96,7 +96,7 @@ public class SecurityAssessmentController {
 	public void list(Criteria cri, Model model) { // addAttribute메소드를 이용해 Model객체에 담아서 전달
 		log.info("[CONTROLLER]get list..."+cri);
 		//int num = service.getList(cri)
-		model.addAttribute("pageMaker", new PageDTO(cri,12));
+		model.addAttribute("pageMaker", new PageDTO(cri,12)); /*카운트하는 매퍼 만들어주기*/
 		model.addAttribute("decide", service.getList(cri)); // Model에 BoardVO의 목록을 담아서 전달
 		model.addAttribute("undecide", service.necessaryList());
 	}

@@ -133,7 +133,7 @@
 				<th scope="col">발전소 구분</th>
 				<th scope="col">발전소 상세 구분</th>
 				<th scope="col">식별상세유형</th>
-				<th scope="col">최신평가일자</th>
+				<th scope="col">평가일자</th>
 			</tr>
 		</thead>
 		<tbody id="table_body">

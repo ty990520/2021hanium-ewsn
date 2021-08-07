@@ -41,7 +41,7 @@
 		<% String regphone = "^01(?:0|1|[6-9])[.-]?(\\d{3}|\\d{4})[.-]?(\\d{4})$"; %>
 			<c:forEach items="${list}" var="user" varStatus="status">
 				<tr>
-					<td style="width: 30px;">${status.count}</td>
+					<td style="width: 30px;">${(pageMaker.cri.amount*(pageMaker.cri.pageNum-1))+status.count}</td>
 					<td><c:out value="${user.userptype}" /></td>
 					<td><c:out value="${user.userdept}" /></td>
 					<c:set var="phone" value="${user.userphone}"/>
@@ -57,15 +57,39 @@
 	<br>
 	<nav class="pagination_nav" aria-label="...">
 		<ul class="pagination">
-			<li class="page-item disabled"><a class="page-link" href="#"
-				tabindex="-1" aria-disabled="true">이전</a></li>
-			<li class="page-item"><a class="page-link" href="#">1</a></li>
-			<li class="page-item active" aria-current="page"><a
-				class="page-link" href="#">2</a></li>
-			<li class="page-item"><a class="page-link" href="#">3</a></li>
-			<li class="page-item"><a class="page-link" href="#">다음</a></li>
+			<c:if test="${pageMaker.prev}">
+				<li class="page-item disabled"><a class="page-link"
+					href="${pageMaker.startPage -1}" tabindex="-1" aria-disabled="true">이전</a></li>
+			</c:if>
+			<c:forEach var="num" begin="${pageMaker.startPage }"
+				end="${pageMaker.endPage }">
+				<c:if test="${pageMaker.cri.pageNum == num}">
+					<li class="page-item active" aria-current="page"><a
+						class="page-link" href="#">${num}</a></li>
+				</c:if>
+				<c:if test="${pageMaker.cri.pageNum != num}">
+					<li class="page-item"><a class="page-link"
+						onclick="pageAction(${num})">${num}</a></li>
+				</c:if>
+			</c:forEach>
+			<c:if test="${pageMaker.next}">
+				<li class="page-item"><a class="page-link"
+					href="${pageMaker.endPage +1}">다음</a></li>
+			</c:if>
 		</ul>
-		<br>
 	</nav>
+<br><br><br><br>
+	<form id='actionForm' action="/SecurityAssessment/list" method="get">
+		<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+		<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+	</form>
 </div>
+<script>
+	function pageAction(pageNum){
+		var actionForm = $('#actionForm');
+		console.log('click');
+		actionForm.find('input[name="pageNum"]').val(pageNum);
+		actionForm.submit();
+	}
+</script>
 <%@include file="../includes/footer.jsp"%>

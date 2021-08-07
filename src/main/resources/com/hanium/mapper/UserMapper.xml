@@ -7,6 +7,10 @@
 		select * from user where
 		permission=1;
 	</select>
+	<select id="getListWithPaging" resultType="com.hanium.domain.UserVO">
+		select * from user where
+		permission=1 order by userid limit #{startIndex},#{endIndex};
+	</select>
 	<select id="getUserRequest"
 		resultType="com.hanium.domain.UserVO">
 		<![CDATA[
@@ -37,6 +41,10 @@
 		select * from user where userid =
 		#{userid} and valid=1 and
 		permission=1;
+	</select>
+	<select id="count" resultType="int">
+		SELECT COUNT(userid)
+		FROM user;
 	</select>
 	<select id="get" resultType="com.hanium.domain.UserVO">
 		select * from user where userid =

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.hanium.domain.Criteria;
+import com.hanium.domain.PageDTO;
 import com.hanium.domain.UserVO;
 import com.hanium.service.DeptService;
 import com.hanium.service.UserService;
@@ -38,8 +40,9 @@ public class UserController {
 	}
 
 	@GetMapping("/list")
-	public void list(Model model) {
-		model.addAttribute("list", service.getList());
+	public void list(Criteria cri, Model model) {
+		model.addAttribute("pageMaker", new PageDTO(cri,service.count()));
+		model.addAttribute("list", service.getList(cri));
 	}
 
 	@GetMapping("/user_request")
