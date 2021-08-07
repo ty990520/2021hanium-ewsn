@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.hanium.domain.BOPVO;
+import com.hanium.domain.Criteria;
 import com.hanium.domain.DAVO;
 import com.hanium.domain.EPVO;
 import com.hanium.domain.IndirectVO;
@@ -47,8 +48,8 @@ public class SecurityAssessmentServiceImpl implements SecurityAssessmentService 
 	}
 
 	@Override
-	public List<SecurityAssessDTO> getList() {
-		return mapper.getList();
+	public List<SecurityAssessDTO> getList(Criteria cri) {
+		return mapper.getListWithPaging(cri);
 	}
 
 	@Override

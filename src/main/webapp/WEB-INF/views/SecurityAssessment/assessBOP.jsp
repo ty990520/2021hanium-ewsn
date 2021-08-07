@@ -209,7 +209,7 @@
 	</form>
 </div>
 <script>
-	/*ep판별*/
+	/*bop판별*/
 	var cnt = 0; //판별 신호 (cnt=4 bop)
 
 	function assess_btn() {
@@ -221,7 +221,7 @@
 		for (var i = 0; i < radios.length; i++) {
 			var $this = $(radios[i]);
 			console.log($this.is(":checked"));
-			// (영향성 분석 = Emergency Preparedness Function) AND
+			// (영향성 분석 = Important to Safety) AND
 			// (안전 시스템에 악영향 여부 = N) AND (심층 방호 관련 여부 = N)
 			if ((i == 0 || i == 3) && !$this.is(":checked"))
 				cnt++;
@@ -234,12 +234,11 @@
 		if (cnt == 4) {
 			$("#bop_yes").show();
 			$("#bop_no").hide();
-			//location.href="./SA_BOP.html"
 
 		} else {
 			$("#bop_no").show();
 			$("#bop_yes").hide();
-			//$("modal_ok").on("click",function() {location.href="./SA_list.html"});
+
 		}
 
 		$("#modal_ok").on("click", function() {

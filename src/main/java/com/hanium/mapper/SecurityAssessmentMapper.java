@@ -2,12 +2,14 @@ package com.hanium.mapper;
 
 import java.util.List;
 
+import com.hanium.domain.Criteria;
 import com.hanium.domain.DAVO;
 import com.hanium.domain.SecurityAssessDTO;
 import com.hanium.domain.SecurityAssessmentVO;
 
 public interface SecurityAssessmentMapper {
 	public List<SecurityAssessDTO> getList();
+	public List<SecurityAssessDTO> getListWithPaging(Criteria cri);
 	public List<DAVO> identifyType_is_null();
 	public SecurityAssessmentVO read(Long SA_no);
 	public SecurityAssessmentVO getSA_no(String SA_daID);

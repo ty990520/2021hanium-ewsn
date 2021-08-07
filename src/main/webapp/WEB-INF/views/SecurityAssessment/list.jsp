@@ -141,7 +141,7 @@
 				<tr
 					onclick="SA_detail(<c:out value="${status.index}"/>,<c:out value="${da.SA_no}"/>)">
 					<td scope="row" style="width: 30px;"><c:out
-							value="${status.count}" /></td>
+							value="${(pageMaker.cri.amount*(pageMaker.cri.pageNum-1))+status.count}" /></td>
 					<td><c:out value="${da.SA_daID}" /></td>
 					<td><c:out value="${da.daname}" /></td>
 					<td><c:out value="${da.daptype}" /></td>
@@ -155,18 +155,32 @@
 	<br>
 	<nav class="pagination_nav" aria-label="...">
 		<ul class="pagination">
-			<li class="page-item disabled"><a class="page-link" href="#"
-				tabindex="-1" aria-disabled="true">이전</a></li>
-			<li class="page-item"><a class="page-link" href="#">1</a></li>
-			<li class="page-item active" aria-current="page"><a
-				class="page-link" href="#">2</a></li>
-			<li class="page-item"><a class="page-link" href="#">3</a></li>
-			<li class="page-item"><a class="page-link" href="#">다음</a></li>
+			<c:if test="${pageMaker.prev}">
+				<li class="page-item disabled"><a class="page-link"
+					href="${pageMaker.startPage -1}" tabindex="-1" aria-disabled="true">이전</a></li>
+			</c:if>
+			<c:forEach var="num" begin="${pageMaker.startPage }"
+				end="${pageMaker.endPage }">
+				<c:if test="${pageMaker.cri.pageNum == num}">
+					<li class="page-item active" aria-current="page"><a
+						class="page-link" href="#">${num}</a></li>
+				</c:if>
+				<c:if test="${pageMaker.cri.pageNum != num}">
+					<li class="page-item"><a class="page-link"
+						onclick="pageAction(${num})">${num}</a></li>
+				</c:if>
+			</c:forEach>
+			<c:if test="${pageMaker.next}">
+				<li class="page-item"><a class="page-link"
+					href="${pageMaker.endPage +1}">다음</a></li>
+			</c:if>
 		</ul>
-
 	</nav>
 
-
+	<form id='actionForm' action="/SecurityAssessment/list" method="get">
+		<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+		<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+	</form>
 
 </div>
 <br>
@@ -248,5 +262,17 @@
 			}
 
 	}
+	
+	function pageAction(pageNum){
+		var actionForm = $('#actionForm');
+		console.log('click');
+		actionForm.find('input[name="pageNum"]').val(pageNum);
+		actionForm.submit();
+	}
+	
+	
+		//e.preventDefault();
+		//console.log('click');
+		
 </script>
 <%@include file="../includes/footer.jsp"%>
