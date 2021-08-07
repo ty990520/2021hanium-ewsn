@@ -34,7 +34,11 @@
 	</select>
 	<select id="identifyType_is_null"
 		resultType="com.hanium.domain.DAVO">
-		SELECT * FROM DA WHERE daIdentifyType IS NULL;
+		SELECT * 
+		FROM DA 
+		WHERE daIdentifyType IS NULL 
+		order by daRegDate 
+		limit 0,5;
 	</select>
 	<insert id="insert" useGeneratedKeys="true" keyProperty="SA_no">
 		insert

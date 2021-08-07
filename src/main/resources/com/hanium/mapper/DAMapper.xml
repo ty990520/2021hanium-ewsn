@@ -6,9 +6,19 @@
 	<select id="getList" resultType="com.hanium.domain.DAVO">
 		select * from DA;
 	</select>
+	<select id="getListWithPaging" resultType="com.hanium.domain.DAVO">
+		SELECT * 
+		FROM DA 
+		ORDER BY daid
+		limit #{startIndex},#{endIndex};
+	</select>
 	<select id="read" resultType="com.hanium.domain.DAVO">
 		select * from DA where daid =
 		#{daid}
+	</select>
+	<select id="count" resultType="int">
+		SELECT COUNT(daid)
+		FROM DA;
 	</select>
 	<insert id="insert">
 		insert into DA
