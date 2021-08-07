@@ -11,13 +11,12 @@
 	</select>
 	<insert id="insert" useGeneratedKeys="true" keyProperty="AR_no">
 		insert into ActionRecommend
-		(AR_no,AR_regDate,AR_daID,AR_daName,AR_daSystemSW,AR_ActionType,AR_title,AR_issue,AR_regDept,RegistrarID)
-		values (#{AR_no},#{AR_regDate}, #{AR_daID}, #{AR_daName}, #{AR_daSystemSW}, #{AR_ActionType},#{AR_title},#{AR_issueAR_issue},#{AR_regDept},#{RegistrarID})
+		(AR_daID,AR_daName,AR_daSystemSW,AR_ActionType,AR_title,AR_issue,AR_regDept,RegistrarID)
+		values (#{AR_daID}, #{AR_daName}, #{AR_daSystemSW}, #{AR_ActionType}, #{AR_title},#{AR_issue},#{AR_regDept},#{RegistrarID})
 	</insert>
 	<update id="update">
 		update ActionRecommend
-		set AR_regDate=#{AR_regDate},
-		AR_daID=#{AR_daID}
+		set AR_daID=#{AR_daID},
 		AR_daName=#{AR_daName}
 		AR_daSystemSW=#{AR_daSystemSW}
 		AR_title=#{AR_title}

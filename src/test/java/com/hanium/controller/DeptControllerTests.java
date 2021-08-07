@@ -49,13 +49,13 @@ public class DeptControllerTests {
 
 	@Test
 	public void testRegister() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.post("/dept/register").param("deptcode", "BB03").param("deptptype", "수력")
+		mockMvc.perform(MockMvcRequestBuilders.post("/ActionRecommend/register").param("deptcode", "BB03").param("deptptype", "수력")
 				.param("deptname", "설비담당 그룹")).andReturn().getModelAndView().getViewName();
 	}
 
 	@Test
 	public void testGet() throws Exception {
-		log.info("get테스트를 진행합니다..." + mockMvc.perform(MockMvcRequestBuilders.get("/dept/get").param("deptcode", "BB03"))
+		log.info("get테스트를 진행합니다..." + mockMvc.perform(MockMvcRequestBuilders.get("/ActionRecommend/get").param("AR_no", "1"))
 				.andReturn().getModelAndView().getModelMap());
 	}
 
