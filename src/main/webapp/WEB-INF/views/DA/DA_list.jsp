@@ -42,12 +42,12 @@
 				<th>설비사용목적</th>
 				<th>시스템S/W유형</th>
 				<th>통신I/F</th>
-				<th>사용여부</th>
+				
 			</tr>
 		</thead>
 		<tbody id="table_body">
 			<c:forEach items="${list}" var="da" varStatus="status">
-				<tr onclick="DA_detail(<c:out value="${da.daid}"/>)">
+				<tr onclick="DA_detail('<c:out value="${da.daid}"/>')">
 					<td style="width: 30px;">${status.count}</td>
 					<td><c:out value="${da.daid}" /></td>
 					<td><c:out value="${da.daname}" /></td>
@@ -58,7 +58,7 @@
 					<td><c:out value="${da.daFacilitiesPurposeOfUse}" /></td>
 					<td><c:out value="${da.daSystemSW}" /></td>
 					<td><c:out value="${da.daReportIF}" /></td>
-					<td><c:out value="${da.daUse}" /></td>
+				
 				</tr>
 
 			</c:forEach>
@@ -100,6 +100,7 @@
 	/* 식별상세유형 판별해서 디테일 페이지 링크 연결 */
 	function DA_detail(daid) {
 		//alert(SA_no);
+		console.log(daid);
 		location.href = "/DA/DA_detail?daid="+daid;
 
 	}

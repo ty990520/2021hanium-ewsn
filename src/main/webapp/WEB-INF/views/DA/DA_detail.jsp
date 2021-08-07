@@ -67,8 +67,8 @@
 
 	<br>
 	<div class="table_button_group">
-		<button type="button" class="btn  btn-secondary" onclick="modifyBtn(<c:out value="${da.daid}" />)">수정</button>
-		<button type="button" class="btn btn-danger">삭제</button>
+		<button type="button" class="btn  btn-secondary" onclick="modifyBtn('<c:out value="${da.daid}" />')">수정</button>
+		<button type="button" class="btn btn-danger"  onclick="removeBtn('<c:out value="${da.daid}" />')">삭제</button>
 
 	</div>
 	
@@ -77,9 +77,9 @@
 </div>
 <script>
 function modifyBtn(daid){
-	alert(daid);
-	if (confirm("관리자에게 승인을 요청하시겠습니까?") == true) {
-		location.href = ""+daid;
+	//alert(daid);
+	if (confirm("수정하시겠습니까?") == true) {
+		location.href = "/DA/DA_edit?daid="+daid;
 		return true;
 	} else {
 		return false;
@@ -87,6 +87,15 @@ function modifyBtn(daid){
 	
 }
 
-
+function removeBtn(daid){
+	//alert(daid);
+	if (confirm("삭제하시겠습니까?") == true) {
+		location.href = "/DA/remove?daid="+daid;
+		return true;
+	} else {
+		return false;
+	}
+	
+}
 </script>
 <%@include file="../includes/footer.jsp"%>

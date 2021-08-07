@@ -9,6 +9,7 @@
 	<select id="getListWithPaging" resultType="com.hanium.domain.DAVO">
 		SELECT * 
 		FROM DA 
+		WHERE daUse = 1
 		ORDER BY daid
 		limit #{startIndex},#{endIndex};
 	</select>
@@ -38,26 +39,20 @@
 		update DA
 		set
 		daname=#{daname},
-		daptype=#{daptype}
-		daPDetailType=#{daPDetailType}
-		daFunc=#{daFunc}
-		daFuncType=#{daFuncType}
-		daImpact=#{daImpact}
-		daFacilitiesType=#{daFacilitiesType}
-		daFacilitiesPurposeOfUse=#{daFacilitiesPurposeOfUse}
-		daSystemSW=#{daSystemSW}
-		daReportIF=#{daReportIF}
-		daStorageDevice=#{daStorageDevice}
-		daModifyOPAvailability=#{daModifyOPAvailability}
-		daModifiableOperationData=#{daModifiableOperationData}
-		daHMIType=#{daHMIType}
-		daIdentifyType=#{daIdentifyType}
-		daUse=#{daUse}
-		daManufacturer=#{daManufacturer}
-		daModel=#{daModel}
-		daRegistrarID=#{daRegistrarID}
-		daLastUpdateID=#{daLastUpdateID}
-		daRegDate=#{daRegDate}
+		daptype=#{daptype},
+		daPDetailType=#{daPDetailType},
+		daFunc=#{daFunc},
+		daFuncType=#{daFuncType},
+		daImpact=#{daImpact},
+		daFacilitiesType=#{daFacilitiesType},
+		daFacilitiesPurposeOfUse=#{daFacilitiesPurposeOfUse},
+		daSystemSW=#{daSystemSW},
+		daReportIF=#{daReportIF},
+		daStorageDevice=#{daStorageDevice},
+		daModifyOPAvailability=#{daModifyOPAvailability},
+		daModifiableOperationData=#{daModifiableOperationData},
+		daHMIType=#{daHMIType},
+		daLastUpdateID=#{daLastUpdateID},
 		daUpdateDate=#{daUpdateDate}
 		where daid=#{daid}
 	</update>
@@ -65,5 +60,11 @@
 		UPDATE DA
 		SET daIdentifyType=#{daIdentifyType}
 		WHERE daid=#{daid};
+	</update>
+	
+	<update id="delete"> <!--  삭제 sql  -->
+	update DA
+	set daUse = 0
+	where daid =#{daid};
 	</update>
 </mapper>

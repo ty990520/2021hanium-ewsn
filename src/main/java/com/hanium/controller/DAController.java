@@ -1,5 +1,7 @@
 package com.hanium.controller;
 
+import java.util.Date;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -49,11 +51,26 @@ private DAService service;
 	    model.addAttribute("da", service.get(daid));
 	}
 	
+	@GetMapping("/DA_edit") // 수정 + 불러오기 -> get 방
+	public void modify_page(@RequestParam("daid") String daid, Model model) {
+	    log.info("[ CONTROLLER ] get ……..");
+	    model.addAttribute("da", service.get(daid));
+	}
+	
 	@PostMapping("/modify")
 	public String modify(DAVO da) {
 	    log.info("[ CONTROLLER ] modify:" + da);
+	    Date time = new Date();
+	    da.setDaUpdateDate(time);
 	    service.modify(da);
-	    return "success";
+	    return "redirect:/DA/DA_list";
 	}
 	
+	
+	
+	@GetMapping("/remove")
+	public String remove(@RequestParam("daid") String daid) {
+	    service.delete(daid);
+	    return "redirect:/DA/DA_list";
+	}
 }
