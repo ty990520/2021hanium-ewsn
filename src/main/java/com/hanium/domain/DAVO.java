@@ -22,7 +22,7 @@ public class DAVO {
 	private String daModifiableOperationData;
 	private String daHMIType;
 	private String daIdentifyType;
-	private String daUse;
+	private String daUse;	//1 : 사용 0: 미사
 	private String daManufacturer;
 	private String daModel;
 	private String daRegistrarID;

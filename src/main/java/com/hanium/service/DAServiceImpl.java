@@ -47,6 +47,12 @@ public class DAServiceImpl implements DAService{
 	public int count() {
 		return mapper.count();
 	}
+
+	// 삭제하기 위함 
+	@Override 
+	public boolean delete(String daid) {
+		return mapper.delete(daid)==1;
+	}
 	
 	
 
