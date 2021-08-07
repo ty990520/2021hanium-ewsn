@@ -7,6 +7,9 @@
 <link rel="stylesheet" type="text/css"
 	href="../../../resources/css/register.css" />
 <style>
+body{
+	background-color:#dee2e673;
+}
 .process-image {
 	float: right;
 }
@@ -108,8 +111,8 @@
 			<hr>
 			<p style="color: gray;">Indirect자산을 평가하는 과정입니다.</p>
 			<br> <input type="hidden" value="<c:out value="${daid}"/>"
-				name="SA_daID" /> <input type="hidden" value="Indirect DA"
-				name="SA_IdentifyType" /> <br>
+				name="SA_daID" id="daid"/> <input type="hidden" value="Indirect DA"
+				name="SA_IdentifyType"/> <br>
 			<h4>
 				<b>평가1) DA 손상시 안전시스템에 악영향</b>
 			</h4>
@@ -117,10 +120,10 @@
 			<div class="register_box_inner_detail">
 				<div class="register_box_inner_flexdirection_row">
 					<p>안전/보안 관련 지시/경보 기능 수행 여부</p>
-					<input type="radio" name="group1" value="Yes" onclick="btnActive()"
+					<input type="radio" name="group1" value="Yes"
 						checked="checked" class="radio_size"> Y &nbsp; <input
 						type="radio" name="group1" value="No" class="radio_size"
-						onclick="btnDisabled()"> N
+						> N
 				</div>
 			</div>
 			<br>
@@ -246,6 +249,9 @@
 	var flag2 = 1;	// 그 외 조건 고려 flag
 	
 	function assess_btn(){
+		var daid = $('#daid').val();
+		console.log(daid);
+		
 		flag1 = 0;
 		flag2 = 1;
 		
@@ -280,7 +286,7 @@
 			if (flag1 == 1) {
 				document.getElementById('form').submit();
 			} else if (flag1 != 1 && flag2 == 0) {
-				location.href = "/SecurityAssessment/list";
+				location.href = "/SecurityAssessment/registerDirect?daid="+daid;
 			}else{
 				document.getElementById('form').submit();
 			}

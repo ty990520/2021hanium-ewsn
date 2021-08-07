@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hanium.domain.BOPVO;
+import com.hanium.domain.Criteria;
 import com.hanium.domain.EPVO;
 import com.hanium.domain.IndirectVO;
+import com.hanium.domain.PageDTO;
 import com.hanium.domain.SecurityAssessmentVO;
 import com.hanium.service.BOPService;
 import com.hanium.service.DAService;
@@ -58,6 +60,18 @@ public class SecurityAssessmentController {
 			log.info("register success");
 		return "redirect:/SecurityAssessment/list";
 	}
+	
+	@GetMapping("/registerDirect")
+	public String registerIndirect(@RequestParam("daid") String daid) {
+		log.info(daid);
+		SecurityAssessmentVO sa = new SecurityAssessmentVO();
+		sa.setSA_daID(daid);
+		sa.setSA_IdentifyType("Direct DA");
+		service.register(sa);
+		
+		service5.updateIdentifyType("Direct DA", daid);
+		return "redirect:/SecurityAssessment/list";
+	}
 
 	@GetMapping({ "/ep_detail" })
 	public void ep_detail(@RequestParam("epNo") Long epNo, Model model) {
@@ -79,10 +93,12 @@ public class SecurityAssessmentController {
 	}
 
 	@GetMapping("/list")
-	public void list(Model model1, Model model2) { // addAttribute메소드를 이용해 Model객체에 담아서 전달
-		log.info("[CONTROLLER]get list...");
-		model1.addAttribute("decide", service.getList()); // Model에 BoardVO의 목록을 담아서 전달
-		model2.addAttribute("undecide", service.necessaryList());
+	public void list(Criteria cri, Model model) { // addAttribute메소드를 이용해 Model객체에 담아서 전달
+		log.info("[CONTROLLER]get list..."+cri);
+		//int num = service.getList(cri)
+		model.addAttribute("pageMaker", new PageDTO(cri,12));
+		model.addAttribute("decide", service.getList(cri)); // Model에 BoardVO의 목록을 담아서 전달
+		model.addAttribute("undecide", service.necessaryList());
 	}
 
 	@GetMapping("/get")

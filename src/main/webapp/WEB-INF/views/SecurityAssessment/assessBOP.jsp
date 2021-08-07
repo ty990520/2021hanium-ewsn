@@ -7,6 +7,9 @@
 <link rel="stylesheet" type="text/css"
 	href="../../../resources/css/register.css" />
 <style>
+body{
+	background-color:#dee2e673;
+}
 .process-image {
 	float: right;
 }
@@ -111,10 +114,10 @@
 
 				<div class="register_box_inner_flexdirection_row">
 					<p>1-1. DA 손상시 안전시스템에 악영향 여부</p>
-					<input type="radio" name="group1" value="Y" onclick="btnActive()"
-						checked="checked" class="radio_size"> Y &nbsp; <input
-						type="radio" name="group1" value="N" class="radio_size"
-						onclick="btnDisabled()"> N
+					<input type="radio" name="group1" value="Y" onclick="btnDisabled()"
+						 class="radio_size"> Y &nbsp; <input
+						type="radio" name="group1" value="N" class="radio_size" checked="checked"
+						onclick="btnActive()"> N
 				</div>
 			</div>
 			<br>
@@ -183,10 +186,10 @@
 			<div class="register_box_inner_detail">
 				<div class="register_box_inner_flexdirection_row">
 					<p>4-1. 심층 방호 관련 여부</p>
-					<input type="radio" name="group4" value="Y" onclick="btnActive4()"
-						checked="checked" class="radio_size"> Y &nbsp; <input
-						type="radio" name="group4" value="N" class="radio_size"
-						onclick="btnDisabled4()"> N
+					<input type="radio" name="group4" value="Y" onclick="btnDisabled4()"
+						class="radio_size"> Y &nbsp; <input
+						type="radio" name="group4" value="N" class="radio_size" checked="checked" 
+						onclick="btnActive4()"> N
 				</div>
 			</div>
 			<br>
@@ -209,7 +212,7 @@
 	</form>
 </div>
 <script>
-	/*ep판별*/
+	/*bop판별*/
 	var cnt = 0; //판별 신호 (cnt=4 bop)
 
 	function assess_btn() {
@@ -221,7 +224,7 @@
 		for (var i = 0; i < radios.length; i++) {
 			var $this = $(radios[i]);
 			console.log($this.is(":checked"));
-			// (영향성 분석 = Emergency Preparedness Function) AND
+			// (영향성 분석 = Important to Safety) AND
 			// (안전 시스템에 악영향 여부 = N) AND (심층 방호 관련 여부 = N)
 			if ((i == 0 || i == 3) && !$this.is(":checked"))
 				cnt++;
@@ -234,12 +237,11 @@
 		if (cnt == 4) {
 			$("#bop_yes").show();
 			$("#bop_no").hide();
-			//location.href="./SA_BOP.html"
 
 		} else {
 			$("#bop_no").show();
 			$("#bop_yes").hide();
-			//$("modal_ok").on("click",function() {location.href="./SA_list.html"});
+
 		}
 
 		$("#modal_ok").on("click", function() {

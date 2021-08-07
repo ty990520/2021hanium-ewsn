@@ -14,13 +14,13 @@
 		insert into DA
 		(daid,daname,daptype,daPDetailType,daFunc,daFuncType,daImpact,daFacilitiesType,
 		daFacilitiesPurposeOfUse, daSystemSW,daReportIF,daStorageDevice,
-		daModifyOPAvailability,daModifiableOperationData,daHMIType,daIdentifyType,daUse,
+		daModifyOPAvailability,daModifiableOperationData,daHMIType,daIdentifyType,
 		daManufacturer, daModel, daRegistrarID, daLastUpdateID,daRegDate,
 		daUpdateDate)
 		values
 		(#{daid},#{daname},#{daptype},#{daPDetailType},#{daFunc},#{daFuncType},#{daImpact},
 		#{daFacilitiesType},#{daFacilitiesPurposeOfUse},#{daSystemSW},#{daReportIF},#{daStorageDevice},
-		#{daModifyOPAvailability},#{daModifiableOperationData},#{daHMIType},#{daIdentifyType},#{daUse},
+		#{daModifyOPAvailability},#{daModifiableOperationData},#{daHMIType},#{daIdentifyType},
 		#{daManufacturer},#{daModel},#{daRegistrarID},#{daLastUpdateID},
 		#{daRegDate},#{daUpdateDate})
 	</insert>

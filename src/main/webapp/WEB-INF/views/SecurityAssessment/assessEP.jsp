@@ -7,6 +7,9 @@
 <link rel="stylesheet" type="text/css"
 	href="../../../resources/css/register.css" />
 <style>
+body{
+	background-color:#dee2e673;
+}
 .process-image {
 	float: right;
 }
@@ -189,7 +192,7 @@
 	function assess_btn() {
 		var daid = $('#daid').val();
 		console.log(daid);
-
+		
 		flag = 1;
 		var radios = $(":radio[value='Y']");
 		for (var i = 0; i < radios.length; i++) {
