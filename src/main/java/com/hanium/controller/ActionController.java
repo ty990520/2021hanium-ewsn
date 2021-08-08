@@ -6,8 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.hanium.domain.ActionRecommendVO;
 import com.hanium.domain.ActionVO;
+import com.hanium.domain.UserVO;
 import com.hanium.service.ActionRecommendService;
 import com.hanium.service.ActionService;
 import com.hanium.service.BOPService;
@@ -32,17 +35,14 @@ import lombok.extern.log4j.Log4j;
 		}
 		@GetMapping("/register")
 		public void register_page(Model model) {	
-			model.addAttribute("list",service.getList());
 			model.addAttribute("ac_list",service2.getList());
 		}
 		@PostMapping("/register")	//글을 등록하는 경우에는 get방식이 아니라 post방식을 사용한다.
 		public String register(ActionVO action) {	//RedirectAttributes : 
 		    log.info("[CONTROLLER]register : "+ action);
 		    service.register(action);
-		    //rttr.addFlashAttribute("result",dept.getDeptcode());
-		    //return "redirect:/dept/list";
-		    return "success";
-		}
+		    return "redirect:/Action/list";		
+		    }
 		
 		@GetMapping("/get")
 		public void get(@RequestParam("AC_no") Long AC_no, Model model) {
@@ -55,5 +55,12 @@ import lombok.extern.log4j.Log4j;
 		    log.info("[ CONTROLLER ] modify:" + action);
 		    service.modify(action);
 		    return "success";
+		}
+		
+		@GetMapping(value = "/selectAr")
+		public @ResponseBody ActionRecommendVO selectAr(@RequestParam("AR_no") Long ar) {
+			ActionRecommendVO arvo= service2.get(ar);
+			log.info("Ar: "+arvo.getAR_daID());
+			return arvo;
 		}
 }

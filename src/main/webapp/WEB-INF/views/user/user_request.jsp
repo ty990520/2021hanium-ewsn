@@ -108,7 +108,7 @@
 		$.ajax({
 			contentType : "application/json; charset=utf-8;",
 			type : "GET",
-			url : "/user/valid",
+			url : "/user/valid",	///user/valid?userid=id
 			data : {
 				"userid" : id
 			},
