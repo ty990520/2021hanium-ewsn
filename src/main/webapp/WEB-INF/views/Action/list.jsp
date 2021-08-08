@@ -1,22 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="../includes/header.jsp"%>
-<link rel="stylesheet" type="text/css" href="../../../resources/css/list.css" />
-<link rel="stylesheet" type="text/css" href="../../../resources/css/common.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../../resources/css/list.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../../resources/css/common.css" />
 <title>Insert title here</title>
 <style>
-
 .btn {
 	float: right;
 }
 </style>
 </head>
+
 <div class="right-container">
 	<h1>
-		<b>조치권고
+		<b>이행계획
 		<button type="button" class="btn btn-danger" data-toggle="modal"
 			data-target="#staticBackdrop"
-			onclick="location.href='/ActionRecommend/ac_register' ">등록하기</button>
+			onclick="location.href='/Action/register' ">등록하기</button>
 		</b>
 	</h1>
 	<hr>
@@ -33,29 +35,29 @@
 		<thead>
 			<tr>
 				<th scope="col" style="width: 30px;">Id</th>
-				<th scope="col">자산번호</th>
-				<th scope="col">자산명</th>
-				<th scope="col">조치유형</th>
-				<th scope="col">제목</th>
-				<th scope="col">권고사항</th>
+				<th scope="col">조치예정일</th>
+				<th scope="col">조치계획</th>
+				<th scope="col">조치부서</th>
+				<th scope="col">조치담당자</th>
+				<th scope="col">조치구분</th>
 
 			</tr>
 		</thead>
 		<tbody>
-		<c:forEach items="${list}" var="ar" varStatus="status">
-			<tr onclick="get(<c:out value="${ar.AR_no}"/>)">
-				<td style="width: 30px;">${status.count}</td>
-				<td><c:out value="${ar.AR_daID}" /></td>
-				<td><c:out value="${ar.AR_daName}" /></td>
-				<td><c:out value="${ar.AR_ActionType}" /></td>
-				<td><c:out value="${ar.AR_title}" /></td>
-				<td><c:out value="${ar.AR_issue}" /></td>
+		<c:forEach items="${list}" var="ac" varStatus="status">
+			<tr onclick="get(<c:out value="${ac.AC_no}"/>)">
+				<td scope="row" style="width: 30px;">${status.count}</td>
+				<td><c:out value="${ac.AC_expectedDate}" /></td>
+				<td><c:out value="${ac.AC_plan}" /></td>
+				<td><c:out value="${ac.AC_dept}" /></td>
+				<td><c:out value="${ac.AC_manager}" /></td>
+				<td><c:out value="${ac.AC_type}" /></td>
 			</tr>
-		</c:forEach>
+			</c:forEach>
 		</tbody>
 	</table>
+	<br><br><br><br><br>
 	<br>
-<br><br><br><br><br>
 </div>
 <script>
    $('#myModal').on('shown.bs.modal', function() {
@@ -63,8 +65,13 @@
    })
    	function get(AR_no) {
 		//alert(SA_no);
-		location.href = "/ActionRecommend/get?AR_no="+AR_no;
+		location.href = "/Action/get?AC_no="+AC_no;
 
 	}
 </script>
+
+
+
+
+
 <%@include file="../includes/footer.jsp"%>

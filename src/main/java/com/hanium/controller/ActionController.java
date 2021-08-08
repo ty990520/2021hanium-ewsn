@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hanium.domain.ActionVO;
+import com.hanium.service.ActionRecommendService;
 import com.hanium.service.ActionService;
 import com.hanium.service.BOPService;
 
@@ -20,13 +21,20 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 	public class ActionController {
 	private ActionService service;
+	private ActionRecommendService service2;
 		
 		@GetMapping("/list")
 		public void list(Model model) {	//addAttribute메소드를 이용해 Model객체에 담아서 전달
 			log.info("[CONTROLLER]get list...");
 			model.addAttribute("list",service.getList());	//Model에 bopVO의 목록을 담아서 전달
+			
+			//service2.getList().forEach(i->log.info(i));
 		}
-		
+		@GetMapping("/register")
+		public void register_page(Model model) {	
+			model.addAttribute("list",service.getList());
+			model.addAttribute("ac_list",service2.getList());
+		}
 		@PostMapping("/register")	//글을 등록하는 경우에는 get방식이 아니라 post방식을 사용한다.
 		public String register(ActionVO action) {	//RedirectAttributes : 
 		    log.info("[CONTROLLER]register : "+ action);
