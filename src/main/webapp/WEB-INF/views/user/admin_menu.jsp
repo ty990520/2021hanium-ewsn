@@ -45,8 +45,6 @@
 							<option value="원자력">원자력</option>
 							<option value="화력">화력</option>
 						</select>
-
-
 					</div>
 					<div class="form-group">
 						<select class="custom-select" id="inputGroupSelect02"
