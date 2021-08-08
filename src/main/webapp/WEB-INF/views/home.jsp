@@ -19,17 +19,14 @@
 			</h4>
 			<BR> <BR> <BR> <br> <img alt=""
 				src="/resources/img/home_content_img.png" width="55%"> <BR>
-			<BR>
-			<BR>
+			<BR> <BR>
 			<h7>필수디지털자산이 가지고 있는 SSEP 기능과 설비 내에서의 역할, <BR>
 			사고가 발생했을 때 제어시스템 내부에 미치는 침해영향도를 종합한 평가 기준을 바탕으로 <BR>
-			자산을 EP DA, BOP DA, Indirect DA로 분류합니다. <BR><BR>
+			자산을 EP DA, BOP DA, Indirect DA로 분류합니다. <BR>
+			<BR>
 			이렇게 식별한 DA에 차등화된 보안조치를 적용하여 이전보다 효율적으로 자산을 보호할 수 있으며<BR>
 			비용이 절감되는 효과로 사업자의 부담을 낮추고 있습니다. </h7>
-			<BR> <BR> <br> <br>
-			<BR>
-			<BR>
-			<BR>
+			<BR> <BR> <br> <br> <BR> <BR> <BR>
 			<h4 class="message2">
 				<b>DA 관리 프로그램에서는 다음과 같은 기능을 제공하고 있습니다.</b>
 			</h4>
@@ -89,8 +86,8 @@
 							</h4>
 							<p class="card-text">취약점에 영향을 받는 설비에 대해 조치 권고를 발행할 수 있습니다.</p>
 						</div>
-					</div></a> <a href="vulnerability/vul_imple_plan_list.html"><div
-						class="card" style="width: 18rem;">
+					</div></a> <a href="vulnerability/vul_imple_plan_list.html">
+					<div class="card" style="width: 18rem;">
 						<img src="/resources/img/home6.png" class="card-img-top"
 							alt="/resources." style="height: 190px;">
 						<div class="card-body">

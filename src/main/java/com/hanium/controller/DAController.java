@@ -27,7 +27,7 @@ private DAService service;
 	//@RequestMapping()
 
 	@GetMapping("/DA_list")
-	public void list(Criteria cri,Model model) {	//addAttribute메소드를 이용해 Model객체에 담아서 전달
+	public void list(Criteria cri, Model model) {	//addAttribute메소드를 이용해 Model객체에 담아서 전달
 		log.info("[CONTROLLER]get list..."+ service.count());
 		model.addAttribute("pageMaker", new PageDTO(cri,service.count()));
 		model.addAttribute("list",service.getList(cri));	//Model에 bopVO의 목록을 담아서 전달

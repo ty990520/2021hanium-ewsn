@@ -96,7 +96,7 @@ select{
 						<nav class="cl-effect-3">
 							<a href="/DA/DA_list">자산 정보관리</a> <a
 								href="/SecurityAssessment/list">단계적보안성 평가</a> <a
-								href="./code/Code_reList.html">공통코드 관리</a>
+								href="/RepresentCode/Code_reList">공통코드 관리</a>
 
 						</nav>
 					</div>

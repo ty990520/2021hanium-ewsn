@@ -7,8 +7,7 @@
 		select * from RepresentCode;
 	</select>
 	<select id="read" resultType="com.hanium.domain.RepresentCodeVO">
-		select * from RepresentCode where R_code =
-		#{R_code}
+		select * from RepresentCode where R_code =#{R_code}
 	</select>
 	<insert id="insert">
 		insert into RepresentCode (R_code,R_codeName,D_code,D_codeName)

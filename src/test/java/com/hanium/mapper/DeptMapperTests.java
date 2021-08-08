@@ -11,10 +11,12 @@ import com.hanium.domain.DeptVO;
 import com.hanium.domain.EPVO;
 import com.hanium.domain.SecurityAssessmentVO;
 import com.hanium.domain.UserVO;
+import com.hanium.domain.RepresentCodeVO;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
+@SuppressWarnings("unused")
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
