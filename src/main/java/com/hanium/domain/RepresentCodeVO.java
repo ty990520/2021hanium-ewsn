@@ -4,8 +4,8 @@ import lombok.Data;
 
 @Data
 public class RepresentCodeVO {
-	private String R_code;
-	private String R_codeName;
-	private String D_code;
-	private String D_codeName;
+	public String R_code;
+	public String R_codeName;
+	public String D_code;
+	public String D_codeName;
 }

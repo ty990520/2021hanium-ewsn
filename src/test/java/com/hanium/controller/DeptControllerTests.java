@@ -34,7 +34,7 @@ public class DeptControllerTests {
 
 	@Test
 	public void testList() throws Exception {
-		log.info("[CONTROLLER]testList : " + mockMvc.perform(MockMvcRequestBuilders.get("/dept/list")) // [CONTROLLER]testList
+		log.info("[CONTROLLER]testList : " + mockMvc.perform(MockMvcRequestBuilders.get("/RepresentCode/Code_reList")) // [CONTROLLER]testList
 																										// :org.springframework.test.web.servlet.MockMvc$1@3aa41da1
 				.andReturn() // [CONTROLLER]testList :
 								// org.springframework.test.web.servlet.DefaultMvcResult@3c3c4a71

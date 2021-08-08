@@ -18,8 +18,8 @@ public class RepresentCodeServiceImpl implements RepresentCodeService{
 	private RepresentCodeMapper mapper;
 	
 	@Override
-	public void register(RepresentCodeVO rc) {
-		mapper.insert(rc);
+	public void register(RepresentCodeVO re) {
+		mapper.insert(re);
 	}
 
 	@Override
@@ -28,8 +28,8 @@ public class RepresentCodeServiceImpl implements RepresentCodeService{
 	}
 
 	@Override
-	public boolean modify(RepresentCodeVO rc) {
-		return mapper.update(rc)==1;
+	public boolean modify(RepresentCodeVO re) {
+		return mapper.update(re)==1;
 	}
 
 	@Override
