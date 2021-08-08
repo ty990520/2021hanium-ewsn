@@ -60,14 +60,14 @@ text-align: center;
 		</table>
 
 		<div class="table_button_group">
-			<button type="submit" class="btn btn-danger" onclick="">확인</button>
+			<button type="submit" class="btn btn-danger" onclick="alert()">확인</button>
 				<br><br><br><br><br><br><br><br>
 		</div>
 	</div>
 	<script>
-	function alertRegister() {
-		if (confirm("조치권고를 등록하시겠습니까?") == true) {
-			alert("등록되었습니다");
+	function alert() {
+		if (confirm("리스트로 돌아갑니다.") == true) {
+			//alert("등록되었습니다");
 			location.href = "list";
 		} else {
 			return;
