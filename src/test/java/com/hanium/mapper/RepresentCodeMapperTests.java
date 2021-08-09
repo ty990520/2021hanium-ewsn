@@ -7,9 +7,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-
-import com.hanium.domain.RepresentCodeVO;
-
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
@@ -25,9 +22,9 @@ public class RepresentCodeMapperTests {
 
 
 	@Test
-	public void testEPList() {
-		RepresentCodeVO re = mapper5.read("PT01");
-		log.info(re.getR_code()+re.getR_codeName()+re.getD_code());
+	public void testRepresentCodeList() {
+		mapper5.getDeCodeList("PT01").forEach(i->log.info(i));
+		//log.info(re.getR_code()+re.getR_codeName()+re.getD_code());
 	}
 
 	

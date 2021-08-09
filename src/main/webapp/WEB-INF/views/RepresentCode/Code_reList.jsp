@@ -11,7 +11,7 @@
 </head>
 <div class="right-container">
 	<h1>
-		<b>공통코드관리 - 대표코드 </b>
+		<b>공통코드관리 > 대표코드 </b>
 	</h1>
 	<div align="right">
 		<button type="submit" class="btn btn-success"

@@ -7,9 +7,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.hanium.domain.Criteria;
-import com.hanium.domain.DAVO;
-import com.hanium.domain.PageDTO;
 import com.hanium.domain.RepresentCodeVO;
 import com.hanium.service.RepresentCodeService;
 
@@ -26,15 +23,15 @@ public class RepresentCodeController {
 
 	@GetMapping("/Code_reList")
 	public void list(Model model) {	//addAttribute메소드를 이용해 Model객체에 담아서 전달
-		log.info("[CONTROLLER]get list..."+ service.getList());
-		log.info("[CONTROLLER]get list2..."+ service.get("PT01"));
-		model.addAttribute("list", service.getList());
+		//log.info("[CONTROLLER]get list..."+ service.getList());
+		//log.info("[CONTROLLER]get list2..."+ service.get("PT01"));
+		model.addAttribute("list", service.getReCodeList());
 	}
 	
 	@GetMapping("/Code_deList")
-	public void get(@RequestParam("r_code") String r_code, Model model) {
+	public void get(@RequestParam("r_code") String R_code, Model model) {
 	    log.info("[ CONTROLLER ] get ……..");
-	    model.addAttribute("re", service.get(r_code));
+	    model.addAttribute("list", service.getDeCodeList(R_code));
 	}
 	
 	@GetMapping("/Code_reEnroll")
