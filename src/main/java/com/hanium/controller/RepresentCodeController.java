@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hanium.domain.RepresentCodeVO;
 import com.hanium.service.RepresentCodeService;
@@ -42,6 +43,18 @@ public class RepresentCodeController {
 		 log.info("[CONTROLLER]register : "+re);
 		service.register(re);
 		return "redirect:/RepresentCode/Code_reList";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/checkExistRecode")
+	public String checkExistRecode(@RequestParam("R_code") String R_code) {
+		R_code = R_code.toString();
+		log.info("[ CONTROLLER ] " + service.checkExistRecode(R_code));
+		if(service.checkExistRecode(R_code)) {
+			return "exists";
+		}
+		else
+			return "possible";
 	}
 
 

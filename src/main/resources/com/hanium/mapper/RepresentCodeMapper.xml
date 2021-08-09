@@ -14,8 +14,8 @@
 		where D_code IS NOT NULL 
 		and R_code = #{R_code} order by R_code;
 	</select>
-	<select id="checkExistRecode" resultType="com.hanium.domain.RepresentCodeVO">
-		select * from RepresentCode where R_code = #{R_code};
+	<select id="checkExistRecode" resultType="int">
+		select count(represent_id) cnt from RepresentCode where R_code = #{R_code};
 	</select>
 	<select id="read" resultType="com.hanium.domain.RepresentCodeVO">
 		select * from RepresentCode where represent_id =#{represent_id}

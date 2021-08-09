@@ -24,11 +24,16 @@ public class DeptServiceTests {
 	@Setter(onMethod_ = {@Autowired})
 	private UserService service2;
 	
+	@Setter(onMethod_ = {@Autowired})
+	private RepresentCodeService service3;
+	
 	@Test
 	public void testExist() {
 		log.info(service);
 		assertNotNull(service);	//null이 아님을 시험
 	}//의존성 주입이 잘 되었는지 확인하는 코드임
+	
+	
 	
 	@Test
 	public void testRegister() {
@@ -46,6 +51,11 @@ public class DeptServiceTests {
 		service.getList().forEach(dept -> log.info(dept));
 	}
 
+	@Test // 리스트 조회
+	public void testRecodeList() {
+		log.info(service3.checkExistRecode("PT01"));
+	}
+	
 	@Test // 부서코드로 부서 정보 조회
 	public void testGet() {
 		log.info(service.get("AA01"));

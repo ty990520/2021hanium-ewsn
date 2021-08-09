@@ -49,7 +49,7 @@ public class RepresentCodeServiceImpl implements RepresentCodeService{
 
 	@Override
 	public boolean checkExistRecode(String R_code) {
-		if(mapper.checkExistRecode(R_code) != null)
+		if(mapper.checkExistRecode(R_code) != 0)
 			return true;
 		else 
 			return false;

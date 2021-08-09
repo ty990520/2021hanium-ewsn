@@ -9,6 +9,15 @@
 <link rel="stylesheet" type="text/css"
 	href="../../../resources/css/table.css" />
 </head>
+<style>
+.table {
+    width: 70%;
+    margin-bottom: 1rem;
+    color: #212529;
+    margin: auto;
+    text-align: center;
+}
+</style>
 <div class="right-container">
 	<h1>
 		<b>공통코드관리 > 상세코드 </b>
@@ -44,4 +53,5 @@
 	<br> <br> <br> <br> <br> <br>
 
 </div>
+
 <%@include file="../includes/footer.jsp"%>
