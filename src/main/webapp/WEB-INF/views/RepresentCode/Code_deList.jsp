@@ -9,17 +9,24 @@
 <link rel="stylesheet" type="text/css"
 	href="../../../resources/css/table.css" />
 </head>
+<style>
+.table {
+    width: 70%;
+    margin-bottom: 1rem;
+    color: #212529;
+    margin: auto;
+    text-align: center;
+}
+</style>
 <div class="right-container">
 	<h1>
-		<b>공통코드관리 - 대표코드 </b>
+		<b>공통코드관리 > 상세코드 </b>
 	</h1>
 	<div align="right">
 		<button type="submit" class="btn btn-success"
 			onclick="location.href='/RepresentCode/Code_reEnroll' ">대표코드
 			등록</button>
 	</div>
-
-
 	<hr>
 	<p>대표코드를 선택하면 해당하는 상세코드를 확인할 수 있습니다.</p>
 	<br>
@@ -28,16 +35,16 @@
 		<thead>
 			<tr>
 				<th>Id</th>
-				<th>대표코드</th>
-				<th>대표코드명</th>
+				<th>상세코드</th>
+				<th>상세코드명</th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach items="${list}" var="re" varStatus="status">
-				<tr onclick="Code_deList('<c:out value="${re.r_code}"/>')">
+				<tr>
 					<td style="width: 30px;">${status.count}</td>
-					<td><c:out value="${re.r_code}" /></td>
-					<td><c:out value="${re.r_codeName}" /></td>
+					<td><c:out value="${re.d_code}" /></td>
+					<td><c:out value="${re.d_codeName}" /></td>
 				</tr>
 
 			</c:forEach>
@@ -47,20 +54,4 @@
 
 </div>
 
-<script>
-function Code_deList(r_code) {
-	//alert(SA_no);
-	console.log(r_code);
-	location.href = "/RepresentCode/Code_deList?r_code="+r_code;
-
-}
-
-function pageAction(pageNum){
-	var actionForm = $('#actionForm');
-	console.log('click');
-	actionForm.find('input[name="pageNum"]').val(pageNum);
-	actionForm.submit();
-}
-
-</script>
 <%@include file="../includes/footer.jsp"%>

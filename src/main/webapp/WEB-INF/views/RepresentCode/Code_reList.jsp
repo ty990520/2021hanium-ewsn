@@ -9,9 +9,18 @@
 <link rel="stylesheet" type="text/css"
 	href="../../../resources/css/table.css" />
 </head>
+<style>
+.table {
+    width: 70%;
+    margin-bottom: 1rem;
+    color: #212529;
+    margin: auto;
+    text-align: center;
+}
+</style>
 <div class="right-container">
 	<h1>
-		<b>공통코드관리 - 대표코드 </b>
+		<b>공통코드관리 > 대표코드 </b>
 	</h1>
 	<div align="right">
 		<button type="submit" class="btn btn-success"

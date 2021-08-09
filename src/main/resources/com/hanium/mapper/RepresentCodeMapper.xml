@@ -6,8 +6,19 @@
 	<select id="getList" resultType="com.hanium.domain.RepresentCodeVO">
 		select * from RepresentCode;
 	</select>
+	<select id="getReCodeList" resultType="com.hanium.domain.RepresentCodeVO">
+		select * from RepresentCode where D_code IS NULL order by D_code;
+	</select>
+	<select id="getDeCodeList" resultType="com.hanium.domain.RepresentCodeVO">
+		select * from RepresentCode 
+		where D_code IS NOT NULL 
+		and R_code = #{R_code} order by R_code;
+	</select>
+	<select id="checkExistRecode" resultType="int">
+		select count(represent_id) cnt from RepresentCode where R_code = #{R_code};
+	</select>
 	<select id="read" resultType="com.hanium.domain.RepresentCodeVO">
-		select * from RepresentCode where R_code =#{R_code}
+		select * from RepresentCode where represent_id =#{represent_id}
 	</select>
 	<insert id="insert">
 		insert into RepresentCode (R_code,R_codeName,D_code,D_codeName)

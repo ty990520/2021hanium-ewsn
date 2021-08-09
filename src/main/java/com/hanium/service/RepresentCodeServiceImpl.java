@@ -23,8 +23,8 @@ public class RepresentCodeServiceImpl implements RepresentCodeService{
 	}
 
 	@Override
-	public RepresentCodeVO get(String R_code) {
-		return mapper.read(R_code);
+	public RepresentCodeVO get(Long represent_id) {
+		return mapper.read(represent_id);
 	}
 
 	@Override
@@ -35,6 +35,24 @@ public class RepresentCodeServiceImpl implements RepresentCodeService{
 	@Override
 	public List<RepresentCodeVO> getList() {
 		return mapper.getList();
+	}
+
+	@Override
+	public List<RepresentCodeVO> getReCodeList() {
+		return mapper.getReCodeList();
+	}
+
+	@Override
+	public List<RepresentCodeVO> getDeCodeList(String R_code) {
+		return mapper.getDeCodeList(R_code);
+	}
+
+	@Override
+	public boolean checkExistRecode(String R_code) {
+		if(mapper.checkExistRecode(R_code) != 0)
+			return true;
+		else 
+			return false;
 	}
 
 }
