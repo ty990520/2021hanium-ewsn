@@ -24,11 +24,11 @@
 	</h1>
 	<div align="right">
 		<button type="submit" class="btn btn-success"
-			onclick="location.href='/RepresentCode/Code_reEnroll' ">대표코드
+			onclick="location.href='/RepresentCode/Code_deEnroll' ">상세코드
 			등록</button>
 	</div>
 	<hr>
-	<p>대표코드를 선택하면 해당하는 상세코드를 확인할 수 있습니다.</p>
+	<p>대표코드의 상세코드를 출력한 결과입니다.</p>
 	<br>
 
 	<table class="table table-hover">

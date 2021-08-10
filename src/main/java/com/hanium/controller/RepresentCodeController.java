@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.hanium.domain.ActionRecommendVO;
 import com.hanium.domain.RepresentCodeVO;
 import com.hanium.service.RepresentCodeService;
 
@@ -38,11 +39,27 @@ public class RepresentCodeController {
 	@GetMapping("/Code_reEnroll")
 	public void register_page() {}
 	
+
+	
 	@PostMapping("/register")
 	public String register(RepresentCodeVO re) {
 		 log.info("[CONTROLLER]register : "+re);
 		service.register(re);
 		return "redirect:/RepresentCode/Code_reList";
+	}
+	
+
+	@GetMapping("/Code_deEnroll")
+	public void register_page2(Model model) {
+		model.addAttribute("d_list", service.getReCodeList());
+	}
+	
+	
+	@PostMapping("/register2")
+	public String register2(RepresentCodeVO re) {
+		 log.info("[CONTROLLER]register : "+re);
+		service.register(re);
+		return "redirect:/RepresentCode/Code_deList?r_code="+re.getR_code();
 	}
 	
 	@ResponseBody
@@ -62,5 +79,11 @@ public class RepresentCodeController {
 	public String modify(RepresentCodeVO re) {
 		service.modify(re);
 		return "success";
+	}
+	@GetMapping(value = "/selectAr")
+	public @ResponseBody RepresentCodeVO selectAr(@RequestParam("represent_id") Long re) {
+		RepresentCodeVO revo= service.get(re);
+		log.info("Ar: "+revo.getRepresent_id());
+		return revo;
 	}
 }

@@ -23,8 +23,9 @@
 	<insert id="insert">
 		insert into RepresentCode (R_code,R_codeName,D_code,D_codeName)
 		values
-		(#{R_code},#{R_codeName},#{D_code},#{D_codeName})
+		(#{R_code},#{R_codeName},#{D_code},#{D_codeName}) 
 	</insert>
+	
 	<update id="update">
 		update RepresentCode
 		set R_codeName=#{R_codeName},
