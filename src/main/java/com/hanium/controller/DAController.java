@@ -28,8 +28,8 @@ private DAService service;
 
 	@GetMapping("/DA_list")
 	public void list(Criteria cri, Model model) {	//addAttribute메소드를 이용해 Model객체에 담아서 전달
-		log.info("[CONTROLLER]get list..."+ service.count());
-		model.addAttribute("pageMaker", new PageDTO(cri,service.count()));
+		log.info("[CONTROLLER]get list..."+ service.count(cri));
+		model.addAttribute("pageMaker", new PageDTO(cri,service.count(cri)));
 		model.addAttribute("list",service.getList(cri));	//Model에 bopVO의 목록을 담아서 전달
 	}
 	

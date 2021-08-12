@@ -39,14 +39,13 @@
 		<b>관리자 승인 요청 관리</b>
 	</h1>
 	<hr>
-	<form class="center_form">
-		<select name="search" id="">
-			<option value="DAName">발전소구분</option>
-			<option value="DAId">부서명</option>
-			<option value="DAId">사번</option>
-			<option value="DAId">사원명</option>
-		</select> <input type="search" name="" value="" placeholder="검색어를 입력해주세요">
-		<button type="button" name="button" class="btn btn-outline-secondary">검색</button>
+	<form id="searchForm" action="/user/admin_request" method="get">
+		<select name="type">
+			<option value="N" selected="selected" <c:out value='${cri.type eq "N"?"selected": "" }'/>>사원명</option>
+			<option value="I" <c:out value='${cri.type eq "I"?"selected": "" }'/>>사원번호</option>
+			<option value="P" <c:out value='${cri.type eq "P"?"selected": "" }'/>>발전소구분</option>
+		</select> <input type="text" name="keyword" class="kw" value="<c:out value='${cri.keyword}'/>"/>
+		<button class="btn btn-outline-secondary">검색</button>
 	</form>
 	<p>최고관리자만 조회할 수 있는 페이지입니다.</p>
 	<BR>
@@ -93,11 +92,25 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	<br><br><br><br>
+	<br>
+	<br>
+	<br>
+	<br>
 </div>
 
 </body>
 <script>
+	var searchForm = $('#searchForm');
+	$('#searchForm button').on('click', function(e) {
+		if (!searchForm.find('input[name="keyword"]').val()) {
+			alert('키워드를 입력하세요');
+			return false;
+		}
+		e.preventDefault();
+		searchForm.find('input[name="pageNum"]').val('1');
+		searchForm.submit();
+	});
+
 	/*사번 인증*/
 	function validate(id) {
 		$.ajax({

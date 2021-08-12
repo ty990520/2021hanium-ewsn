@@ -119,4 +119,14 @@ public class SecurityAssessmentServiceImpl implements SecurityAssessmentService 
 		return true;
 	}
 
+	@Override
+	public int count(Criteria cri) {
+		return mapper.count(cri);
+	}
+
+	@Override
+	public List<DAVO> search_necessaryList(Criteria cri) {
+		return mapper.search_identifyType_is_null(cri);
+	}
+
 }

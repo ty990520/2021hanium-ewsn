@@ -1,21 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- menu css -->
-<link rel="stylesheet" type="text/css" href="/resources/css/normalize.css" />
+<link rel="stylesheet" type="text/css"
+	href="/resources/css/normalize.css" />
 <link rel="stylesheet" type="text/css" href="/resources/css/demo.css" />
-<link rel="stylesheet" type="text/css" href="/resources/css/component.css" />
+<link rel="stylesheet" type="text/css"
+	href="/resources/css/component.css" />
 <link rel="stylesheet" type="text/css" href="/resources/css/menu.css" />
 <script src="/resources/js/modernizr.custom.js"></script>
 <!-- menu css끝 -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
@@ -54,10 +58,10 @@
 a:hover {
 	text-decoration: none;
 }
-select{
-  height: 30px;
-}
 
+select {
+	height: 30px;
+}
 </style>
 </head>
 <body>
@@ -70,9 +74,9 @@ select{
 			<div class="top_center" onmouseleave="out()">
 				<section class="color-6">
 					<nav class="cl-effect-13">
-						<a href="#" onmouseover="loginbox()">자산관리</a> <a href="#"
-							onmouseover="loginbox()">위험관리</a> <a href="#"
-							onmouseover="loginbox()">취약점관리</a> <a href="#"
+						<a href="" onmouseover="loginbox()">자산관리</a> <a href=""
+							onmouseover="loginbox()">위험관리</a> <a href=""
+							onmouseover="loginbox()">취약점관리</a> <a href=""
 							onmouseover="loginbox()">회원관리</a>
 
 					</nav>
@@ -80,8 +84,8 @@ select{
 			</div>
 			<div class="top_right">
 				<div class="login_box">
-					<button id="loginBtn" type="button" class="btn btn-outline-secondary"
-						style="margin-right: 10px;">로그인</button>
+					<button id="loginBtn" type="button"
+						class="btn btn-outline-secondary" style="margin-right: 10px;">로그인</button>
 					<button id="joinBtn" type="button" class="btn btn-outline-danger">회원가입</button>
 				</div>
 			</div>
@@ -108,17 +112,15 @@ select{
 					</div>
 					<div class="sub_center_section">
 						<nav class="cl-effect-3">
-							<a href="/vulnerability/new_vulnerability_list.html">신규취약점
-								관리</a> <a href="/ActionRecommend/list">조치권고</a>
-							<a href="/Action/list">이행계획</a>
+							<a href="/vulnerability/new_vulnerability_list.html">신규취약점 관리</a>
+							<a href="/ActionRecommend/list">조치권고</a> <a href="/Action/list">이행계획</a>
 
 						</nav>
 					</div>
 					<div class="sub_center_section_last">
 						<nav class="cl-effect-3">
-							<a href="/user/list">사원 조회</a> <a
-								href="/user/admin_menu">관리자페이지</a> <a
-								href="/FAQ">FAQ</a>
+							<a href="/user/list">사원 조회</a> <a href="/user/admin_menu">관리자페이지</a>
+							<a href="/FAQ">FAQ</a>
 						</nav>
 					</div>
 				</div>
@@ -129,6 +131,8 @@ select{
 	</div>
 
 	<script type="text/javascript">
+	
+	
 		function MM_changeProp(objId, x, theProp, theValue) { //v9.0
 			var obj = null;
 			with (document) {
@@ -150,13 +154,16 @@ select{
 			var obj = document.getElementById("submenu");
 			obj.style.display = "none"; // 안보이게
 		}
-		
+
 		$("#loginBtn").on("click", function() {
 			self.location = "/user/login";
 		})
-		
+
 		$("#joinBtn").on("click", function() {
 			self.location = "/user/join";
 		})
+		/*$('a').click(function() {
+			$(".loding-inner").show();
+		});*/
 	</script>
 	<!-- base끝 -->

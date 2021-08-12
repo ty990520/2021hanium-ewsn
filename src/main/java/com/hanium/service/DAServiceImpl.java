@@ -44,8 +44,8 @@ public class DAServiceImpl implements DAService{
 	}
 
 	@Override
-	public int count() {
-		return mapper.count();
+	public int count(Criteria cri) {
+		return mapper.count(cri);
 	}
 
 	// 삭제하기 위함 

@@ -37,13 +37,13 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<UserVO> getUserRequest() {
-		return mapper.getUserRequest();
+	public List<UserVO> getUserRequest(Criteria cri) {
+		return mapper.getUserRequest(cri);
 	}
 
 	@Override
-	public List<UserVO> getAdminRequest() {
-		return mapper.getAdminRequest();
+	public List<UserVO> getAdminRequest(Criteria cri) {
+		return mapper.getAdminRequest(cri);
 	}
 
 	@Override
@@ -87,7 +87,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int count() {
-		return mapper.count();
+	public int count(Criteria cri) {
+		return mapper.count(cri);
 	}
 }

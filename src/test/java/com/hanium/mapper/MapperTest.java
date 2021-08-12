@@ -11,6 +11,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.hanium.domain.Criteria;
 import com.hanium.domain.SecurityAssessDTO;
+import com.hanium.domain.UserVO;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -24,6 +25,12 @@ public class MapperTest {
 	@Setter(onMethod_ = @Autowired)
 	private SecurityAssessmentMapper mapper;
 	
+	@Setter(onMethod_ = @Autowired)
+	private DAMapper mapper2;
+	
+	@Setter(onMethod_ = @Autowired)
+	private UserMapper mapper3;
+	
 	@Test
 	public void testPaging() {
 		Criteria cri = new Criteria();
@@ -35,8 +42,19 @@ public class MapperTest {
 		log.info(cri.getStartIndex());
 		log.info(cri.getEndIndex());
 		
+		log.info("[count] "+mapper.count(cri));
 		List<SecurityAssessDTO> list = mapper.getListWithPaging(cri);
 		list.forEach(li->log.info(li));
 	}
 	
+	@Test
+	public void testSearch() {
+		Criteria cri = new Criteria();
+		cri.setKeyword("1");
+		cri.setType("I");
+		List<UserVO> list = mapper3.getAdminRequest(cri);
+		list.forEach(da -> log.info(da));
+	}
+
+
 }

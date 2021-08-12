@@ -3,20 +3,41 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hanium.mapper.UserMapper">
+<sql id="criteria">
+		<if test="type != null">
+			<if test="type == 'N'.toString()">
+				AND username LIKE CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="type == 'I'.toString()">
+				AND userid LIKE CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="type == 'P'.toString()">
+				AND userptype LIKE CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="type == 'D'.toString()">
+				AND userdept LIKE CONCAT('%', #{keyword}, '%')
+			</if>
+		</if>
+	</sql>
+	
 	<select id="getList" resultType="com.hanium.domain.UserVO">
 		select * from user where
 		permission=1;
 	</select>
 	<select id="getListWithPaging" resultType="com.hanium.domain.UserVO">
 		select * from user where
-		permission=1 order by userid limit #{startIndex},#{endIndex};
+		permission=1 <include refid="criteria"></include> 
+		order by userid limit #{startIndex},#{endIndex};
 	</select>
 	<select id="getUserRequest"
 		resultType="com.hanium.domain.UserVO">
 		<![CDATA[
 			SELECT userid,userptype,userdept,username,permission,valid,reqdate 
 			from user 
-			where permission=0 and userdept!="관리자 그룹" order by reqdate desc;
+			where permission=0 and userdept!="관리자 그룹"]]>
+			<include refid="criteria"></include> 
+			<![CDATA[
+			 order by reqdate desc;
 		]]>
 	</select>
 	<select id="getAdminRequest"
@@ -24,7 +45,11 @@
 		<![CDATA[
 			SELECT userid,userptype,username,permission,valid,reqdate 
 			from user 
-			where permission=0 and userdept="관리자 그룹" order by reqdate desc;
+			where permission=0 and userdept="관리자 그룹"
+			]]>
+			<include refid="criteria"></include> 
+			<![CDATA[
+			order by reqdate desc;
 		]]>
 	</select>
 	<select id="findUserValidity"
@@ -44,7 +69,7 @@
 	</select>
 	<select id="count" resultType="int">
 		SELECT COUNT(userid)
-		FROM user;
+		FROM user where permission = 1 <include refid="criteria"></include>;
 	</select>
 	<select id="get" resultType="com.hanium.domain.UserVO">
 		select * from user where userid =
