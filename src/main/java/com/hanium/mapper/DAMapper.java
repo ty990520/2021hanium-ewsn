@@ -14,6 +14,6 @@ public interface DAMapper {
 	public void insert(DAVO da);	
 	public int update(DAVO da);
 	public int updateIdentifyType(@Param("daIdentifyType") String daIdentifyType,@Param("daid") String daid);
-	public int count();
+	public int count(Criteria cri);
 	public int delete(String daid);
 }

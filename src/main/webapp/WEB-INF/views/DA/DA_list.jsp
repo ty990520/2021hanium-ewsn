@@ -8,25 +8,28 @@
 	href="../../../resources/css/common.css" />
 </head>
 <style>
-	.btn{
-		float: right;
-	}
+.btn {
+	float: right;
+}
 </style>
 <div class="right-container">
 	<h1>
 		<b>DA 정보 관리</b>
 		<button type="button" class="btn btn-danger"
 			onclick="location.href='/DA/DA_register' ">등록하기</button>
-		
+
 	</h1>
 	<hr>
-	<form class="center_form">
-		<select name="search" id="">
-			<option value="DAName">자산명</option>
-			<option value="DAId">자산번호</option>
-		</select> <input type="search" name="" value="" placeholder="자산명 입력">
-		<button type="button" name="button" class="btn btn-outline-secondary">검색</button>
+	<form id="searchForm" action="/DA/DA_list" method="get">
+		<select name="type">
+			<option value="I" selected="selected" <c:out value='${pageMaker.cri.type eq "I"?"selected": "" }'/>>자산번호</option>
+			<option value="N" <c:out value='${pageMaker.cri.type eq "N"?"selected": "" }'/>>자산명</option>
+		</select> <input type="text" name="keyword" class="kw" value="<c:out value='${pageMaker.cri.keyword}'/>"/> <input type="hidden"
+			name="pageNum" value="${pageMaker.cri.pageNum}" /> <input
+			type="hidden" name="amount" value="${pageMaker.cri.amount}" />
+		<button class="btn btn-outline-secondary">검색</button>
 	</form>
+
 	<p>자산번호를 선택하면 자세한 정보를 확인할 수 있습니다.</p>
 	<BR>
 	<table class="table table-hover">
@@ -35,30 +38,30 @@
 				<th style="width: 30px;">Id</th>
 				<th>자산번호</th>
 				<th>자산명</th>
-				
+
 				<th>기능유형</th>
 				<th>영향성 분석</th>
 				<th>설비유형</th>
 				<th>설비사용목적</th>
 				<th>시스템S/W유형</th>
 				<th>통신I/F</th>
-				
+
 			</tr>
 		</thead>
 		<tbody id="table_body">
 			<c:forEach items="${list}" var="da" varStatus="status">
 				<tr onclick="DA_detail('<c:out value="${da.daid}"/>')">
-					<td style="width: 30px;">${status.count}</td>
+					<td style="width: 30px;">${(pageMaker.cri.amount*(pageMaker.cri.pageNum-1))+status.count}</td>
 					<td><c:out value="${da.daid}" /></td>
 					<td><c:out value="${da.daname}" /></td>
-				
+
 					<td><c:out value="${da.daFuncType}" /></td>
 					<td><c:out value="${da.daImpact}" /></td>
 					<td><c:out value="${da.daFacilitiesType}" /></td>
 					<td><c:out value="${da.daFacilitiesPurposeOfUse}" /></td>
 					<td><c:out value="${da.daSystemSW}" /></td>
 					<td><c:out value="${da.daReportIF}" /></td>
-				
+
 				</tr>
 
 			</c:forEach>
@@ -89,7 +92,10 @@
 			</c:if>
 		</ul>
 	</nav>
-	<br><br><br><br>
+	<br>
+	<br>
+	<br>
+	<br>
 	<form id='actionForm' action="/DA/DA_list" method="get">
 		<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
 		<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
@@ -111,5 +117,16 @@
 		actionForm.find('input[name="pageNum"]').val(pageNum);
 		actionForm.submit();
 	}
+	
+	var searchForm = $('#searchForm');
+	$('#searchForm button').on('click', function(e) {
+		if (!searchForm.find('input[name="keyword"]').val()) {
+			alert('키워드를 입력하세요');
+			return false;
+		}
+		e.preventDefault();
+		searchForm.find('input[name="pageNum"]').val('1');
+		searchForm.submit();
+	});
 	</script>
 <%@include file="../includes/footer.jsp"%>

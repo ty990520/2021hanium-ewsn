@@ -73,7 +73,7 @@
 		<h1>관리자 페이지</h1>
 		<p>관리자는 다음 기능을 사용할 수 있습니다.</p>
 		<br>
-		<div class="box" onclick="location.href='/code/reEnroll'">
+		<div class="box" onclick="location.href='/RepresentCode/Code_deEnroll'">
 			<div class="inner_box">
 				<div class="img">
 					<img src="../../../resources/img/check.png">

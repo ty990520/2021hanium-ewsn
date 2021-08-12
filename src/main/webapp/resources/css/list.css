@@ -56,3 +56,11 @@ a:hover {
 .modal-body {
     text-align: center;
 }
+
+#searchForm {
+    float: right;
+}
+
+.kw{
+	margin-right: 5px;
+}

@@ -18,8 +18,9 @@ public interface SecurityAssessmentService {
 	public List<SecurityAssessDTO> getList(Criteria cri);			//리스트 조회
 
 	public List<DAVO> necessaryList();
-	
+	public List<DAVO> search_necessaryList(Criteria cri);
 	public boolean registerEP(SecurityAssessmentVO sa, EPVO ep);
 	public boolean registerBOP(SecurityAssessmentVO sa, BOPVO bop);
 	public boolean registerIndirect(SecurityAssessmentVO sa, IndirectVO ind);
+	public int count(Criteria cri);
 }

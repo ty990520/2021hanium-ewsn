@@ -3,6 +3,23 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hanium.mapper.SecurityAssessmentMapper">
+	<!-- <sql>코드는 <include>로 사용할 수 있음 -->
+	<sql id="criteria">
+		<if test="type != null">
+			<if test="type == 'I'.toString()">
+				AND SA_daID like CONCAT('%',#{keyword},'%')
+			</if>
+			<if test="type == 'N'.toString()">
+				AND daname like CONCAT('%',#{keyword},'%')
+			</if>
+			<if test="type == 'T'.toString()">
+				AND SA_IdentifyType like CONCAT('%',#{keyword},'%')
+			</if>
+			
+		</if>
+	</sql>
+
+
 	<select id="getList"
 		resultType="com.hanium.domain.SecurityAssessDTO">
 		SELECT *
@@ -18,9 +35,17 @@
 		SELECT *
 		FROM (SELECT *
 		FROM SecurityAssessment as sa, DA
-		WHERE SA_daID=DA.daid
+		WHERE
+		SA_daID=DA.daid AND daUse = 1
+		<include refid="criteria"></include>
 		order by SA_no desc) as sa
-		limit #{startIndex},#{endIndex};
+		limit
+		#{startIndex},#{endIndex};
+	</select>
+	<select id="count" resultType="int">
+	SELECT count(*)
+		FROM SecurityAssessment as sa, DA
+		WHERE SA_daID=DA.daid AND daUse = 1 <include refid="criteria"></include>;
 	</select>
 	<select id="read"
 		resultType="com.hanium.domain.SecurityAssessmentVO">
@@ -34,11 +59,28 @@
 	</select>
 	<select id="identifyType_is_null"
 		resultType="com.hanium.domain.DAVO">
-		SELECT * 
-		FROM DA 
-		WHERE daIdentifyType IS NULL 
-		order by daRegDate 
-		limit 0,5;
+		SELECT *
+		FROM DA
+		WHERE daIdentifyType IS NULL AND daUse = 1
+		order by daRegDate;
+	</select>
+	<select id="search_identifyType_is_null"
+		resultType="com.hanium.domain.DAVO">
+		SELECT *
+		FROM DA
+		WHERE daIdentifyType IS NULL AND daUse = 1
+		<if test="type != null">
+			<if test="type == 'I'.toString()">
+				AND daid like CONCAT('%',#{keyword},'%')
+			</if>
+			<if test="type == 'N'.toString()">
+				AND daname like CONCAT('%',#{keyword},'%')
+			</if>
+			<if test="type == 'IMP'.toString()">
+				AND daImpact like CONCAT('%',#{keyword},'%')
+			</if>
+		</if>
+		order by daRegDate;
 	</select>
 	<insert id="insert" useGeneratedKeys="true" keyProperty="SA_no">
 		insert
