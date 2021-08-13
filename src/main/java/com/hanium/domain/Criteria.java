@@ -1,5 +1,7 @@
 package com.hanium.domain;
 
+import org.springframework.web.util.UriComponentsBuilder;
+
 import lombok.Getter;
 import lombok.ToString;
 
@@ -11,6 +13,9 @@ public class Criteria {
 	
 	private int startIndex;
 	private int endIndex;
+	
+	private String type;	//검색
+	private String keyword;	//검색
 	
 	public Criteria() {
 		this(1,10);
@@ -37,5 +42,24 @@ public class Criteria {
 		startIndex = (pageNum-1)*amount;	
 		endIndex = pageNum*amount;
 	}
+	
+	/*여러개의 파라미터들을 연결해서 url형태로 만들어줌*/
+	public String getListLink() {
+		UriComponentsBuilder builder = UriComponentsBuilder.fromPath("")
+		.queryParam("pageNum", this.getPageNum())
+		.queryParam("amount", this.getAmount())
+		.queryParam("type", this.getType())
+		.queryParam("keyword", this.getKeyword());
+		return builder.toUriString();
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+	
 	
 }

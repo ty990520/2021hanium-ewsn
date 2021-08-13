@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="../includes/header.jsp"%>
@@ -27,6 +26,11 @@
 
 .notify {
 	z-index: 1051;
+}
+
+.selectDA_modal_div {
+	overflow-y: auto;
+	height: 300px;
 }
 </style>
 
@@ -57,42 +61,42 @@
 				<br>
 				<form class="center_form">
 					<div style="float: right;">
-						<select name="search" id="">
-							<option class="dropdown-item" value="DAName">자산명</option>
-							<option class="dropdown-item" value="DAId">자산번호</option>
-							<option class="dropdown-item" value="daImpact">영향성분석</option>
-						</select> <input type="search" name="" value="" placeholder="자산명 입력">
+						<select name="type" id="modal_type">
+							<option value="N">자산명</option>
+							<option value="I">자산번호</option>
+							<option value="IMP">영향성분석</option>
+						</select> <input type="text" name="keyword" id="modal_keyword" />
 						<button type="button" name="button"
-							class="btn btn-outline-secondary">검색</button>
+							class="btn btn-outline-secondary" onclick="modal_search()">검색</button>
 					</div>
 				</form>
 				<br> <br>
-				<table class="table table-hover">
-					<thead>
-						<tr>
-							<th scope="col" style="width: 30px;">Id</th>
-							<th scope="col">자산번호</th>
-							<th scope="col">자산명</th>
-							<th scope="col">영향성분석</th>
+				<div class="selectDA_modal_div">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th scope="col" style="width: 30px;">Id</th>
+								<th scope="col">자산번호</th>
+								<th scope="col">자산명</th>
+								<th scope="col">영향성분석</th>
 
-						</tr>
-					</thead>
-					<tbody id="selectDA_modal">
-						<c:forEach items="${undecide}" var="da" varStatus="status">
-							<tr class="modal_items"
-								onclick="select(<c:out
-								value="${status.index}" />, '<c:out value="${da.daid}" />', '<c:out value="${da.daImpact}" />')">
-								<td scope="row" style="width: 30px;"><c:out
-										value="${status.count}" /></td>
-								<td><c:out value="${da.daid}" /></td>
-								<td><c:out value="${da.daname}" /></td>
-								<td><c:out value="${da.daImpact}" /></td>
-
-								<td></td>
 							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
+						</thead>
+						<tbody id="selectDA_modal">
+							<c:forEach items="${undecide}" var="da" varStatus="status">
+								<tr class="modal_items"
+									onclick="select(<c:out
+								value="${status.index}" />, '<c:out value="${da.daid}" />', '<c:out value="${da.daImpact}" />')">
+									<td scope="row" style="width: 30px;"><c:out
+											value="${status.count}" /></td>
+									<td><c:out value="${da.daid}" /></td>
+									<td><c:out value="${da.daname}" /></td>
+									<td><c:out value="${da.daImpact}" /></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
 			</div>
 
 
@@ -115,12 +119,20 @@
 		</div>
 	</h1>
 	<hr>
-	<form class="center_form">
-		<select name="search" id="">
-			<option value="DAName">자산명</option>
-			<option value="DAId">자산번호</option>
-		</select> <input type="search" name="" value="" placeholder="자산명 입력">
-		<button type="button" name="button" class="btn btn-outline-secondary">검색</button>
+	<form id="searchForm" action="/SecurityAssessment/list" method="get">
+		<select name="type">
+			<option value="I"
+				<c:out value='${pageMaker.cri.type eq "I"?"selected": "" }'/>
+				selected="selected">자산번호</option>
+			<option value="N"
+				<c:out value='${pageMaker.cri.type eq "N"?"selected": "" }'/>>자산명</option>
+			<option value="T"
+				<c:out value='${pageMaker.cri.type eq "T"?"selected": "" }'/>>상세유형분류</option>
+		</select> <input type="text" name="keyword" class="kw"
+			value="<c:out value='${pageMaker.cri.keyword}'/>" /> <input
+			type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}" /> <input
+			type="hidden" name="amount" value="${pageMaker.cri.amount}" />
+		<button class="btn btn-outline-secondary">검색</button>
 	</form>
 	<p>보안성 평가가 완료된 자산 정보를 확인할 수 있습니다.</p>
 	<br>
@@ -223,6 +235,7 @@
 	var flag=0;	//평가 루트 1:ep부터, 2:bop부터, 3:indirect부터 
 	
 	function select(val, daname, daImpact){
+		console.log(val+", "+daname+", "+daImpact)
 		var target = document.getElementsByClassName("modal_items");
 		daId=daname;
 		
@@ -239,6 +252,29 @@
 		for(var i=0 ;i<target.length ; i++ ){
 			if(i!=val)
 				target[i].style.backgroundColor = "transparent";
+		}
+	}
+	
+	function select_search(val, daname, daImpact){
+		console.log(val+", "+daname+", "+daImpact)
+		var target2 = document.getElementsByClassName("modal_items2");
+		console.log(target2[val]);
+		daId=daname;
+		
+		if(daImpact=="Emergency Preparedness Function"){
+			flag = 1;
+		}else if(daImpact=="Important to Safety"){
+			flag = 2;
+		}else{
+			flag = 3;
+		}
+		
+		target2[val].style.backgroundColor = "rgb(146 171 198 / 25%)";
+		 $( '#select_da' ).text( daname+"자산을 평가합니다." );
+		 $("#start").attr("disabled", false);
+		for(var i=0 ;i<target2.length ; i++ ){
+			if(i!=val)
+				target2[i].style.backgroundColor = "transparent";
 		}
 	}
 	
@@ -271,8 +307,65 @@
 	}
 	
 	
-		//e.preventDefault();
-		//console.log('click');
+	 
+     
+	function modal_search(){
+		var type = $("#modal_type option:selected").val();
+		console.log(type);
+		var keyword = $('#modal_keyword').val();
+		console.log(keyword);
 		
+		$.ajax({
+			contentType : "application/json; charset=utf-8;",
+			dataType:"json",
+			type : "GET",
+			url : "/SecurityAssessment/search_keyword",
+			data : {
+				"type" : type,
+				"keyword" : keyword
+			},
+			success : function(response) {
+				//conlose.log(response);
+				console.log(response);
+				
+				var getTag = $("#selectDA_modal").html() ;
+				 
+				getTag = $("#selectDA_modal").empty();
+				
+				var insTag ="";
+			
+				
+				
+				// 추가할 태그
+				for(var i=0; i<response.length; i++){
+					insTag += "<tr class='modal_items2'>";
+					//insTag += "onclick='select("+i+",\'"+response[i].daname+"\',\'"+response[i].daImpact+"\')'>";
+					
+					insTag += "<td scope='row' style='width: 30px;'>"+(i+1)+"</td>";
+					insTag += "<td name='mdaid'>"+response[i].daid+"</td>";
+					insTag += "<td name='mdaname'>"+response[i].daname+"</td>";
+					insTag += "<td name='mdaImpact'>"+response[i].daImpact+"</td>";
+					insTag += "</tr>";
+					console.log(insTag);
+					
+					
+				}
+				$("#selectDA_modal").html(insTag) ;
+				
+				
+				$('.modal_items2').each(function(index){ 
+					$(this).attr('menu-index', index);
+				}).click(function(){
+				    var index = $(this).attr('menu-index');
+				    select_search(index, response[index].daname, response[index].daImpact);
+				});
+			},
+			error : function(request, status, error) {
+				alert("code:" + request.status + "\n" + "message:"
+						+ request.responseText + "\n" + "error:" + error);
+			}
+		})
+	}
+	
 </script>
 <%@include file="../includes/footer.jsp"%>

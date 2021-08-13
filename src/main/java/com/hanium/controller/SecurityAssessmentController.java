@@ -1,14 +1,18 @@
 package com.hanium.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hanium.domain.BOPVO;
 import com.hanium.domain.Criteria;
+import com.hanium.domain.DAVO;
 import com.hanium.domain.EPVO;
 import com.hanium.domain.IndirectVO;
 import com.hanium.domain.PageDTO;
@@ -94,13 +98,25 @@ public class SecurityAssessmentController {
 
 	@GetMapping("/list")
 	public void list(Criteria cri, Model model) { // addAttribute메소드를 이용해 Model객체에 담아서 전달
-		log.info("[CONTROLLER]get list..."+cri);
+		log.info("[CONTROLLER]get list..."+service.count(cri));
 		//int num = service.getList(cri)
-		model.addAttribute("pageMaker", new PageDTO(cri,12)); /*카운트하는 매퍼 만들어주기*/
+		model.addAttribute("pageMaker", new PageDTO(cri,service.count(cri)));
 		model.addAttribute("decide", service.getList(cri)); // Model에 BoardVO의 목록을 담아서 전달
 		model.addAttribute("undecide", service.necessaryList());
 	}
 
+	/*modal search ajax*/
+	@GetMapping(value = "/search_keyword")
+	public @ResponseBody List<DAVO> search_keyword(@RequestParam("type") String type, @RequestParam("keyword") String keyword) {
+		log.info(type+ ":" +keyword);
+		Criteria cri = new Criteria();
+		cri.setType(type);
+		cri.setKeyword(keyword);
+		List<DAVO> search_results= service.search_necessaryList(cri);
+		search_results.forEach(i->log.info(i));
+		return search_results;
+	}
+	
 	@GetMapping("/get")
 	public void get(@RequestParam("SA_no") Long SA_no, Model model) {
 		log.info("[ CONTROLLER ] get ……..");

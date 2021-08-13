@@ -3,14 +3,28 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hanium.mapper.DAMapper">
+	<!-- <sql>코드는 <include>로 사용할 수 있음 -->
+
+	<sql id="criteria">
+		<if test="type != null">
+			<if test="type == 'I'.toString()">
+				AND daid LIKE CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="type == 'N'.toString()">
+				AND daname LIKE CONCAT('%', #{keyword}, '%')
+			</if>
+		</if>
+	</sql>
+
 	<select id="getList" resultType="com.hanium.domain.DAVO">
 		select * from DA WHERE daUse = 1
 		ORDER BY daid;
 	</select>
-	<select id="getListWithPaging" resultType="com.hanium.domain.DAVO">
-		SELECT * 
-		FROM DA 
-		WHERE daUse = 1
+	<select id="getListWithPaging"
+		resultType="com.hanium.domain.DAVO">
+		SELECT *
+		FROM DA
+		WHERE daUse = 1 <include refid="criteria"></include>
 		ORDER BY daid
 		limit #{startIndex},#{endIndex};
 	</select>
@@ -20,7 +34,9 @@
 	</select>
 	<select id="count" resultType="int">
 		SELECT COUNT(daid)
-		FROM DA;
+		FROM DA where daUse = 1
+		<include refid="criteria"></include>
+		
 	</select>
 	<insert id="insert">
 		insert into DA
@@ -60,12 +76,13 @@
 	<update id="updateIdentifyType">
 		UPDATE DA
 		SET daIdentifyType=#{daIdentifyType}
-		WHERE daid=#{daid};
+		WHERE
+		daid=#{daid};
 	</update>
-	
-	<update id="delete"> <!--  삭제 sql  -->
-	update DA
-	set daUse = 0
-	where daid =#{daid};
+
+	<update id="delete"> <!-- 삭제 sql -->
+		update DA
+		set daUse = 0
+		where daid =#{daid};
 	</update>
 </mapper>

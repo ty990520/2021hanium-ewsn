@@ -41,18 +41,21 @@ public class UserController {
 
 	@GetMapping("/list")
 	public void list(Criteria cri, Model model) {
-		model.addAttribute("pageMaker", new PageDTO(cri,service.count()));
+		model.addAttribute("pageMaker", new PageDTO(cri,service.count(cri)));
+		log.info(service.count(cri));
 		model.addAttribute("list", service.getList(cri));
 	}
 
 	@GetMapping("/user_request")
-	public void userRequestlist(Model model) {
-		model.addAttribute("userRequest", service.getUserRequest());
+	public void userRequestlist(Criteria cri,Model model) {
+		model.addAttribute("cri", cri);
+		model.addAttribute("userRequest", service.getUserRequest(cri));
 	}
 
 	@GetMapping("/admin_request")
-	public void adminRequestlist(Model model) {
-		model.addAttribute("adminRequest", service.getAdminRequest());
+	public void adminRequestlist(Criteria cri,Model model) {
+		model.addAttribute("cri", cri);
+		model.addAttribute("adminRequest", service.getAdminRequest(cri));
 	}
 
 	@PostMapping("/register")

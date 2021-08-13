@@ -11,6 +11,6 @@ public interface DAService {
 	public boolean modify(DAVO da);		//수정
 	public boolean updateIdentifyType(String daIdentifyType, String daid);
 	public List<DAVO> getList(Criteria cri);	
-	public int count();
+	public int count(Criteria cri);
 	public boolean delete(String daid);	// 구현 ->Impl.jsva 에서 
 }
