@@ -112,7 +112,7 @@ select {
 					</div>
 					<div class="sub_center_section">
 						<nav class="cl-effect-3">
-							<a href="/vulnerability/new_vulnerability_list.html">신규취약점 관리</a>
+							<a href="/vulnerability/vul_list">신규취약점 관리</a>
 							<a href="/ActionRecommend/list">조치권고</a> <a href="/Action/list">이행계획</a>
 
 						</nav>
