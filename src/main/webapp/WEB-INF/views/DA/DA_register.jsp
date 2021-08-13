@@ -172,6 +172,7 @@ body {
 		<hr>
 		<br>
 		<div class="table_button_group">
+
 			<button type="button" class="btn btn-secondary"
 				onclick="location.href='/DA/DA_list'">취소</button>
 			<button type="button" class="btn btn-danger" onclick="register()">등록</button>

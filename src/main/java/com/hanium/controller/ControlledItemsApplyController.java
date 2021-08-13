@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hanium.domain.ControlledItemsApplyVO;
 import com.hanium.service.ControlledItemsApplyService;
+import com.hanium.service.DAService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -20,8 +21,10 @@ import lombok.extern.log4j.Log4j;
 public class ControlledItemsApplyController {
 	
 	private ControlledItemsApplyService service;
+	//private DAService service_da;
+	
 
-	@GetMapping("/list")
+	@GetMapping("/CI_list")
 	public void list(Model model) { // addAttribute메소드를 이용해 Model객체에 담아서 전달
 		log.info("[CONTROLLER]get list...");
 		model.addAttribute("list", service.getList()); // Model에 BoardVO의 목록을 담아서 전달
@@ -29,7 +32,7 @@ public class ControlledItemsApplyController {
 	
 	@PostMapping("/register")	//글을 등록하는 경우에는 get방식이 아니라 post방식을 사용한다.
 	public String register(ControlledItemsApplyVO cia) {	//RedirectAttributes : 
-	    log.info("[CONTROLLER]register : "+cia);
+		log.info("[CONTROLLER]register : "+cia);
 	    service.register(cia);
 	    //rttr.addFlashAttribute("result",dept.getDeptcode());
 	    //return "redirect:/dept/list";
