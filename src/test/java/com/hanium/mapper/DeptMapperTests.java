@@ -33,6 +33,9 @@ public class DeptMapperTests {
 	
 	@Setter(onMethod_ = @Autowired)
 	private EPMapper mapper4;
+	
+	@Setter(onMethod_ = @Autowired)
+	private ControlledItemsMapper mapper5;
 
 	@Test
 	public void testGetList() {
@@ -49,6 +52,11 @@ public class DeptMapperTests {
 		EPVO ep = mapper4.read(4L);
 		log.info(ep.getEpAlterContent());
 	}
+	@Test
+	public void testControlledItemslist() {
+		mapper5.getList().forEach(dept -> log.info(dept));
+	}
+
 	
 	@Test
 	public void testGetUser() {

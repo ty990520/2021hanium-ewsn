@@ -102,8 +102,8 @@ select{
 					</div>
 					<div class="sub_center_section">
 						<nav class="cl-effect-3">
-							<a href="./controlled_items/Cl_manage_list.html">통제항목</a> <a
-								href="./controlled_items/CI_list.html">통제항목 적용관리</a>
+							<a href="/ControlledItems/CI_manage_list">통제항목</a> <a
+								href="/ControlledItemsApply/CI_list">통제항목 적용관리</a>
 						</nav>
 					</div>
 					<div class="sub_center_section">

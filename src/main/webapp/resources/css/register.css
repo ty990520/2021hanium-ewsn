@@ -19,18 +19,16 @@ body{
 .register_box_inner_detail {
 	width: 100%;
 	display: flex;
-	flex-direction: row;
-}
-
-.register_box_inner_flexdirection_row {
-	margin-right: 15px;
-	height: auto;
+	
+	justify-content: center;
+	align-items: center;
+	
 }
 
 .input_width100 {
 	font-size: 0.9rem;
-	padding: 5px 3px;
-	width: -webkit-fill-available;
+	padding: 3px 3px;
+
 	border-radius: 4px;
 }
 

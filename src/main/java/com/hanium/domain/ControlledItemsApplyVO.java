@@ -15,6 +15,7 @@ public class ControlledItemsApplyVO {
 	private Date CI_applyDate;
 	private String checkerID;
 	private String CI_applyDetail_id;
+	private String CI_daname;
 	
 	
 	
