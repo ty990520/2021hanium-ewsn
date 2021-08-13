@@ -11,19 +11,21 @@
 		#{CI_apply_no}
 	</select>
 	<insert id="insert" useGeneratedKeys="true" keyProperty="CI_apply_no">
-		insert into ControlledItemsApply (CI_apply_no,CI_daID,CI_apply_version,CI_applyContent,CI_applyCheck, CI_applyDate, checkerID,CI_applyDetail_id)
+		insert into ControlledItemsApply (CI_apply_no,CI_daID,CI_apply_version,CI_applyContent,CI_applyCheck, CI_applyDate, checkerID,CI_applyDetail_id, CI_daname)
 		values
-		(#{CI_apply_no},#{CI_daID},#{CI_apply_version},#{CI_applyContent},#{CI_applyCheck},#{CI_applyDate},#{checkerID},#{CI_applyDetail_id})
+		(#{CI_apply_no},#{CI_daID},#{CI_apply_version},#{CI_applyContent},#{CI_applyCheck},#{CI_applyDate},#{checkerID},#{CI_applyDetail_id},#{CI_daname})
 	</insert>
 	<update id="update">
 		update ControlledItemsApply
 		set CI_daID=#{CI_daID},
-		CI_apply_version=#{CI_apply_version}
-		CI_applyContent=#{CI_applyContent}
-		CI_applyCheck=#{CI_applyCheck}
-		CI_applyDate=#{CI_applyDate}
-		checkerID=#{checkerID}
-		CI_applyDetail_id=#{CI_applyDetail_id}
+		CI_apply_version=#{CI_apply_version},
+		CI_applyContent=#{CI_applyContent},
+		CI_applyCheck=#{CI_applyCheck},
+		CI_applyDate=#{CI_applyDate},
+		checkerID=#{checkerID},
+		CI_applyDetail_id=#{CI_applyDetail_id},
+		CI_daname=#{CI_daname}
 		where CI_apply_no=#{CI_apply_no}
 	</update>
+	
 </mapper>

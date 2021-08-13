@@ -17,7 +17,8 @@
 	</sql>
 
 	<select id="getList" resultType="com.hanium.domain.DAVO">
-		select * from DA;
+		select * from DA WHERE daUse = 1
+		ORDER BY daid;
 	</select>
 	<select id="getListWithPaging"
 		resultType="com.hanium.domain.DAVO">

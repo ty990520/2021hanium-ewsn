@@ -168,7 +168,7 @@
 		<br>
 		<div class="table_button_group">
 			<button type="button" class="btn btn-secondary">취소</button>
-			<button type="submit" class="btn btn-danger" onclick="register()">등록</button>
+			<button type="submit" class="btn btn-danger" >등록</button>
 
 		</div>
 	</form>
