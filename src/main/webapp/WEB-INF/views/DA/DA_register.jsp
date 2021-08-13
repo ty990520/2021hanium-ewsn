@@ -11,6 +11,10 @@
 </head>
 
 <style>
+body {
+	background-color: #dcdcdc4a;
+}
+
 .text_body {
 	width: 100%;
 	height: 1500px;
@@ -27,7 +31,8 @@
 	</h1>
 	<hr>
 	<br>
-	<form name=form action="register" method="post">
+	<form id="form" name=form action="register" method="post"
+		onsubmit="return false;">
 		<div class="register_box">
 			<div class="register_box_inner">
 				<div class="register_box_inner_detail">
@@ -167,12 +172,35 @@
 		<hr>
 		<br>
 		<div class="table_button_group">
-			<button type="button" class="btn btn-secondary">취소</button>
-			<button type="submit" class="btn btn-danger" >등록</button>
+
+			<button type="button" class="btn btn-secondary"
+				onclick="location.href='/DA/DA_list'">취소</button>
+			<button type="button" class="btn btn-danger" onclick="register()">등록</button>
 
 		</div>
 	</form>
 	<br> <br>
 </div>
+<script type="text/javascript"> 
+	var checkUnload = true;
+
+	window.addEventListener('beforeunload', (event) => { // 명세에 따라 preventDefault는 호출해야하며, 기본 동작을 방지합니다. 
+		if(checkUnload){
+			event.preventDefault(); // 대표적으로 Chrome에서는 returnValue 설정이 필요합니다. 
+			event.returnValue = ''; 
+	    }
+	}); 
+	function register(){
+		checkUnload = false;
+		if (confirm("자산정보를 등록하시겠습니까?") == true) {
+			alert("자산정보가 등록되었습니다.");
+			document.getElementById('form').submit();
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+</script>
 
 <%@include file="../includes/footer.jsp"%>

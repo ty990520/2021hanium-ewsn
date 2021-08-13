@@ -50,7 +50,7 @@ function checkExistReCode() {
       },
       success : function(response) {
          if (response=="exists") {
-            alert(response);
+           // alert(response);
             alert("이미 존재하는 대표코드입니다.");
             return false;
          }else if(response=="possible"){

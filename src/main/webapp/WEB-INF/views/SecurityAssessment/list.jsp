@@ -195,10 +195,7 @@
 	</form>
 
 </div>
-<br>
-<br>
-<br>
-<br>
+
 <script>
 	/* 단계적 보안성 평가 모달창 띄우는 코드 */
 	$('#myModal').on('shown.bs.modal', function() {
