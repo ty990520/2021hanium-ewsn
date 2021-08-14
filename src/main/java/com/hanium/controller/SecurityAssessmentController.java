@@ -64,15 +64,15 @@ public class SecurityAssessmentController {
 			log.info("register success");
 		return "redirect:/SecurityAssessment/list";
 	}
-	
+
 	@GetMapping("/registerDirect")
-	public String registerIndirect(@RequestParam("daid") String daid) {
+	public String registerIndirect(@RequestParam("daid") String daid, @RequestParam("type") String type) {
 		log.info(daid);
 		SecurityAssessmentVO sa = new SecurityAssessmentVO();
 		sa.setSA_daID(daid);
-		sa.setSA_IdentifyType("Direct DA");
+		sa.setSA_IdentifyType(type);
 		service.register(sa);
-		
+
 		service5.updateIdentifyType("Direct DA", daid);
 		return "redirect:/SecurityAssessment/list";
 	}
@@ -98,25 +98,26 @@ public class SecurityAssessmentController {
 
 	@GetMapping("/list")
 	public void list(Criteria cri, Model model) { // addAttribute메소드를 이용해 Model객체에 담아서 전달
-		log.info("[CONTROLLER]get list..."+service.count(cri));
-		//int num = service.getList(cri)
-		model.addAttribute("pageMaker", new PageDTO(cri,service.count(cri)));
+		log.info("[CONTROLLER]get list..." + service.count(cri));
+		// int num = service.getList(cri)
+		model.addAttribute("pageMaker", new PageDTO(cri, service.count(cri)));
 		model.addAttribute("decide", service.getList(cri)); // Model에 BoardVO의 목록을 담아서 전달
 		model.addAttribute("undecide", service.necessaryList());
 	}
 
-	/*modal search ajax*/
+	/* modal search ajax */
 	@GetMapping(value = "/search_keyword")
-	public @ResponseBody List<DAVO> search_keyword(@RequestParam("type") String type, @RequestParam("keyword") String keyword) {
-		log.info(type+ ":" +keyword);
+	public @ResponseBody List<DAVO> search_keyword(@RequestParam("type") String type,
+			@RequestParam("keyword") String keyword) {
+		log.info(type + ":" + keyword);
 		Criteria cri = new Criteria();
 		cri.setType(type);
 		cri.setKeyword(keyword);
-		List<DAVO> search_results= service.search_necessaryList(cri);
-		search_results.forEach(i->log.info(i));
+		List<DAVO> search_results = service.search_necessaryList(cri);
+		search_results.forEach(i -> log.info(i));
 		return search_results;
 	}
-	
+
 	@GetMapping("/get")
 	public void get(@RequestParam("SA_no") Long SA_no, Model model) {
 		log.info("[ CONTROLLER ] get ……..");
@@ -128,5 +129,48 @@ public class SecurityAssessmentController {
 		log.info("[ CONTROLLER ] modify:" + sa);
 		service.modify(sa);
 		return "success";
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/sortOut")
+	public String sortOut(@RequestParam("daid") String daid) {
+		daid = daid.toString();
+		DAVO da = service5.get(daid);
+
+		if (da.getDaSystemSW() != "Firmware") {
+			return "PC/Server";
+		} else { // 시스템sw유형 == firmware
+			if (da.getDaReportIF() != "Hard Wiring") {
+				if (da.getDaReportIF() == "Ethernet") {
+					return "Control Facilities HF"; // == Telecomm Facilities HF
+				} else if (da.getDaReportIF() == "Serial") {
+					if (da.getDaHMIType() == "External") {
+						if (da.getDaModifiableOperationData() == "Control Logic") {
+							return "Control Facilities MF"; // == Telecomm Facilities MF
+						} else if (da.getDaModifiableOperationData() == "Firmware Setting") {
+							return "Control Facilities LF"; // == Telecomm Facilities LF
+						}
+					} else if (da.getDaHMIType() == "Integral") {
+						if (da.getDaModifiableOperationData() == "Operaing parameter") {
+							return "Field Facilities MF";
+						} else if (da.getDaModifiableOperationData() == "Firmware Setting") {
+							return "Field Facilities HF";
+						}
+					}
+				}
+			} else { // 통신IF == Hard Wiring
+				if (da.getDaModifyOPAvailability() == "N") {
+					return "Field Facilities LF";
+				} else {
+					if (da.getDaModifiableOperationData() == "Operaing parameter") {
+						return "Field Facilities MF";
+					} else if (da.getDaModifiableOperationData() == "Firmware Setting") {
+						return "Field Facilities HF";
+					}
+				}
+			}
+		}
+		return "err";
+
 	}
 }

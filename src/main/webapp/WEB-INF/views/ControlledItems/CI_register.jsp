@@ -15,11 +15,19 @@ h6 {
 	color: navy;
 }
 
+.register_box_inner_detail2 {
+    display: flex;
+    align-items: center;
+}
+
 .register_box_inner {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+}
+.input_width100 {
+  width: fit-content;
 }
 </style>
 <form name=form action="register" method="post" onsubmit="return false;">
@@ -32,7 +40,7 @@ h6 {
 
 		<div class="register_box">
 			<div class="register_box_inner">
-				<div class="register_box_inner_detail">
+				<div class="register_box_inner_detail2">
 					<div class="register_box_inner_flexdirection_row">
 						<h6>통제항목분류&nbsp;&nbsp;&nbsp;</h6>
 						<select id="select1" onChange="chnQnaType()" name="CI_type">
@@ -55,7 +63,7 @@ h6 {
 					name="CI_content" placeholder="자산기능 입력"></textarea>
 				<br> <br>
 
-				<div class="register_box_inner_detail">
+				<div class="register_box_inner_detail2">
 					<div class="register_box_inner_flexdirection_row">
 						<h6 align="center">해당 통제항목이 적용되는 자산</h6>
 						<br> <input type="checkbox" name="CI_pcServer"
@@ -67,7 +75,7 @@ h6 {
 					</div>
 				</div>
 				<br> <br>
-				<div class="register_box_inner_detail">
+				<div class="register_box_inner_detail2">
 					<div class="register_box_inner_flexdirection_row">
 						<input type="checkbox" name="CI_CF_MF" class="checkbox_size">
 						Control Facilities MF DA &nbsp;<input type="checkbox"
@@ -76,7 +84,7 @@ h6 {
 					</div>
 				</div>
 				<br> <br>
-				<div class="register_box_inner_detail">
+				<div class="register_box_inner_detail2">
 					<div class="register_box_inner_flexdirection_row">
 						<input type="checkbox" name="CI_CF_HF" class="checkbox_size">
 						Control Facilities HF DA &nbsp; <input type="checkbox"
@@ -85,7 +93,7 @@ h6 {
 					</div>
 				</div>
 				<br> <br>
-				<div class="register_box_inner_detail">
+				<div class="register_box_inner_detail2">
 					<div class="register_box_inner_flexdirection_row">
 						<input type="checkbox" name="CI_FF_LF" class="checkbox_size">
 						Field Facilites LF DA &nbsp;&nbsp; <input type="checkbox"
@@ -109,14 +117,6 @@ h6 {
 	</div>
 </form>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
 <script>
 
