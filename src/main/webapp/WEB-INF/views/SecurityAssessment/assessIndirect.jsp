@@ -7,9 +7,14 @@
 <link rel="stylesheet" type="text/css"
 	href="../../../resources/css/register.css" />
 <style>
-body{
-	background-color:#dee2e673;
+.modal-body {
+	text-align: center;
 }
+
+body {
+	background-color: #dee2e673;
+}
+
 .process-image {
 	float: right;
 }
@@ -23,58 +28,12 @@ body{
 	width: 40%;
 	padding: 0 0 0 100px;
 }
+.text-danger {
+    width: 46px;
+    height: 46px;
+}
 </style>
-<script>
-	function btnActive() {
-		const target = document.getElementById('target_btn');
-		target.disabled = false;
-	}
 
-	function btnDisabled() {
-		const target = document.getElementById('target_btn');
-		target.disabled = true;
-	}
-
-	function btnActive2() {
-		const target = document.getElementById('target_btn2');
-		target.disabled = false;
-	}
-
-	function btnDisabled2() {
-		const target = document.getElementById('target_btn2');
-		target.disabled = true;
-	}
-
-	function btnActive3() {
-		const target = document.getElementById('target_btn3');
-		target.disabled = false;
-	}
-
-	function btnDisabled3() {
-		const target = document.getElementById('target_btn3');
-		target.disabled = true;
-	}
-
-	function btnActive4() {
-		const target = document.getElementById('target_btn4');
-		target.disabled = false;
-	}
-
-	function btnDisabled4() {
-		const target = document.getElementById('target_btn4');
-		target.disabled = true;
-	}
-
-	function btnActive5() {
-		const target = document.getElementById('target_btn5');
-		target.disabled = false;
-	}
-
-	function btnDisabled5() {
-		const target = document.getElementById('target_btn5');
-		target.disabled = true;
-	}
-</script>
 </head>
 <!-- Modal ep 확정인 경우 -->
 <div class="modal fade" id="staticBackdrop" data-backdrop="static"
@@ -91,17 +50,28 @@ body{
 				</button>
 			</div>
 			<div class="modal-body">
-				<span id="indirect_msg"> </span> <span id="indirect_msg2"><br>단계적
-					보안성 평가를 종료합니다.</span>
+				<p id="indirect_msg"></p>
+				<p id="indirect_msg2">단계적 보안성 평가를 종료합니다.</p>
+				<span id="spinner">
+					<div class="spinner-border text-danger" role="status">
+						<br> <span class="sr-only">Loading...</span>
+						 <br>
+					</div>
+				</span>
+				<img id="directda_img" src="../../../resources/img/confirmation.png" width="10%"">
+				<br><br>
+				<p id="indirect_msg3">분류가 완료될 때 까지 기다려주세요.</p>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-danger" id="modal_ok">평가 종료</button>
+				<button type="button" class="btn btn-danger" id="modal_ok">평가
+					종료</button>
 			</div>
 		</div>
 	</div>
 </div>
 <div class="right-container">
-	<form action="registerIndirect" method="post" onSubmit="return false;" id="form">
+	<form action="registerIndirect" method="post" onSubmit="return false;"
+		id="form">
 		<div class="register_box">
 			<h1>
 				<b>DA 단계적 보안성 평가</b> <img alt=""
@@ -111,8 +81,8 @@ body{
 			<hr>
 			<p style="color: gray;">Indirect자산을 평가하는 과정입니다.</p>
 			<br> <input type="hidden" value="<c:out value="${daid}"/>"
-				name="SA_daID" id="daid"/> <input type="hidden" value="Indirect DA"
-				name="SA_IdentifyType"/> <br>
+				name="SA_daID" id="daid" /> <input type="hidden" value="Indirect DA"
+				name="SA_IdentifyType" /> <br>
 			<h4>
 				<b>평가1) DA 손상시 안전시스템에 악영향</b>
 			</h4>
@@ -120,10 +90,9 @@ body{
 			<div class="register_box_inner_detail">
 				<div class="register_box_inner_flexdirection_row">
 					<p>안전/보안 관련 지시/경보 기능 수행 여부</p>
-					<input type="radio" name="group1" value="Yes"
-						checked="checked" class="radio_size"> Y &nbsp; <input
-						type="radio" name="group1" value="No" class="radio_size"
-						> N
+					<input type="radio" name="group1" value="Yes" checked="checked"
+						class="radio_size"> Y &nbsp; <input type="radio"
+						name="group1" value="No" class="radio_size"> N
 				</div>
 			</div>
 			<br>
@@ -137,7 +106,7 @@ body{
 			<div class="register_box_inner_detail">
 				<div class="register_box_inner_flexdirection_row">
 					<p>안전/보안 관련 지시/경보 기능 대체 수단 존재 여부</p>
-					<input type="radio" name="group2" value="Y" onclick="btnActive2()"
+					<input type="radio" name="group2" value="Y""
 						checked="checked" class="radio_size"> Y &nbsp; <input
 						type="radio" name="group2" value="N" class="radio_size"
 						onclick="btnDisabled2()"> N
@@ -161,7 +130,7 @@ body{
 			<div class="register_box_inner_detail">
 				<div class="register_box_inner_flexdirection_row">
 					<p>손상여부 탐지방법 존재 여부</p>
-					<input type="radio" name="group3" value="Y" onclick="btnActive3()"
+					<input type="radio" name="group3" value="Y" "
 						checked="checked" class="radio_size"> Y &nbsp; <input
 						type="radio" name="group3" value="N" class="radio_size"
 						onclick="btnDisabled3()"> N
@@ -188,7 +157,7 @@ body{
 			<div class="register_box_inner_detail">
 				<div class="register_box_inner_flexdirection_row">
 					<p>손상탐지 시간 내 평가 기준 존재 여부</p>
-					<input type="radio" name="group4" value="Y" onclick="btnActive4()"
+					<input type="radio" name="group4" value="Y" "
 						checked="checked" class="radio_size"> Y &nbsp; <input
 						type="radio" name="group4" value="N" class="radio_size"
 						onclick="btnDisabled4()"> N
@@ -215,7 +184,7 @@ body{
 			<div class="register_box_inner_detail">
 				<div class="register_box_inner_flexdirection_row">
 					<p>교육 훈련 계획 존재 여부</p>
-					<input type="radio" name="group5" value="Y" onclick="btnActive5()"
+					<input type="radio" name="group5" value="Y""
 						checked="checked" class="radio_size"> Y &nbsp; <input
 						type="radio" name="group5" value="N" class="radio_size"
 						onclick="btnDisabled5()"> N
@@ -242,11 +211,16 @@ body{
 	</form>
 </div>
 <script>
+$(document).ready(function(){
+	$("#directda_img").hide();
+});
 	/*indirect판별*/
 	
 	//판별 신호 flag1과 flag2를 모두 고려
 	var flag1 = 0;	// 안전/보안 관련 지시/경보 기능 수행 여부 고려 flag
 	var flag2 = 1;	// 그 외 조건 고려 flag
+	
+	var type="";
 	
 	function assess_btn(){
 		var daid = $('#daid').val();
@@ -276,21 +250,57 @@ body{
 
 		if (flag1 == 1) {
 			$("#indirect_msg").text("해당 자산은 Indirect DA입니다.");
+			$("#indirect_msg2").show();
+			$("#spinner").hide();
+			$("#indirect_msg3").hide();
+			$("#directda_img").hide();
 		} else if (flag1 != 1 && flag2 == 0) {
 			$("#indirect_msg").text("해당 자산은 Direct DA입니다.");
+			$("#indirect_msg2").text("Direct DA의 상세 분류를 진행하고 있습니다.");
+			$("#spinner").show();
+			$("#indirect_msg3").show();
+			sort_out(daid);
 		}else{
 			$("#indirect_msg").text("해당 자산은 Indirect DA입니다.");
+			$("#indirect_msg2").show();
+			$("#spinner").hide();
+			$("#indirect_msg3").hide();
+			$("#directda_img").hide();
 		}
 		
 		$("#modal_ok").on("click", function() {
 			if (flag1 == 1) {
 				document.getElementById('form').submit();
 			} else if (flag1 != 1 && flag2 == 0) {
-				location.href = "/SecurityAssessment/registerDirect?daid="+daid;
+				location.href = "/SecurityAssessment/registerDirect?daid="+daid+"&type="+type;
 			}else{
 				document.getElementById('form').submit();
 			}
 		});
 	}
 	
+	function sort_out(id) {
+		//alert(id);
+		$.ajax({
+			contentType : "application/json; charset=utf-8;",
+			type : "GET",
+			url : "/SecurityAssessment/sortOut", ///user/valid?userid=id
+			data : {
+				"daid" : id
+			},
+			success : function(response) {
+				type = response;
+				setTimeout(function(){
+					$(".text-danger").hide();
+					$("#directda_img").show();
+					$("#indirect_msg3").text("해당 자산의 상세 유형은 "+response+"입니다.");
+				},2200);
+			},
+			error : function(request, status, error) {
+				alert("code:" + request.status + "\n" + "message:"
+						+ request.responseText + "\n" + "error:" + error);
+			}
+		})
+	}
+
 </script>

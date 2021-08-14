@@ -222,7 +222,7 @@
 			location.href = "/SecurityAssessment/bop_detail?bopNo="+SA_no;
 		} else if (str[val] == "Indirect DA") {
 			location.href = "/SecurityAssessment/indirect_detail?indirectNo="+SA_no;
-		} else if (str[val] == "Direct DA") {
+		} else{
 			alert("Direct DA정보는 제공되지 않습니다.");
 		}
 
