@@ -19,11 +19,17 @@
 		indDmgDetectASContent,
 		indDmgDetectASDoc,
 		indETContent,
-		indETDoc
+		indETDoc,
+		indIWPerformCheck,
+		indIWAlterCheck,
+		indDmgDetectCheck,
+		indDmgDetectASCheck,
+		indETCheck
 		)
 		values (#{indirectNo}, #{indIWPerformContent}, #{indIWAlterContent},
 		#{indDmgDetectContent}, #{indDmgDetectDoc},#{indDmgDetectASContent},
-		#{indDmgDetectASDoc}, #{indETContent}, #{indETDoc})
+		#{indDmgDetectASDoc}, #{indETContent}, #{indETDoc}
+		,#{indIWPerformCheck},#{indIWAlterCheck},#{indDmgDetectCheck},#{indDmgDetectASCheck},#{indETCheck})
 	</insert>
 	<update id="update">
 		update Indirect

@@ -24,47 +24,7 @@ body{
 	padding: 0 0 0 100px;
 }
 </style>
-<script>
-	function btnActive() {
-		const target = document.getElementById('target_btn');
-		target.disabled = false;
-	}
 
-	function btnDisabled() {
-		const target = document.getElementById('target_btn');
-		target.disabled = true;
-	}
-
-	function btnActive2() {
-		const target = document.getElementById('target_btn2');
-		target.disabled = false;
-	}
-
-	function btnDisabled2() {
-		const target = document.getElementById('target_btn2');
-		target.disabled = true;
-	}
-
-	function btnActive3() {
-		const target = document.getElementById('target_btn3');
-		target.disabled = false;
-	}
-
-	function btnDisabled3() {
-		const target = document.getElementById('target_btn3');
-		target.disabled = true;
-	}
-
-	function btnActive4() {
-		const target = document.getElementById('target_btn4');
-		target.disabled = false;
-	}
-
-	function btnDisabled4() {
-		const target = document.getElementById('target_btn4');
-		target.disabled = true;
-	}
-</script>
 </head>
 <!-- Modal ep 확정인 경우 -->
 <div class="modal fade" id="staticBackdrop" data-backdrop="static"
@@ -114,10 +74,10 @@ body{
 
 				<div class="register_box_inner_flexdirection_row">
 					<p>1-1. DA 손상시 안전시스템에 악영향 여부</p>
-					<input type="radio" name="group1" value="Y" onclick="btnDisabled()"
+					<input type="radio" name="group1" value="Y"
 						 class="radio_size"> Y &nbsp; <input
 						type="radio" name="group1" value="N" class="radio_size" checked="checked"
-						onclick="btnActive()"> N
+						> N
 				</div>
 			</div>
 			<br>
@@ -137,10 +97,10 @@ body{
 			<div class="register_box_inner_detail">
 				<div class="register_box_inner_flexdirection_row">
 					<p>2-1. 발전정지 유발 여부</p>
-					<input type="radio" name="group2" value="Y" onclick="btnActive2()"
+					<input type="radio" name="group2" value="Y"
 						checked="checked" class="radio_size"> Y &nbsp; <input
 						type="radio" name="group2" value="N" class="radio_size"
-						onclick="btnDisabled2()"> N
+					> N
 				</div>
 			</div>
 			<br>
@@ -162,10 +122,10 @@ body{
 				<div class="register_box_inner_flexdirection_row">
 
 					<p>3-1. 발전소 상태 정보제공 여부</p>
-					<input type="radio" name="group3" value="Y" onclick="btnActive3()"
+					<input type="radio" name="group3" value="Y"
 						checked="checked" class="radio_size"> Y &nbsp; <input
 						type="radio" name="group3" value="N" class="radio_size"
-						onclick="btnDisabled3()"> N
+						> N
 				</div>
 			</div>
 			<br>
@@ -186,10 +146,10 @@ body{
 			<div class="register_box_inner_detail">
 				<div class="register_box_inner_flexdirection_row">
 					<p>4-1. 심층 방호 관련 여부</p>
-					<input type="radio" name="group4" value="Y" onclick="btnDisabled4()"
+					<input type="radio" name="group4" value="Y"
 						class="radio_size"> Y &nbsp; <input
 						type="radio" name="group4" value="N" class="radio_size" checked="checked" 
-						onclick="btnActive4()"> N
+						> N
 				</div>
 			</div>
 			<br>

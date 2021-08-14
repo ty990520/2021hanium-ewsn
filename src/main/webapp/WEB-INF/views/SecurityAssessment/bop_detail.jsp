@@ -54,5 +54,5 @@
 		</div>
 		<br> <br>
 		<!--right-container-->
-	</div><br><br><br><br><br>
+	</div>
 <%@include file="../includes/footer.jsp"%>
