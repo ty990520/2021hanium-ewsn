@@ -25,12 +25,7 @@
 				</th>
 				<th class="table-light">수행 여부</th>
 				<td colspan="3">
-					<c:if test="${Indirect.indIWPerformContent == null}">
-						<c:out value="N" />
-					</c:if>
-					<c:if test="${Indirect.indIWPerformContent != null}">
-						<c:out value="Y" />
-					</c:if>
+					<c:out value='${Indirect.indIWPerformCheck eq true? "Y":"N"}'/>
 				</td>
 			</tr>
 			<tr>
@@ -45,12 +40,7 @@
 			<tr>
 				<th class="table-light">대체 수단 존재 여부</th>
 				<td colspan="3">
-					<c:if test="${Indirect.indIWAlterContent == ''}">
-						<c:out value="N" />
-					</c:if>
-					<c:if test="${Indirect.indIWAlterContent != ''}">
-						<c:out value="Y" />
-					</c:if>
+					<c:out value='${Indirect.indIWAlterCheck eq true? "Y":"N"}'/>
 				</td>
 			</tr>
 			<tr>
@@ -66,12 +56,7 @@
 				<th class="table-light" rowspan="3">손상여부 탐지방법</th>
 				<th class="table-light">존재 여부</th>
 				<td colspan="3">
-					<c:if test="${Indirect.indDmgDetectContent == '' && Indirect.indDmgDetectDoc == ''}">
-						<c:out value="N" />
-					</c:if>
-					<c:if test="${Indirect.indDmgDetectContent != '' && Indirect.indDmgDetectDoc != ''}">
-						<c:out value="Y" />
-					</c:if>
+					<c:out value='${Indirect.indDmgDetectCheck eq true? "Y":"N"}'/>
 				</td>
 			</tr>
 			<tr>
@@ -97,12 +82,7 @@
 				</th>
 				<th class="table-light">존재 여부</th>
 				<td colspan="3">
-					<c:if test="${Indirect.indDmgDetectASContent == '' && Indirect.indDmgDetectASDoc == ''}">
-						<c:out value="N" />
-					</c:if>
-					<c:if test="${Indirect.indDmgDetectASContent != '' && Indirect.indDmgDetectASDoc != ''}">
-						<c:out value="Y" />
-					</c:if>
+					<c:out value='${Indirect.indDmgDetectASCheck eq true? "Y":"N"}'/>
 				</td>
 			</tr>
 			<tr>
@@ -127,12 +107,7 @@
 				<th class="table-light" rowspan="3">교육 훈련</th>
 				<th class="table-light">계획 존재 여부</th>
 				<td colspan="3">
-					<c:if test="${Indirect.indETContent == '' && Indirect.indETDoc == ''}">
-						<c:out value="N" />
-					</c:if>
-					<c:if test="${Indirect.indETContent != '' && Indirect.indETDoc != ''}">
-						<c:out value="Y" />
-					</c:if>
+						<c:out value='${Indirect.indETCheck eq true? "Y":"N"}'/>
 				</td>
 			</tr>
 			<tr>
@@ -154,7 +129,7 @@
 			</tr>
 		</table>
 	</div>
-	<br> <br> <br> <br> <br> <br>
+
 	<!--right-container-->
 </div>
 <%@include file="../includes/footer.jsp"%>

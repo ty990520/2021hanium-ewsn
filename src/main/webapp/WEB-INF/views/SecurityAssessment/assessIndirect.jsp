@@ -28,9 +28,14 @@ body {
 	width: 40%;
 	padding: 0 0 0 100px;
 }
+
 .text-danger {
-    width: 46px;
-    height: 46px;
+	width: 46px;
+	height: 46px;
+}
+
+p#indirect_msg3 {
+	margin: 20px;
 }
 </style>
 
@@ -54,12 +59,11 @@ body {
 				<p id="indirect_msg2">단계적 보안성 평가를 종료합니다.</p>
 				<span id="spinner">
 					<div class="spinner-border text-danger" role="status">
-						<br> <span class="sr-only">Loading...</span>
-						 <br>
+						<br> <span class="sr-only">Loading...</span> <br>
 					</div>
-				</span>
-				<img id="directda_img" src="../../../resources/img/confirmation.png" width="10%"">
-				<br><br>
+				</span> <img id="directda_img"
+					src="../../../resources/img/confirmation.png" width="10%"">
+
 				<p id="indirect_msg3">분류가 완료될 때 까지 기다려주세요.</p>
 			</div>
 			<div class="modal-footer">
@@ -81,8 +85,8 @@ body {
 			<hr>
 			<p style="color: gray;">Indirect자산을 평가하는 과정입니다.</p>
 			<br> <input type="hidden" value="<c:out value="${daid}"/>"
-				name="SA_daID" id="daid" /> <input type="hidden" value="Indirect DA"
-				name="SA_IdentifyType" /> <br>
+				name="SA_daID" id="daid" /> <input type="hidden"
+				value="Indirect DA" name="SA_IdentifyType" /> <br>
 			<h4>
 				<b>평가1) DA 손상시 안전시스템에 악영향</b>
 			</h4>
@@ -90,9 +94,9 @@ body {
 			<div class="register_box_inner_detail">
 				<div class="register_box_inner_flexdirection_row">
 					<p>안전/보안 관련 지시/경보 기능 수행 여부</p>
-					<input type="radio" name="group1" value="Yes" checked="checked"
+					<input type="radio" name="group1" value="Y" checked="checked"
 						class="radio_size"> Y &nbsp; <input type="radio"
-						name="group1" value="No" class="radio_size"> N
+						name="group1" value="N" class="radio_size"> N
 				</div>
 			</div>
 			<br>
@@ -106,10 +110,10 @@ body {
 			<div class="register_box_inner_detail">
 				<div class="register_box_inner_flexdirection_row">
 					<p>안전/보안 관련 지시/경보 기능 대체 수단 존재 여부</p>
-					<input type="radio" name="group2" value="Y""
+					<input type="radio" name="group2" value="Y"
 						checked="checked" class="radio_size"> Y &nbsp; <input
-						type="radio" name="group2" value="N" class="radio_size"
-						onclick="btnDisabled2()"> N
+						type="radio" name="group2" value="N" class="radio_size">
+					N
 				</div>
 			</div>
 			<br>
@@ -130,10 +134,10 @@ body {
 			<div class="register_box_inner_detail">
 				<div class="register_box_inner_flexdirection_row">
 					<p>손상여부 탐지방법 존재 여부</p>
-					<input type="radio" name="group3" value="Y" "
+					<input type="radio" name="group3" value="Y"
 						checked="checked" class="radio_size"> Y &nbsp; <input
-						type="radio" name="group3" value="N" class="radio_size"
-						onclick="btnDisabled3()"> N
+						type="radio" name="group3" value="N" class="radio_size">
+					N
 				</div>
 			</div>
 			<br>
@@ -157,10 +161,10 @@ body {
 			<div class="register_box_inner_detail">
 				<div class="register_box_inner_flexdirection_row">
 					<p>손상탐지 시간 내 평가 기준 존재 여부</p>
-					<input type="radio" name="group4" value="Y" "
+					<input type="radio" name="group4" value="Y"
 						checked="checked" class="radio_size"> Y &nbsp; <input
-						type="radio" name="group4" value="N" class="radio_size"
-						onclick="btnDisabled4()"> N
+						type="radio" name="group4" value="N" class="radio_size">
+					N
 				</div>
 			</div>
 			<br>
@@ -184,10 +188,10 @@ body {
 			<div class="register_box_inner_detail">
 				<div class="register_box_inner_flexdirection_row">
 					<p>교육 훈련 계획 존재 여부</p>
-					<input type="radio" name="group5" value="Y""
+					<input type="radio" name="group5" value="Y"
 						checked="checked" class="radio_size"> Y &nbsp; <input
 						type="radio" name="group5" value="N" class="radio_size"
-						onclick="btnDisabled5()"> N
+						> N
 				</div>
 			</div>
 			<br>
@@ -200,7 +204,11 @@ body {
 				<textarea cols="50" class="input_width100" rows="5"
 					placeholder="교육 훈련 근거 문서 입력" name="indETDoc"></textarea>
 			</fieldset>
-			<br> <br>
+			<br> <br> <input type="hidden" name="checkArray" value="1">
+			<input type="hidden" name="checkArray" value="2"> <input
+				type="hidden" name="checkArray" value="3"> <input
+				type="hidden" name="checkArray" value="4"> <input
+				type="hidden" name="checkArray" value="5">
 			<div class="table_button_group">
 				<button type="button" class="btn btn-danger" data-toggle="modal"
 					data-target="#staticBackdrop" onclick="assess_btn()">등록</button>
@@ -223,6 +231,32 @@ $(document).ready(function(){
 	var type="";
 	
 	function assess_btn(){
+		/*y,n값 추출*/
+		var groups_elements=["group1","group2","group3","group4","group5"];
+		
+		for(var i=0; i<groups_elements.length; i++) {
+			groups_elements[i] = document.getElementsByName(groups_elements[i]);
+		}
+		
+		var group_items = new Array(); // 여기에 선택된 radio 버튼의 값이 담기게 된다.
+		for(var i=0; i<groups_elements.length; i++) {
+		    for(var j=0; j<groups_elements[i].length; j++)
+				if(groups_elements[i][j].checked) {
+					group_items[i] = groups_elements[i][j].value;
+		    }
+		}
+		
+		console.log(group_items)
+		
+		//var checkArray=new Array();
+		var checkArray = document.getElementsByName("checkArray");
+		for(var i=0; i<groups_elements.length; i++) {
+			checkArray[i].value = group_items[i];
+			console.log(checkArray[i].value);
+			//checkArray[i].value = group_items[i];
+		}
+		//console.log(document.getElementsByName("checkArray"));
+		
 		var daid = $('#daid').val();
 		console.log(daid);
 		
@@ -235,8 +269,8 @@ $(document).ready(function(){
 		  
 		group1NodeList.forEach((node) => {
 		    if(node.checked)  {
-		    	if(node.value=='No')
-		     flag1=1;	//무조건 indirect
+		    	if(node.value=='N')
+		     		flag1=1;	//무조건 indirect
 		    }
 		  }) 
 		  
@@ -250,7 +284,7 @@ $(document).ready(function(){
 
 		if (flag1 == 1) {
 			$("#indirect_msg").text("해당 자산은 Indirect DA입니다.");
-			$("#indirect_msg2").show();
+			$("#indirect_msg2").text("단계적 보안성 평가를 종료합니다.");
 			$("#spinner").hide();
 			$("#indirect_msg3").hide();
 			$("#directda_img").hide();
@@ -262,7 +296,7 @@ $(document).ready(function(){
 			sort_out(daid);
 		}else{
 			$("#indirect_msg").text("해당 자산은 Indirect DA입니다.");
-			$("#indirect_msg2").show();
+			$("#indirect_msg2").text("단계적 보안성 평가를 종료합니다.");
 			$("#spinner").hide();
 			$("#indirect_msg3").hide();
 			$("#directda_img").hide();

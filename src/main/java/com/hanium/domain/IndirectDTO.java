@@ -3,7 +3,7 @@ package com.hanium.domain;
 import lombok.Data;
 
 @Data
-public class IndirectVO {
+public class IndirectDTO {
 	private Long indirectNo;
 	private String indIWPerformContent;
 	private String indIWAlterContent;
@@ -13,10 +13,5 @@ public class IndirectVO {
 	private String indDmgDetectASDoc;
 	private String indETContent;
 	private String indETDoc;
-	private boolean indIWPerformCheck;
-	private boolean indIWAlterCheck;
-	private boolean indDmgDetectCheck;
-	private boolean indDmgDetectASCheck;
-	private boolean indETCheck;
-	
+	private String[] checkArray;
 }

@@ -14,6 +14,7 @@ import com.hanium.domain.BOPVO;
 import com.hanium.domain.Criteria;
 import com.hanium.domain.DAVO;
 import com.hanium.domain.EPVO;
+import com.hanium.domain.IndirectDTO;
 import com.hanium.domain.IndirectVO;
 import com.hanium.domain.PageDTO;
 import com.hanium.domain.SecurityAssessmentVO;
@@ -59,8 +60,39 @@ public class SecurityAssessmentController {
 	}
 
 	@PostMapping("/registerIndirect")
-	public String registerIndirect(SecurityAssessmentVO sa, IndirectVO ind) {
-		if (service.registerIndirect(sa, ind))
+	public String registerIndirect(SecurityAssessmentVO sa, IndirectDTO ind) {
+		IndirectVO realInd = new IndirectVO();
+		
+		realInd.setIndirectNo(ind.getIndirectNo());
+		realInd.setIndIWPerformContent(ind.getIndIWPerformContent());
+		realInd.setIndIWAlterContent(ind.getIndIWAlterContent());
+		realInd.setIndDmgDetectContent(ind.getIndDmgDetectContent());
+		realInd.setIndDmgDetectDoc(ind.getIndDmgDetectDoc());
+		realInd.setIndDmgDetectASContent(ind.getIndDmgDetectASContent());
+		realInd.setIndDmgDetectASDoc(ind.getIndDmgDetectASDoc());
+		realInd.setIndETContent(ind.getIndETContent());
+		realInd.setIndETDoc(ind.getIndETDoc());
+		
+		boolean result[]= {false,false,false,false,false};
+		//log.info(ind.getCheckArray().length);
+		for(int i=0; i<ind.getCheckArray().length;i++) {
+			if(ind.getCheckArray()[i].equals("Y")) {
+				result[i] = true;
+			}	
+			else
+				result[i]= false;
+			log.info(result[i]);
+		}
+		
+		realInd.setIndIWPerformCheck(result[0]);
+		realInd.setIndIWAlterCheck(result[1]);
+		realInd.setIndDmgDetectCheck(result[2]);
+		realInd.setIndDmgDetectASCheck(result[3]);
+		realInd.setIndETCheck(result[4]);
+		
+		//return "ok";
+		
+		if (service.registerIndirect(sa, realInd))
 			log.info("register success");
 		return "redirect:/SecurityAssessment/list";
 	}
@@ -131,40 +163,47 @@ public class SecurityAssessmentController {
 		return "success";
 	}
 
+	/* direct da 상세유형 분류 */
 	@ResponseBody
 	@RequestMapping(value = "/sortOut")
 	public String sortOut(@RequestParam("daid") String daid) {
 		daid = daid.toString();
 		DAVO da = service5.get(daid);
 
-		if (da.getDaSystemSW() != "Firmware") {
+		log.info(da.getDaSystemSW().toString());
+		log.info(da.getDaReportIF().toString());
+		log.info(da.getDaHMIType().toString());
+		log.info(da.getDaModifiableOperationData().toString());
+		log.info(da.getDaModifyOPAvailability().toString());
+
+		if (!da.getDaSystemSW().equals("Firmware")) {
 			return "PC/Server";
 		} else { // 시스템sw유형 == firmware
-			if (da.getDaReportIF() != "Hard Wiring") {
-				if (da.getDaReportIF() == "Ethernet") {
+			if (!da.getDaReportIF().equals("Hard Wiring")) {
+				if (da.getDaReportIF().equals("Ethernet")) {
 					return "Control Facilities HF"; // == Telecomm Facilities HF
-				} else if (da.getDaReportIF() == "Serial") {
-					if (da.getDaHMIType() == "External") {
-						if (da.getDaModifiableOperationData() == "Control Logic") {
+				} else if (da.getDaReportIF().equals("Serial")) {
+					if (da.getDaHMIType().equals("External")) {
+						if (da.getDaModifiableOperationData().equals("Control Logic")) {
 							return "Control Facilities MF"; // == Telecomm Facilities MF
-						} else if (da.getDaModifiableOperationData() == "Firmware Setting") {
+						} else if (da.getDaModifiableOperationData().equals("Firmware Setting")) {
 							return "Control Facilities LF"; // == Telecomm Facilities LF
 						}
-					} else if (da.getDaHMIType() == "Integral") {
-						if (da.getDaModifiableOperationData() == "Operaing parameter") {
+					} else if (da.getDaHMIType().equals("Integral")) {
+						if (da.getDaModifiableOperationData().equals("Operaing parameter")) {
 							return "Field Facilities MF";
-						} else if (da.getDaModifiableOperationData() == "Firmware Setting") {
+						} else if (da.getDaModifiableOperationData().equals("Firmware Setting")) {
 							return "Field Facilities HF";
 						}
 					}
 				}
 			} else { // 통신IF == Hard Wiring
-				if (da.getDaModifyOPAvailability() == "N") {
+				if (da.getDaModifyOPAvailability().equals("N")) {
 					return "Field Facilities LF";
 				} else {
-					if (da.getDaModifiableOperationData() == "Operaing parameter") {
+					if (da.getDaModifiableOperationData().equals("Operaing parameter")) {
 						return "Field Facilities MF";
-					} else if (da.getDaModifiableOperationData() == "Firmware Setting") {
+					} else if (da.getDaModifiableOperationData().equals("Firmware Setting")) {
 						return "Field Facilities HF";
 					}
 				}

@@ -24,37 +24,7 @@ body{
 	padding: 0 0 0 100px;
 }
 </style>
-<script>
-	function btnActive() {
-		const target = document.getElementById('target_btn');
-		target.disabled = false;
-	}
 
-	function btnDisabled() {
-		const target = document.getElementById('target_btn');
-		target.disabled = true;
-	}
-
-	function btnActive2() {
-		const target = document.getElementById('target_btn2');
-		target.disabled = false;
-	}
-
-	function btnDisabled2() {
-		const target = document.getElementById('target_btn2');
-		target.disabled = true;
-	}
-
-	function btnActive3() {
-		const target = document.getElementById('target_btn3');
-		target.disabled = false;
-	}
-
-	function btnDisabled3() {
-		const target = document.getElementById('target_btn3');
-		target.disabled = true;
-	}
-</script>
 </head>
 <!-- Modal ep 확정인 경우 -->
 <div class="modal fade" id="staticBackdrop" data-backdrop="static"
@@ -104,9 +74,9 @@ body{
 				<div class="register_box_inner_flexdirection_row">
 					<p>1-1. 대체 수단 존재 여부</p>
 					<input type="radio" name="group1" value="Y" class="radio_size"
-						onclick="btnActive()" checked="checked"> Y &nbsp; <input
+						 checked="checked"> Y &nbsp; <input
 						type="radio" name="group1" value="N" class="radio_size"
-						onclick="btnDisabled()"> N
+					> N
 				</div>
 			</div>
 			<br>
@@ -133,9 +103,9 @@ body{
 				<div class="register_box_inner_flexdirection_row">
 					<p>2-1. 손상여부 탐지방법 존재 여부</p>
 					<input type="radio" name="group2" value="Y" class="radio_size"
-						onclick="btnActive2()" checked="checked"> Y &nbsp; <input
+						 checked="checked"> Y &nbsp; <input
 						type="radio" name="group2" value="N" class="radio_size"
-						onclick="btnDisabled2()"> N
+						> N
 				</div>
 			</div>
 			<br>
@@ -158,9 +128,9 @@ body{
 				<div class="register_box_inner_flexdirection_row">
 					<p>3-1. 교육훈련 계획 존재여부</p>
 					<input type="radio" name="group3" value="Y" class="radio_size"
-						onclick="btnActive3()" checked="checked"> Y &nbsp; <input
+					checked="checked"> Y &nbsp; <input
 						type="radio" name="group3" value="N" class="radio_size"
-						onclick="btnDisabled3()"> N
+					> N
 				</div>
 			</div>
 			<br>
