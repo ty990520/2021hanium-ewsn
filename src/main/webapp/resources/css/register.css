@@ -3,6 +3,19 @@
 body{
 	background-color: white;
 }
+select {
+     width:200px;
+     height:40px;
+     padding: 5px;
+   border: 1px solid #999;
+     font-family:'Nanumgothic';
+     background:url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%;
+     border-radius:3px;
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     appearance : none;
+}
+
 .register_box {
 	padding-bottom: 30px;
 	/*border-style: solid;*/

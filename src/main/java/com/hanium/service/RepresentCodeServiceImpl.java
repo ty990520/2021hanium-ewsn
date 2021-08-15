@@ -55,4 +55,12 @@ public class RepresentCodeServiceImpl implements RepresentCodeService{
 			return false;
 	}
 
+	@Override
+	public boolean checkExistDecode(String R_code, String D_code) {
+		if(mapper.checkExistDecode(R_code, D_code) != 0)
+			return true;
+		else 
+			return false;
+	}
+
 }

@@ -16,8 +16,8 @@ h6 {
 }
 
 .register_box_inner_detail2 {
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 }
 
 .register_box_inner {
@@ -26,11 +26,12 @@ h6 {
 	align-items: center;
 	flex-direction: column;
 }
+
 .input_width100 {
-  width: fit-content;
+	width: fit-content;
 }
 </style>
-<form name=form action="register" method="post" onsubmit="return false;">
+<form name=form action="register" method="post" id="form">
 	<div class="right-container">
 		<h1>
 			<b>사이버보안 통제항목 관리 등록 내용</b>
@@ -47,11 +48,12 @@ h6 {
 							<option value="기술적">기술적</option>
 							<option value="운영적">운영적</option>
 							<option value="관리적">관리적</option>
+							<option value="Baseline 보호기준">Baseline 보호기준</option>
 						</select>
 					</div>
 					<div class="register_box_inner_flexdirection_row">
 						<h6>&nbsp;&nbsp;&nbsp;&nbsp;통제항목 상세분류</h6>
-						<select id="schQnaType" name="CI_detailType">
+						&nbsp;&nbsp; <select id="schQnaType" name="CI_detailType">
 						</select>
 					</div>
 
@@ -66,39 +68,55 @@ h6 {
 				<div class="register_box_inner_detail2">
 					<div class="register_box_inner_flexdirection_row">
 						<h6 align="center">해당 통제항목이 적용되는 자산</h6>
-						<br> <input type="checkbox" name="CI_pcServer"
-							class="checkbox_size"> PC/Server &nbsp; <input
-							type="checkbox" name="CI_BOP" class="checkbox_size"> BOP
-						DA &nbsp; <input type="checkbox" name="CI_indirect" value="1"
-							class="checkbox_size"> Indirect DA <input type="checkbox"
-							name="CI_EP" class="checkbox_size"> EP DA &nbsp;
+						<br> <input type="checkbox" onchange="YnCheck(this)"
+							class="checkSelect" value="CI_pcServer"> PC/Server &nbsp;
+						<input type="hidden" name="CI_pcServer" value="N" id="CI_pcServer">
+
+						<input type="checkbox" onchange="YnCheck(this)"
+							class="checkSelect" value="CI_BOP"> BOP DA &nbsp; <input
+							type="hidden" name="CI_BOP" value="N" id="CI_BOP"> <input
+							type="checkbox" onchange="YnCheck(this)" class="checkSelect"
+							value="CI_indirect"> Indirect DA <input type="hidden"
+							name="CI_indirect" value="N" id="CI_indirect"> <input
+							type="hidden" name="CI_EP" value="N" id="CI_EP"> <input
+							type="checkbox" onchange="YnCheck(this)" class="checkSelect"
+							value="CI_EP"> EP DA &nbsp;
 					</div>
 				</div>
 				<br> <br>
 				<div class="register_box_inner_detail2">
 					<div class="register_box_inner_flexdirection_row">
-						<input type="checkbox" name="CI_CF_MF" class="checkbox_size">
-						Control Facilities MF DA &nbsp;<input type="checkbox"
-							name="CI_CF_LF" class="checkbox_size"> Control Facilities
-						LF DA
+						<input type="hidden" name="CI_CF_MF" value="N" id="CI_CF_MF">
+						<input type="checkbox" onchange="YnCheck(this)"
+							class="checkSelect" value="CI_CF_MF"> Control Facilities
+						MF DA &nbsp; <input type="hidden" name="CI_CF_LF" value="N"
+							id="CI_CF_LF"> <input type="checkbox"
+							onchange="YnCheck(this)" class="checkSelect" value="CI_CF_LF">
+						Control Facilities LF DA
 					</div>
 				</div>
 				<br> <br>
 				<div class="register_box_inner_detail2">
 					<div class="register_box_inner_flexdirection_row">
-						<input type="checkbox" name="CI_CF_HF" class="checkbox_size">
-						Control Facilities HF DA &nbsp; <input type="checkbox"
-							name="CI_FF_MF" class="checkbox_size"> Field Facilites MF
-						DA
+						<input type="hidden" name="CI_CF_HF" value="N" id="CI_CF_HF">
+						<input type="checkbox" onchange="YnCheck(this)"
+							class="checkSelect" value="CI_CF_HF"> Control Facilities
+						HF DA &nbsp; <input type="hidden" name="CI_FF_MF" value="N"
+							id="CI_FF_MF"> <input type="checkbox"
+							onchange="YnCheck(this)" class="checkSelect" value="CI_FF_MF">
+						Field Facilites MF DA
 					</div>
 				</div>
 				<br> <br>
 				<div class="register_box_inner_detail2">
 					<div class="register_box_inner_flexdirection_row">
-						<input type="checkbox" name="CI_FF_LF" class="checkbox_size">
-						Field Facilites LF DA &nbsp;&nbsp; <input type="checkbox"
-							name="CI_FF_HF" class="checkbox_size">Field Facilites HF
-						DA
+						<input type="hidden" name="CI_FF_LF" value="N" id="CI_FF_LF">
+						<input type="checkbox" onchange="YnCheck(this)"
+							class="checkSelect" value="CI_FF_LF"> Field Facilites LF
+						DA &nbsp;&nbsp; <input type="hidden" name="CI_FF_HF" value="N"
+							id="CI_FF_HF"> <input type="checkbox"
+							onchange="YnCheck(this)" class="checkSelect" value="CI_FF_HF">
+						Field Facilites HF DA
 					</div>
 				</div>
 				<br> <br>
@@ -110,7 +128,7 @@ h6 {
 		<br>
 		<div class="table_button_group">
 			<button type="button" class="btn btn-secondary">취소</button>
-			<button type="button" class="btn btn-danger" onclick="Ycheck()">등록</button>
+			<button type="submit" class="btn btn-danger">등록</button>
 
 		</div>
 		<br> <br>
@@ -119,24 +137,40 @@ h6 {
 
 
 <script>
+	/* 다중 체크박스 처리 */
+	$(document)
+			.ready(
+					function() {
+						$('#schQnaType').append(
+								"<option value='접근통제' >접근통제</option>'");
+						$('#schQnaType').append(
+								"<option value='감사 및 책임' >감사 및 책임 </option>'");
+						$('#schQnaType')
+								.append(
+										"<option value='시스템 및 통신의 보호' >시스템 및 통신의 보호 </option>'");
+						$('#schQnaType').append(
+								"<option value='식별 및 인증' >식별 및 인증 </option>'");
+						$('#schQnaType')
+								.append(
+										"<option value='시스템 보안 강화' >시스템 보안 강화 </option>'");
+					});
 
+	function YnCheck(obj) {
 
-function Ycheck(){
-	var obj = $("[name=SEQ_CHK]");
-    var chkArray = new Array(); // 배열 선언
+		//console.log(obj.value);
+		var checked = obj.checked;
+		var str = "#" + obj.value;
+		console.log($(str).val());
 
-    $('input:checkbox[name=SEQ_CHK]:checked').each(function() { // 체크된 체크박스의 value 값을 가지고 온다.
-        chkArray.push(this.value);
-    });
-    $('#hiddenValue').val(chkArray);
-    
-    alert($('#hiddenValue').val()); // 아래 체크박스가 모두 체크되어 있다면 1,2,3,4 가 출력 된다.
-}  ;
+		if (checked) {
+			$(str).val("Y");
+		} else {
+			$(str).val("N");
+		}
 
-	$(document).ready(function() {
-		chnQnaType()
-	});
+	};
 
+	/* select 선택 시 변환 처리  */
 	function chnQnaType() {
 		var type = document.getElementById("select1");
 
@@ -173,8 +207,27 @@ function Ycheck(){
 					"<option value='시스템 및 서비스 획득' >시스템 및 서비스 획득 </option>'");
 			$('#schQnaType').append("<option value='위험 관리 ' >위험 관리 </option>'");
 			document.getElementById("schQnaType").style.display = "";
+		} else if (type == 'Baseline 보호기준') { // 보호기
+			console.log('Baseline 보호기준');
+			$('#schQnaType')
+					.append(
+							"<option value='보호구역 위치 및 물리적 보호 조치 적용' >보호구역 위치 및 물리적 보호 조치 적용 </option>'");
+			$('#schQnaType').append(
+					"<option value='무선연결 사용 금지' >무선연결 사용 금지</option>'");
+			$('#schQnaType')
+					.append(
+							"<option value='필수적인 통신 연결 외 통제 조치' >필수적인 통신 연결 외 통제 조치 </option>'");
+			$('#schQnaType').append(
+					"<option value='휴대용 매체 사용 통제' >휴대용 매체 사용 통제 </option>'");
+			$('#schQnaType')
+					.append(
+							"<option value='설계 변경 전 사이버보안 측면 평가 수행 ' >설계 변경 전 사이버보안 측면 평가 수행</option>'");
+			$('#schQnaType').append(
+					"<option value='주기적 기능 시험 수행' >주기적 기능 시험 수행  </option>'");
+			$('#schQnaType')
+					.append(
+							"<option value='주기적 사이버보안 평가 수행' >주기적 사이버보안 평가 수행  </option>'");
 		}
-
 	}
 </script>
 
