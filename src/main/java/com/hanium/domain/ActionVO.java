@@ -1,5 +1,7 @@
 package com.hanium.domain;
 
+import java.util.Date;
+
 import lombok.Data;
 
 @Data
@@ -10,5 +12,6 @@ public class ActionVO {
 	private String AC_dept; //조치부서
 	private String AC_manager; //조치담당자 
 	private String AC_type; //조치구분 
+
 
 }

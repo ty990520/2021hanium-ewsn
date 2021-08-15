@@ -59,19 +59,16 @@
 	<br><br><br><br><br>
 	<br>
 </div>
+		<br><br><br><br><br>
+		<br><br><br><br><br>
 <script>
    $('#myModal').on('shown.bs.modal', function() {
       $('#myInput').trigger('focus')
    })
-   	function get(AR_no) {
+   	function get(AC_no) {
 		//alert(SA_no);
 		location.href = "/Action/get?AC_no="+AC_no;
-
 	}
 </script>
-
-
-
-
 
 <%@include file="../includes/footer.jsp"%>
