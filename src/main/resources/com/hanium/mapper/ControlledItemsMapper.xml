@@ -6,9 +6,11 @@
 	<select id="getList" resultType="com.hanium.domain.ControlledItemsVO">
 		select * from ControlledItems;
 	</select>
+	<select id="getCIDetailList" resultType="com.hanium.domain.ControlledItemsVO">
+		select * from ControlledItems where CI_detail_id like LIKE CONCAT(#{number}, '%')
+	</select>
 	<select id="read" resultType="com.hanium.domain.UserVO">
-		select * from ControlledItems where CI_detail_id =
-		#{CI_detail_id}
+		select * from ControlledItems where CI_detail_id = #{CI_detail_id}
 	</select>
 	<insert id="insert">
 		insert into ControlledItems (CI_detail_id,CI_type,CI_detailType,CI_content,CI_pcServer,CI_CF_HF,CI_CF_MF,CI_CF_LF,CI_FF_HF,CI_FF_MF,CI_FF_LF,CI_BOP,CI_indirect,CI_EP)

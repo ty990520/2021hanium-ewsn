@@ -16,4 +16,5 @@ public interface DAMapper {
 	public int updateIdentifyType(@Param("daIdentifyType") String daIdentifyType,@Param("daid") String daid);
 	public int count(Criteria cri);
 	public int delete(String daid);
+	public int seq();
 }

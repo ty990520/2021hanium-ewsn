@@ -16,7 +16,7 @@
 		<b>조치권고
 		<button type="button" class="btn btn-danger" data-toggle="modal"
 			data-target="#staticBackdrop"
-			onclick="location.href='/ActionRecommend/register' ">등록하기</button>
+			onclick="location.href='/ActionRecommend/register_pre' ">등록하기</button>
 		</b>
 	</h1>
 	<hr>

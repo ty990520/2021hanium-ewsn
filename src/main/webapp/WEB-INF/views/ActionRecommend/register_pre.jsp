@@ -8,88 +8,60 @@
 	href="../../../resources/css/common.css" />
 <link rel="stylesheet" type="text/css"
 	href="../../../resources/css/register.css" />
+</head>
 <style>
+a {
+	text-decoration: none;
+	color: black;
+}
+
 td.table-light {
-	width: 12%;
 	vertical-align: middle;
 	text-align: center;
-	
+}
+
+#table_fixed {
+	table-layout: fixed;
+	word-break: break-all;
 }
 </style>
-</head>
 <div class="right-container">
 	<h1>
 		<b>신규 취약점 관리 </b>
 	</h1>
-	<hr>
-	<table class="table table-bordered">
+
+	<table class="table table-bordered" id="table_fixed">
 		<tr>
 			<td class="table-light" colspan="2">취약점명</td>
-			<td colspan="6">윈도우 보안 취약</td>
+			<td colspan="10"><select class="input_width100">
+					<option value="부서1">취약점1</option>
+					<option value="부서2">취약점2</option>
+					<option value="부서3">취약점3</option>
+			</select></td>
+
 		</tr>
 		<tr>
-			<td class="table-light" colspan="2">등록일</td>
-			<td colspan="2">2020-03-31</td>
 			<td class="table-light" colspan="2">제조사</td>
 			<td colspan="2">삼성</td>
-		</tr>
-		<tr>
 			<td class="table-light" colspan="2">모델</td>
 			<td colspan="2">Window</td>
 			<td class="table-light" colspan="2">시스템S/W유형</td>
 			<td colspan="2">Window방화벽</td>
 		</tr>
 		<tr>
-			<td class="table-light" colspan="2">획득일자</td>
-			<td colspan="2">2021-02-03</td>
-			<td class="table-light" colspan="2">획득경로</td>
-			<td colspan="2">공고문</td>
-		</tr>
-
-		<tr>
-			<td class="table-light" colspan="2">취약점 내용</td>
-			<td colspan="6">보안성을 더 높여야 함</td>
-		</tr>
-		<tr>
-			<td class="table-light" colspan="2">조치방법</td>
-			<td colspan="6">방화벽 설정</td>
-		</tr>
-		<tr>
 			<td class="table-light" colspan="2">관련 통제항목</td>
-			<td colspan="6"><table class="table">
-					<thead>
-						<tr>
-							<th scope="col" style="width: 100px;">분류번호</th>
-							<th scope="col" style="width: 200px;">통제항목분류</th>
-							<th scope="col" style="width: 200px;">상세분류</th>
-							<th scope="col">항목내용</th>
-						</tr>
-					</thead>
-					<tbody>
-
-						<tr>
-							<td>1.3</td>
-							<td>기술적</td>
-
-							<td>시스템 및 통신의 보호</td>
-							<td>주어진 업무를 수행하는데 필요한 만큼의 제한된 접근권한을 각 계정에 부여하고 있는가?</td>
-						</tr>
-						
-					</tbody>
-				</table></td>
+			<td>1.3</td>
+			<td>기술적</td>
+			<td colspan="2">시스템 및 통신의 보호</td>
+			<td colspan="6">주어진 업무를 수행하는데 필요한 만큼의 제한된 접근권한을 각 계정에 부여하고 있는가?</td>
 		</tr>
 	</table>
-	<div class="table_button_group">
-		<button type="button" class="btn btn-danger" data-toggle="modal"
-			data-target="#staticBackdrop"
-			onclick="location.href='new_vulnerability_register.html'">수정</button>
-	</div>
 	<br> <br> <br> <br>
 	<h5>
-		<b>해당 취약점에 영향을 받는 설비 리스트</b>
+		<b>조치권고를 등록할 설비를 선택해주세요.</b>
 	</h5>
 	<hr>
-	<table class="table">
+	<table class="table table-hover">
 		<thead>
 			<tr>
 				<th style="width: 30px;">Id</th>
@@ -199,6 +171,12 @@ td.table-light {
 			</tr>
 		</tbody>
 	</table>
-
+	<div class="table_button_group">
+		<button type="button" class="btn btn-danger" data-toggle="modal"
+			data-target="#staticBackdrop"
+			onclick="location.href='vul_action_recomm_register.html'">조치
+			권고 등록하기</button>
+	</div>
+	<br><br>
 </div>
 <%@include file="../includes/footer.jsp"%>
