@@ -170,12 +170,13 @@ public class SecurityAssessmentController {
 		daid = daid.toString();
 		DAVO da = service5.get(daid);
 
-		log.info(da.getDaSystemSW().toString());
+		/*log.info(da.getDaSystemSW().toString());
 		log.info(da.getDaReportIF().toString());
 		log.info(da.getDaHMIType().toString());
 		log.info(da.getDaModifiableOperationData().toString());
 		log.info(da.getDaModifyOPAvailability().toString());
-
+*/
+		
 		if (!da.getDaSystemSW().equals("Firmware")) {
 			return "PC/Server";
 		} else { // 시스템sw유형 == firmware

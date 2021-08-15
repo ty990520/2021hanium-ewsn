@@ -53,6 +53,11 @@ public class DAServiceImpl implements DAService{
 	public boolean delete(String daid) {
 		return mapper.delete(daid)==1;
 	}
+
+	@Override
+	public int seq() {
+		return mapper.seq();
+	}
 	
 	
 

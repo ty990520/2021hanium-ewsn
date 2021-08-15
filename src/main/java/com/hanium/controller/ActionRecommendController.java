@@ -25,7 +25,7 @@ private ActionRecommendService service;
 		log.info("[CONTROLLER]get list...");
 		model.addAttribute("list",service.getList());
 	}
-	@GetMapping("/register")
+	@GetMapping("/register_pre")
 	public void register_page() {
 		
 	}

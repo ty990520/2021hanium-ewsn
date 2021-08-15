@@ -47,7 +47,7 @@ body {
 					<div class="register_box_inner_flexdirection_row">
 
 						<p>발전소 상세구분</p>
-						<select class="select_width50" name="daPDetailType">
+						<select class="select_width50" id="H">
 							<option value="한강">한강</option>
 							<option value="청평">청평</option>
 							<option value="삼랑진">삼랑진</option>
@@ -55,13 +55,23 @@ body {
 							<option value="산청">산청</option>
 							<option value="양양">양양</option>
 							<option value="청송">청송</option>
-						</select>
+						</select> <select class="select_width50" id="N">
+							<option value="고리">고리</option>
+							<option value="한빛">한빛</option>
+							<option value="월성">월성</option>
+							<option value="한울">한울</option>
+							<option value="새울">새울</option>
+						</select> <select class="select_width50" id="F">
+							<option value="남동">남동</option>
+							<option value="중부">중부</option>
+							<option value="서부">서부</option>
+							<option value="남부">남부</option>
+							<option value="동서">동서</option>
+						</select> <input type="hidden" name="daPDetailType" id="daPDetailType"
+							value="한강">
 					</div>
 				</div>
 				<br>
-				<p>자산번호</p>
-				<input type="text" class="input_width100" name="daid"
-					placeholder="자산번호 입력"> <br> <br>
 
 				<p>자산명</p>
 				<input type="text" class="input_width100" name="daname"
@@ -70,6 +80,12 @@ body {
 				<textarea cols="50" class="input_width100" rows="10" name="daFunc"
 					placeholder="자산기능 입력"></textarea>
 				<br> <br>
+				<p>제조사</p>
+				<input type="text" class="input_width100" name="daManufacturer"
+					placeholder="제조사 입력"> <br> <br>
+				<p>모델명</p>
+				<input type="text" class="input_width100" name="daModel"
+					placeholder="모델명 입력"> <br> <br>
 				<p>기능유형</p>
 				<select class="select_width100" name="daFuncType">
 					<option value="Safety">Safety</option>
@@ -79,6 +95,7 @@ body {
 					<option value="Support">Support</option>
 				</select>
 			</div>
+			<br>
 			<div class="register_box_inner">
 				<p>영향성분석</p>
 				<select class="select_width100" name="daImpact">
@@ -106,25 +123,27 @@ body {
 					<option value="유지보수 장비">유지보수 장비</option>
 				</select> <br> <br>
 				<p>시스템 S/W유형</p>
-				<select class="select_width100" name="daSystemSW">
+				<select class="select_width100" name="daSystemSW" id="daSystemSW"
+					onclick="checkMF()">
 					<option value="Windows">Windows</option>
 					<option value="Unix">Unix</option>
 					<option value="Linux">Linux</option>
 					<option value="Firmware">Firmware</option>
 				</select>
 			</div>
+			<br>
 			<div class="register_box_inner_last">
 				<div class="register_box_inner_detail">
 					<div class="register_box_inner_flexdirection_row">
 						<p>통신 I/F</p>
 
 						<input type="radio" name="daReportIF" class="radio_size"
-							value="Ethernet"> Ethernet &nbsp;<input type="radio"
-							name="daReportIF" value="Serial" class="radio_size">
-						Serial &nbsp;<input type="radio" name="daReportIF"
-							value="Hard Wiring" class="radio_size"> Hard Wiring
-						&nbsp;<input type="radio" name="daReportIF" value=" 기타"
-							class="radio_size"> 기타
+							value="Ethernet" onclick="checkMF()"> Ethernet &nbsp;<input
+							type="radio" name="daReportIF" value="Serial" class="radio_size"
+							onclick="checkMF()"> Serial &nbsp;<input type="radio"
+							name="daReportIF" onclick="checkMF()" value="Hard Wiring"
+							class="radio_size"> Hard Wiring
+
 					</div>
 				</div>
 				<br> <br>
@@ -143,9 +162,9 @@ body {
 					<div class="register_box_inner_flexdirection_row">
 						<p>운영데이터 수정 가능 여부</p>
 						<input type="radio" name="daModifyOPAvailability" value="Y"
-							class="radio_size"> Y &nbsp; <input type="radio"
-							name="daModifyOPAvailability" value="N" class="radio_size">
-						N
+							onclick="checkMF()" class="radio_size"> Y &nbsp; <input
+							type="radio" name="daModifyOPAvailability" value="N"
+							class="radio_size" onclick="checkMF()"> N
 					</div>
 				</div>
 				<br> <br>
@@ -153,18 +172,20 @@ body {
 					<div class="register_box_inner_flexdirection_row">
 						<p>수정 가능한 운영 데이터</p>
 						<input type="radio" name="daModifiableOperationData"
-							value="Control Logic" class="radio_size"> Control Logic
-						&nbsp;&nbsp; <input type="radio" name="daModifiableOperationData"
-							value="Firmware Setting" class="radio_size"> Firmware
-						Setting
+							value="Control Logic" class="radio_size" id="cl"> Control
+						Logic &nbsp;&nbsp; <input type="radio"
+							name="daModifiableOperationData" value="Firmware Setting"
+							class="radio_size"> Firmware Setting&nbsp;&nbsp; <input
+							type="radio" name="daModifiableOperationData"
+							value="Operaing parameter" class="radio_size" id="op">
+						Operaing parameter
 					</div>
 				</div>
 				<br> <br>
 				<p>HMI유형</p>
-				<select class="select_width100" name="da.daFacilitiesType">
-					<option value="터빈제어설비_2020_1">터빈제어설비_2020_1</option>
-					<option value="터빈제어설비_2020_2">터빈제어설비_2020_2</option>
-					<option value="새 버전 추가">새 버전 추가</option>
+				<select class="select_width100" name="daHMIType" onclick="checkMF()">
+					<option value="External">External</option>
+					<option value="Integral">Integral</option>
 				</select>
 			</div>
 		</div>
@@ -182,6 +203,41 @@ body {
 	<br> <br>
 </div>
 <script type="text/javascript"> 
+	$(document).ready(function(){
+	    $("#N").hide();
+	    $("#F").hide();
+	});
+	
+	$("select[name=daptype]").change(function(){
+		//alert($(this).val()); //value값 가져오기
+		if($(this).val() == "수력"){
+			$("#H").show();
+			$("#N").hide();
+			$("#F").hide();
+		}else if($(this).val() == "원자력"){
+			$("#H").hide();
+			$("#N").show();
+			$("#F").hide();
+		}else if($(this).val() == "화력"){
+			$("#H").hide();
+			$("#N").hide();
+			$("#F").show();
+		}
+	});
+	
+	$("select[id=H]").change(function(){
+		$("#daPDetailType").val($(this).val());
+		console.log($("#daPDetailType").val());
+	});
+	$("select[id=N]").change(function(){
+		$("#daPDetailType").val($(this).val());
+		console.log($("#daPDetailType").val());
+	});
+	$("select[id=F]").change(function(){
+		$("#daPDetailType").val($(this).val());
+		console.log($("#daPDetailType").val());
+	});
+		
 	var checkUnload = true;
 
 	window.addEventListener('beforeunload', (event) => { // 명세에 따라 preventDefault는 호출해야하며, 기본 동작을 방지합니다. 
@@ -199,6 +255,25 @@ body {
 		} else {
 			return false;
 		}
+	}
+	function checkMF(){
+		if($("#daSystemSW").val() == "Firmware"){
+			if($("input[name='daReportIF']:checked").val() == "Hard Wiring"){
+				if($("input[name='daModifyOPAvailability']:checked").val() == "Y")
+					$("#cl").attr("disabled", true); //설정
+				else
+					$("#cl").attr("disabled", false); //설정
+			}else if($("input[name='daReportIF']:checked").val() == "Serial"){
+					if($("select[name=daHMIType]").val() == "External"){
+						$("#op").attr("disabled", true); //설정
+						$("#cl").attr("disabled", false); //설정
+					}else{
+						$("#cl").attr("disabled", true); //설정
+						$("#op").attr("disabled", false); //설정
+					}
+			}
+		}
+			
 	}
 	
 </script>

@@ -9,4 +9,5 @@ public interface ControlledItemsService {
 	public ControlledItemsVO get(String CI_detail_id);			//글 조회
 	public boolean modify(ControlledItemsVO ci);		//수정
 	public List<ControlledItemsVO> getList();			//리스트 조회
+	public List<ControlledItemsVO> getCIDetailList(String number);
 }

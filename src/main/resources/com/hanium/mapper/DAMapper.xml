@@ -85,4 +85,7 @@
 		set daUse = 0
 		where daid =#{daid};
 	</update>
+	<select id="seq" resultType="int">
+	select count(*) from DA;
+	</select>
 </mapper>
