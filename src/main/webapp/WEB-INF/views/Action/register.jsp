@@ -41,7 +41,7 @@
 			<table class="table table-bordered">
 				<tr>
 					<td colspan="6"><label for="vul_action-select"> 등록할
-							조치권고 선택:</label> <select id="vul_action-select">
+							조치권고 선택:</label> <select class="selectBox" id="vul_action-select">
 							<c:forEach items="${ac_list}" var="ar" varStatus="status">
 								<option selected value="${ar.AR_no}">${ar.AR_title}</option>
 							</c:forEach>
@@ -167,8 +167,13 @@
 					</tr>
 					<tr>
 						<td class="table-light">조치구분</td>
-						<td><input type="text" name="AC_type"
-							placeholder="조치구분"></td>
+						<td>
+						<select name="AC_type">
+						 <option value="단기">장기</option>
+   						 <option value="장기">단기</option>
+   						 <option value="중기">중기</option>
+						</select>
+					</td>
 					</tr>
 				</table>
 				<div class="register_table_button_group">

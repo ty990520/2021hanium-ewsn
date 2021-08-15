@@ -173,9 +173,7 @@ td.table-light {
 	</table>
 	<div class="table_button_group">
 		<button type="button" class="btn btn-danger" data-toggle="modal"
-			data-target="#staticBackdrop"
-			onclick="location.href='vul_action_recomm_register.html'">조치
-			권고 등록하기</button>
+			data-target="#staticBackdrop" onclick="location.href='/ActionRecommend/register'">조치 권고 등록하기</button>
 	</div>
 	<br><br>
 </div>

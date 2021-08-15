@@ -51,7 +51,13 @@ text-align: center;
 				<td colspan="2"><input type="text"
 					class="vulner_register_input" name="AR_daSystemSW" placeholder="시스템SW유형검색"></td>
 				<td class="table-light" colspan="2">조치유형</td>
-				<td colspan="2"><input type="text"
+				<td colspan="2">
+				<select name="AR_ActionType">
+				 <option value="관리적">관리적</option>
+				 <option value="운영적">운영적</option>
+				  <option value="기술적">기술적</option>
+				</select>
+				<input type="text"
 					class="vulner_register_input" name="AR_ActionType" placeholder="조치유형검색"></td>
 			</tr>
 			<tr>
