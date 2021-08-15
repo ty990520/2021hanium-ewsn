@@ -48,6 +48,7 @@ body {
 
 						<p>발전소 상세구분</p>
 						<select class="select_width50" id="H">
+							<option value="--">--</option>
 							<option value="한강">한강</option>
 							<option value="청평">청평</option>
 							<option value="삼랑진">삼랑진</option>
@@ -56,38 +57,40 @@ body {
 							<option value="양양">양양</option>
 							<option value="청송">청송</option>
 						</select> <select class="select_width50" id="N">
+							<option value="--">--</option>
 							<option value="고리">고리</option>
 							<option value="한빛">한빛</option>
 							<option value="월성">월성</option>
 							<option value="한울">한울</option>
 							<option value="새울">새울</option>
 						</select> <select class="select_width50" id="F">
+							<option value="--">--</option>
 							<option value="남동">남동</option>
 							<option value="중부">중부</option>
 							<option value="서부">서부</option>
 							<option value="남부">남부</option>
 							<option value="동서">동서</option>
 						</select> <input type="hidden" name="daPDetailType" id="daPDetailType"
-							value="한강">
+							value="--">
 					</div>
 				</div>
 				<br>
 
 				<p>자산명</p>
-				<input type="text" class="input_width100" name="daname"
+				<input type="text" class="input_width100" name="daname" id="daname"
 					placeholder="자산명 입력"> <br> <br>
 				<p>자산기능</p>
 				<textarea cols="50" class="input_width100" rows="10" name="daFunc"
-					placeholder="자산기능 입력"></textarea>
+					id="daFunc" placeholder="자산기능 입력"></textarea>
 				<br> <br>
 				<p>제조사</p>
 				<input type="text" class="input_width100" name="daManufacturer"
-					placeholder="제조사 입력"> <br> <br>
+					id="daManufacturer" placeholder="제조사 입력"> <br> <br>
 				<p>모델명</p>
 				<input type="text" class="input_width100" name="daModel"
-					placeholder="모델명 입력"> <br> <br>
+					id="daModel" placeholder="모델명 입력"> <br> <br>
 				<p>기능유형</p>
-				<select class="select_width100" name="daFuncType">
+				<select class="select_width100" name="daFuncType" id="daFuncType">
 					<option value="Safety">Safety</option>
 					<option value="Security">Security</option>
 					<option value="EP(Emergency Preparedness)">EP(Emergency
@@ -98,7 +101,7 @@ body {
 			<br>
 			<div class="register_box_inner">
 				<p>영향성분석</p>
-				<select class="select_width100" name="daImpact">
+				<select class="select_width100" name="daImpact" id="daImpact">
 					<option value="Safety Related">Safety Related</option>
 					<option value="Important to Safety">Important to Safety</option>
 					<option value="Security Function">Security Function</option>
@@ -107,7 +110,8 @@ body {
 					<option value="Support Function">Support Function</option>
 				</select> <br> <br>
 				<p>설비유형</p>
-				<select class="select_width100" name="daFacilitiesType">
+				<select class="select_width100" name="daFacilitiesType"
+					id="daFacilitiesType">
 					<option value="PC/Server">PC/Server</option>
 					<option value="DCS">DCS</option>
 					<option value="PLC">PLC</option>
@@ -118,7 +122,8 @@ body {
 					<option value="기타">기타</option>
 				</select> <br> <br>
 				<p>설비사용목적</p>
-				<select class="select_width100" name="daFacilitiesPurposeOfUse">
+				<select class="select_width100" name="daFacilitiesPurposeOfUse"
+					id="daFacilitiesPurposeOfUse">
 					<option value="발전연관 장비">발전연관 장비</option>
 					<option value="유지보수 장비">유지보수 장비</option>
 				</select> <br> <br>
@@ -183,7 +188,8 @@ body {
 				</div>
 				<br> <br>
 				<p>HMI유형</p>
-				<select class="select_width100" name="daHMIType" onclick="checkMF()">
+				<select class="select_width100" name="daHMIType" onclick="checkMF()"
+					id="daHMIType">
 					<option value="External">External</option>
 					<option value="Integral">Integral</option>
 				</select>
@@ -237,6 +243,11 @@ body {
 		$("#daPDetailType").val($(this).val());
 		console.log($("#daPDetailType").val());
 	});
+	
+	$("select[name=daptype]").change(function(){
+		$("#daPDetailType").val("--");
+	});
+	
 		
 	var checkUnload = true;
 
@@ -247,6 +258,28 @@ body {
 	    }
 	}); 
 	function register(){
+		if($("#daPDetailType").val()=="--"){
+			alert("발전소 상세 유형을 선택해주세요.");
+			return false;
+		}
+		
+		 var radioVal1 = $('input[name="daReportIF"]:checked').val();
+		 var radioVal2 = $('input[name="daStorageDevice"]:checked').val();
+		 var radioVal3 = $('input[name="daModifyOPAvailability"]:checked').val();
+		 var radioVal4 = $('input[name="daModifiableOperationData"]:checked').val();
+		
+         if($("#daname").val()==""||$("#daFunc").val()==""||
+				$("#daManufacturer").val()==""||$("#daModel").val()==""||
+				$("#daFuncType").val()==""||$("#daImpact").val()==""||
+				$("#daFacilitiesType").val()==""||$("#daSystemSW").val()==""||
+				$("#daFacilitiesPurposeOfUse").val()==""||$("#daHMIType").val()==""||
+				radioVal1 == undefined||radioVal2 == undefined||radioVal3 == undefined||radioVal4 == undefined){
+				alert("모든 요소는 필수로 작성해야 합니다.");
+				return false;
+			
+		}
+		
+		
 		checkUnload = false;
 		if (confirm("자산정보를 등록하시겠습니까?") == true) {
 			alert("자산정보가 등록되었습니다.");

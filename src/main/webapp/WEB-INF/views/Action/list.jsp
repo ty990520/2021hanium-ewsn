@@ -56,11 +56,10 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	<br><br><br><br><br>
+	
 	<br>
 </div>
-		<br><br><br><br><br>
-		<br><br><br><br><br>
+	
 <script>
    $('#myModal').on('shown.bs.modal', function() {
       $('#myInput').trigger('focus')
