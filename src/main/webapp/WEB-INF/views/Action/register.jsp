@@ -23,7 +23,7 @@
 </head>
 <div class="right-container">
 	<h1>
-		<b>이행계획 리스트 등록</b>
+		<b>이행계획 등록</b>
 	</h1>
 	<hr>
 
@@ -177,9 +177,10 @@
 				</div>
 			</form>
 		</div>
-	</div>
+	</div><BR><BR>
 </div>
 <script>
 
 
 </script>
+<%@include file="../includes/footer.jsp"%>

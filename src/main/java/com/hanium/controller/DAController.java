@@ -93,6 +93,7 @@ public class DAController {
 		// rttr.addFlashAttribute("result",dept.getDeptcode());
 		// return "redirect:/dept/list";
 		return "redirect:/DA/DA_list";
+		
 	}
 
 	@GetMapping("/DA_detail")
