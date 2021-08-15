@@ -90,9 +90,6 @@ td.table-light {
 <div class="right-container">
 	<h1>
 		<b>이행계획 상세 내용</b>
-		<button type="button" id="openBtn" class="btn btn-danger"
-			data-toggle="modal" data-target="#exampleModal"
-			data-whatever="@getbootstrap" data-target="#staticBackdrop">등록</button>
 	</h1>
 	<hr>
 
@@ -134,17 +131,18 @@ td.table-light {
 						style="height: 80px; text-align: center">이행완료일자</td>
 					<td colspan="2"><c:out value='${ai.AI_finishDate}' /></td>
 				</tr>
-
 			</c:when>
 			<c:otherwise>
 				<tr>
 					<td colspan="7" style="height: 200px;">이행결과가 없습니다.</td>
+							<button type="button" id="openBtn" class="btn btn-danger"
+			data-toggle="modal" data-target="#exampleModal"
+			data-whatever="@getbootstrap" data-target="#staticBackdrop">등록</button>
 				</tr>
 				<div class="table_button_group"></div>
 			</c:otherwise>
 		</c:choose>
 	</table>
-
 </div>
 <script>
 	var flag = 1; //판별 신호 (1=ep, 0=bop검사)
