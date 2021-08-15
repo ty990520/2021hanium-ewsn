@@ -29,8 +29,6 @@ text-align: center;
 		action="register" method="post">
 		<table class="table table-bordered">
 			<tr>
-				<td class="table-light" colspan="2">권고발행번호</td>
-				<td colspan="6">21-0001</td>
 			</tr>
 			<tr>
 				<td class="table-light" colspan="2">발행부서</td>
@@ -70,19 +68,9 @@ text-align: center;
 
 		
 		<div class="table_button_group">
-			<button type="submit" class="btn btn-danger" onclick="register()">등록</button>
+			<button type="submit" class="btn btn-danger">등록</button>
 			<br><br><br><br><br><br><br><br>
 		</div>
 		</form>
 	</div>
-	<script>
-	function alertRegister() {
-		if (confirm("조치권고를 등록하시겠습니까?") == true) {
-			alert("등록되었습니다");
-			location.href = "list";
-		} else {
-			return;
-		}
-	}
-</script>
 <%@include file="../includes/footer.jsp"%>

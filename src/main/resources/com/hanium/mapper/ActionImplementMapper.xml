@@ -9,7 +9,7 @@
 	<select id="read" resultType="com.hanium.domain.ActionImplementVO">
 		select * from ActionImplement where AI_no = #{AI_no}
 	</select>
-	<insert id="insert" useGeneratedKeys="true" keyProperty="AI_no">
+	<insert id="insert">
 		insert into ActionImplement
 		(AI_no,AI_check,AI_impossibleReason,AI_AlterMeasures,AI_result,AI_finishDate)
 		values (#{AI_no},#{AI_check}, #{AI_impossibleReason}, #{AI_AlterMeasures}, #{AI_result}, #{AI_finishDate})

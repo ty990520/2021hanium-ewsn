@@ -10,7 +10,7 @@
 		select * from Action where AC_no =
 		#{AC_no}
 	</select>
-	<insert id="insert" useGeneratedKeys="true" keyProperty="AC_no">
+	<insert id="insert">
 		insert into Action
 		(AC_no,AC_plan,AC_expectedDate,AC_dept,AC_manager,AC_type)
 		values (#{AC_no},#{AC_plan}, #{AC_expectedDate}, #{AC_dept}, #{AC_manager}, #{AC_type})

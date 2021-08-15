@@ -26,8 +26,6 @@ text-align: center;
 		<hr>
 		<table class="table table-bordered">
 			<tr>
-				<td class="table-light" colspan="2">권고발행번호</td>
-				<td colspan="2">21-0001</td>
 				<td class="table-light" colspan="2">발행일자</td>
 				<td colspan="2"><fmt:formatDate pattern="yyyy-MM-dd" value="${ar.AR_regDate}" /></td>
 			</tr>
