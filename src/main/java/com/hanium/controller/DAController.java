@@ -65,9 +65,7 @@ private DAService service;
 	    service.modify(da);
 	    return "redirect:/DA/DA_list";
 	}
-	
-	
-	
+
 	@GetMapping("/remove")
 	public String remove(@RequestParam("daid") String daid) {
 	    service.delete(daid);

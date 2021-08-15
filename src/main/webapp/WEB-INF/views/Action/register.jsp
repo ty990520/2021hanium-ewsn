@@ -138,8 +138,9 @@
 			<form name=form onsubmit="return checkAll()" id="register"
 				action="register" method="post">
 				<table class="table table-bordered" style="top: 80px">
-					<tr>						<c:forEach items="${ac_list}" var="ar" varStatus="status">
-						<input id="hiddenNo" type="hidden" name="AC_no" value= placeholder="단기">
+					<tr>	
+					<c:forEach items="${ac_list}" var="ar" varStatus="status">
+						<input id="hiddenNo" type="hidden" name="AC_no">
 			<script>
 			$(document).ready(function() {
 		        $('#hiddenNo').val("${ar.AR_no}");
@@ -172,8 +173,7 @@
 				</table>
 				<div class="register_table_button_group">
 					<button type="submit" id="btn_toggle" class="btn btn-danger"
-						data-toggle="modal" data-target="#staticBackdrop"
-						onclick="register()">등록</button>
+						data-toggle="modal" data-target="#staticBackdrop">등록</button>
 				</div>
 			</form>
 		</div>
