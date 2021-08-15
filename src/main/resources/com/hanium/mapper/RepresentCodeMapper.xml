@@ -17,6 +17,9 @@
 	<select id="checkExistRecode" resultType="int">
 		select count(represent_id) cnt from RepresentCode where R_code = #{R_code};
 	</select>
+	<select id="checkExistDecode" resultType="int">
+	select COUNT(*) from RepresentCode where R_code = #{R_code} AND D_code=#{D_code};
+	</select>
 	<select id="read" resultType="com.hanium.domain.RepresentCodeVO">
 		select * from RepresentCode where represent_id =#{represent_id}
 	</select>

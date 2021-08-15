@@ -12,4 +12,5 @@ public interface RepresentCodeService {
 	public List<RepresentCodeVO> getReCodeList();			//리스트 조회
 	public List<RepresentCodeVO> getDeCodeList(String R_code);			//리스트 조회
 	public boolean checkExistRecode(String R_code);
+	public boolean checkExistDecode(String R_code, String D_code);
 }

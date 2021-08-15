@@ -52,6 +52,7 @@ public class RepresentCodeController {
 	@GetMapping("/Code_deEnroll")
 	public void register_page2(Model model) {
 		model.addAttribute("d_list", service.getReCodeList());
+	
 	}
 	
 	
@@ -74,6 +75,18 @@ public class RepresentCodeController {
 			return "possible";
 	}
 
+	@ResponseBody
+	@RequestMapping("/checkExistDecode")
+	public String checkExistDecode(@RequestParam("R_code") String R_code,@RequestParam("D_code") String D_code) {
+		D_code = D_code.toString();
+		R_code = R_code.toString();
+		log.info("[ CONTROLLER ] " + service.checkExistDecode(R_code, D_code));
+		if(service.checkExistDecode(R_code, D_code)) {
+			return "exists";
+		}
+		else
+			return "possible";
+	}
 
 	@PostMapping("/modify")
 	public String modify(RepresentCodeVO re) {
