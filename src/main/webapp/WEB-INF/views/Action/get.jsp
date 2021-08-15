@@ -61,10 +61,10 @@ td.table-light {
 								<td style="border-style: hidden">대안조치</td>
 								<td style="border-style: hidden"><select
 									class="custom-select" name="AI_AlterMeasures">
-										<option value="대안1">대안조치</option>
-										<option value="대안2">대안조치</option>
-										<option value="대안3" selected>대안조치</option>
-										<option value="대안4">대안조치</option>
+										<option value="대안1">대안조치1</option>
+										<option value="대안2">대안조치2</option>
+										<option value="대안3" selected>대안조치3</option>
+										<option value="대안4">대안조치4</option>
 								</select></td>
 							<tr>
 								<td style="border-style: hidden">이행결과</td>
