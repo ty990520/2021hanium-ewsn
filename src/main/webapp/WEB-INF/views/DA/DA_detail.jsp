@@ -107,7 +107,7 @@ th {
 		<button type="button" class="btn  btn-secondary"
 			onclick="modifyBtn('<c:out value="${da.daid}" />')">수정</button>
 		<button type="button" class="btn btn-danger"
-			onclick="removeBtn('<c:out value="${da.daid}" />')">삭제</button>
+			onclick="removeBtn('<c:out value="${da.daid}" />')">비활성화</button>
 
 	</div>
 
@@ -128,7 +128,7 @@ th {
 
 	function removeBtn(daid) {
 		//alert(daid);
-		if (confirm("삭제하시겠습니까?") == true) {
+		if (confirm("비활성화하시겠습니까?") == true) {
 			location.href = "/DA/remove?daid=" + daid;
 			return true;
 		} else {

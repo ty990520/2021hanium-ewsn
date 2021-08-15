@@ -30,6 +30,17 @@ public class ControlledItemsApplyController {
 		model.addAttribute("list", service.getList()); // Model에 BoardVO의 목록을 담아서 전달
 	}
 	
+
+	@GetMapping("/CI_select_print")
+	public void list2(Model model) { // addAttribute메소드를 이용해 Model객체에 담아서 전달
+		log.info("[CONTROLLER]get list...");
+		model.addAttribute("list", service.getList()); // Model에 BoardVO의 목록을 담아서 전달
+	}
+	
+	@GetMapping("/CI_list_apply")
+	public void register_page() {
+	}
+	
 	@PostMapping("/register")	//글을 등록하는 경우에는 get방식이 아니라 post방식을 사용한다.
 	public String register(ControlledItemsApplyVO cia) {	//RedirectAttributes : 
 		log.info("[CONTROLLER]register : "+cia);

@@ -25,7 +25,7 @@ public class RepresentCodeMapperTests {
 	public void testRepresentCodeList() {
 		//mapper5.getDeCodeList("PT01").forEach(i->log.info(i));
 		//log.info(re.getR_code()+re.getR_codeName()+re.getD_code());
-		log.info(mapper5.checkExistRecode("PT01"));
+		log.info(mapper5.checkExistDecode("PT01", "PD01"));
 	}
 
 	

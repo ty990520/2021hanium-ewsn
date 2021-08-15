@@ -91,43 +91,49 @@
 			</div>
 		</div>
 		<script>
-			$("#vul_action-select").change(
-					function() {
-						//selectbox의 리스트에서 선택된 Index를 구하는 방법은 다음과 같다.
-						var selectedIndex = $(
-								"#vul_action-select option:selected").val();
-						console.log(selectedIndex);
-						$.ajax({
-							contentType : "application/json; charset=utf-8;",
-							dataType : "json",
-							type : "GET",
-							url : "/Action/selectAr",
-							data : {
-								"AR_no" : selectedIndex
-							},
-							success : function(data) {
-								if (!data) {
-									console.log("err");
-								}
-								console.log(data);
-								$("#AR_regDate").text(data.ar_regDate)
-								$("#AR_no").text(data.ar_no)
-								$("#AR_daID").text(data.ar_daID)
-								$("#AR_daName").text(data.ar_daName)
-								$("#AR_daSystemSW").text(data.ar_daSystemSW)
-								$("#AR_title").text(data.ar_title)
-								$("#AR_ActionType").text(data.ar_ActionType)
-								$("#AR_issue").text(data.ar_issue)
-								$("#AR_regDept").text(data.ar_regDept)
-								$("#RegistrarID").text(data.registrarID)
-							},
-							error : function(request, status, error) {
-								alert("code:" + request.status + "\n"
-										+ "message:" + request.responseText
-										+ "\n" + "error:" + error);
-							}
-						})
-					});
+		
+		$(document).ready(function(){
+			selectActionRec();
+		});
+		
+		$("#vul_action-select").change(function(){selectActionRec();});
+		
+		function selectActionRec() {
+			//selectbox의 리스트에서 선택된 Index를 구하는 방법은 다음과 같다.
+			var selectedIndex = $(
+					"#vul_action-select option:selected").val();
+			console.log(selectedIndex);
+			$.ajax({
+				contentType : "application/json; charset=utf-8;",
+				dataType : "json",
+				type : "GET",
+				url : "/Action/selectAr",
+				data : {
+					"AR_no" : selectedIndex
+				},
+				success : function(data) {
+					if (!data) {
+						console.log("err");
+					}
+					console.log(data);
+					$("#AR_regDate").text(data.ar_regDate)
+					$("#AR_no").text(data.ar_no)
+					$("#AR_daID").text(data.ar_daID)
+					$("#AR_daName").text(data.ar_daName)
+					$("#AR_daSystemSW").text(data.ar_daSystemSW)
+					$("#AR_title").text(data.ar_title)
+					$("#AR_ActionType").text(data.ar_ActionType)
+					$("#AR_issue").text(data.ar_issue)
+					$("#AR_regDept").text(data.ar_regDept)
+					$("#RegistrarID").text(data.registrarID)
+				},
+				error : function(request, status, error) {
+					alert("code:" + request.status + "\n"
+							+ "message:" + request.responseText
+							+ "\n" + "error:" + error);
+				}
+			});
+		}
 		</script>
 		<div class="empty">
 			<h5>
@@ -138,15 +144,15 @@
 			<form name=form onsubmit="return checkAll()" id="register"
 				action="register" method="post">
 				<table class="table table-bordered" style="top: 80px">
-					<tr>	
-					<c:forEach items="${ac_list}" var="ar" varStatus="status">
-						<input id="hiddenNo" type="hidden" name="AC_no">
-			<script>
+					<tr>
+						<c:forEach items="${ac_list}" var="ar" varStatus="status">
+							<input id="hiddenNo" type="hidden" name="AC_no">
+							<script>
 			$(document).ready(function() {
 		        $('#hiddenNo').val("${ar.AR_no}");
 		    });
 			</script>
-			</c:forEach>
+						</c:forEach>
 					</tr>
 					<tr>
 						<td class="table-light">조치계획</td>
@@ -163,17 +169,16 @@
 					</tr>
 					<tr>
 						<td class="table-light">조치예상일자</td>
-						<td><input type="text" name="AC_expectedDate" placeholder="3일"></td>
+						<td><input type="date" name="AC_expectedDate"
+						></td>
 					</tr>
 					<tr>
 						<td class="table-light">조치구분</td>
-						<td>
-						<select name="AC_type">
-						 <option value="단기">장기</option>
-   						 <option value="장기">단기</option>
-   						 <option value="중기">중기</option>
-						</select>
-					</td>
+						<td><select name="AC_type">
+								<option value="단기">장기</option>
+								<option value="장기">단기</option>
+								<option value="중기">중기</option>
+						</select></td>
 					</tr>
 				</table>
 				<div class="register_table_button_group">
@@ -182,10 +187,14 @@
 				</div>
 			</form>
 		</div>
-	</div><BR><BR>
+	</div>
+	<BR>
+	<BR>
 </div>
 <script>
-
-
+$(document).ready(function(){
+    /* 호출할 내용
+    alert('다 로딩됐다!')*/
+});
 </script>
 <%@include file="../includes/footer.jsp"%>

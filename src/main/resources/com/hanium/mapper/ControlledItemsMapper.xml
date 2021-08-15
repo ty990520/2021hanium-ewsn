@@ -3,35 +3,40 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hanium.mapper.ControlledItemsMapper">
-	<select id="getList" resultType="com.hanium.domain.ControlledItemsVO">
+	<select id="getList"
+		resultType="com.hanium.domain.ControlledItemsVO">
 		select * from ControlledItems;
 	</select>
-	<select id="getCIDetailList" resultType="com.hanium.domain.ControlledItemsVO">
-		select * from ControlledItems where CI_detail_id like LIKE CONCAT(#{number}, '%')
+	<select id="getCIDetailList"
+		resultType="com.hanium.domain.ControlledItemsVO">
+		select * from ControlledItems where CI_detail_id like LIKE
+		CONCAT(#{number}, '%')
 	</select>
 	<select id="read" resultType="com.hanium.domain.UserVO">
-		select * from ControlledItems where CI_detail_id = #{CI_detail_id}
+		select * from ControlledItems where
+		CI_detail_id = #{CI_detail_id}
 	</select>
 	<insert id="insert">
-		insert into ControlledItems (CI_detail_id,CI_type,CI_detailType,CI_content,CI_pcServer,CI_CF_HF,CI_CF_MF,CI_CF_LF,CI_FF_HF,CI_FF_MF,CI_FF_LF,CI_BOP,CI_indirect,CI_EP)
+		insert into ControlledItems
+		(CI_detail_id,CI_type,CI_detailType,CI_content,CI_pcServer,CI_CF_HF,CI_CF_MF,CI_CF_LF,CI_FF_HF,CI_FF_MF,CI_FF_LF,CI_BOP,CI_indirect,CI_EP)
 		values
 		(#{CI_detail_id},#{CI_type},#{CI_detailType},#{CI_content},#{CI_pcServer},#{CI_CF_HF},#{CI_CF_MF},#{CI_CF_LF},#{CI_FF_HF},#{CI_FF_MF},#{CI_FF_LF},#{CI_BOP},#{CI_indirect},#{CI_EP})
 	</insert>
 	<update id="update">
 		update ControlledItems
 		set CI_type=#{CI_type},
-		CI_detailType=#{CI_detailType}
-		CI_content=#{CI_content}
-		CI_pcServer=#{CI_pcServer}
-		CI_CF_HF=#{CI_CF_HF}
-		CI_CF_MF=#{CI_CF_MF}
-		CI_CF_LF=#{CI_CF_LF}
-		CI_FF_HF=#{CI_FF_HF}
-		CI_FF_MF=#{CI_FF_MF}
-		CI_FF_LF=#{CI_FF_LF}
-		CI_BOP=#{CI_BOP}	
-		CI_indirect=#{CI_indirect}
-		CI_EP=#{CI_EP}	
+		CI_detailType=#{CI_detailType},
+		CI_content=#{CI_content},
+		CI_pcServer=#{CI_pcServer},
+		CI_CF_HF=#{CI_CF_HF},
+		CI_CF_MF=#{CI_CF_MF},
+		CI_CF_LF=#{CI_CF_LF},
+		CI_FF_HF=#{CI_FF_HF},
+		CI_FF_MF=#{CI_FF_MF},
+		CI_FF_LF=#{CI_FF_LF},
+		CI_BOP=#{CI_BOP} ,
+		CI_indirect=#{CI_indirect},
+		CI_EP=#{CI_EP}
 		where CI_detail_id=#{CI_detail_id}
 	</update>
 </mapper>
