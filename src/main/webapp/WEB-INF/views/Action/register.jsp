@@ -156,16 +156,16 @@
 					</tr>
 					<tr>
 						<td class="table-light">조치계획</td>
-						<td><input name="AC_plan" type="text" placeholder="단기"></td>
+						<td><input name="AC_plan" type="text"></td>
 					</tr>
 
 					<tr>
 						<td class="table-light">조치부서</td>
-						<td><input type="text" name="AC_dept" placeholder="정보보안"></td>
+						<td><input type="text" name="AC_dept"></td>
 					</tr>
 					<tr>
 						<td class="table-light">조치담당자</td>
-						<td><input type="text" name="AC_manager" placeholder="담당자"></td>
+						<td><input type="text" name="AC_manager"></td>
 					</tr>
 					<tr>
 						<td class="table-light">조치예상일자</td>
