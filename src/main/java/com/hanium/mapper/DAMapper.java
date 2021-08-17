@@ -17,4 +17,6 @@ public interface DAMapper {
 	public int count(Criteria cri);
 	public int delete(String daid);
 	public int seq();
+	public List<String> modelList();
+	public List<String> manufacturerList();
 }

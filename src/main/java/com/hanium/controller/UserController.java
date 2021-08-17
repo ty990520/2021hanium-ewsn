@@ -98,6 +98,7 @@ public class UserController {
 		userid = userid.toString();
 		UserVO user = service.findNotOnlyUser(userid);
 
+		//log.info(service.findUserValidity(userid));
 		// 1. 사번 유효성 검증
 		if (service.findUserValidity(userid)) {
 			//log.info("[ CONTROLLER ] 사번이 유효합니다.");

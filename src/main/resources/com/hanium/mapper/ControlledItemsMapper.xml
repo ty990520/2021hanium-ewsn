@@ -7,10 +7,9 @@
 		resultType="com.hanium.domain.ControlledItemsVO">
 		select * from ControlledItems;
 	</select>
-	<select id="getCIDetailList"
-		resultType="com.hanium.domain.ControlledItemsVO">
-		select * from ControlledItems where CI_detail_id like LIKE
-		CONCAT(#{number}, '%')
+	<select id="getCIDetailList" resultType="com.hanium.domain.ControlledItemsVO">
+		select * from ControlledItems where CI_detail_id like
+		CONCAT(#{number},'%')
 	</select>
 	<select id="read" resultType="com.hanium.domain.UserVO">
 		select * from ControlledItems where

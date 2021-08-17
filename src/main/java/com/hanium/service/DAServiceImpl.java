@@ -58,6 +58,16 @@ public class DAServiceImpl implements DAService{
 	public int seq() {
 		return mapper.seq();
 	}
+
+	@Override
+	public List<String> modelList() {
+		return mapper.modelList();
+	}
+
+	@Override
+	public List<String> manufacturerList() {
+		return mapper.manufacturerList();
+	}
 	
 	
 

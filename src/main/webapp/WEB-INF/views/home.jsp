@@ -36,7 +36,7 @@
 		<div class="main_div">
 
 			<div class="card_div">
-				<a href="DA/DA_list.html"><div class="card"
+				<a href="/DA/DA_list"><div class="card"
 						style="width: 18rem;">
 						<img src="/resources/img/home1.png" class="card-img-top"
 							alt="/resources." style="height: 190px;">
@@ -46,7 +46,7 @@
 							</h4>
 							<p class="card-text">회사의 디지털 자산을 등록하고 관리할 수 있습니다.</p>
 						</div>
-					</div></a> <a href="SecurityAssessment/SA_list.html"><div class="card"
+					</div></a> <a href="/SecurityAssessment/list"><div class="card"
 						style="width: 18rem;">
 						<img src="/resources/img/home2.png" class="card-img-top"
 							alt="/resources." style="height: 190px;">
@@ -56,7 +56,7 @@
 							</h4>
 							<p class="card-text">등록된 디지털 자산에 대해 단계적 보안성 평가를 진행합니다.</p>
 						</div>
-					</div></a> <a href="controlled_items/CI_list.html"><div class="card"
+					</div></a> <a href="/ControlledItems/CI_manage_list"><div class="card"
 						style="width: 18rem;">
 						<img src="/resources/img/home3.png" class="card-img-top"
 							alt="/resources." style="height: 190px;">
@@ -66,7 +66,7 @@
 							</h4>
 							<p class="card-text">회사 내에서 공통적으로 사용하는 코드를 관리합니다.</p>
 						</div>
-					</div></a> <a href="vulnerability/new_vulnerability_list.html"><div
+					</div></a> <a href="/vulnerability/vul_list"><div
 						class="card" style="width: 18rem;">
 						<img src="/resources/img/home4.jpg" class="card-img-top"
 							alt="/resources." style="height: 190px;">
@@ -76,7 +76,7 @@
 							</h4>
 							<p class="card-text">획득한 신규 취약점 정보를 등록하고 조치를 취할 수 있습니다.</p>
 						</div>
-					</div></a> <a href="vulnerability/vul_action_recomm_list.html"><div
+					</div></a> <a href="/ActionRecommend/list"><div
 						class="card" style="width: 18rem;">
 						<img src="/resources/img/home5.png" class="card-img-top"
 							alt="/resources." style="height: 190px;">
@@ -86,7 +86,7 @@
 							</h4>
 							<p class="card-text">취약점에 영향을 받는 설비에 대해 조치 권고를 발행할 수 있습니다.</p>
 						</div>
-					</div></a> <a href="vulnerability/vul_imple_plan_list.html">
+					</div></a> <a href="/Action/list">
 					<div class="card" style="width: 18rem;">
 						<img src="/resources/img/home6.png" class="card-img-top"
 							alt="/resources." style="height: 190px;">

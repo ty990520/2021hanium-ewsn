@@ -212,9 +212,7 @@ body {
 	$(document).ready(function(){
 	    $("#N").hide();
 	    $("#F").hide();
-	    $("#op").attr("disabled", true); //설정
-		$("#cl").attr("disabled", true); //설정
-		$("#fs").attr("disabled", true); //설정
+	    
 	});
 	
 	$("select[name=daptype]").change(function(){
@@ -295,9 +293,9 @@ body {
 	function checkMF(){
 		if($("#daSystemSW").val() == "Firmware"){
 			if($("input[name='daReportIF']:checked").val() == "Hard Wiring"){
-				if($("input[name='daModifyOPAvailability']:checked").val() == "Y")
+				if($("input[name='daModifyOPAvailability']:checked").val() == "Y"){
 					$("#cl").attr("disabled", true); //설정
-				else
+				}else
 					$("#cl").attr("disabled", false); //설정
 			}else if($("input[name='daReportIF']:checked").val() == "Serial"){
 					if($("select[name=daHMIType]").val() == "External"){
@@ -309,7 +307,13 @@ body {
 					}
 			}
 		}
-		if($("input[name='daModifyOPAvailability']:checked").val() == "N"){
+		
+
+		
+			
+	}
+	/*
+	if($("input[name='daModifyOPAvailability']:checked").val() == "N"){
 			$("#op").attr("disabled", true); //설정
 			$("#cl").attr("disabled", true); //설정
 			$("#fs").attr("disabled", true); //설정
@@ -318,9 +322,7 @@ body {
 			$("#cl").attr("disabled", false); //설정
 			$("#fs").attr("disabled", false); //설정
 		}
-			
-	}
-	
+	*/
 </script>
 
 <%@include file="../includes/footer.jsp"%>

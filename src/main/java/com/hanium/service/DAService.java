@@ -14,4 +14,6 @@ public interface DAService {
 	public int count(Criteria cri);
 	public boolean delete(String daid);	// 구현 ->Impl.jsva 에서 
 	public int seq();
+	public List<String> modelList();	
+	public List<String> manufacturerList();	
 }

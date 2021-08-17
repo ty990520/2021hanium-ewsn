@@ -9,5 +9,6 @@ public class ValTargetFacilityVO {
 	private String Vul_targetId;
 	private String Vul_daID;
 	private String Vul_daName;
+	private int vul_id;
 	private Date ValFacilitiesRegDate;
 }
