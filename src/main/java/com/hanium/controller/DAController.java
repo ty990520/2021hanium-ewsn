@@ -33,6 +33,7 @@ public class DAController {
 		model.addAttribute("list", service.getList(cri)); // Model에 bopVO의 목록을 담아서 전달
 	}
 
+
 	@GetMapping("/DA_register")
 	public void register_page() {
 	}
