@@ -31,6 +31,9 @@ public class MapperTest {
 	@Setter(onMethod_ = @Autowired)
 	private UserMapper mapper3;
 	
+	@Setter(onMethod_ = @Autowired)
+	private ControlledItemsMapper mapper4;
+	
 	@Test
 	public void testPaging() {
 		Criteria cri = new Criteria();
@@ -56,5 +59,8 @@ public class MapperTest {
 		list.forEach(da -> log.info(da));
 	}
 
-
+	@Test
+	public void testControlledItemslist() {
+		mapper4.getCIDetailList("1.").forEach(dept -> log.info(dept));
+	}
 }

@@ -29,6 +29,10 @@ private ActionRecommendService service;
 	public void register_page() {
 		
 	}
+	@GetMapping("/register")
+	public void register_page2() {
+		
+	}
 	@PostMapping("/register")	//글을 등록하는 경우에는 get방식이 아니라 post방식을 사용한다.
 	public String register(ActionRecommendVO ar) {	//RedirectAttributes : 
 	    log.info("[CONTROLLER]register : "+ar);

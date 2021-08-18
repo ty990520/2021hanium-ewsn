@@ -24,9 +24,15 @@
 		resultType="com.hanium.domain.DAVO">
 		SELECT *
 		FROM DA
-		WHERE daUse = 1 <include refid="criteria"></include>
+		WHERE daUse = 1
+		<include refid="criteria"></include>
 		ORDER BY daid
 		limit #{startIndex},#{endIndex};
+	</select>
+	<select id="getVulTargetList_CI"
+		resultType="com.hanium.domain.DAVO">
+		select * from DA where daManufacturer=#{daManufacturer} and daModel=#{daModel} and
+		daSystemSW=#{daSystemSW} ;
 	</select>
 	<select id="read" resultType="com.hanium.domain.DAVO">
 		select * from DA where daid =
@@ -36,7 +42,7 @@
 		SELECT COUNT(daid)
 		FROM DA where daUse = 1
 		<include refid="criteria"></include>
-		
+
 	</select>
 	<insert id="insert">
 		insert into DA
@@ -86,6 +92,14 @@
 		where daid =#{daid};
 	</update>
 	<select id="seq" resultType="int">
-	select count(*) from DA;
+		select count(*) from DA;
+	</select>
+	<select id="modelList" resultType="String">
+		select distinct daModel from
+		DA where daModel is not null;
+	</select>
+	<select id="manufacturerList" resultType="String">
+		select distinct
+		daManufacturer from DA where daManufacturer is not null;
 	</select>
 </mapper>

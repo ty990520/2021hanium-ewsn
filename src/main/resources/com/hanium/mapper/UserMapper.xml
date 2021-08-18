@@ -54,13 +54,9 @@
 	</select>
 	<select id="findUserValidity"
 		resultType="com.hanium.domain.UserVO">
-		SELECT *
-		FROM user, emp, dept
-		WHERE user.userid = emp.empid
-		and dept.deptcode = emp.empDeptCode and
-		(dept.deptname = user.userdept
-		and dept.deptptype = user.userptype)
-		and userid=#{userid}
+		select * from  (select * from emp, dept
+	  where dept.deptcode = emp.empDeptCode) as emp, user
+	  where emp.empid = user.userid and userid=#{userid};
 	</select>
 	<select id="read" resultType="com.hanium.domain.UserVO"><!-- login -->
 		select * from user where userid =

@@ -178,7 +178,7 @@ body {
 						<p>수정 가능한 운영 데이터</p>
 						<input type="radio" name="daModifiableOperationData"
 							value="Control Logic" class="radio_size" id="cl"> Control
-						Logic &nbsp;&nbsp; <input type="radio"
+						Logic &nbsp;&nbsp; <input type="radio" id="fs"
 							name="daModifiableOperationData" value="Firmware Setting"
 							class="radio_size"> Firmware Setting&nbsp;&nbsp; <input
 							type="radio" name="daModifiableOperationData"
@@ -212,6 +212,7 @@ body {
 	$(document).ready(function(){
 	    $("#N").hide();
 	    $("#F").hide();
+	    
 	});
 	
 	$("select[name=daptype]").change(function(){
@@ -266,14 +267,14 @@ body {
 		 var radioVal1 = $('input[name="daReportIF"]:checked').val();
 		 var radioVal2 = $('input[name="daStorageDevice"]:checked').val();
 		 var radioVal3 = $('input[name="daModifyOPAvailability"]:checked').val();
-		 var radioVal4 = $('input[name="daModifiableOperationData"]:checked').val();
+		 //var radioVal4 = $('input[name="daModifiableOperationData"]:checked').val();
 		
          if($("#daname").val()==""||$("#daFunc").val()==""||
 				$("#daManufacturer").val()==""||$("#daModel").val()==""||
 				$("#daFuncType").val()==""||$("#daImpact").val()==""||
 				$("#daFacilitiesType").val()==""||$("#daSystemSW").val()==""||
 				$("#daFacilitiesPurposeOfUse").val()==""||$("#daHMIType").val()==""||
-				radioVal1 == undefined||radioVal2 == undefined||radioVal3 == undefined||radioVal4 == undefined){
+				radioVal1 == undefined||radioVal2 == undefined||radioVal3 == undefined){
 				alert("모든 요소는 필수로 작성해야 합니다.");
 				return false;
 			
@@ -292,9 +293,9 @@ body {
 	function checkMF(){
 		if($("#daSystemSW").val() == "Firmware"){
 			if($("input[name='daReportIF']:checked").val() == "Hard Wiring"){
-				if($("input[name='daModifyOPAvailability']:checked").val() == "Y")
+				if($("input[name='daModifyOPAvailability']:checked").val() == "Y"){
 					$("#cl").attr("disabled", true); //설정
-				else
+				}else
 					$("#cl").attr("disabled", false); //설정
 			}else if($("input[name='daReportIF']:checked").val() == "Serial"){
 					if($("select[name=daHMIType]").val() == "External"){
@@ -306,9 +307,22 @@ body {
 					}
 			}
 		}
+		
+
+		
 			
 	}
-	
+	/*
+	if($("input[name='daModifyOPAvailability']:checked").val() == "N"){
+			$("#op").attr("disabled", true); //설정
+			$("#cl").attr("disabled", true); //설정
+			$("#fs").attr("disabled", true); //설정
+		}else{
+			$("#op").attr("disabled", false); //설정
+			$("#cl").attr("disabled", false); //설정
+			$("#fs").attr("disabled", false); //설정
+		}
+	*/
 </script>
 
 <%@include file="../includes/footer.jsp"%>

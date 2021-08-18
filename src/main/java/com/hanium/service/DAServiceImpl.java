@@ -58,6 +58,21 @@ public class DAServiceImpl implements DAService{
 	public int seq() {
 		return mapper.seq();
 	}
+
+	@Override
+	public List<String> modelList() {
+		return mapper.modelList();
+	}
+
+	@Override
+	public List<String> manufacturerList() {
+		return mapper.manufacturerList();
+	}
+
+	@Override
+	public List<DAVO> getVulTargetList_CI(String daManufacturer, String daModel, String daSystemSW) {
+		return mapper.getVulTargetList_CI(daManufacturer, daModel, daSystemSW);
+	}
 	
 	
 

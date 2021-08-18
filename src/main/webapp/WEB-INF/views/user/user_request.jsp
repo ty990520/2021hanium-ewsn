@@ -114,6 +114,7 @@
 
 	/*사번 인증*/
 	function validate(id) {
+	
 		$.ajax({
 			contentType : "application/json; charset=utf-8;",
 			type : "GET",
