@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 public class ValTargetFacilityVO {
-	private String Vul_targetId;
+	private int Vul_targetId;
 	private String Vul_daID;
 	private String Vul_daName;
 	private int vul_id;

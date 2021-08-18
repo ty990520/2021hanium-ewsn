@@ -105,7 +105,7 @@ public class SecurityAssessmentController {
 		sa.setSA_IdentifyType(type);
 		service.register(sa);
 
-		service5.updateIdentifyType("Direct DA", daid);
+		service5.updateIdentifyType(type, daid);
 		return "redirect:/SecurityAssessment/list";
 	}
 
@@ -168,14 +168,16 @@ public class SecurityAssessmentController {
 	@RequestMapping(value = "/sortOut")
 	public String sortOut(@RequestParam("daid") String daid) {
 		daid = daid.toString();
+		log.info(daid);
 		DAVO da = service5.get(daid);
-
-		/*log.info(da.getDaSystemSW().toString());
-		log.info(da.getDaReportIF().toString());
+		log.info(da.getDaname());
+		//log.info(da.getDaSystemSW());
+		/*log.info(da.getDaReportIF().toString());
 		log.info(da.getDaHMIType().toString());
 		log.info(da.getDaModifiableOperationData().toString());
 		log.info(da.getDaModifyOPAvailability().toString());
 */
+		
 		
 		if (!da.getDaSystemSW().equals("Firmware")) {
 			return "PC/Server";

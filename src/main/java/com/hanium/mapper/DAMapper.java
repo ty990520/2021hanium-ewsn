@@ -10,6 +10,8 @@ import com.hanium.domain.DAVO;
 public interface DAMapper {
 	public List<DAVO> getList();
 	public List<DAVO> getListWithPaging(Criteria cri);
+	public List<DAVO> getVulTargetList_CI(@Param("daManufacturer") String daManufacturer
+			,@Param("daModel") String daModel,@Param("daSystemSW") String daSystemSW);
 	public DAVO read(String daid);
 	public void insert(DAVO da);	
 	public int update(DAVO da);

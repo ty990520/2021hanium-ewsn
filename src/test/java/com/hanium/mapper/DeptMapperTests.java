@@ -7,11 +7,12 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import com.hanium.domain.ControlledItemsVO;
 import com.hanium.domain.DeptVO;
 import com.hanium.domain.EPVO;
 import com.hanium.domain.SecurityAssessmentVO;
 import com.hanium.domain.UserVO;
-import com.hanium.domain.RepresentCodeVO;
+import com.hanium.domain.ValTargetFacilityVO;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -37,6 +38,15 @@ public class DeptMapperTests {
 	@Setter(onMethod_ = @Autowired)
 	private ControlledItemsMapper mapper5;
 
+	@Setter(onMethod_ = @Autowired)
+	private ValTargetFacilityMapper mapper6;
+
+	@Test
+	public void testGetCI() {
+		ControlledItemsVO ci = mapper5.read("1.1"); // 원하는 bno값을 입력함, 임의로 bno = 5라고 가정
+		log.info(ci.getCI_content());
+	}
+	
 	@Test
 	public void testGetList() {
 		mapper.getDept().forEach(dept -> log.info(dept));
@@ -82,6 +92,17 @@ public class DeptMapperTests {
 		log.info(dept.getDeptcode() + ":" + dept.getDeptptype() + ":" + dept.getDeptname());
 	}
 
+	@Test
+	public void testInsertVulTarget() {
+		ValTargetFacilityVO val = new ValTargetFacilityVO();
+		val.setVul_daID("H-07-0034");
+		val.setVul_daName("8.18테스트");
+		val.setVul_id(13);
+
+		mapper6.insert(val);
+
+	}
+	
 	@Test
 	public void testSAInsert() {
 		SecurityAssessmentVO SA = new SecurityAssessmentVO();

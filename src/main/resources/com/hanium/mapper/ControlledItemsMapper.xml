@@ -11,7 +11,7 @@
 		select * from ControlledItems where CI_detail_id like
 		CONCAT(#{number},'%')
 	</select>
-	<select id="read" resultType="com.hanium.domain.UserVO">
+	<select id="read" resultType="com.hanium.domain.ControlledItemsVO">
 		select * from ControlledItems where
 		CI_detail_id = #{CI_detail_id}
 	</select>
