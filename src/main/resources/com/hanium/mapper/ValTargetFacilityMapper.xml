@@ -26,4 +26,9 @@
 		ValFacilitiesRegDate=#{ValFacilitiesRegDate}
 		where Vul_targetId=#{Vul_targetId}
 	</update>
+	<select id="targetDAList" resultType="com.hanium.domain.DAVO">
+		select * from DA where daid in 
+		(select Vul_daID from ValTargetFacility where
+		vul_id = #{vul_id});
+	</select>
 </mapper>
