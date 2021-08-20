@@ -27,6 +27,10 @@ a {
     top: 35px;
 }
 
+.table{
+	text-align: left;
+}
+
 </style>
 
 <div class="right-container" style="width: 70%">
@@ -42,40 +46,39 @@ a {
 			</tr>
 			<tr>
 				<td class="table-light" colspan="4">자산</td>
-				<td colspan="8"><input type="text" class="lookfor_input"
-					placeholder="검색어를 입력해주세요" title="검색창">
-					<button type="button" class="btn btn-success"
+				<td colspan="8"><input type="text" id="input_sear" width="30px" class="lookfor_input"
+					placeholder="자산번호를 입력해주세요" title="검색창">
+					<button type="button" id="a" class="btn btn-success"
 						onclick="location.href='#' ">찾기</button>
 			</tr>
 			<tr>
-				<td class="table-light" colspan="4">버전</td>
+				<td class="table-light" colspan="4">자산명</td>
 				<td colspan="8">
 					<div class="textbox">
-						<input type="text" class="lookfor_input" placeholder="버전을 입력하세요"
-							title="검색창">
+						<input type="text" class="lookfor_input"
+							id="daname" readonly>
 					</div>
 				</td>
 			</tr>
-			<tr>
-				<td class="table-light" colspan="4">점검일자</td>
-				<td colspan="8"><input type="date"></td>
+		<tr>
+				<td class="table-light" colspan="4">자산식별유형 </td>
+				<td colspan="5"><input type="text" class="lookfor_input"
+							id="daIdentifyType" readonly></td>
+			
 			</tr>
 			<tr>
 				<td class="table-light" colspan="4">발전소</td>
-				<td colspan="2">수력</td>
-				<td class="table-light" colspan="2">발전소 위치</td>
-				<td colspan="4">한강</td>
+				<td colspan="2"> <input type="text" class="lookfor_input"
+							id="daptype"  readonly></td>
+				<td class="table-light" colspan="2">발전소 상세</td>
+				<td colspan="4"><input type="text" class="lookfor_input"
+							id="daPDetailType"readonly></td>
 			</tr>
-			<tr>
-				<td class="table-light" colspan="4">자산번호</td>
-				<td colspan="2">H-01-0001</td>
-				<td class="table-light" colspan="4">자산식별 상세 유형</td>
-				<td colspan="2">DP-DA</td>
-			</tr>
+			
 		</table>
 		<div class="table_button_group">
 			<button type="button" id="btn_toggle" class="btn btn-danger"
-				data-toggle="modal" data-target="#staticBackdrop">평가시작</button>
+				data-toggle="modal" data-target="#staticBackdrop" onclick="modal_search()">평가시작</button>
 		</div>
 	</div>
 
@@ -156,10 +159,72 @@ a {
 </div>
 
 	<script>
+	
+	var datype;
 			$(function() {
 				$("#btn_toggle").click(function() {
 					$(".down").toggle();
 				});
 			})
+			
+			$(function(){ $("#a").on("click",function(){
+            var result = $('#input_sear').val();  
+            console.log(result);
+            $.ajax({
+               contentType : "application/json; charset=utf-8;",
+               dataType : "json",
+               type : "GET",
+               url : "/ControlledItemsApply/selectAr",
+               data : {
+                  "daid": result
+               },
+               success : function(data) {
+                  if (!data) {
+                     console.log("data없음");
+                  }
+                  console.log(data);
+                  	datype = data.daIdentifyType;
+					$("#daname").val(data.daname)
+					$("#daptype").val(data.daptype)
+					$("#daPDetailType").val(data.daPDetailType)
+					$("#daIdentifyType").val(data.daIdentifyType)
+				
+               },
+               error : function(request, status, error) {
+                  alert("code:" + request.status + "\n"
+                        + "message:" + request.responseText
+                        + "\n" + "error:" + error);
+               }
+               
+            });
+         });
+      })
+			
+         
+	function modal_search(){
+		alert(datype);
+		
+		$.ajax({
+			contentType : "application/json; charset=utf-8;",
+			dataType:"json",
+			type : "GET",
+			url : "/ControlledItems/search_ci_list",
+			data : {
+				"type" : datype,
+				
+			},
+			success : function(response) {
+				//conlose.log(response);
+				console.log(response);
+				
+				
+			},
+			error : function(request, status, error) {
+				alert("code:" + request.status + "\n" + "message:"
+						+ request.responseText + "\n" + "error:" + error);
+			}
+		})
+	}
+      
 		</script>
 <%@include file="../includes/footer.jsp"%>

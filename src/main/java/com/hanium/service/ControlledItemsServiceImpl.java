@@ -41,4 +41,9 @@ public class ControlledItemsServiceImpl implements ControlledItemsService{
 		return mapper.getCIDetailList(number);
 	}
 
+	@Override
+	public List<ControlledItemsVO> type(String type) {
+		return mapper.type(type);
+	}
+
 }

@@ -1,11 +1,14 @@
 package com.hanium.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.w3c.dom.ls.LSException;
 
 import com.hanium.domain.ControlledItemsVO;
@@ -130,5 +133,18 @@ public class ControlledItemsController {
 	public String modify(ControlledItemsVO ci) {
 		service.modify(ci);
 		return "success";
+	}
+	
+	@GetMapping(value = "/search_ci_list")
+	public @ResponseBody List<ControlledItemsVO> search_ci_list(@RequestParam("type") String type) {
+		log.info(type);
+		String ci_type = "";
+		if(type.equals("BOP DA")) {
+			ci_type ="CI_BOP" ;
+		}
+		
+		List<ControlledItemsVO> search_results = service.type(ci_type);
+		search_results.forEach(i -> log.info(i));
+		return search_results;
 	}
 }
