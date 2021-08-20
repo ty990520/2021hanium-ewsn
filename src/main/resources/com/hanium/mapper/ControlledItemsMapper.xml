@@ -38,4 +38,8 @@
 		CI_EP=#{CI_EP}
 		where CI_detail_id=#{CI_detail_id}
 	</update>
+	
+	<select id="type" resultType="com.hanium.domain.ControlledItemsVO">
+	select * from ControlledItems where ${type}="Y";
+	</select>
 </mapper>

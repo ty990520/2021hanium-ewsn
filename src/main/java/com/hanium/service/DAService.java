@@ -17,4 +17,5 @@ public interface DAService {
 	public List<String> modelList();	
 	public List<String> manufacturerList();	
 	public List<DAVO> getVulTargetList_CI(String daManufacturer, String daModel, String daSystemSW);
+
 }

@@ -10,4 +10,5 @@ public interface ControlledItemsService {
 	public boolean modify(ControlledItemsVO ci);		//수정
 	public List<ControlledItemsVO> getList();			//리스트 조회
 	public List<ControlledItemsVO> getCIDetailList(String number);
+	public List<ControlledItemsVO> type(String type);
 }

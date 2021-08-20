@@ -54,11 +54,6 @@ public class DeptMapperTests {
 	public void testGetList() {
 		mapper.getDept().forEach(dept -> log.info(dept));
 	}
-	
-	@Test
-	public void testVulList() {
-		mapper7.getList().forEach(i -> log.info(i));
-	}
 
 	@Test
 	public void testSAlist() {

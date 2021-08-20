@@ -10,4 +10,5 @@ public interface ControlledItemsMapper {
 	public ControlledItemsVO read(String CI_detail_id);
 	public void insert(ControlledItemsVO ci);	
 	public int update(ControlledItemsVO ci);
+	public List<ControlledItemsVO> type(String type);
 }
