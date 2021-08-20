@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.hanium.domain.DAVO;
 import com.hanium.domain.ValTargetFacilityVO;
-import com.hanium.mapper.ActionImplementMapper;
 import com.hanium.mapper.ValTargetFacilityMapper;
 
 import lombok.AllArgsConstructor;
@@ -33,5 +33,10 @@ public class ValTargetFacilityImple implements ValTargetFacilityService {
 	@Override
 	public List<ValTargetFacilityVO> getList() {
 		return mapper.getList();
+	}
+
+	@Override
+	public List<DAVO> targetDAList(int vul_id) {
+		return mapper.targetDAList(vul_id);
 	}
 }

@@ -40,6 +40,9 @@ public class DeptMapperTests {
 
 	@Setter(onMethod_ = @Autowired)
 	private ValTargetFacilityMapper mapper6;
+	
+	@Setter(onMethod_ = @Autowired)
+	private VulnerabilityMapper mapper7;
 
 	@Test
 	public void testGetCI() {
@@ -51,17 +54,12 @@ public class DeptMapperTests {
 	public void testGetList() {
 		mapper.getDept().forEach(dept -> log.info(dept));
 	}
-	
-	@Test
-	public void testGetciList() {
-		mapper5.type("CI_BOP");
-	}
-	
+
 	@Test
 	public void testSAlist() {
 		mapper3.getList().forEach(dept -> log.info(dept));
 	}
-
+	
 	@Test
 	public void testEPList() {
 		EPVO ep = mapper4.read(4L);
