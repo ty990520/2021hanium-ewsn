@@ -40,6 +40,6 @@
 	</update>
 	
 	<select id="type" resultType="com.hanium.domain.ControlledItemsVO">
-	select * from ControlledItems where ${type}="Y";
+	select * from ControlledItems where ${type}='Y';
 	</select>
 </mapper>

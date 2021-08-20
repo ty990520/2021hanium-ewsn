@@ -56,6 +56,11 @@ public class DeptMapperTests {
 	}
 
 	@Test
+	public void testGetciList() {
+		mapper5.type("CI_BOP").forEach(i -> log.info(i));
+	}
+	
+	@Test
 	public void testSAlist() {
 		mapper3.getList().forEach(dept -> log.info(dept));
 	}
