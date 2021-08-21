@@ -24,7 +24,7 @@
 			<th>점검일</th>
 		</tr>
 		<c:forEach items="${list}" var="cia" varStatus="status">
-			<tr onclick="CI/select_print('<c:out value="${da.daid}"/>')">
+			<tr onclick="CI_select_print('<c:out value="${cia.CI_apply_version}"/>')">
 				<td style="width: 30px;">${status.count}</td>
 				<td><c:out value="${cia.CI_daname}" /></td>
 				<td><a href="/ControlledItemsApply/CI_select_print"><c:out
@@ -46,8 +46,14 @@
 </div>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
+
+<script>
+
+function CI_detail(CI_applyDetail_id) {
+	//alert(SA_no);
+	console.log(CI_applyDetail_id);
+	location.href = "/CI/CI_select_print?CI_applyDetail_id="+CI_applyDetail_id;
+
+}
+</script>
 <%@include file="../includes/footer.jsp"%>
