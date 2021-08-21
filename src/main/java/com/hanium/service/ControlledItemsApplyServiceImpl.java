@@ -37,10 +37,7 @@ public class ControlledItemsApplyServiceImpl implements  ControlledItemsApplySer
 	public List< ControlledItemsApplyVO> getList() {
 		return mapper.getList();
 	}
-	@Override
-	public List< ControlledItemsApplyVO> getList(String CI_applyDetail_iD) {
-		return mapper.getList();
-	}
-	
+
+
 
 }

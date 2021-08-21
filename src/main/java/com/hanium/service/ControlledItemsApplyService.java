@@ -10,5 +10,5 @@ public interface ControlledItemsApplyService {
 	public boolean modify(ControlledItemsApplyVO cia);		//수정
 	public List<ControlledItemsApplyVO> getList();		
 	//리스트 조회
-	public Object get(String cI_applyDetail_id);
+	
 }

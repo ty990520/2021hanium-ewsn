@@ -43,10 +43,11 @@ public class ControlledItemsApplyController {
 	}
 
 	@GetMapping("/CI_select_print")
-	public void get(@RequestParam("CI_applyDetail_id") String CI_applyDetail_id, Model model) { // addAttribute메소드를 이용해 Model객체에 담아서 전달
-			log.info("[ CONTROLLER ] get ……..");
-			model.addAttribute("cia", service.get(CI_applyDetail_id));
-		}
+	public void list2(Model model) { // addAttribute메소드를 이용해 Model객체에 담아서 전달
+		log.info("[CONTROLLER]get list...");
+		model.addAttribute("list", service.getList()); // Model에 BoardVO의 목록을 담아서 전달
+	}
+
 	@GetMapping("/CI_list_apply")
 	public void register_page(Model model, Criteria cia) {
 		model.addAttribute("cia", service2.getList(cia));
@@ -62,11 +63,11 @@ public class ControlledItemsApplyController {
 	}
 
 	
-	/*@GetMapping("/get")
+	@GetMapping("/get")
 	public void get(@RequestParam("CI_apply_no") Long CI_apply_no, Model model) {
 		log.info("[ CONTROLLER ] get ……..");
 		model.addAttribute("cia", service.get(CI_apply_no));
-	}*/
+	}
 
 	@PostMapping("/modify")
 	public String modify(ControlledItemsApplyVO cia) {
