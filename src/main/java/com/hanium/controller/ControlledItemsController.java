@@ -142,6 +142,38 @@ public class ControlledItemsController {
 		if(type.equals("BOP DA")) {
 			ci_type ="CI_BOP" ;
 		}
+		else if (type.equals("EP DA")) {
+			ci_type="CI_EP";
+		}
+		else if (type.equals("PC/Server")) {
+			ci_type="CI_pcServer";
+		}
+		else if (type.equals("Indirect DA")) {
+			ci_type="CI_EP";
+		}
+		else if (type.equals("Control Facilities HF")) {
+			ci_type="CI_CF_HF";
+		}
+		else if (type.equals("Control Facilities MF")) {
+			ci_type="CI_CF_MF";
+		}
+	
+		else if (type.equals("Control Facilities LF")) {
+			ci_type="CI_CF_LF";
+		}
+	
+		else if (type.equals("Field Facilities HF")) {
+			ci_type="CI_FF_HF";
+		}
+	
+		else if (type.equals("Control Facilities MF")) {
+			ci_type="CI_FF_MF";
+		}
+	
+		else if (type.equals("Control Facilities LF")) {
+			ci_type="CI_FF_LF";
+		}
+	
 		
 		List<ControlledItemsVO> search_results = service.type(ci_type);
 		search_results.forEach(i -> log.info(i));
