@@ -35,8 +35,7 @@ public class ControlledItemsApplyController {
 	private DAService service2;
 	private ControlledItemsApplyService service;
 	 private DAService service_da;
-	 private ControlledItemsService service3;
-
+	 
 	@GetMapping("/CI_list")
 	public void list(Model model) { // addAttribute메소드를 이용해 Model객체에 담아서 전달
 		log.info("[CONTROLLER]get list...");
