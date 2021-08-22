@@ -30,102 +30,120 @@ a {
 .table {
 	text-align: left;
 }
+
+tbody#ci_apply {
+	text-align: center;
+}
+
+td {
+	vertical-align: middle !important;
+}
 </style>
 
 <div class="right-container" style="width: 70%">
-	<h1>
-		<b>사이버통제항목 리스트 등록 </b>
-	</h1>
-	<hr>
-	<br>
-	<div class="up">
-		<table class="table table-bordered">
-			<tr>
-				<th style="text-align: center;" colspan='12'>평가 자산 상세 내역</th>
-			</tr>
-			<tr>
-				<td class="table-light" colspan="4">자산</td>
-				<td colspan="8"><input type="text" id="input_sear" width="30px"
-					class="lookfor_input" placeholder="자산번호를 입력해주세요" title="검색창">
-					<button type="button" id="a" class="btn btn-success"
-						onclick="location.href='#' ">찾기</button>
-			</tr>
-			<tr>
-				<td class="table-light" colspan="4">자산명</td>
-				<td colspan="8">
-					<div class="textbox">
-						<input type="text" class="lookfor_input" id="daname" readonly>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td class="table-light" colspan="4">자산식별유형</td>
-				<td colspan="5"><input type="text" class="lookfor_input"
-					id="daIdentifyType" readonly></td>
+	<form method="post" action="register" id="form"
+		onsubmit="return false;">
+		<h1>
+			<b>사이버통제항목 리스트 등록 </b>
+		</h1>
+		<hr>
+		<br>
+		<div class="up">
 
-			</tr>
-			<tr>
-				<td class="table-light" colspan="4">발전소</td>
-				<td colspan="2"><input type="text" class="lookfor_input"
-					id="daptype" readonly></td>
-				<td class="table-light" colspan="2">발전소 상세</td>
-				<td colspan="4"><input type="text" class="lookfor_input"
-					id="daPDetailType" readonly></td>
-			</tr>
+			<table class="table table-bordered">
+				<tr>
+					<th style="text-align: center;" colspan='12'>평가 자산 상세 내역</th>
+				</tr>
+				<tr>
+					<td class="table-light" colspan="4">자산</td>
+					<td colspan="8"><input type="text" id="input_sear"
+						width="30px" name="CI_daID" class="lookfor_input"
+						placeholder="자산번호를 입력해주세요" title="검색창">
+						<button type="button" id="a" class="btn btn-success"
+							onclick="location.href='#' ">찾기</button>
+				</tr>
+				<tr>
+					<td class="table-light" colspan="4">자산명</td>
+					<td colspan="8">
+						<div class="textbox">
+							<input type="text" class="lookfor_input" id="daname"
+								name="CI_daname" readonly>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="table-light" colspan="4">자산식별유형</td>
+					<td colspan="5"><input type="text" class="lookfor_input"
+						id="daIdentifyType" readonly></td>
 
-		</table>
-		<div class="table_button_group">
-			<button type="button" id="btn_toggle" class="btn btn-danger"
-				data-toggle="modal" data-target="#staticBackdrop"
-				onclick="modal_search()">평가시작</button>
+				</tr>
+				<tr>
+					<td class="table-light" colspan="4">발전소</td>
+					<td colspan="2"><input type="text" class="lookfor_input"
+						id="daptype" readonly></td>
+					<td class="table-light" colspan="2">발전소 상세</td>
+					<td colspan="4"><input type="text" class="lookfor_input"
+						id="daPDetailType" readonly></td>
+				</tr>
+
+			</table>
+
+			<div class="table_button_group">
+				<button type="button" id="btn_toggle" class="btn btn-danger"
+					data-toggle="modal" data-target="#staticBackdrop"
+					onclick="modal_search()">평가시작</button>
+			</div>
 		</div>
-	</div>
 
-	<br> <br>
+		<br> <br>
 
+		<div class="down " style="display: none">
+			<table class="table table-bordered">
+				<tr>
+					<th style="text-align: center;" colspan="5">보안조치 적용</th>
+				</tr>
+				<tr>
+					<th style="text-align: center;">버전명</th>
+					<td colspan="4"><input type="text" name="CI_apply_version"
+						placeholder="버전명 입력" style="width: -webkit-fill-available;"></td>
+				</tr>
+				<colgroup>
+					<col width="12%" />
+					<col width="12%" />
+					<col width="15%" />
+					<col width="10%" />
+					<col width="60%" />
+				</colgroup>
+				<tr>
+					<th class="middle">통제항목번호</th>
+					<th class="middle">통제항목 분류</th>
+					<th class="middle">상세분류</th>
+					<th class="middle">이행여부</th>
+					<th>적용내용</th>
+				</tr>
+				<tbody id="ci_apply">
+				</tbody>
 
-	<div class="down " style="display: none">
-		<table class="table table-bordered">
-			<tr>
-				<th style="text-align: center;" colspan="5">제어봉구동장치 PLC의 보안조치
-					적용결과</th>
-			</tr>
-			<colgroup>
-
-				<col width="15%" />
-				<col width="20%" />
-				<col width="15%" />
-				<col width="45%" />
-			</colgroup>
-			<tr>
-
-				<th class="middle">통제항목 분류</th>
-				<th class="middle">상세분류</th>
-				<th class="middle">이행여부</th>
-				<th>적용내용</th>
-			</tr>
-			<tr id="b">
-
-				<td class="middle"><input type="text" value="I"
-					<c:out value='${pageMaker.cri.type eq "I"?"selected": "" }'/>>운영적</td>
-				<td class="middle">형상관</td>
-				<td class="middle"><select name="CI_applyCheck">
-						<option value="Y">Y</option>
-						<option value="N">N</option>
-				</select></td>
-				<td><textarea placeholder="내용을 입력해주세요" name="CI_applyContent"></textarea></td>
-			</tr>
-		</table>
-		<div class="table_button_group">
-			<button type="button" class="btn btn-danger"
-				onclick="location.href='#' ">완료</button>
-			<br> <br>
+			</table>
+			<div class="table_button_group">
+				<button type="button" class="btn btn-danger" id="apply">완료</button>
+				<br> <br>
+			</div>
 		</div>
-	</div>
+	</form>
 </div>
 
 <script>
 	var datype;
+	var ciarr = [];
+	var ciid = [];
+	var ciid_val = [];
+	var selectid = [];
+	var contentid = [];
+	var selectid_val = [];
+	var contentid_val = [];
+	var len = 0;
+
 	$(function() {
 		$("#btn_toggle").click(function() {
 			$(".down").toggle();
@@ -169,46 +187,70 @@ a {
 				});
 	})
 
-	
-	
 	function modal_search() {
 		console.log(datype);
-		$.ajax({
-			contentType : "application/json; charset=utf-8;",
-			dataType : "json",
-			type : "GET",
-			url : "/ControlledItems/search_ci_list",
-			data : {
-				"type" : datype
+		$
+				.ajax({
+					contentType : "application/json; charset=utf-8;",
+					dataType : "json",
+					type : "GET",
+					url : "/ControlledItems/search_ci_list",
+					data : {
+						"type" : datype
 
-			},
-			success : function(response) {
-				//conlose.log(response);
-				console.log(response);
-				
-				getTag = $("#b").empty();
-				
-				var insTag ="";
-			
-				
-				
-				// 추가할 태그
-				for(var i=0; i<response.length; i++){
-					insTag += "<tr>";
-					//insTag += "onclick='select("+i+",\'"+response[i].daname+"\',\'"+response[i].daImpact+"\')'>";
-					
-					//insTag += "<td scope='row' style='width: 30px;'>"+(i+1)+"</td>";
-					insTag += "<td name='CI_type'>"+response[i].CI_type+"</td>";
-					insTag += "<td name='CI_detailType'>"+response[i].CI_detailType+"</td>";
-					insTag += "</tr>";
-					console.log(insTag);
-					
-					
-				}
-				$("#selectDA_modal").html(insTag) ;
-		
-			}
-		});
+					},
+					success : function(response) {
+						$("#ci_apply").empty();
+						var insTag = "";
+						len = response.length;
+
+						// 추가할 태그
+						for (var i = 0; i < response.length; i++) {
+							insTag += "<tr title='"+response[i].ci_content+"'>";
+							insTag += "<td >"
+									+ "<input type='hidden' name='CI_applyDetail_id' id='ci"+i+ "' value='"+response[i].ci_detail_id+"'>"+response[i].ci_detail_id + "</td>";
+							insTag += "<td>" + response[i].ci_type + "</td>";
+							insTag += "<td>" + response[i].ci_detailType
+									+ "</td>";
+							insTag += "<td><select name='CI_applyCheck' id='select"+i+ "'><option value='Y'>Y</option><option value='N'>N</option></select></td>";
+							insTag += "<td><textarea id='content"+i+ "' placeholder='해당 통제항목에 대한 보안 조치 내용을 작성해주세요.'></textarea></td>";
+							insTag += "</tr>";
+							ciid[i] = "ci"+i;
+							selectid[i] = "select" + i;
+							contentid[i] = "content" + i;
+							//$("input[name=checkitems]").eq(i).attr("value","Y");
+
+						}
+						$("#ci_apply").html(insTag);
+						console.log(ciarr);
+					}
+				});
 	}
+
+	$('#apply').on('click', function() {
+		for (var i = 0; i < len; i++) {
+			/*document.getElementById(ciid[i]).value = $("#" + ciid[i]).text();
+			document.getElementsByName("CI_applyDetail_id")[i].value = $("#" + ciid[i]).text();
+			//$("#" + ciid[i]).val($("#" + ciid[i]).text()); */
+			
+
+			//$("#" + ciid[i]).val($("#" + ciid[i]).text()); 
+			
+			//selectid_val[i] = $("#" + selectid[i] + " option:selected").val();
+			//$("#" + selectid[i] + " option:selected").attr('name', "CI_applyCheck");
+
+			contentid_val[i] = $("#" + contentid[i]).val();
+			$("#" + contentid[i]).attr('name', "CI_applyContent");
+			
+			
+		}
+		
+		if (confirm("해당 디지털자산의 관리 통제항목에 대한 내용을 등록하시겠습니까?") == true) {
+			alert("등록이 완료되었습니다.");
+			document.getElementById('form').submit();
+			return true;
+		} else
+			return false;
+	});
 </script>
 <%@include file="../includes/footer.jsp"%>

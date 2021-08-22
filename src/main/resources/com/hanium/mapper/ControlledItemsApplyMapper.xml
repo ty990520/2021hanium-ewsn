@@ -5,7 +5,7 @@
 <mapper namespace="com.hanium.mapper.ControlledItemsApplyMapper">
  	<select id="getList"
 		resultType="com.hanium.domain.ControlledItemsApplyVO">
-		select * from ControlledItemsApply;
+		select * from ControlledItemsApply group by CI_daID;
 	</select>
 	<select id="read"
 		resultType="com.hanium.domain.ControlledItemsApplyVO">
@@ -15,10 +15,9 @@
 	<insert id="insert" useGeneratedKeys="true"
 		keyProperty="CI_apply_no">
 		insert into ControlledItemsApply
-		(CI_apply_no,CI_daID,CI_apply_version,CI_applyContent,CI_applyCheck,
-		CI_applyDate, checkerID,CI_applyDetail_id, CI_daname)
+		(CI_daID,CI_apply_version,CI_applyContent,CI_applyCheck, checkerID,CI_applyDetail_id, CI_daname)
 		values
-		(#{CI_apply_no},#{CI_daID},#{CI_apply_version},#{CI_applyContent},#{CI_applyCheck},#{CI_applyDate},#{checkerID},#{CI_applyDetail_id},#{CI_daname})
+		(#{CI_daID},#{CI_apply_version},#{CI_applyContent},#{CI_applyCheck},#{checkerID},#{CI_applyDetail_id},#{CI_daname})
 	</insert>
 	<update id="update">
 		update ControlledItemsApply
@@ -33,7 +32,8 @@
 		where
 		CI_apply_no=#{CI_apply_no}
 	</update>
-	
-	
-
+	<select id="get"
+		resultType="com.hanium.domain.ControlledItemsApplyVO">
+	select * from ControlledItemsApply where CI_daID = #{CI_daID} and CI_applyDetail_id=#{CI_applyDetail_id};
+</select>
 </mapper>
