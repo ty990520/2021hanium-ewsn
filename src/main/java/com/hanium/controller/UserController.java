@@ -91,8 +91,13 @@ public class UserController {
 
 	@PostMapping("/modify")
 	public String modify(UserVO user) {
+		/*log.info(user.getUserid());
+		log.info(user.getUsername());
+		log.info(user.getUserphone());
+		log.info(user.getUserbirth());*/
+		
 		service.modify(user);
-		return "success";
+		return "redirect:/user/mypage";
 	}
 
 	@ResponseBody
@@ -165,5 +170,14 @@ public class UserController {
 		HttpSession session = request.getSession();
 		session.invalidate();
 		return "redirect:/";
+	}
+	
+	
+	@RequestMapping("/mypage")
+	public void mypage(HttpServletRequest request,Model model)  throws Exception{
+		HttpSession session = request.getSession();
+		String userid = (String) session.getAttribute("login_id");
+		UserVO user = service.get(userid);
+		model.addAttribute("user",user);
 	}
 }

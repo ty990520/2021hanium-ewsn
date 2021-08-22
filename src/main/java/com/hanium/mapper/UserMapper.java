@@ -24,4 +24,6 @@ public interface UserMapper {
 	public int userPermission(UserVO user);
 	public UserVO login(@Param("userid") String userid, @Param("userpw") String userpw);
 	public int count(Criteria cri);
+	public void updatePassword(@Param("userpw") String userpw,@Param("userid") String userid);
+	public boolean delete(@Param("userid") String userid);
 }

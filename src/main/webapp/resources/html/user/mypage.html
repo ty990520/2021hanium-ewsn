@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- menu css -->
+<link rel="shortcut icon" href="../favicon.ico">
+<link rel="stylesheet" type="text/css" href="../../css/normalize.css" />
+<link rel="stylesheet" type="text/css" href="../../css/demo.css" />
+<link rel="stylesheet" type="text/css" href="../../css/component.css" />
+<link rel="stylesheet" type="text/css" href="../../css/menu.css" />
+<link rel="stylesheet" type="text/css" href="../../css/join2_1.css" />
+<link rel="stylesheet" type="text/css" href="../../css/join_2.css" />
+<script src="../../js/modernizr.custom.js"></script>
+<!-- menu css끝 -->
+
+<!-- bootstrap link -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+	crossorigin="anonymous"></script>
+<!-- bootstrap link끝 -->
+
+<style>
+.text_body {
+	width: 100%;
+	height: 1500px;
+	position: relative;
+	top: 80px;
+	left: 0px;
+}
+
+.join_title {
+	margin-top: 12px;
+}
+
+h5 {
+	text-align: center;
+}
+
+.center{
+    text-align: center;
+}
+</style>
+</head>
+
+<body>
+	<!-- base페이지입니다. -->
+	<div class="base_top">
+		<div class="main_menu">
+			<div class="top_left">
+				<span class="title"><a href="./base2.html">DA 관리 프로그램</a></span>
+			</div>
+			<div class="top_center" onmouseleave="out()">
+				<section class="color-6">
+					<nav class="cl-effect-13">
+						<a href="#" onmouseover="loginbox()">자산관리</a> <a href="#"
+							onmouseover="loginbox()">위험관리</a> <a href="#"
+							onmouseover="loginbox()">취약점관리</a> <a href="#"
+							onmouseover="loginbox()">회원관리</a>
+
+					</nav>
+				</section>
+			</div>
+			<div class="top_right">
+				<div class="login_box">
+					<button type="button" class="btn btn-outline-secondary"
+						style="margin-right: 10px;"
+						onclick="location.href = './login.html' ">login</button>
+					<button type="button" class="btn btn-outline-danger"
+						onclick="location.href = './join.html' ">Join</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="sub_menu" id="submenu">
+			<div class="sub_inner">
+				<div class="sub_left"></div>
+				<div class="sub_center" onmouseover="loginbox()"
+					onmouseleave="out()">
+					<div class="sub_center_section">
+						<nav class="cl-effect-3">
+							<a href="./DA/DA_list.html">자산 정보관리</a> <a
+								href="./DA/DA_register.html">단계적 보안성 평가</a> <a
+								href="./code/code_list.html">공통 코드 관리</a>
+
+						</nav>
+					</div>
+					<div class="sub_center_section">
+						<nav class="cl-effect-3">
+							<a href="#">통제항목</a> <a href="#">통제항목 적용관리</a>
+						</nav>
+					</div>
+					<div class="sub_center_section">
+						<nav class="cl-effect-3">
+							<a href="#">신규취약점 관리</a> <a href="#">조치권고</a> <a href="#">이행계획</a>
+
+						</nav>
+					</div>
+					<div class="sub_center_section_last">
+						<nav class="cl-effect-3">
+							<a href="#">정보수정</a> <a href="#">FAQ</a>
+						</nav>
+					</div>
+				</div>
+				<div class="sub_right"></div>
+			</div>
+
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		function MM_changeProp(objId, x, theProp, theValue) { //v9.0
+			var obj = null;
+			with (document) {
+				if (getElementById)
+					obj = getElementById(objId);
+			}
+			if (obj) {
+				if (theValue == true || theValue == false)
+					eval("obj.style." + theProp + "=" + theValue);
+				else
+					eval("obj.style." + theProp + "='" + theValue + "'");
+			}
+		}
+		function loginbox() {
+			var obj = document.getElementById("submenu");
+			obj.style.display = "block"; // 블록 박스로 변경
+		}
+		function out() {
+			var obj = document.getElementById("submenu");
+			obj.style.display = "none"; // 안보이게
+		}
+	</script>
+	<br>
+		
+	
+	<!--  method="post"방식으로 넘겨줘야함(나중에 스프링 컨트롤러에서 RequestMethod.POST로 제어할 것) -->
+	<form name=form onsubmit="return checkAll()" id="joinForm"
+		action="join_3.html">
+		<ul class="join_box">
+			<br>
+			<li class="center">
+			<img src="../../img/person.png" style="width: 50px;">
+			<br>
+			<h2>마이페이지</h2>
+				<hr class="two"></li>
+			<li class="checkBox check01">
+				<ul class="clearfix">
+					<li>
+						<h5>소속 정보 수정은 관리자에게 문의하세요.</h5> <br>
+						<div>
+							<h6 class="join_title">
+								<label for="id">발전소 구분</label>
+							</h6>
+							<span class="box int_id"> <input type="text"
+								name="userCode" class="int" maxlength="20">
+							</span>
+
+						</div> <!-- PW1 -->
+						<div>
+							<h6 class="join_title">
+								<label for="id">소속 부서</label>
+							</h6>
+							<span class="box int_id"> <input type="text"
+								name="userCode" class="int" maxlength="20">
+							</span> <br>
+						</div> <!-- PW1 -->
+						<hr> <br>
+						<h5>개인 정보 입력</h5> <br>
+						<div>
+							<h6 class="join_title">
+								<label for="id">사번</label>
+							</h6>
+							<span class="box int_id"> <input type="text"
+								name="userCode" class="int" maxlength="20">
+							</span>
+
+						</div> <!-- PW1 -->
+						<div>
+							<h6 class="join_title">
+								<label for="pswd1">비밀번호 </label>
+							</h6>
+							<span class="box int_pass"> <input type="password"
+								name="password1" class="int" maxlength="20"> <img
+								src="../../img/lock.png" id="pswd1_img1" class="pswdImg">
+							</span>
+
+						</div> <!-- PW2 -->
+						<div>
+							<h6 class="join_title">
+								<label for="pswd2">비밀번호 재확인</label>
+							</h6>
+							<span class="box int_pass_check"> <input type="password"
+								name="password2" class="int" maxlength="20"> <img
+								src="../../img/lock.png" id="pswd2_img1" class="pswdImg">
+							</span>
+
+						</div> <!-- NAME -->
+						<div>
+							<h6 class="join_title">
+								<label for="name">이름</label>
+							</h6>
+							<span class="box int_name"> <input type="text" name="name"
+								class="int" maxlength="20">
+							</span>
+
+						</div> <!-- BIRTH -->
+						<div>
+							<h6 class="join_title">
+								<label for="email">이메일주소</label>
+							</h6>
+							<span class="box int_name"> <input type="text" name="mail"
+								class="int" maxlength="20">
+							</span>
+
+						</div>
+						<div>
+							<h6 class="join_title">
+								<label for="yy">생년월일<h7> (선택)</h7></label>
+							</h6>
+
+							<div id="bir_wrap">
+								<!-- BIRTH_YY -->
+								<div id="bir_yy">
+									<span class="box"> <input type="text" id="yy"
+										class="int" maxlength="4" placeholder="년(4자)">
+									</span>
+								</div>
+
+								<!-- BIRTH_MM -->
+								<div id="bir_mm">
+									<span class="box"> <select id="mm" class="sel">
+											<option>월</option>
+											<option value="01">1</option>
+											<option value="02">2</option>
+											<option value="03">3</option>
+											<option value="04">4</option>
+											<option value="05">5</option>
+											<option value="06">6</option>
+											<option value="07">7</option>
+											<option value="08">8</option>
+											<option value="09">9</option>
+											<option value="10">10</option>
+											<option value="11">11</option>
+											<option value="12">12</option>
+									</select>
+									</span>
+								</div>
+
+								<!-- BIRTH_DD -->
+								<div id="bir_dd">
+									<span class="box"> <input type="text" id="dd"
+										class="int" maxlength="2" placeholder="일">
+									</span>
+								</div>
+
+							</div>
+
+						</div>
+
+						<div>
+							<h6 class="join_title">
+								<label for="phone">연락처<h7> (선택)</h7></label>
+							</h6>
+							<span class="box int_name"> <input type="text" id="phone"
+								class="int" maxlength="20">
+							</span>
+
+						</div> <!-- GENDER -->
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="footBtwrap clearfix">
+			<li><button type="button" class="btn btn-light btn-lg"
+					onclick="location.href = './join.html' ">뒤로가기</button></li>
+			<li><button type="submit" class="btn btn-danger btn-lg">승인
+					요청</button></li>
+		</ul>
+	</form>
+
+
+
+	<script src="main.js"></script>
+
+</body>
+<script>
+	/*function alertSignUp() {
+		if (confirm("관리자에게 승인을 요청하시겠습니까?") == true) {
+			alert("승인이 요청되었습니다.");
+			location.href = "join_3.html";
+		} else {
+			return;
+		}
+	}*/
+	var chageDeptSelect = function(select_obj) {
+		// 우선 selectbox에서 선택된 index를 찾고 
+		var selected_index = select_obj.selectedIndex;
+		// 선택된 index의 value를 찾고 
+		if (selected_index == 1) {
+			alert("관리자그룹으로 승인을 요청하는 경우, \n해당 프로그램의 관리자 기능을 사용할 수 있습니다.");
+		}
+
+	};
+
+	function checkAll() {
+		/* 유효성 검사 */
+		if (form.powerplant.value == "발전소 구분") {
+			alert("발전소 구분을 선택해주세요!");
+			return false;
+		} else if (form.department.value == "부서") {
+			alert("부서를 선택해주세요!");
+			return false;
+		} else if (!checkUserId(form.userCode.value)) {
+			return false;
+		} else if (!checkPassword(form.userCode.value, form.password1.value,
+				form.password2.value)) {
+			return false;
+		} else if (!checkMail(form.mail.value)) {
+			return false;
+		} else if (!checkName(form.name.value)) {
+			return false;
+		}
+		/* 검사 성공 후 승인 요청 */
+		else {
+			if (confirm("관리자에게 승인을 요청하시겠습니까?") == true) {
+				alert("승인이 요청되었습니다.");
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+	}
+
+	// 공백확인 함수
+	function checkExistData(value, dataName) {
+		if (value == "") {
+			alert(dataName + " 입력해주세요!");
+			return false;
+		}
+		return true;
+	}
+
+	function checkUserId(id) {
+		//Id가 입력되었는지 확인하기
+		if (!checkExistData(id, "사번을"))
+			return false;
+		return true; //확인이 완료되었을 때
+	}
+
+	function checkPassword(id, password1, password2) {
+		//비밀번호가 입력되었는지 확인하기
+		if (!checkExistData(password1, "비밀번호를"))
+			return false;
+		//비밀번호 확인이 입력되었는지 확인하기
+		if (!checkExistData(password2, "비밀번호 확인을"))
+			return false;
+
+		var password1RegExp = /^[a-zA-z0-9]{4,12}$/; //비밀번호 유효성 검사
+		if (!password1RegExp.test(password1)) {
+			alert("비밀번호는 영문 대소문자와 숫자 4~12자리로 입력해야합니다!");
+			form.password1.value = "";
+			form.password1.focus();
+			return false;
+		}
+		//비밀번호와 비밀번호 확인이 맞지 않다면..
+		if (password1 != password2) {
+			alert("두 비밀번호가 맞지 않습니다.");
+			form.password1.value = "";
+			form.password2.value = "";
+			form.password2.focus();
+			return false;
+		}
+
+		//아이디와 비밀번호가 같을 때..
+		if (id == password1) {
+			alert("아이디와 비밀번호는 같을 수 없습니다!");
+			form.password1.value = "";
+			form.password2.value = "";
+			form.password2.focus();
+			return false;
+		}
+		return true; //확인이 완료되었을 때
+	}
+
+	function checkMail(mail) {
+		//mail이 입력되었는지 확인하기
+		if (!checkExistData(mail, "이메일을"))
+			return false;
+
+		var emailRegExp = /^[A-Za-z0-9_]+[A-Za-z0-9]*[@]{1}[A-Za-z0-9]+[A-Za-z0-9]*[.]{1}[A-Za-z]{1,3}$/;
+		if (!emailRegExp.test(mail)) {
+			alert("이메일 형식이 올바르지 않습니다!");
+			form.mail.value = "";
+			form.mail.focus();
+			return false;
+		}
+		return true; //확인이 완료되었을 때
+	}
+
+	function checkName(name) {
+		if (!checkExistData(name, "이름을"))
+			return false;
+		return true; //확인이 완료되었을 때
+	}
+</script>
+</html>

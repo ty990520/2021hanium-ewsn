@@ -77,7 +77,6 @@ select {
 							onmouseover="loginbox()">위험관리</a> <a href=""
 							onmouseover="loginbox()">취약점관리</a> <a href=""
 							onmouseover="loginbox()">회원관리</a>
-
 					</nav>
 				</section>
 			</div>
@@ -90,7 +89,7 @@ select {
 					</c:if>
 					<c:if test="${not empty login_id}">
 						<button id="" type="button" class="btn btn-outline-secondary"
-							style="margin-right: 10px;">마이페이지</button>
+							style="margin-right: 10px;" onclick="location.href='/user/mypage'">마이페이지</button>
 						<button type="button" class="btn btn-outline-danger"
 							onclick="location.href='/user/logout'">로그아웃</button>
 					</c:if>

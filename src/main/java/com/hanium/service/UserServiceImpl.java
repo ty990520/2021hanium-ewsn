@@ -90,4 +90,19 @@ public class UserServiceImpl implements UserService {
 	public int count(Criteria cri) {
 		return mapper.count(cri);
 	}
+
+	@Override
+	public void updatePassword(String userpw, String userid) {
+		mapper.updatePassword(userpw, userid);
+	}
+
+	@Override
+	public boolean delete(String userid) {
+		if(mapper.delete(userid)) {
+			return true;
+		}else
+			return false;
+	}
+
+	
 }

@@ -8,9 +8,20 @@
 <link rel="stylesheet" type="text/css"
 	href="../../../resources/css/common.css" />
 </head>
+<style>
+.table_button_group{
+	float: right;
+	top: 0;
+}
+</style>
 <div class="right-container">
 	<h1>
 		<b>사이버통제항목 적용관리 </b>
+		<div class="table_button_group">
+		<button type="button" class="btn btn-danger"
+			onclick="location.href='/ControlledItemsApply/CI_list_apply' ">평가하기</button>
+		<br>
+	</div>
 	</h1>
 	<hr>
 <br><br>
@@ -38,11 +49,7 @@
 	<br>
 
 
-	<div class="table_button_group">
-		<button type="button" class="btn btn-danger"
-			onclick="location.href='/ControlledItemsApply/CI_list_apply' ">평가하기</button>
-		<br>
-	</div>
+	
 </div>
 <br>
 <br>

@@ -229,9 +229,15 @@ h5 {
 		/* 검사 성공 후 승인 요청 */
 		else {
 			if (confirm("관리자에게 승인을 요청하시겠습니까?") == true) {
-				if(form.b_year.value!=""&&form.b_month.value!=""&&form.b_day.value!="")
-				document.getElementById('birth').value = form.b_year.value+form.b_month.value+form.b_day.value;
-				
+				if(form.b_year.value!=""&&form.b_month.value!=""&&form.b_day.value!=""){
+					var day="";
+					if(form.b_day.value.length == 1){
+						day = "0"+form.b_day.value;
+					}else
+						day = form.b_day.value;
+					console.log(day);
+					document.getElementById('birth').value = form.b_year.value+form.b_month.value+day;
+				}
 				alert("승인이 요청되었습니다.");
 				return true;
 			} else {
