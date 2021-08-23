@@ -22,11 +22,13 @@
 	<h1>
 		<b>공통코드관리 > 상세코드 </b>
 	</h1>
+	<c:if test="${login_dept eq '관리자 그룹'}">
 	<div align="right">
 		<button type="submit" class="btn btn-success"
 			onclick="location.href='/RepresentCode/Code_deEnroll' ">상세코드
 			등록</button>
 	</div>
+	</c:if>
 	<hr>
 	<p>대표코드의 상세코드를 출력한 결과입니다.</p>
 	<br>

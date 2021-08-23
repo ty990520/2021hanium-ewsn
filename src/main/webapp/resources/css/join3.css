@@ -53,6 +53,7 @@ ul.join_box {
 	background-color: #fff;
 	padding: 1rem 3rem 6rem 3rem;
 	text-align: center;
+	box-shadow: 20px 20px 20px gray;
 }
 
 .checkBox, .checkBox>ul {

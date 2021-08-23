@@ -42,7 +42,6 @@
 
 
 <style>
-
 .text_body {
 	width: 100%;
 	height: 2500px;
@@ -78,15 +77,22 @@ select {
 							onmouseover="loginbox()">위험관리</a> <a href=""
 							onmouseover="loginbox()">취약점관리</a> <a href=""
 							onmouseover="loginbox()">회원관리</a>
-
 					</nav>
 				</section>
 			</div>
 			<div class="top_right">
 				<div class="login_box">
-					<button id="loginBtn" type="button"
-						class="btn btn-outline-secondary" style="margin-right: 10px;">로그인</button>
-					<button id="joinBtn" type="button" class="btn btn-outline-danger">회원가입</button>
+					<c:if test="${empty login_id}">
+						<button id="loginBtn" type="button"
+							class="btn btn-outline-secondary" style="margin-right: 10px;">로그인</button>
+						<button id="joinBtn" type="button" class="btn btn-outline-danger">회원가입</button>
+					</c:if>
+					<c:if test="${not empty login_id}">
+						<button id="" type="button" class="btn btn-outline-secondary"
+							style="margin-right: 10px;" onclick="location.href='/user/mypage'">마이페이지</button>
+						<button type="button" class="btn btn-outline-danger"
+							onclick="location.href='/user/logout'">로그아웃</button>
+					</c:if>
 				</div>
 			</div>
 		</div>
@@ -112,14 +118,17 @@ select {
 					</div>
 					<div class="sub_center_section">
 						<nav class="cl-effect-3">
-							<a href="/vulnerability/vul_list">신규취약점 관리</a>
-							<a href="/ActionRecommend/list">조치권고</a> <a href="/Action/list">이행계획</a>
+							<a href="/vulnerability/vul_list">신규취약점 관리</a> <a
+								href="/ActionRecommend/list">조치권고</a> <a href="/Action/list">이행계획</a>
 
 						</nav>
 					</div>
 					<div class="sub_center_section_last">
 						<nav class="cl-effect-3">
-							<a href="/user/list">사원 조회</a> <a href="/user/admin_menu">관리자페이지</a>
+							<a href="/user/list">사원 조회</a>
+							<c:if test="${login_dept eq '관리자 그룹'}">
+								<a href="/user/admin_menu">관리자페이지</a>
+							</c:if>
 							<a href="/FAQ">FAQ</a>
 						</nav>
 					</div>
@@ -131,8 +140,6 @@ select {
 	</div>
 
 	<script type="text/javascript">
-	
-	
 		function MM_changeProp(objId, x, theProp, theValue) { //v9.0
 			var obj = null;
 			with (document) {

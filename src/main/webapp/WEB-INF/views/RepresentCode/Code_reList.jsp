@@ -11,23 +11,24 @@
 </head>
 <style>
 .table {
-    width: 70%;
-    margin-bottom: 1rem;
-    color: #212529;
-    margin: auto;
-    text-align: center;
+	width: 70%;
+	margin-bottom: 1rem;
+	color: #212529;
+	margin: auto;
+	text-align: center;
 }
 </style>
 <div class="right-container">
 	<h1>
 		<b>공통코드관리 > 대표코드 </b>
 	</h1>
-	<div align="right">
-		<button type="submit" class="btn btn-success"
-			onclick="location.href='/RepresentCode/Code_reEnroll' ">대표코드
-			등록</button>
-	</div>
-
+	<c:if test="${login_dept eq '관리자 그룹'}">
+		<div align="right">
+			<button type="submit" class="btn btn-success"
+				onclick="location.href='/RepresentCode/Code_reEnroll' ">대표코드
+				등록</button>
+		</div>
+	</c:if>
 
 	<hr>
 	<p>대표코드를 선택하면 해당하는 상세코드를 확인할 수 있습니다.</p>
@@ -57,12 +58,11 @@
 </div>
 
 <script>
-function Code_deList(r_code) {
-	//alert(SA_no);
-	console.log(r_code);
-	location.href = "/RepresentCode/Code_deList?r_code="+r_code;
+	function Code_deList(r_code) {
+		//alert(SA_no);
+		console.log(r_code);
+		location.href = "/RepresentCode/Code_deList?r_code=" + r_code;
 
-}
-
+	}
 </script>
 <%@include file="../includes/footer.jsp"%>

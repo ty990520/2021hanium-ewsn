@@ -85,12 +85,9 @@
 	</insert>
 	<update id="update">
 		update user
-		set userptype=#{userptype},
-		userdept=#{userdept}
-		username=#{username}
-		userpw=#{userpw}
-		useremail=#{useremail}
-		userbirth=#{userbirth}
+		set username=#{username},
+		useremail=#{useremail},
+		userbirth=#{userbirth},
 		userphone=#{userphone}
 		where userid=#{userid}
 	</update>
@@ -111,4 +108,13 @@
 		userdept=#{userdept}
 		WHERE userid = #{userid};
 	</update>
+	<update id="updatePassword">
+		update user
+		set 
+		userpw=#{userpw}
+		where userid=#{userid}
+	</update>
+	<delete id="remove">
+		delete user where userid = #{userid}
+	</delete>
 </mapper>

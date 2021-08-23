@@ -2,6 +2,9 @@ package com.hanium.controller;
 
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,7 +42,7 @@ public class DAController {
 	}
 
 	@PostMapping("/register") // 글을 등록하는 경우에는 get방식이 아니라 post방식을 사용한다.
-	public String register(DAVO da) { // RedirectAttributes :
+	public String register(HttpServletRequest request,DAVO da) { // RedirectAttributes :
 		log.info("[CONTROLLER]register : " + da.getDaptype() + " " + da.getDaPDetailType());
 
 		String daid = "";
@@ -90,6 +93,10 @@ public class DAController {
 		daid+=String.format("%04d", service.seq());
 		log.info(daid);
 		da.setDaid(daid);
+		HttpSession session = request.getSession();
+		String daRegistrarID=(String) session.getAttribute("login_id");
+		log.info(daRegistrarID);
+		da.setDaRegistrarID(daRegistrarID);
 		service.register(da);
 		// rttr.addFlashAttribute("result",dept.getDeptcode());
 		// return "redirect:/dept/list";
@@ -110,10 +117,16 @@ public class DAController {
 	}
 
 	@PostMapping("/modify")
-	public String modify(DAVO da) {
+	public String modify(HttpServletRequest request,DAVO da) {
 		log.info("[ CONTROLLER ] modify:" + da);
 		Date time = new Date();
 		da.setDaUpdateDate(time);
+		
+		HttpSession session = request.getSession();
+		String daLastUpdateID=(String) session.getAttribute("login_id");
+		log.info(daLastUpdateID);
+		da.setDaLastUpdateID(daLastUpdateID);
+		
 		service.modify(da);
 		return "redirect:/DA/DA_list";
 	}

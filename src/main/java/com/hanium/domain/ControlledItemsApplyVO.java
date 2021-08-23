@@ -16,7 +16,5 @@ public class ControlledItemsApplyVO {
 	private String checkerID;
 	private String CI_applyDetail_id;
 	private String CI_daname;
-	
-	
-	
+	private Long ci_version_no;
 }
