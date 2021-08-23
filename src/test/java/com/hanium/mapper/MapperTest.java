@@ -34,6 +34,14 @@ public class MapperTest {
 	@Setter(onMethod_ = @Autowired)
 	private ControlledItemsMapper mapper4;
 	
+	@Setter(onMethod_ = @Autowired)
+	private ControlledItemsApplyMapper mapper5;
+	
+	/*@Test
+	public void testCIA() {
+		List<ControlledItemsApplyVO> cia = mapper5.getCI("0");
+		cia.forEach(i->log.info(i));
+	}*/
 	@Test
 	public void testPaging() {
 		Criteria cri = new Criteria();

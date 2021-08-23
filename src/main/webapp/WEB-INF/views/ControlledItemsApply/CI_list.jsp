@@ -28,7 +28,7 @@
 	<hr>
 	<br> <br>
 
-	<table class="table ">
+	<table class="table table-hover">
 		<thead>
 			<tr>
 				<th style="width: 30px;">Id</th>
@@ -37,12 +37,10 @@
 				<th>점검일</th>
 			</tr>
 			<c:forEach items="${list}" var="cia" varStatus="status">
-				<tr
-					onclick="CI_select_print('<c:out value="${cia.CI_apply_version}"/>')">
+				<tr onclick="CI_select_print('<c:out value="${cia.ci_version_no}"/>')">
 					<td style="width: 30px;">${status.count}</td>
 					<td><c:out value="${cia.CI_daname}" /></td>
-					<td><a href="/ControlledItemsApply/CI_select_print"><c:out
-								value="${cia.CI_apply_version}" /></a></td>
+					<td><c:out value="${cia.CI_apply_version}" /></td>
 					<!--ControlledItemsApply 테이블 -->
 					<td><fmt:formatDate pattern="yyyy-MM-dd"
 							value="${cia.CI_applyDate}" /></td>
@@ -59,12 +57,11 @@
 <br>
 
 <script>
-	function CI_detail(CI_applyDetail_id) {
+	function CI_select_print(ci_version_no) {
 		//alert(SA_no);
-		console.log(CI_applyDetail_id);
-		location.href = "/CI/CI_select_print?CI_applyDetail_id="
-				+ CI_applyDetail_id;
-
+		console.log(ci_version_no);
+		
+		location.href = "/ControlledItemsApply/CI_select_print?ci_version_no="+ci_version_no;
 	}
 </script>
 <%@include file="../includes/footer.jsp"%>

@@ -12,5 +12,6 @@ public interface ControlledItemsApplyMapper {
 	public ControlledItemsApplyVO read(Long CI_apply_no);
 	public void insert(ControlledItemsApplyVO cia);	
 	public int update(ControlledItemsApplyVO cia);
-	public List<ControlledItemsApplyVO> get(@Param("CI_daID") String CI_daID,@Param("CI_applyDetail_id") String CI_applyDetail_id);
+	public List<ControlledItemsApplyVO> getCI(@Param("ci_version_no") Long ci_version_no);
+	public int count();
 }
