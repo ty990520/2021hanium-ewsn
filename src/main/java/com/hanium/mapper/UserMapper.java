@@ -26,4 +26,5 @@ public interface UserMapper {
 	public int count(Criteria cri);
 	public void updatePassword(@Param("userpw") String userpw,@Param("userid") String userid);
 	public boolean delete(@Param("userid") String userid);
+	public int userDropout(@Param("userid") String userid);
 }

@@ -21,4 +21,5 @@ public interface UserService {
 	public int count(Criteria cri);
 	public void updatePassword(String userpw, String userid);
 	public boolean delete(String userid);
+	public boolean dropout(String userid);
 }

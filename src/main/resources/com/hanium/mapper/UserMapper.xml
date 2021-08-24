@@ -3,7 +3,7 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hanium.mapper.UserMapper">
-<sql id="criteria">
+	<sql id="criteria">
 		<if test="type != null">
 			<if test="type == 'N'.toString()">
 				AND username LIKE CONCAT('%', #{keyword}, '%')
@@ -19,14 +19,16 @@
 			</if>
 		</if>
 	</sql>
-	
+
 	<select id="getList" resultType="com.hanium.domain.UserVO">
 		select * from user where
 		permission=1;
 	</select>
-	<select id="getListWithPaging" resultType="com.hanium.domain.UserVO">
+	<select id="getListWithPaging"
+		resultType="com.hanium.domain.UserVO">
 		select * from user where
-		permission=1 <include refid="criteria"></include> 
+		permission=1
+		<include refid="criteria"></include>
 		order by userid limit #{startIndex},#{endIndex};
 	</select>
 	<select id="getUserRequest"
@@ -35,7 +37,7 @@
 			SELECT userid,userptype,userdept,username,permission,valid,reqdate 
 			from user 
 			where permission=0 and userdept!="관리자 그룹"]]>
-			<include refid="criteria"></include> 
+		<include refid="criteria"></include> 
 			<![CDATA[
 			 order by reqdate desc;
 		]]>
@@ -47,16 +49,16 @@
 			from user 
 			where permission=0 and userdept="관리자 그룹"
 			]]>
-			<include refid="criteria"></include> 
+		<include refid="criteria"></include> 
 			<![CDATA[
 			order by reqdate desc;
 		]]>
 	</select>
 	<select id="findUserValidity"
 		resultType="com.hanium.domain.UserVO">
-		select * from  (select * from emp, dept
-	  where dept.deptcode = emp.empDeptCode) as emp, user
-	  where emp.empid = user.userid and userid=#{userid};
+		select * from (select * from emp, dept
+		where dept.deptcode = emp.empDeptCode) as emp, user
+		where emp.empid = user.userid and userid=#{userid};
 	</select>
 	<select id="read" resultType="com.hanium.domain.UserVO"><!-- login -->
 		select * from user where userid =
@@ -65,7 +67,9 @@
 	</select>
 	<select id="count" resultType="int">
 		SELECT COUNT(userid)
-		FROM user where permission = 1 <include refid="criteria"></include>;
+		FROM user where permission = 1
+		<include refid="criteria"></include>
+		;
 	</select>
 	<select id="get" resultType="com.hanium.domain.UserVO">
 		select * from user where userid =
@@ -110,11 +114,16 @@
 	</update>
 	<update id="updatePassword">
 		update user
-		set 
+		set
 		userpw=#{userpw}
 		where userid=#{userid}
 	</update>
 	<delete id="remove">
 		delete user where userid = #{userid}
 	</delete>
+	<update id="userDropout">
+		UPDATE user
+		SET permission=3
+		WHERE userid = #{userid}
+	</update>
 </mapper>

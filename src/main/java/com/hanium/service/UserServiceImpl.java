@@ -104,5 +104,10 @@ public class UserServiceImpl implements UserService {
 			return false;
 	}
 
+	@Override
+	public boolean dropout(String userid) {
+		return mapper.userDropout(userid)==1;
+	}
+
 	
 }

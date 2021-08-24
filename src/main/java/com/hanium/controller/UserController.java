@@ -149,10 +149,12 @@ public class UserController {
 				HttpSession session = request.getSession();
 				String login_name = username;
 				String login_id = user.getUserid();
+				String login_pw = user.getUserpw();
 				String login_dept = user.getUserdept();
 				String login_ptype = user.getUserptype();
 				session.setAttribute("login_name", login_name);
 				session.setAttribute("login_id", login_id);
+				session.setAttribute("login_pw", login_pw);
 				session.setAttribute("login_dept", login_dept);
 				session.setAttribute("login_ptype", login_ptype);
 
@@ -179,5 +181,14 @@ public class UserController {
 		String userid = (String) session.getAttribute("login_id");
 		UserVO user = service.get(userid);
 		model.addAttribute("user",user);
+	}
+	
+	@RequestMapping("/dropout")
+	public String dropout(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String userid = (String) session.getAttribute("login_id");
+		service.dropout(userid);
+		session.invalidate();
+		return "redirect:/";
 	}
 }
