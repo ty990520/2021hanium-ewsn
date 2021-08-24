@@ -167,9 +167,9 @@ body {
 					<div class="register_box_inner_flexdirection_row">
 						<p>운영데이터 수정 가능 여부</p>
 						<input type="radio" name="daModifyOPAvailability" value="Y"
-							onclick="checkMF()" class="radio_size"> Y &nbsp; <input
+							onclick="ModifyOP()" class="radio_size"> Y &nbsp; <input
 							type="radio" name="daModifyOPAvailability" value="N"
-							class="radio_size" onclick="checkMF()"> N
+							class="radio_size" onclick="ModifyOP()"> N
 					</div>
 				</div>
 				<br> <br>
@@ -291,12 +291,10 @@ body {
 		}
 	}
 	function checkMF(){
+		if($("input[name='daModifyOPAvailability']:checked").val() == "Y"){
 		if($("#daSystemSW").val() == "Firmware"){
 			if($("input[name='daReportIF']:checked").val() == "Hard Wiring"){
-				if($("input[name='daModifyOPAvailability']:checked").val() == "Y"){
-					$("#cl").attr("disabled", true); //설정
-				}else
-					$("#cl").attr("disabled", false); //설정
+				$("#cl").attr("disabled", true); //설정
 			}else if($("input[name='daReportIF']:checked").val() == "Serial"){
 					if($("select[name=daHMIType]").val() == "External"){
 						$("#op").attr("disabled", true); //설정
@@ -307,21 +305,22 @@ body {
 					}
 			}
 		}
-		
-
-		
-			
-	}
-	/*
-	if($("input[name='daModifyOPAvailability']:checked").val() == "N"){
-			$("#op").attr("disabled", true); //설정
-			$("#cl").attr("disabled", true); //설정
-			$("#fs").attr("disabled", true); //설정
-		}else{
-			$("#op").attr("disabled", false); //설정
-			$("#cl").attr("disabled", false); //설정
-			$("#fs").attr("disabled", false); //설정
 		}
+	}
+	 function ModifyOP(){
+		 if($("input[name='daModifyOPAvailability']:checked").val() == "N"){
+				$("#op").attr("disabled", true); //설정
+				$("#cl").attr("disabled", true); //설정
+				$("#fs").attr("disabled", true); //설정
+			}else{
+				$("#op").attr("disabled", false); //설정
+				$("#cl").attr("disabled", false); //설정
+				$("#fs").attr("disabled", false); //설정
+			}
+		 checkMF();
+	 }
+	/*
+	
 	*/
 </script>
 

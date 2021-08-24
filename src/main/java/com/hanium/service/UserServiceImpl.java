@@ -97,11 +97,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean delete(String userid) {
-		if(mapper.delete(userid)) {
-			return true;
-		}else
-			return false;
+	public boolean dropout(String userid) {
+		return mapper.userDropout(userid)==1;
 	}
 
 	

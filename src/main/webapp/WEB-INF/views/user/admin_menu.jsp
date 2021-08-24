@@ -108,6 +108,7 @@
 			</div>
 		</div>
 		<!-- 최고관리자는 아래의 페이지도 뜸 -->
+		<c:if test="${not empty admin}">
 		<div class="box" id="admin_req">
 			<div class="inner_box">
 				<div class="img">
@@ -119,6 +120,7 @@
 				</div>
 			</div>
 		</div>
+		</c:if>
 		<br> <br>
 	</div>
 </div>
