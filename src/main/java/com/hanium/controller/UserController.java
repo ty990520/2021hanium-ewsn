@@ -152,12 +152,18 @@ public class UserController {
 				String login_pw = user.getUserpw();
 				String login_dept = user.getUserdept();
 				String login_ptype = user.getUserptype();
+				
 				session.setAttribute("login_name", login_name);
 				session.setAttribute("login_id", login_id);
 				session.setAttribute("login_pw", login_pw);
 				session.setAttribute("login_dept", login_dept);
 				session.setAttribute("login_ptype", login_ptype);
-
+				
+				//최고관리자 권한
+				if(login_id.equals("admin")) {
+					session.setAttribute("admin", true);
+				}else
+					session.setAttribute("admin", null);
 				return username + "님 환영합니다!";
 
 			} else {

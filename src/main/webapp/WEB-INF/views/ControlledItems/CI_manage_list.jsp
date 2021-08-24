@@ -51,13 +51,6 @@
 
 
 </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 
 <%@include file="../includes/footer.jsp"%>
