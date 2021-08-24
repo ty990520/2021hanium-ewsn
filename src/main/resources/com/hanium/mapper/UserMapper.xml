@@ -118,9 +118,6 @@
 		userpw=#{userpw}
 		where userid=#{userid}
 	</update>
-	<delete id="remove">
-		delete user where userid = #{userid}
-	</delete>
 	<update id="userDropout">
 		UPDATE user
 		SET permission=3

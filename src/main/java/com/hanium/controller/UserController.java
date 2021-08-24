@@ -91,11 +91,11 @@ public class UserController {
 
 	@PostMapping("/modify")
 	public String modify(UserVO user) {
-		/*log.info(user.getUserid());
-		log.info(user.getUsername());
-		log.info(user.getUserphone());
-		log.info(user.getUserbirth());*/
-		
+		/*
+		 * log.info(user.getUserid()); log.info(user.getUsername());
+		 * log.info(user.getUserphone()); log.info(user.getUserbirth());
+		 */
+
 		service.modify(user);
 		return "redirect:/user/mypage";
 	}
@@ -173,16 +173,15 @@ public class UserController {
 		session.invalidate();
 		return "redirect:/";
 	}
-	
-	
+
 	@RequestMapping("/mypage")
-	public void mypage(HttpServletRequest request,Model model)  throws Exception{
+	public void mypage(HttpServletRequest request, Model model) throws Exception {
 		HttpSession session = request.getSession();
 		String userid = (String) session.getAttribute("login_id");
 		UserVO user = service.get(userid);
-		model.addAttribute("user",user);
+		model.addAttribute("user", user);
 	}
-	
+
 	@RequestMapping("/dropout")
 	public String dropout(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -191,4 +190,13 @@ public class UserController {
 		session.invalidate();
 		return "redirect:/";
 	}
+
+	@PostMapping("/updatePw")
+	public String updatePw(HttpServletRequest request,@RequestParam("userid") String userid,@RequestParam("userpw") String userpw) {
+		service.updatePassword(userpw, userid);
+		HttpSession session = request.getSession();
+		session.setAttribute("login_pw", userpw);
+		return "redirect:/user/mypage";
+	}
+
 }

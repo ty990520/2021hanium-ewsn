@@ -83,6 +83,41 @@ p#msg {
 			<div class="modal-header">
 				<h5 class="modal-title" id="staticBackdropLabel">탈퇴하기</h5>
 				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close" onclick="location.href='/user/mypage'">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+						<input type="hidden" value="${login_pw}" id="user_pw"> <label
+							for="exampleInputEmail1">비밀번호 입력</label> <input type="password"
+							class="form-control" id="exampleInputPassword"
+							aria-describedby="emailHelp"> <input type="checkbox"
+							id="showPw" /> <small>비밀번호 표시</small> <br> <br> <small
+							id="emailHelp" class="form-text text-muted">비밀번호를 입력한 뒤,
+							탈퇴하기 버튼을 누르게 되면 정상적으로 탈퇴처리됩니다.</small>
+					</div>
+
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary"
+					onclick="location.href='/user/mypage'">취소</button>
+				<button type="button" class="btn btn-primary" onclick="remove()">탈퇴하기</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 비밀번호 수정 모달1 -->
+<div class="modal fade" id="staticBackdrop2" data-backdrop="static"
+	data-keyboard="false" tabindex="-1"
+	aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="staticBackdropLabel">비밀번호 수정</h5>
+				<button type="button" class="close" data-dismiss="modal"
 					aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -90,23 +125,72 @@ p#msg {
 			<div class="modal-body">
 				<form>
 					<div class="form-group">
-					<input type="hidden" value="${login_pw}" id="user_pw">
-						<label for="exampleInputEmail1">비밀번호 입력</label> <input
-							type="email" class="form-control" id="exampleInputPassword"
-							aria-describedby="emailHelp"> <small id="emailHelp"
-							class="form-text text-muted">비밀번호를 입력한 뒤, 탈퇴하기 버튼을 누르게 되면 정상적으로 탈퇴처리됩니다.</small>
+						<label for="exampleInputEmail1">계속하려면 먼저 본인임을 인증하세요.</label> <small
+							class="form-text text-muted">비밀번호 입력</small> <input
+							type="password" class="form-control" id="old_pw"
+							aria-describedby="emailHelp"> <br> <input
+							type="checkbox" id="showPw2" /> 비밀번호 표시
 					</div>
-					
+
 				</form>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" onclick="location.href='/user/mypage'">취소</button>
-				<button type="button" class="btn btn-primary" onclick="remove()">탈퇴하기</button>
+				<button type="button" class="btn btn-secondary"
+					onclick="location.href='/user/mypage'">취소</button>
+				<button type="button" class="btn btn-primary"
+					onclick="updatepw_pre()">확인</button>
+				<button type="button" class="btn btn-primary" id="updatePw_pre"
+					style="display: none;" data-toggle="modal"
+					data-target="#staticBackdrop3">확인</button>
 			</div>
 		</div>
 	</div>
 </div>
+<!-- 비밀번호 수정 모달2 -->
+<div class="modal fade" id="staticBackdrop3" data-backdrop="static"
+	data-keyboard="false" tabindex="-1"
+	aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="staticBackdropLabel">비밀번호 수정</h5>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close" onclick="location.href='/user/mypage'">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<form action="updatePw" method="post" id="updatepwform"
+				onsubmit="return false;">
+				<div class="modal-body">
+					<div class="form-group">
+						안전한 비밀번호로 내정보를 보호하세요.
+						<ul>
+							<li><span style="color: red;">다른 아이디/사이트에서 사용한 적 없는
+									비밀번호</span></li>
+							<li><span style="color: red;">이전에 사용한 적 없는 비밀번호</span>가
+								안전합니다.</li>
+						</ul>
+						<input type="hidden" name="userid" value="${login_id}"> <br>
+						<label for="exampleInputEmail1">새 비밀번호 입력</label> <input
+							type="password" class="form-control" id="new_pw1" name="userpw"
+							aria-describedby="emailHelp" placeholder="새 비밀번호 입력"> <br>
+						<label for="exampleInputEmail1">새 비밀번호 확인</label> <input
+							type="password" class="form-control" id="new_pw2"
+							aria-describedby="emailHelp" placeholder="새 비밀번호 확인">
+					</div>
 
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal" onclick="location.href='/user/mypage'">취소</button>
+					<button type="button" class="btn btn-primary" onclick="updatepw()">비밀번호
+						변경</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
 <form name=form onsubmit="return false;" id="joinForm" action="modify"
 	method="post">
 	<ul class="join_box">
@@ -239,7 +323,8 @@ p#msg {
 
 	<button type="button" class="btn btn-light" data-toggle="modal"
 		data-target="#exampleModal">회원 탈퇴</button>
-	<button type="button" class="btn btn-light">비밀번호 수정</button>
+	<button type="button" class="btn btn-light" onclick="sendEmail()"
+		data-toggle="modal" data-target="#staticBackdrop2">비밀번호 수정</button>
 	<button type="button" class="btn btn-danger" onclick="modify()">정보
 		수정</button>
 
@@ -278,16 +363,57 @@ p#msg {
 		});
 	});
 
-	function remove(){
+	$(function() {
+		$('#showPw').click(function() {
+			if ($("#showPw").prop("checked")) {
+				$("#exampleInputPassword").attr("type", "text");
+			} else
+				$("#exampleInputPassword").attr("type", "password");
+		});
+	});
+
+	$(function() {
+		$('#showPw2').click(function() {
+			if ($("#showPw2").prop("checked")) {
+				$("#exampleInputPassword2").attr("type", "text");
+			} else
+				$("#exampleInputPassword2").attr("type", "password");
+		});
+	});
+
+	function remove() {
 		console.log($("#user_pw").val());
-		if($("#exampleInputPassword").val()==$("#user_pw").val()){
-			console.log("ㅋ");
+		if ($("#exampleInputPassword").val() == $("#user_pw").val()) {
 			alert("성공적으로 탈퇴되었습니다.");
-			location.href="/user/dropout";
-		}else
+			location.href = "/user/dropout";
+		} else
 			alert("비밀번호가 일치하지 않습니다.");
 	}
-	
+
+	$(function() {
+		$('#updatePw_pre').click(function() {
+			$("#staticBackdrop2").hide();
+
+		});
+	});
+
+	function updatepw_pre() {
+		if ($("#old_pw").val() == $("#user_pw").val()) {
+			document.getElementById('updatePw_pre').click();
+		} else
+			alert("비밀번호가 일치하지 않습니다.");
+
+	}
+
+	function updatepw() {
+		if ($("#new_pw1").val() != $("#new_pw2").val()) {
+			alert("비밀번호가 일치하지 않습니다.");
+		} else{
+			alert("비밀번호가 변경되었습니다.");
+			document.getElementById('updatepwform').submit();
+		}
+	}
+
 	function modify() {
 		if (form.b_year.value != "" && form.b_month.value != ""
 				&& form.b_day.value != "") {
