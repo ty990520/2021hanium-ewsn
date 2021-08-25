@@ -27,11 +27,20 @@ public class BOPServiceTests {
 	@Setter(onMethod_ = {@Autowired})
 	private UserService userservice;
 	
+	@Setter(onMethod_ = {@Autowired})
+	private ControlledItemsApplyService ciaservice;
+	
 	@Test
 	public void testExist() {
 		log.info(userservice);
 		assertNotNull(userservice);	//null이 아님을 시험
 	}
 	
-	
+	/*@Test
+	public void ciaTest() {
+		Long ci_version_no=(long) 0;
+		List<ControlledItemsApplyVO> cia = ciaservice.getCI(ci_version_no);
+		cia.forEach(i->log.info(i));
+		
+	}*/
 }

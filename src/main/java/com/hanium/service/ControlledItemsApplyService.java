@@ -10,5 +10,6 @@ public interface ControlledItemsApplyService {
 	public boolean modify(ControlledItemsApplyVO cia);		//수정
 	public List<ControlledItemsApplyVO> getList();		
 	//리스트 조회
-	
+	public List<ControlledItemsApplyVO> getCI(Long ci_version_no);		
+	public int count();
 }

@@ -38,6 +38,18 @@ public class ControlledItemsApplyServiceImpl implements  ControlledItemsApplySer
 		return mapper.getList();
 	}
 
+	
+	@Override
+	public int count() {
+		return mapper.count();
+	}
+
+	@Override
+	public List<ControlledItemsApplyVO> getCI(Long ci_version_no) {
+		log.info("[service] "+ci_version_no);
+		return mapper.getCI(ci_version_no);
+	}
+
 
 
 }

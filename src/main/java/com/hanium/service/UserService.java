@@ -19,4 +19,6 @@ public interface UserService {
 	public boolean login(String userid, String userpw);
 	public boolean updateUserDept(String userptype, String userdept, String userid);
 	public int count(Criteria cri);
+	public void updatePassword(String userpw, String userid);
+	public boolean dropout(String userid);
 }

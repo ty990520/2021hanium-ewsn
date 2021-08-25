@@ -42,7 +42,6 @@
 
 
 <style>
-
 .text_body {
 	width: 100%;
 	height: 2500px;
@@ -71,6 +70,7 @@ select {
 			<div class="top_left">
 				<span class="title"><a href="/">DA 관리 프로그램</a></span>
 			</div>
+
 			<div class="top_center" onmouseleave="out()">
 				<section class="color-6">
 					<nav class="cl-effect-13">
@@ -78,61 +78,115 @@ select {
 							onmouseover="loginbox()">위험관리</a> <a href=""
 							onmouseover="loginbox()">취약점관리</a> <a href=""
 							onmouseover="loginbox()">회원관리</a>
-
 					</nav>
 				</section>
 			</div>
+
 			<div class="top_right">
 				<div class="login_box">
-					<button id="loginBtn" type="button"
-						class="btn btn-outline-secondary" style="margin-right: 10px;">로그인</button>
-					<button id="joinBtn" type="button" class="btn btn-outline-danger">회원가입</button>
+					<c:if test="${empty login_id}">
+						<button id="loginBtn" type="button"
+							class="btn btn-outline-secondary" style="margin-right: 10px;">로그인</button>
+						<button id="joinBtn" type="button" class="btn btn-outline-danger">회원가입</button>
+					</c:if>
+					<c:if test="${not empty login_id}">
+						<button id="" type="button" class="btn btn-outline-secondary"
+							style="margin-right: 10px;"
+							onclick="location.href='/user/mypage'">마이페이지</button>
+						<button type="button" class="btn btn-outline-danger"
+							onclick="location.href='/user/logout'">로그아웃</button>
+					</c:if>
 				</div>
 			</div>
 		</div>
+		<c:if test="${empty login_id}">
+			<div class="sub_menu" id="submenu">
+				<div class="sub_inner">
+					<div class="sub_left"></div>
+					<div class="sub_center" onmouseover="loginbox()"
+						onmouseleave="out()">
+						<div class="sub_center_section">
+							<nav class="cl-effect-3">
+								<a onclick="pass_login_page()">자산 정보관리</a> <a
+									onclick="pass_login_page()">단계적보안성 평가</a> <a
+									onclick="pass_login_page()">공통코드 관리</a>
 
-		<div class="sub_menu" id="submenu">
-			<div class="sub_inner">
-				<div class="sub_left"></div>
-				<div class="sub_center" onmouseover="loginbox()"
-					onmouseleave="out()">
-					<div class="sub_center_section">
-						<nav class="cl-effect-3">
-							<a href="/DA/DA_list">자산 정보관리</a> <a
-								href="/SecurityAssessment/list">단계적보안성 평가</a> <a
-								href="/RepresentCode/Code_reList">공통코드 관리</a>
+							</nav>
+						</div>
+						<div class="sub_center_section">
+							<nav class="cl-effect-3">
+								<a onclick="pass_login_page()">통제항목</a> <a
+									onclick="pass_login_page()">통제항목 적용관리</a>
+							</nav>
+						</div>
+						<div class="sub_center_section">
+							<nav class="cl-effect-3">
+								<a onclick="pass_login_page()">신규취약점 관리</a> <a
+									onclick="pass_login_page()">조치권고</a> <a
+									onclick="pass_login_page()">이행계획</a>
 
-						</nav>
+							</nav>
+						</div>
+						<div class="sub_center_section_last">
+							<nav class="cl-effect-3">
+								<a href="/user/list">사원 조회</a>
+								<c:if test="${login_dept eq '관리자 그룹'}">
+									<a href="/user/admin_menu">관리자페이지</a>
+								</c:if>
+								<a onclick="pass_login_page()">FAQ</a>
+							</nav>
+						</div>
 					</div>
-					<div class="sub_center_section">
-						<nav class="cl-effect-3">
-							<a href="/ControlledItems/CI_manage_list">통제항목</a> <a
-								href="/ControlledItemsApply/CI_list">통제항목 적용관리</a>
-						</nav>
-					</div>
-					<div class="sub_center_section">
-						<nav class="cl-effect-3">
-							<a href="/vulnerability/vul_list">신규취약점 관리</a>
-							<a href="/ActionRecommend/list">조치권고</a> <a href="/Action/list">이행계획</a>
-
-						</nav>
-					</div>
-					<div class="sub_center_section_last">
-						<nav class="cl-effect-3">
-							<a href="/user/list">사원 조회</a> <a href="/user/admin_menu">관리자페이지</a>
-							<a href="/FAQ">FAQ</a>
-						</nav>
-					</div>
+					<div class="sub_right"></div>
 				</div>
-				<div class="sub_right"></div>
-			</div>
 
-		</div>
+			</div>
+		</c:if>
+		<c:if test="${not empty login_id}">
+			<div class="sub_menu" id="submenu">
+				<div class="sub_inner">
+					<div class="sub_left"></div>
+					<div class="sub_center" onmouseover="loginbox()"
+						onmouseleave="out()">
+						<div class="sub_center_section">
+							<nav class="cl-effect-3">
+								<a href="/DA/DA_list">자산 정보관리</a> <a
+									href="/SecurityAssessment/list">단계적보안성 평가</a> <a
+									href="/RepresentCode/Code_reList">공통코드 관리</a>
+
+							</nav>
+						</div>
+						<div class="sub_center_section">
+							<nav class="cl-effect-3">
+								<a href="/ControlledItems/CI_manage_list">통제항목</a> <a
+									href="/ControlledItemsApply/CI_list">통제항목 적용관리</a>
+							</nav>
+						</div>
+						<div class="sub_center_section">
+							<nav class="cl-effect-3">
+								<a href="/vulnerability/vul_list">신규취약점 관리</a> <a
+									href="/ActionRecommend/list">조치권고</a> <a href="/Action/list">이행계획</a>
+
+							</nav>
+						</div>
+						<div class="sub_center_section_last">
+							<nav class="cl-effect-3">
+								<a href="/user/list">사원 조회</a>
+								<c:if test="${login_dept eq '관리자 그룹'}">
+									<a href="/user/admin_menu">관리자페이지</a>
+								</c:if>
+								<a href="/FAQ">FAQ</a>
+							</nav>
+						</div>
+					</div>
+					<div class="sub_right"></div>
+				</div>
+
+			</div>
+		</c:if>
 	</div>
 
 	<script type="text/javascript">
-	
-	
 		function MM_changeProp(objId, x, theProp, theValue) { //v9.0
 			var obj = null;
 			with (document) {
@@ -162,6 +216,11 @@ select {
 		$("#joinBtn").on("click", function() {
 			self.location = "/user/join";
 		})
+
+		function pass_login_page() {
+			alert("먼저 로그인을 한 뒤 서비스를 이용하실 수 있습니다.");
+			self.location = "/user/login";
+		}
 		/*$('a').click(function() {
 			$(".loding-inner").show();
 		});*/
