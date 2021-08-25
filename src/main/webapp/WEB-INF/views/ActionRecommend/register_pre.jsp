@@ -33,27 +33,35 @@ td.table-light {
 	<table class="table table-bordered" id="table_fixed">
 		<tr>
 			<td class="table-light" colspan="2">취약점명</td>
-			<td colspan="10"><select class="input_width100">
-					<option value="부서1">취약점1</option>
-					<option value="부서2">취약점2</option>
-					<option value="부서3">취약점3</option>
-			</select></td>
+			<td colspan="10"><select class="input_width100"
+				id="ac_recommend-select">
+					<c:forEach items="${vul}" var="vul" varStatus="status">
+						<option selected value="${vul.vul_id}">${vul.vulName}</option>
+					</c:forEach>
 
+			</select></td>
+			<c:forEach items="${vul}" var="vul" varStatus="status">
+				<input type="hidden" id="ci${status.index}" value="${vul.vul_ci_id}" />
+			</c:forEach>
 		</tr>
 		<tr>
 			<td class="table-light" colspan="2">제조사</td>
-			<td colspan="2">삼성</td>
+			<td colspan="2"><p id="Vul_Manufacturer"></td>
 			<td class="table-light" colspan="2">모델</td>
-			<td colspan="2">Window</td>
+			<td colspan="2"><p id="Val_model"></td>
 			<td class="table-light" colspan="2">시스템S/W유형</td>
-			<td colspan="2">Window방화벽</td>
+			<td colspan="2"><p id="Val_systemSW"></td>
 		</tr>
 		<tr>
-			<td class="table-light" colspan="2">관련 통제항목</td>
-			<td>1.3</td>
-			<td>기술적</td>
-			<td colspan="2">시스템 및 통신의 보호</td>
-			<td colspan="6">주어진 업무를 수행하는데 필요한 만큼의 제한된 접근권한을 각 계정에 부여하고 있는가?</td>
+			 <td class="table-light" colspan="2">관련 통제항목</td>
+			 <td><p id="vul_ci_id"></td>
+			<td class="table-light" colspan="1">통제항목 분류</td>
+			 <td><p id="CI_type"></td>
+			<td class="table-light" colspan="2">상세분류</td>
+			<td><p id="CI_detail_type"></td> 
+			<td class="table-light" colspan="2">항목내용</td>		
+			<td><p id="CI_content"></td>	
+			
 		</tr>
 	</table>
 	<br> <br> <br> <br>
@@ -64,7 +72,6 @@ td.table-light {
 	<table class="table table-hover">
 		<thead>
 			<tr>
-				<th style="width: 30px;">Id</th>
 				<th>자산번호</th>
 				<th>자산명</th>
 				<th>자산기능</th>
@@ -77,10 +84,10 @@ td.table-light {
 				<th>사용여부</th>
 			</tr>
 		</thead>
-		<tbody id="table_body">
+		<tbody id="select_ci_list">
 			<tr onclick="location.href = 'DA_detail.html' ">
 				<td style="width: 30px;">1</td>
-				<td>H-01-0001</td>
+				<!-- td>H-01-0001</td>
 				<td>PC</td>
 				<td>Win 7</td>
 				<td>Support</td>
@@ -89,92 +96,140 @@ td.table-light {
 				<td>발전연관장비</td>
 				<td>Windows</td>
 				<td>Ethernet</td>
-				<td>O</td>
-			</tr>
-			<tr onclick="location.href = 'DA_detail.html' ">
-				<td style="width: 30px;">2</td>
-				<td>H-01-0002</td>
-				<td>PC</td>
-				<td>Win 7</td>
-				<td>Safety</td>
-				<td>Important to Safety</td>
-				<td>DCS</td>
-				<td>유지보수장비</td>
-				<td>Windows</td>
-				<td>Ethernet</td>
-				<td>O</td>
-			</tr>
-			<tr onclick="location.href = 'DA_detail.html' ">
-				<td style="width: 30px;">3</td>
-				<td>H-01-0003</td>
-				<td>PC</td>
-				<td>Win XP</td>
-				<td>Safety</td>
-				<td>Safety Related</td>
-				<td>Pc/server</td>
-				<td>발전연관장비</td>
-				<td>Firmware</td>
-				<td>Hard Wiring</td>
-				<td>O</td>
-			</tr>
-			<tr onclick="location.href = 'DA_detail.html' ">
-				<td style="width: 30px;">4</td>
-				<td>H-01-0004</td>
-				<td>PC</td>
-				<td>Win XP</td>
-				<td>Security</td>
-				<td>Safety Related</td>
-				<td>Pc/server</td>
-				<td>발전연관장비</td>
-				<td>Firmware</td>
-				<td>Serial</td>
-				<td>O</td>
-			</tr>
-			<tr onclick="location.href = 'DA_detail.html' ">
-				<td style="width: 30px;">5</td>
-				<td>H-01-0005</td>
-				<td>PC</td>
-				<td>Win 2003</td>
-				<td>Safety</td>
-				<td>Support function</td>
-				<td>Pc/server</td>
-				<td>발전연관장비</td>
-				<td>Windows</td>
-				<td>Ethernet</td>
-				<td>O</td>
-			</tr>
-			<tr onclick="location.href = 'DA_detail.html' ">
-				<td style="width: 30px;">6</td>
-				<td>H-01-0006</td>
-				<td>PC</td>
-				<td>Win 2003</td>
-				<td>Support</td>
-				<td>Important to Safety</td>
-				<td>PLC</td>
-				<td>유지보수장비</td>
-				<td>Windows</td>
-				<td>Hard Wiring</td>
-				<td>O</td>
-			</tr>
-			<tr onclick="location.href = 'DA_detail.html' ">
-				<td style="width: 30px;">7</td>
-				<td>H-01-0007</td>
-				<td>PC</td>
-				<td>Win 2003</td>
-				<td>Security</td>
-				<td>Safety Related</td>
-				<td>DCS</td>
-				<td>유지보수장비</td>
-				<td>Firmware</td>
-				<td>Serial</td>
-				<td>O</td>
+				<td>O</td> -->
 			</tr>
 		</tbody>
 	</table>
 	<div class="table_button_group">
 		<button type="button" class="btn btn-danger" data-toggle="modal"
-			data-target="#staticBackdrop" onclick="location.href='/ActionRecommend/register'">조치 권고 등록하기</button>
+			data-target="#staticBackdrop"
+			onclick="location.href='/ActionRecommend/register'">조치 권고
+			등록하기</button>
 	</div>
-	<br><br>
+	<br> <br>
 </div>
+<script>
+	$(document).ready(function() {
+		selectRecommend();
+
+	});
+
+	var selectedIndex = null;
+	var ci_detail_id = null;
+	
+	$("#ac_recommend-select").change(function() {
+		//var test = document.getElementById("ac_recommend-select");
+		// test 변수에 selectTest란 클래스명을 가진 요소를 저장
+	
+		var indexNo = $("#ac_recommend-select option").index( $("#ac_recommend-select option:selected") );
+
+		ci_detail_id = $("#ci"+indexNo).val();
+		
+		//console.log(ci_id);
+		selectRecommend();
+	});
+
+	
+	
+	function selectRecommend() {
+		//selectbox의 리스트에서 선택된 Index를 구하는 방법은 다음과 같다.
+		 selectedIndex = $("#ac_recommend-select option:selected").val();
+		//var ci_detail_id = $("#ci").val();
+		//console.log(selectedIndex, ci_detail_id);
+		$.ajax({
+			contentType : "application/json; charset=utf-8;",
+			dataType : "json",
+			type : "GET",
+			url : "/ActionRecommend/selectAr",
+			data : {
+				"Vul_id" : selectedIndex,
+				"ci_detail_id" : ci_detail_id
+			},
+			success : function(data) {
+				if (!data) {
+					console.log("err");
+				}
+				console.log(data);
+				$("#Vul_Manufacturer").text(data.vul_Manufacturer)
+				$("#Val_model").text(data.val_model)
+				$("#Val_systemSW").text(data.val_systemSW)
+				$("#vul_ci_id").text(data.vul_ci_id)
+				$("#CI_type").text(data.ci_type)
+				$("#CI_detail_type").text(data.ci_detailType)
+				$("#CI_content").text(data.ci_content)
+				select_ci_list(selectedIndex);
+			},
+			error : function(request, status, error) {
+				alert("code:" + request.status + "\n"
+						+ "message:" + request.responseText
+						+ "\n" + "error:" + error);
+			}
+		});
+	}
+	function select_ci_list(selectedIndex) {
+		console.log(selectedIndex);
+		//var number = selectedIndex;
+		$.ajax({
+			contentType : "application/json; charset=utf-8;",
+			dataType : "json",
+			type : "GET",
+			url : "/ActionRecommend/select_ci_number",
+			data : {
+				"Vul_id" : selectedIndex
+			},
+			success : function(data) {
+				if (!data) {
+					alert("null");
+				}
+				console.log(data);
+
+				var getTag = $("#select_ci_list").empty();
+
+				var insTag = "";
+
+				for (var i = 0; i < data.length; i++) {
+					//console.log(data[i]);
+					insTag += "<tr class='tr_items'>";
+					insTag += "<td id='daid'>" + data[i].daid
+							+ "</td>";
+					insTag += "<td id='daname'>" + data[i].daname + "</td>";
+					insTag += "<td id='daFunc'>" + data[i].daFunc
+							+ "</td>";
+					insTag += "<td id='daFuncType'>" + data[i].daFuncType
+							+ "</td>";
+					insTag += "<td id='daImpact'>" + data[i].daImpact
+							+ "</td>";
+					insTag += "<td id='daFacilitiesType'>" + data[i].daFacilitiesType
+							+ "</td>";
+					insTag += "<td id='daFacilitiesPurposeOfUse'>" + data[i].daFacilitiesPurposeOfUse
+							+ "</td>";		
+					insTag += "<td id='daSystemSW'>" + data[i].daSystemSW
+							+ "</td>";
+					insTag += "<td id='daReportIF'>" + data[i].daReportIF
+							+ "</td>";
+					insTag += "<td id='daUse'>" + data[i].daUse
+							+ "</td>";
+					insTag += "</tr>";
+					//console.log(insTag);
+				}
+				$("#select_ci_list").html(insTag);
+
+				$('.tr_items').each(function(index) {
+					$(this).attr('menu-index', index);
+				}).click(function() {
+					var index = $(this).attr('menu-index');
+					select(index);
+					/*var target = document.getElementsByClassName("tr_items"); 
+					var cells = target[index].getElementsByTagName("td");
+					alert(cells[0].firstChild.data + "번이 관련 통제항목으로 지정되었습니다."); 
+					items = cells[??] // =daid*/
+				});
+			},
+			error : function(request, status, error) {
+				alert("error");
+
+			}
+		})
+	}
+</script>
 <%@include file="../includes/footer.jsp"%>

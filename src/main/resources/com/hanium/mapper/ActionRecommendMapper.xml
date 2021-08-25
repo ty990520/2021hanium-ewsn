@@ -3,16 +3,25 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hanium.mapper.ActionRecommendMapper">
-	<select id="getList" resultType="com.hanium.domain.ActionRecommendVO">
+	<select id="getList"
+		resultType="com.hanium.domain.ActionRecommendVO">
 		select * from ActionRecommend;
 	</select>
-	<select id="read" resultType="com.hanium.domain.ActionRecommendVO">
+	<select id="read_DTO"
+		resultType="com.hanium.domain.ActionRecommendDTO">
+		select * from Vulnerability as v, ControlledItems as c
+		where v.vul_ci_id = c.CI_detail_id and Vul_id=#{Vul_id};
+	</select>
+	<select id="read"
+		resultType="com.hanium.domain.ActionRecommendVO">
 		select * from ActionRecommend where AR_no= #{AR_no}
 	</select>
 	<insert id="insert" useGeneratedKeys="true" keyProperty="AR_no">
-		insert into ActionRecommend
+		insert
+		into ActionRecommend
 		(AR_daID,AR_daName,AR_daSystemSW,AR_ActionType,AR_title,AR_issue,AR_regDept,RegistrarID)
-		values (#{AR_daID}, #{AR_daName}, #{AR_daSystemSW}, #{AR_ActionType}, #{AR_title},#{AR_issue},#{AR_regDept},#{RegistrarID})
+		values (#{AR_daID}, #{AR_daName}, #{AR_daSystemSW}, #{AR_ActionType},
+		#{AR_title},#{AR_issue},#{AR_regDept},#{RegistrarID})
 	</insert>
 	<update id="update">
 		update ActionRecommend
@@ -24,4 +33,5 @@
 		RegistrarID=#{RegistrarID}
 		where AR_no=#{AR_no}
 	</update>
+
 </mapper>
