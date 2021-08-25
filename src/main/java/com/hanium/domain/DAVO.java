@@ -29,7 +29,5 @@ public class DAVO {
 	private String daLastUpdateID;
 	private Date daRegDate;
 	private Date daUpdateDate;
-	
-	
-	
+
 }

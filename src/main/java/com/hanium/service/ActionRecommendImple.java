@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.hanium.domain.ActionRecommendDTO;
 import com.hanium.domain.ActionRecommendVO;
 import com.hanium.mapper.ActionRecommendMapper;
 
@@ -32,5 +33,9 @@ public class ActionRecommendImple implements ActionRecommendService {
 	@Override
 	public List<ActionRecommendVO> getList() {
 		return mapper.getList();
+	}
+
+	public ActionRecommendDTO get_dto(Long vul) {
+		 return mapper.read_DTO(vul);
 	}
 }

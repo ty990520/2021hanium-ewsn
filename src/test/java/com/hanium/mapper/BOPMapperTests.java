@@ -41,6 +41,10 @@ public class BOPMapperTests {
 	@Setter(onMethod_ = @Autowired)
 	private ActionMapper mapper7;
 	
+	@Setter(onMethod_ = @Autowired)
+	private ActionRecommendMapper mapper8;
+	
+
 	
 	@Test
 	public void testGetUser() {
