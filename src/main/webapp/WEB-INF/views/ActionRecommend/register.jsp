@@ -41,15 +41,15 @@ text-align: center;
 			<tr>
 				<td class="table-light" colspan="2">자산명</td>
 				<td colspan="2"><input type="text"
-					class="vulner_register_input" name="AR_daName" placeholder="자산명검색"></td>
+					class="vulner_register_input" name="AR_daName" value="${da.daname}" readonly></td>
 				<td class="table-light" colspan="2">자산번호</td>
 				<td colspan="2"><input type="text"
-					class="vulner_register_input" name="AR_daID" placeholder="자산번호검색"></td>
+					class="vulner_register_input" name="AR_daID" value="${da.daid}" readonly></td>
 			</tr>
 			<tr>
 				<td class="table-light" colspan="2">시스템sw유형</td>
 				<td colspan="2"><input type="text"
-					class="vulner_register_input" name="AR_daSystemSW" placeholder="시스템SW유형검색"></td>
+					class="vulner_register_input" name="AR_daSystemSW" value="${da.daSystemSW}" readonly></td>
 				<td class="table-light" colspan="2">조치유형</td>
 				<td colspan="2">
 				<select name="AR_ActionType">

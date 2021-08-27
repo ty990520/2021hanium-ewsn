@@ -17,6 +17,7 @@ import com.hanium.domain.DAVO;
 import com.hanium.domain.VulnerabilityVO;
 import com.hanium.service.ActionRecommendService;
 import com.hanium.service.ControlledItemsService;
+import com.hanium.service.DAService;
 import com.hanium.service.ValTargetFacilityService;
 import com.hanium.service.VulnerabilityService;
 
@@ -31,6 +32,7 @@ public class ActionRecommendController {
 	private ActionRecommendService service;
 	private VulnerabilityService service_vul;
 	private ValTargetFacilityService service_Fac;
+	private DAService service_da;
 
 	@GetMapping("/list")
 	public void list(Model model) { // addAttribute메소드를 이용해 Model객체에 담아서 전달
@@ -45,7 +47,8 @@ public class ActionRecommendController {
 	}
 
 	@GetMapping("/register")
-	public void register_page2() {
+	public void register_page2(@RequestParam("daid") String daid,Model model) {
+		model.addAttribute("da",service_da.get(daid));
 
 	}
 

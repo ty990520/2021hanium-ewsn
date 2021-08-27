@@ -33,5 +33,4 @@ public class ActionImpl implements ActionService{
 	public List<ActionVO> getList() {
 		return mapper.getList();
 	}
-
 }
