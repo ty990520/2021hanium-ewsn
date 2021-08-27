@@ -3,9 +3,13 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hanium.mapper.ActionRecommendMapper">
-	<select id="getList"
+<select id="getList"
 		resultType="com.hanium.domain.ActionRecommendVO">
-		select * from ActionRecommend;
+	select * from ActionRecommend;
+	</select>
+	<select id="getList_ac"
+		resultType="com.hanium.domain.ActionRecommendVO">
+	select * from ActionRecommend where AR_no not in (select rc.AR_no from Action as ac, ActionRecommend as rc where ac.AC_no = rc.AR_no);
 	</select>
 	<select id="read_DTO"
 		resultType="com.hanium.domain.ActionRecommendDTO">

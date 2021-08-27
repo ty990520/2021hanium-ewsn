@@ -40,7 +40,7 @@ import lombok.extern.log4j.Log4j;
 		}
 		@GetMapping("/register")
 		public void register_page(Model model) {	
-			model.addAttribute("ac_list",service2.getList());
+			model.addAttribute("ac_list",service2.getList_ac());
 		}
 		@PostMapping("/register")	//글을 등록하는 경우에는 get방식이 아니라 post방식을 사용한다.
 		public String register(ActionVO action) {	//RedirectAttributes : 
