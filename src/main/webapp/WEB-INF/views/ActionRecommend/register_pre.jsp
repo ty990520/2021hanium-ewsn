@@ -53,15 +53,15 @@ td.table-light {
 			<td colspan="2"><p id="Val_systemSW"></td>
 		</tr>
 		<tr>
-			 <td class="table-light" colspan="2">관련 통제항목</td>
-			 <td><p id="vul_ci_id"></td>
+			<td class="table-light" colspan="2">관련 통제항목</td>
+			<td><p id="vul_ci_id"></td>
 			<td class="table-light" colspan="1">통제항목 분류</td>
-			 <td><p id="CI_type"></td>
+			<td><p id="CI_type"></td>
 			<td class="table-light" colspan="2">상세분류</td>
-			<td><p id="CI_detail_type"></td> 
-			<td class="table-light" colspan="2">항목내용</td>		
-			<td><p id="CI_content"></td>	
-			
+			<td><p id="CI_detail_type"></td>
+			<td class="table-light" colspan="2">항목내용</td>
+			<td><p id="CI_content"></td>
+
 		</tr>
 	</table>
 	<br> <br> <br> <br>
@@ -218,11 +218,13 @@ td.table-light {
 					$(this).attr('menu-index', index);
 				}).click(function() {
 					var index = $(this).attr('menu-index');
-					select(index);
-					/*var target = document.getElementsByClassName("tr_items"); 
+					//select(index);
+					var target = document.getElementsByClassName("tr_items"); 
 					var cells = target[index].getElementsByTagName("td");
-					alert(cells[0].firstChild.data + "번이 관련 통제항목으로 지정되었습니다."); 
-					items = cells[??] // =daid*/
+					alert(cells[0].firstChild.data + "번 설비가 선택되었습니다.");
+					//var url = "/ActionRecommend/register?" + encodeURI(cells[0]);
+					//console.log(url);
+					location.href ="/ActionRecommend/register?daid="+cells[0].firstChild.data;
 				});
 			},
 			error : function(request, status, error) {

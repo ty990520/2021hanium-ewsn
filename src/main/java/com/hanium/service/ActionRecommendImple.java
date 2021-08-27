@@ -34,7 +34,10 @@ public class ActionRecommendImple implements ActionRecommendService {
 	public List<ActionRecommendVO> getList() {
 		return mapper.getList();
 	}
-
+	@Override
+	public List<ActionRecommendVO> getList_ac() {
+		return mapper.getList_ac();
+	}
 	public ActionRecommendDTO get_dto(Long vul) {
 		 return mapper.read_DTO(vul);
 	}
