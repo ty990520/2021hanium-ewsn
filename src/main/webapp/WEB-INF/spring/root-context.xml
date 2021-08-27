@@ -20,9 +20,9 @@
 		<property name="driverClassName"
 			value="com.mysql.cj.jdbc.Driver"></property>
 		<property name="url"
-			value="jdbc:mysql://ewsndatabase.ckksvxfrug4p.ap-northeast-2.rds.amazonaws.com:3306/ewsn?useSSL=false"></property>
-		<property name="username" value="root"></property>
-		<property name="password" value="ewsnroot"></property>
+			value="jdbc:mysql://us-cdbr-east-04.cleardb.com:3306/heroku_284a6e02d800a96?reconnect=true"></property>
+		<property name="username" value="bc4fbabdb9fa64"></property>
+		<property name="password" value="d05b65c1"></property>
 	</bean>
 
 	<bean id="sqlSessionFactory"
