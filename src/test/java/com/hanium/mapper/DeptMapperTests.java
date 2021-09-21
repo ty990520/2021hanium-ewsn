@@ -45,6 +45,12 @@ public class DeptMapperTests {
 	private VulnerabilityMapper mapper7;
 
 	@Test
+	public void getCount() {
+		int count = mapper5.detail_id_count("1.1"); // 원하는 bno값을 입력함, 임의로 bno = 5라고 가정
+		log.info("[count] "+count);
+	}
+	
+	@Test
 	public void testGetCI() {
 		ControlledItemsVO ci = mapper5.read("1.1"); // 원하는 bno값을 입력함, 임의로 bno = 5라고 가정
 		log.info(ci.getCI_content());

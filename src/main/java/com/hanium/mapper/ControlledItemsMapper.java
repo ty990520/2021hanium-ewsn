@@ -2,6 +2,8 @@ package com.hanium.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.hanium.domain.ControlledItemsVO;
 
 public interface ControlledItemsMapper {
@@ -11,4 +13,5 @@ public interface ControlledItemsMapper {
 	public void insert(ControlledItemsVO ci);	
 	public int update(ControlledItemsVO ci);
 	public List<ControlledItemsVO> type(String type);
+	public int detail_id_count(@Param("CI_detail_id") String CI_detail_id);
 }
