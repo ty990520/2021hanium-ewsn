@@ -46,4 +46,9 @@ public class ControlledItemsServiceImpl implements ControlledItemsService{
 		return mapper.type(type);
 	}
 
+	@Override
+	public int detail_id_count(String CI_detail_id) {
+		return mapper.detail_id_count(CI_detail_id);
+	}
+
 }

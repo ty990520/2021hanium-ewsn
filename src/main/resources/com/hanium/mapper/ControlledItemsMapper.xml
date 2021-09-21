@@ -42,4 +42,7 @@
 	<select id="type" resultType="com.hanium.domain.ControlledItemsVO">
 	select * from ControlledItems where ${type}='Y';
 	</select>
+	<select id="detail_id_count" resultType="int">
+	select count(*) from ControlledItems where CI_detail_id like CONCAT(#{CI_detail_id},'%')
+	</select>
 </mapper>
