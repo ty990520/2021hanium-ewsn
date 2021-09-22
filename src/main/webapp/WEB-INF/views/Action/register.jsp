@@ -40,10 +40,12 @@
 		<div class="left">
 			<table class="table table-bordered">
 				<tr>
-					<td colspan="6"><label for="vul_action-select"> 등록할
-							조치권고 선택:</label> <select class="selectBox" id="vul_action-select">
+					<td colspan="6">
+					<label for="vul_action-select"> 등록할 조치권고 선택:</label> 
+							<select class="selectBox" id="vul_action-select">
+								<!-- <option>조치권고를 선택하세요.</option> --> 
 							<c:forEach items="${ac_list}" var="ar" varStatus="status">
-								<option selected value="${ar.AR_no}">${ar.AR_title}</option>
+							<option value="${ar.AR_no}">${ar.AR_title}</option>
 							</c:forEach>
 					</select></td>
 				</tr>
@@ -90,51 +92,50 @@
 					data-toggle="modal" data-target="#staticBackdrop">이행계획등록</button>
 			</div>
 		</div>
-		<script>
-		
-		$(document).ready(function(){
-			selectActionRec();
-		});
-		
-		$("#vul_action-select").change(function(){selectActionRec();});
-		
-		function selectActionRec() {
-			//selectbox의 리스트에서 선택된 Index를 구하는 방법은 다음과 같다.
-			var selectedIndex = $(
-					"#vul_action-select option:selected").val();
-			console.log(selectedIndex);
-			$.ajax({
-				contentType : "application/json; charset=utf-8;",
-				dataType : "json",
-				type : "GET",
-				url : "/Action/selectAr",
-				data : {
-					"AR_no" : selectedIndex
-				},
-				success : function(data) {
-					if (!data) {
-						console.log("err");
-					}
-					console.log(data);
-					$("#AR_regDate").text(data.ar_regDate)
-					$("#AR_no").text(data.ar_no)
-					$("#AR_daID").text(data.ar_daID)
-					$("#AR_daName").text(data.ar_daName)
-					$("#AR_daSystemSW").text(data.ar_daSystemSW)
-					$("#AR_title").text(data.ar_title)
-					$("#AR_ActionType").text(data.ar_ActionType)
-					$("#AR_issue").text(data.ar_issue)
-					$("#AR_regDept").text(data.ar_regDept)
-					$("#RegistrarID").text(data.registrarID)
-				},
-				error : function(request, status, error) {
-					alert("code:" + request.status + "\n"
-							+ "message:" + request.responseText
-							+ "\n" + "error:" + error);
-				}
-			});
-		}
-		</script>
+   <script>
+      
+      $(document).ready(function(){
+         selectActionRec();
+      });
+      
+      $("#vul_action-select").change(function(){selectActionRec();});
+      
+      function selectActionRec() {
+         //selectbox의 리스트에서 선택된 Index를 구하는 방법은 다음과 같다.
+         var selectedIndex = $(
+               "#vul_action-select option:selected").val();
+         console.log(selectedIndex);
+         $.ajax({
+            contentType : "application/json; charset=utf-8;",
+            dataType : "json",
+            type : "GET",
+            url : "/Action/selectAr",
+            data : {
+               "AR_no" : selectedIndex
+            },
+            success : function(data) {
+               if (!data) {
+                  console.log("err");
+               }
+               console.log(data);
+               $("#AR_regDate").text(data.ar_regDate)
+               $("#AR_no").text(data.ar_no)
+               $("#AR_daID").text(data.ar_daID)
+               $("#AR_daName").text(data.ar_daName)
+               $("#AR_daSystemSW").text(data.ar_daSystemSW)
+               $("#AR_title").text(data.ar_title)
+               $("#AR_ActionType").text(data.ar_ActionType)
+               $("#AR_issue").text(data.ar_issue)
+               $("#AR_regDept").text(data.ar_regDept)
+               $("#RegistrarID").text(data.registrarID)
+            },
+            error : function(request, status, error) {
+               alert("이행할 조치권고가 없습니다.");
+               window.history.back();
+            }
+         });
+      }
+      </script>
 		<div class="empty">
 			<h5>
 				이행계획등록 버튼을 누르면<br>조회한 조치권고에 해당하는 이행계획을 등록할 수 있습니다.

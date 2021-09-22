@@ -27,19 +27,19 @@ td.table-light {
 </style>
 <div class="right-container">
 	<h1>
-		<b>신규 취약점 관리 </b>
+		<b>조치권고</b>
 	</h1>
 
 	<table class="table table-bordered" id="table_fixed">
 		<tr>
 			<td class="table-light" colspan="2">취약점명</td>
-			<td colspan="10"><select class="input_width100"
-				id="ac_recommend-select">
+			<td colspan="10">
+			<select class="input_width100" id="ac_recommend-select">
 					<c:forEach items="${vul}" var="vul" varStatus="status">
-						<option selected value="${vul.vul_id}">${vul.vulName}</option>
+					 <option value="${vul.vul_id}">${vul.vulName}</option>
 					</c:forEach>
-
-			</select></td>
+			</select>
+		</td>
 			<c:forEach items="${vul}" var="vul" varStatus="status">
 				<input type="hidden" id="ci${status.index}" value="${vul.vul_ci_id}" />
 			</c:forEach>
@@ -52,16 +52,21 @@ td.table-light {
 			<td class="table-light" colspan="2">시스템S/W유형</td>
 			<td colspan="2"><p id="Val_systemSW"></td>
 		</tr>
-		<tr>
+		<tr id="vul_Null">
+			<td class="table-light" colspan="2">관련통제항목</td>
+			<td colspan="10">통제항목이 없습니다.</td>
+		</tr>
+		<tr id="vul_notNull">
 			<td class="table-light" colspan="2">관련 통제항목</td>
-			<td><p id="vul_ci_id"></td>
-			<td class="table-light" colspan="1">통제항목 분류</td>
-			<td><p id="CI_type"></td>
+			<td colspan="2"><p id="vul_ci_id"></td>
+			<td class="table-light" colspan="2">통제항목 분류</td>
+			<td colspan="2"><p id="CI_type"></td>
 			<td class="table-light" colspan="2">상세분류</td>
-			<td><p id="CI_detail_type"></td>
+			<td colspan="2"><p id="CI_detail_type"></td>
+		</tr>
+		<tr id="vul_notNull2">
 			<td class="table-light" colspan="2">항목내용</td>
-			<td><p id="CI_content"></td>
-
+			<td colspan="10"><p id="CI_content" ></td>
 		</tr>
 	</table>
 	<br> <br> <br> <br>
@@ -100,18 +105,11 @@ td.table-light {
 			</tr>
 		</tbody>
 	</table>
-	<div class="table_button_group">
-		<button type="button" class="btn btn-danger" data-toggle="modal"
-			data-target="#staticBackdrop"
-			onclick="location.href='/ActionRecommend/register'">조치 권고
-			등록하기</button>
-	</div>
 	<br> <br>
 </div>
 <script>
 	$(document).ready(function() {
 		selectRecommend();
-
 	});
 
 	var selectedIndex = null;
@@ -129,8 +127,6 @@ td.table-light {
 		selectRecommend();
 	});
 
-	
-	
 	function selectRecommend() {
 		//selectbox의 리스트에서 선택된 Index를 구하는 방법은 다음과 같다.
 		 selectedIndex = $("#ac_recommend-select option:selected").val();
@@ -153,10 +149,20 @@ td.table-light {
 				$("#Vul_Manufacturer").text(data.vul_Manufacturer)
 				$("#Val_model").text(data.val_model)
 				$("#Val_systemSW").text(data.val_systemSW)
-				$("#vul_ci_id").text(data.vul_ci_id)
-				$("#CI_type").text(data.ci_type)
-				$("#CI_detail_type").text(data.ci_detailType)
-				$("#CI_content").text(data.ci_content)
+				if(data.vul_ci_id==null){
+					$("#vul_Null").show();
+					$("#vul_notNull").hide();
+					$("#vul_notNull2").hide();
+				}
+				else{
+					$("#vul_Null").hide();
+					$("#vul_notNull").show();
+					$("#vul_notNull2").show();
+					$("#vul_ci_id").text(data.vul_ci_id)
+					$("#CI_type").text(data.ci_type)
+					$("#CI_detail_type").text(data.ci_detailType)
+					$("#CI_content").text(data.ci_content)
+				}
 				select_ci_list(selectedIndex);
 			},
 			error : function(request, status, error) {

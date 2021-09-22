@@ -111,7 +111,7 @@ td.table-light {
 			<td colspan="2"><c:out value='${action.AC_expectedDate}' /></td>
 		</tr>
 		<c:choose>
-			<c:when test='${ai.AI_check!=null}'>
+			<c:when test='${vul.AI_check!=null}'>
 				<tr>
 					<td colspan="7" style="text-align: center"><b>이행결과</b></td>
 				</tr>
