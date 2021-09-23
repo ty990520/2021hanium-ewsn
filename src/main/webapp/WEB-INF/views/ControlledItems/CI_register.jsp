@@ -14,17 +14,24 @@
 h6 {
 	color: navy;
 }
-p{margin-top: revert;}
+
+p {
+	margin-top: revert;
+}
+
 td.table-light {
-    vertical-align: middle;
+	vertical-align: middle;
 }
+
 input.checkSelect {
-    width: 15px;
-    height: 15px;
+	width: 15px;
+	height: 15px;
 }
+
 .input_width100 {
 	width: -webkit-fill-available;
 }
+
 .table_button_group {
 	float: right;
 	position: relative;
@@ -43,7 +50,8 @@ input.checkSelect {
 	margin: auto;
 }
 </style>
-<form name=form action="register" method="post" id="form">
+<form name=form action="register" method="post" id="form"
+	onsubmit="return false;">
 	<div class="right-container">
 		<h1>
 			<b>사이버보안 통제항목 관리 등록 내용</b>
@@ -72,12 +80,13 @@ input.checkSelect {
 				</tr>
 				<tr>
 					<td class="table-light" colspan="2">통제항목 상세유형번호</td>
-					<td colspan="6"><p style="font-size: 16px;" id="detail_id" >통제 항목 상세유형을 선택해주세요</p></td>
+					<td colspan="6"><p style="font-size: 16px;" id="detail_id">통제
+							항목 상세유형을 선택해주세요</p></td>
 				</tr>
 				<tr>
-					<td class="table-light" colspan="2">자산기능</td>
+					<td class="table-light" colspan="2">통제항목 내용</td>
 					<td><textarea cols="50" class="input_width100" rows="10"
-							name="CI_content" placeholder="자산기능 입력"></textarea></td>
+							id="da_func" name="CI_content" placeholder="통제항목 내용을 입력해주세요."></textarea></td>
 				</tr>
 				<tr>
 					<td class="table-light" colspan="2">통제항목 적용 자산</td>
@@ -161,12 +170,12 @@ input.checkSelect {
 				type="hidden" name="CI_CF_HF" value="N" id="CI_CF_HF"> <input
 				type="hidden" name="CI_FF_MF" value="N" id="CI_FF_MF"> <input
 				type="hidden" name="CI_FF_LF" value="N" id="CI_FF_LF"> <input
-				type="hidden" name="CI_FF_HF" value="N" id="CI_FF_HF">
-<input type="hidden" name="CI_detailType" id="ci_dtype_id">
+				type="hidden" name="CI_FF_HF" value="N" id="CI_FF_HF"> <input
+				type="hidden" name="CI_detailType" id="ci_dtype_id">
 		</div>
 		<div class="table_button_group">
 			<button type="button" class="btn btn-secondary">취소</button>
-			<button type="submit" class="btn btn-danger">등록</button>
+			<button type="button" class="btn btn-danger" onclick="register()">등록</button>
 
 		</div>
 	</div>
@@ -187,10 +196,10 @@ input.checkSelect {
 		//$('#test').val(text);
 		$('#ci_dtype_id').val($("#schQnaType option:checked").text());
 	}
-	$("#select1").change( function() {
-		
+	$("#select1").change(function() {
+
 		$("#detail_id").text("통제 항목 상세유형을 선택해주세요");
-		});
+	});
 
 	function YnCheck(obj) {
 
@@ -292,6 +301,33 @@ input.checkSelect {
 					"<option value='2.12'>특화된 사이버보안 훈련</option>'");
 			$('#schQnaType').append("<option value='2.13'>교육훈련 피드백</option>'");
 			$('#schQnaType').append("<option value='2.14'>유관기관과의 협력</option>'");
+		}
+	}
+
+	function register() {
+		if ($("#detail_id").text() == "") {
+			alert("통제항목 상세 유형을 선택해주세요.");
+			return false;
+		}
+		/*if($("#da_func").text()==""){
+			alert("자산 기능을 입력해주세요.");
+			return false;
+		}*/
+		var func = $("#da_func").val();
+
+		// 미입력 또는 공백 입력 방지
+		if (func.replace(/\s|　/gi, "").length == 0) {
+			alert("통제항목 내용을 입력해주세요.");
+			$("#da_func").focus();
+			return false;
+		}
+
+		if (confirm("통제항목을 등록하시겠습니까?") == true) {
+			alert("통제항목이 등록되었습니다.");
+			document.getElementById('form').submit();
+			return true;
+		} else {
+			return false;
 		}
 	}
 </script>
