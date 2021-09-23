@@ -14,7 +14,9 @@ a {
 	text-decoration: none;
 	color: black;
 }
-
+p{
+margin-top: revert;
+}
 td.table-light {
 	vertical-align: middle;
 	text-align: center;
@@ -79,7 +81,7 @@ td.table-light {
 			<tr>
 				<th>자산번호</th>
 				<th>자산명</th>
-				<th>자산기능</th>
+				<!-- <th>자산기능</th> -->
 				<th>기능유형</th>
 				<th>영향성 분석</th>
 				<th>설비유형</th>
@@ -199,8 +201,8 @@ td.table-light {
 					insTag += "<td id='daid'>" + data[i].daid
 							+ "</td>";
 					insTag += "<td id='daname'>" + data[i].daname + "</td>";
-					insTag += "<td id='daFunc'>" + data[i].daFunc
-							+ "</td>";
+					/*insTag += "<td id='daFunc'>" + data[i].daFunc
+							+ "</td>";*/
 					insTag += "<td id='daFuncType'>" + data[i].daFuncType
 							+ "</td>";
 					insTag += "<td id='daImpact'>" + data[i].daImpact

@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.hanium.domain.Criteria;
+import com.hanium.domain.DAVO;
 import com.hanium.domain.SecurityAssessDTO;
 import com.hanium.domain.UserVO;
 
@@ -36,6 +37,12 @@ public class MapperTest {
 	
 	@Setter(onMethod_ = @Autowired)
 	private ControlledItemsApplyMapper mapper5;
+	
+	@Test
+	public void testCIA() {
+		List<DAVO> da_list = mapper2.getVulTargetList_CI("우리기술", "WTG-PMS", "Firmware");
+		da_list.forEach(i->log.info(i));
+	}
 	
 	/*@Test
 	public void testCIA() {
