@@ -16,9 +16,9 @@
 <div class="right-container">
 	<h1>
 		<b>이행계획
-		<button type="button" class="btn btn-danger" data-toggle="modal"
-			data-target="#staticBackdrop"
-			onclick="location.href='/Action/register' ">등록하기</button>
+			<button type="button" class="btn btn-danger" data-toggle="modal"
+				data-target="#staticBackdrop"
+				onclick="location.href='/Action/register' ">등록하기</button>
 		</b>
 	</h1>
 	<hr>
@@ -29,14 +29,13 @@
 		</select> <input type="search" name="" value="" placeholder="자산명 입력">
 		<button type="button" name="button" class="btn btn-outline-secondary">검색</button>
 	</form>
-	<br>
-	<br>
+	<br> <br>
 	<table class="table table-hover">
 		<thead>
 			<tr>
 				<th scope="col" style="width: 30px;">Id</th>
-				<th scope="col">조치예정일</th>
-				<th scope="col">조치계획</th>
+				<!-- <th scope="col">조치예정일</th> -->
+				<!-- <th scope="col">조치계획</th> -->
 				<th scope="col">조치부서</th>
 				<th scope="col">조치담당자</th>
 				<th scope="col">조치구분</th>
@@ -44,22 +43,21 @@
 			</tr>
 		</thead>
 		<tbody>
-		<c:forEach items="${list}" var="ac" varStatus="status">
-			<tr onclick="get(<c:out value="${ac.AC_no}"/>)">
-				<td scope="row" style="width: 30px;">${status.count}</td>
-				<td><c:out value="${ac.AC_expectedDate}" /></td>
-				<td><c:out value="${ac.AC_plan}" /></td>
-				<td><c:out value="${ac.AC_dept}" /></td>
-				<td><c:out value="${ac.AC_manager}" /></td>
-				<td><c:out value="${ac.AC_type}" /></td>
-			</tr>
+			<c:forEach items="${list}" var="ac" varStatus="status">
+				<tr onclick="get(<c:out value="${ac.AC_no}"/>)">
+					<td scope="row" style="width: 30px;">${status.count}</td>
+					
+					<td><c:out value="${ac.AC_dept}" /></td>
+					<td><c:out value="${ac.AC_manager}" /></td>
+					<td><c:out value="${ac.AC_type}" /></td>
+				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
-	
+
 	<br>
 </div>
-	
+
 <script>
    $('#myModal').on('shown.bs.modal', function() {
       $('#myInput').trigger('focus')

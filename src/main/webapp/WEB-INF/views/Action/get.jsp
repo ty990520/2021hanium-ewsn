@@ -15,14 +15,17 @@ a {
 	text-decoration: none;
 	color: black;
 }
+td#cost {
+    vertical-align: middle;
+}
 
 td.table-light {
-	width: 30px;
+	width: 15%;
 	vertical-align: middle;
 	text-align: center;
 }
 
-#openBtn{
+#openBtn {
 	float: right;
 }
 </style>
@@ -93,27 +96,56 @@ td.table-light {
 	</h1>
 	<hr>
 
-	<table class="table table-bordered" margin: auto">
+	<table class="table table-bordered"margin:auto">
 		<tr>
 			<!-- <th style="text-align: center;">이행계획</th>  -->
-			<td colspan="7" style="text-align: center"><b>이행계획</b></td>
+			<td colspan="12" style="text-align: center"><b>이행계획</b></td>
 		</tr>
 		<tr>
-			<td class="table-light" colspan="2">조치구분</td>
-			<td colspan="2"><c:out value='${action.AC_type}' /></td>
-			<td class="table-light" colspan="2">조치부서</td>
-			<td colspan="2"><c:out value='${action.AC_dept}' /></td>
+
+			<td class="table-light" colspan="2">조치 부서</td>
+			<td colspan="4"><c:out value='${action.AC_dept}' /></td>
+			<td class="table-light" colspan="2">조치 담당자</td>
+			<td colspan="4"><c:out value='${action.AC_manager}' /></td>
 		</tr>
 		<tr>
-			<td class="table-light" colspan="2">조치계획</td>
-			<td colspan="2"><c:out value='${action.AC_plan}' /></td>
-			<td class="table-light" colspan="2">조치예상일자</td>
-			<td colspan="2"><c:out value='${action.AC_expectedDate}' /></td>
+			<td class="table-light" colspan="2">조치 구분</td>
+			<td colspan="4"><c:out value='${action.AC_type}' /></td>
+			<td class="table-light" colspan="2">예상 비용</td>
+			<td colspan="4"><c:out value='${action.estimated_cost}' /></td>
+		</tr>
+		<tr>
+			<td class="table-light" colspan="2" rowspan="3">추진 방안</td>
+			<td class="table-light" colspan="2">task1</td>
+			<td colspan="9"><c:out value='${action.AC_plan1}' /></td>
+
+		</tr>
+		<tr>
+			<td class="table-light" colspan="2">task2</td>
+			<td colspan="9"><c:out value='${action.AC_plan2}' /></td>
+
+		</tr>
+		<tr>
+			<td class="table-light" colspan="2">task3</td>
+			<td colspan="9"><c:out value='${action.AC_plan3}' /></td>
+		</tr>
+		<tr>
+			<td class="table-light" colspan="2">task1 조치일자</td>
+			<td colspan="2"><c:out value='${action.AC_expectedDate1}' /></td>
+			<td class="table-light" colspan="2">task2 조치일자</td>
+			<td colspan="2"><c:out value='${action.AC_expectedDate2}' /></td>
+			<td class="table-light" colspan="2">task3 조치일자</td>
+			<td colspan="2"><c:out value='${action.AC_expectedDate3}' /></td>
+		</tr>
+		<tr>
+			<td class="table-light" colspan="2">예상 비용</td>
+			<td colspan="10" id="cost"><c:out
+					value='${action.estimated_cost}' /></td>
 		</tr>
 		<c:choose>
 			<c:when test='${vul.AI_check!=null}'>
 				<tr>
-					<td colspan="7" style="text-align: center"><b>이행결과</b></td>
+					<td colspan="12" style="text-align: center"><b>이행결과</b></td>
 				</tr>
 				<tr>
 					<td class="table-light" colspan="2"
@@ -134,10 +166,10 @@ td.table-light {
 			</c:when>
 			<c:otherwise>
 				<tr>
-					<td colspan="7" style="height: 200px;">이행결과가 없습니다.</td>
-							<button type="button" id="openBtn" class="btn btn-danger"
-			data-toggle="modal" data-target="#exampleModal"
-			data-whatever="@getbootstrap" data-target="#staticBackdrop">등록</button>
+					<td colspan="12" style="height: 200px;">이행결과가 없습니다.</td>
+					<button type="button" id="openBtn" class="btn btn-danger"
+						data-toggle="modal" data-target="#exampleModal"
+						data-whatever="@getbootstrap" data-target="#staticBackdrop">등록</button>
 				</tr>
 				<div class="table_button_group"></div>
 			</c:otherwise>
@@ -145,6 +177,14 @@ td.table-light {
 	</table>
 </div>
 <script>
+	$(document).ready(function() {
+		var price = $("#cost").text();
+		
+		var regexp = /\B(?=(\d{3})+(?!\d))/g;
+		console.log(price.toString().replace(regexp, ','));
+		$("#cost").text(price.toString().replace(regexp, ','));
+	});
+
 	var flag = 1; //판별 신호 (1=ep, 0=bop검사)
 
 	$("#assess_btn").on("click", function() {

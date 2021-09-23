@@ -12,10 +12,10 @@
 	</select>
 	<insert id="insert">
 		insert into Action
-		(AC_no,AC_plan,AC_expectedDate,AC_dept,AC_manager,AC_type)
-		values (#{AC_no},#{AC_plan}, #{AC_expectedDate}, #{AC_dept}, #{AC_manager}, #{AC_type})
+		(AC_no,AC_plan1,AC_plan2,AC_plan3,AC_expectedDate1,AC_expectedDate2,AC_expectedDate3,estimated_cost,AC_dept,AC_manager,AC_type)
+		values (#{AC_no},#{AC_plan1},#{AC_plan2},#{AC_plan3}, #{AC_expectedDate1}, #{AC_expectedDate2}, #{AC_expectedDate3},#{estimated_cost}, #{AC_dept}, #{AC_manager}, #{AC_type})
 	</insert>
-	<update id="update">
+	<update id="update"><!-- update는 사용안해서 수정 안해놓음 -->
 		update Action
 		set AC_plan=#{AC_plan},
 		AC_expectedDate=#{AC_expectedDate}

@@ -1,7 +1,5 @@
 package com.hanium.controller;
 
-import java.util.Date;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,11 +11,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.hanium.domain.ActionImplementVO;
 import com.hanium.domain.ActionRecommendVO;
 import com.hanium.domain.ActionVO;
-import com.hanium.domain.UserVO;
 import com.hanium.service.ActionImplementService;
 import com.hanium.service.ActionRecommendService;
 import com.hanium.service.ActionService;
-import com.hanium.service.BOPService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -45,6 +41,7 @@ import lombok.extern.log4j.Log4j;
 		@PostMapping("/register")	//글을 등록하는 경우에는 get방식이 아니라 post방식을 사용한다.
 		public String register(ActionVO action) {	//RedirectAttributes : 
 		    log.info("[CONTROLLER]register : "+ action);
+		   
 		    service.register(action);
 		    return "redirect:/Action/list";		
 		    }
