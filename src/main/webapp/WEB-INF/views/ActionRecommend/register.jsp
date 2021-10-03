@@ -50,15 +50,18 @@ text-align: center;
 				<td class="table-light" colspan="2">시스템sw유형</td>
 				<td colspan="2"><input type="text"
 					class="vulner_register_input" name="AR_daSystemSW" value="${da.daSystemSW}" readonly></td>
+					
 				<td class="table-light" colspan="2">조치유형</td>
 				<td colspan="2">
-				<select name="AR_ActionType">
-				 <option value="관리적">관리적</option>
-				 <option value="운영적">운영적</option>
-				  <option value="기술적">기술적</option>
+				<select name="AR_ActionType" >
+				 <option value="장기">장기</option>
+				 <option value="중기">중기</option>
+				 <option value="중기">단기</option>
 				</select>
-				<input type="text"
-					class="vulner_register_input" name="AR_ActionType" placeholder="조치유형검색"></td>
+		      	<select  id="schQnaType" name="AR_ActionType">
+					</select>
+				<!--  input type="text"
+					class="vulner_register_input" name="AR_ActionType" placeholder="조치유형검색"></td-->
 			</tr>
 			<tr>
 				<td class="table-light" colspan="2">제목</td>
@@ -79,4 +82,5 @@ text-align: center;
 		</div>
 		</form>
 	</div>
+
 <%@include file="../includes/footer.jsp"%>

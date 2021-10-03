@@ -73,9 +73,11 @@ import lombok.extern.log4j.Log4j;
 		@PostMapping("/register2")	//글을 등록하는 경우에는 get방식이 아니라 post방식을 사용한다.
 		public String register2(ActionImplementVO ai) {	//RedirectAttributes : 
 		    log.info("[CONTROLLER]register : "+ai);
+		    log.info("[CONTROLLER]registerdddddd : "+ai.getAI_no());
 		    service3.register(ai);
 		    //rttr.addFlashAttribute("result",dept.getDeptcode());
 		    //return "redirect:/dept/list";
 		    return "redirect:/Action/get?AC_no="+ai.getAI_no();
+		    
 		}
 }
