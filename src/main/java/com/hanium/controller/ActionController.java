@@ -14,6 +14,7 @@ import com.hanium.domain.ActionVO;
 import com.hanium.service.ActionImplementService;
 import com.hanium.service.ActionRecommendService;
 import com.hanium.service.ActionService;
+import com.hanium.service.ControlledItemsService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -26,6 +27,7 @@ import lombok.extern.log4j.Log4j;
 	private ActionService service;
 	private ActionRecommendService service2;
 	private ActionImplementService service3;
+	private ControlledItemsService service4;
 		
 		@GetMapping("/list")
 		public void list(Model model) {	//addAttribute메소드를 이용해 Model객체에 담아서 전달
@@ -51,6 +53,7 @@ import lombok.extern.log4j.Log4j;
 		    log.info("[ CONTROLLER ] get ……..");
 		    model.addAttribute("action", service.get(AC_no));
 		    model.addAttribute("ai", service3.get(AC_no));
+		    model.addAttribute("controllItems", service4.getList());
 
 		}
 		@PostMapping("/modify")
