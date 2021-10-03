@@ -58,8 +58,6 @@ text-align: center;
 				 <option value="중기">중기</option>
 				 <option value="중기">단기</option>
 				</select>
-		      	<select  id="schQnaType" name="AR_ActionType">
-					</select>
 				<!--  input type="text"
 					class="vulner_register_input" name="AR_ActionType" placeholder="조치유형검색"></td-->
 			</tr>

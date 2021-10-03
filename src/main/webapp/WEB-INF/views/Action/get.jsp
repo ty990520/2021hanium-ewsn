@@ -28,6 +28,9 @@ td.table-light {
 #openBtn {
 	float: right;
 }
+.custom-select{
+	width:300px;
+	}
 </style>
 </head>
 <!-- modal -->
@@ -63,7 +66,7 @@ td.table-light {
 								<td style="border-style: hidden">대안조치</td>
 								<td style="border-style: hidden">
 								
-								<select class="custom-select" id="select1"  name="AI_AlterMeasures" onChange="chnQnaType()">
+								<select class="custom-select" id="select1" name="control"onChange="chnQnaType()">
 								<option>--통제 항목 분류를 선택해주세요--</option>
 								<option value="기술적">기술적</option>
 								<option value="운영적">운영적</option>
@@ -72,8 +75,7 @@ td.table-light {
 								<tr>
 								<td style="border-style: hidden">상세유형</td>
 								<td style="border-style: hidden">
-							<select class="custom-select" id="schQnaType">
-								</select>
+							<select class="custom-select" id="schQnaType" name="AI_AlterMeasures"></select>
 							<tr>
 								<td style="border-style: hidden">이행결과</td>
 								<td style="border-style: hidden"><input type="text"
@@ -149,16 +151,29 @@ td.table-light {
 		</tr>
 		<c:choose>
 			<c:when test='${ai.AI_no!=null}'>
-				<tr>
 					<td colspan="12" style="text-align: center"><b>이행결과</b></td>
 				</tr>
 				<tr>
+				 <c:if test = "${ai.AI_impossibleReason!=null}">
 					<td class="table-light" colspan="2"
 						style="height: 80px; text-align: center">조치불가사유</td>
 					<td colspan="4"><c:out value='${ai.AI_impossibleReason}' /></td>
+					</c:if>
+					<c:if test = "${ai.AI_impossibleReason==null}">
+					<td class="table-light" colspan="2"
+						style="height: 80px; text-align: center">조치불가사유</td>
+					<td colspan="4">불가사유가 없습니다.</td>
+					</c:if>
+					<c:if test="${ai.AI_AlterMeasures!=null}">
 					<td class="table-light" colspan="2"
 						style="height: 80px; text-align: center">대안조치</td>
 					<td colspan="4"><c:out value='${ai.AI_AlterMeasures}' /></td>
+					</c:if>
+					<c:if test="${ai.AI_AlterMeasures==null}">
+					<td class="table-light" colspan="2"
+						style="height: 80px; text-align: center">대안조치</td>
+					<td colspan="4">대안조치가 없습니다.</td>
+					</c:if>
 				</tr>
 				<tr>
 					<td class="table-light" colspan="2"
@@ -169,7 +184,7 @@ td.table-light {
 					<td colspan="4"><c:out value='${ai.AI_finishDate}' /></td>
 				</tr>
 			</c:when>
-			<c:otherwise> 
+			<c:otherwise>
 				<tr>
 					<td colspan="12" style="height: 200px;">이행결과가 없습니다.</td>
 					<button type="button" id="openBtn" class="btn btn-danger"
@@ -193,14 +208,14 @@ td.table-light {
     $('input:radio[name=AI_check]').click(function(){
    	if($("input[name=AI_check]:checked").val() == "Y"){
    		//console.log("input[name=AI_check]:checked").val());
-   	 $("input:text[name=AI_impossibleReason]").attr("disabled",false);
-   	 $("select[name=AI_AlterMeasures]").attr("disabled",false);
-   	$("select[name=AI_AlterMeasures2]").attr("disabled",false);
+   	 $("input:text[name=AI_impossibleReason]").attr("disabled",true);
+   	 $("select[name=AI_AlterMeasures]").attr("disabled",true);
+   	$("select[name=control]").attr("disabled",true);
    	}
    	else if($("input[name=AI_check]:checked").val() == "N"){
-      	 $("input:text[name=AI_impossibleReason]").attr("disabled",true);
-       	 $("select[name=AI_AlterMeasures]").attr("disabled",true);
-       	$("select[name=AI_AlterMeasures2]").attr("disabled",true);
+      	 $("input:text[name=AI_impossibleReason]").attr("disabled",false);
+       	 $("select[name=AI_AlterMeasures]").attr("disabled",false);
+       	$("select[name=control]").attr("disabled",false);
    	}
     });
 
@@ -232,45 +247,45 @@ td.table-light {
 
 		if (type == '기술적') { // 기술적 
 			console.log('기술적');
-			$('#schQnaType').append("<option value='1.1' >계정관리</option>'");
-			$('#schQnaType').append("<option value='1.2' >접근통제 이행</option>'");
-			$('#schQnaType').append("<option value='1.3' >데이터 이동 통제</option>'");
-			$('#schQnaType').append("<option value='1.4' >기능의 분리</option>'");
-			$('#schQnaType').append("<option value='1.5' >최소 권한</option>'");
-			$('#schQnaType').append("<option value='1.6' >접속실패 기록</option>'");
-			$('#schQnaType').append("<option value='1.7' >시스템 사용 공지</option>'");
+			$('#schQnaType').append("<option value='1.1'>계정관리</option>'");
+			$('#schQnaType').append("<option value='1.2'>접근통제 이행</option>'");
+			$('#schQnaType').append("<option value='1.3'>데이터 이동 통제</option>'");
+			$('#schQnaType').append("<option value='1.4'>기능의 분리</option>'");
+			$('#schQnaType').append("<option value='1.5'>최소 권한</option>'");
+			$('#schQnaType').append("<option value='1.6'>접속실패 기록</option>'");
+			$('#schQnaType').append("<option value='1.7'>시스템 사용 공지</option>'");
 			$('#schQnaType')
-					.append("<option value='1.8' >이전 접속기록 공지</option>'");
-			$('#schQnaType').append("<option value='1.9' >세션 잠금</option>'");
+					.append("<option value='1.8'>이전 접속기록 공지</option>'");
+			$('#schQnaType').append("<option value='1.9'>세션 잠금</option>'");
 			$('#schQnaType').append(
-					"<option value='1.10' >접근통제 감독 및 검토</option>'");
+					"<option value='1.10'>접근통제 감독 및 검토</option>'");
 			$('#schQnaType').append(
 					"<option value='1.11' >식별이나 인증 없이 허가된 활동</option>'");
 			$('#schQnaType')
-					.append("<option value='1.12' >네트워크 접근통제</option>'");
+					.append("<option value='1.12'>네트워크 접근통제</option>'");
 			$('#schQnaType').append(
-					"<option value='1.13' >안전하지 않은 프로토콜의 제한</option>'");
-			$('#schQnaType').append("<option value='1.14' >무선연결 금지</option>'");
+					"<option value='1.13'>안전하지 않은 프로토콜의 제한</option>'");
+			$('#schQnaType').append("<option value='1.14'>무선연결 금지</option>'");
 			$('#schQnaType').append(
-					"<option value='1.15' >안전하지 않은 연결</option>'");
+					"<option value='1.15'>안전하지 않은 연결</option>'");
 			$('#schQnaType').append(
-					"<option value='1.16' >휴대용 매체 및 모바일 기기 접근 통제</option>'");
+					"<option value='1.16'>휴대용 매체 및 모바일 기기 접근 통제</option>'");
 			$('#schQnaType').append(
-					"<option value='1.17' >특정 프로토콜 가시성</option>'");
+					"<option value='1.17'>특정 프로토콜 가시성</option>'");
 			$('#schQnaType')
 					.append("<option value='1.18' >제3자 제품 사용</option>'");
 			$('#schQnaType')
-					.append("<option value='1.19' >외부시스템의 사용</option>'");
+					.append("<option value='1.19'>외부시스템의 사용</option>'");
 			$('#schQnaType').append(
 					"<option value='1.20' >사용자 식별 및 인증</option>'");
 			$('#schQnaType').append("<option value='1.21' >패스워드 요건</option>'");
 			$('#schQnaType')
 					.append(
-							"<option value='1.22' >인증 불가한 HMI(Human-Manchine Interface) 보안</option>'");
+							"<option value='1.22'>인증 불가한 HMI(Human-Manchine Interface) 보안</option>'");
 			$('#schQnaType').append(
 					"<option value='1.23' >기기 식별 및 인증</option>'");
-			$('#schQnaType').append("<option value='1.24' >식별자 관리</option>'");
-			$('#schQnaType').append("<option value='1.25' >인증자 관리</option>'");
+			$('#schQnaType').append("<option value='1.24'>식별자 관리</option>'");
+			$('#schQnaType').append("<option value='1.25'>인증자 관리</option>'");
 			$('#schQnaType').append(
 					"<option value='1.26' >암호화 모듈 인증에 따라 암호화를 수행</option>'");
 			$('#schQnaType').append(
