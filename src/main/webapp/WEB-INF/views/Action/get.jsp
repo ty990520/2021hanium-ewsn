@@ -148,7 +148,7 @@ td.table-light {
 					value='${action.estimated_cost}' /></td>
 		</tr>
 		<c:choose>
-			<c:when test='${vul.AI_check!=false}'>
+			<c:when test='${ai.AI_no!=null}'>
 				<tr>
 					<td colspan="12" style="text-align: center"><b>이행결과</b></td>
 				</tr>
@@ -169,7 +169,7 @@ td.table-light {
 					<td colspan="4"><c:out value='${ai.AI_finishDate}' /></td>
 				</tr>
 			</c:when>
-			<c:otherwise>
+			<c:otherwise> 
 				<tr>
 					<td colspan="12" style="height: 200px;">이행결과가 없습니다.</td>
 					<button type="button" id="openBtn" class="btn btn-danger"
