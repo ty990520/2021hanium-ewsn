@@ -8,7 +8,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>DA 관리 프로그램</title>
 <!-- menu css -->
 <link rel="stylesheet" type="text/css"
 	href="/resources/css/normalize.css" />

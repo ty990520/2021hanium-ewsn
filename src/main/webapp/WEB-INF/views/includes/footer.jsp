@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-	<div class="footer">
-		<p>Copyright © DA Management Program All Rights Reserved.</p>
-		<p>Develop by team EWSN</p>
-	</div>
+	pageEncoding="UTF-8"%>
+<div class="footer">
+	<p>Copyright © DA Management Program All Rights Reserved.</p>
+	<br> <span>Development team | 박태영 • 김혜진 • 박민지</span> <span>Algorithm
+		team | 김은지 • 이지은</span>
+	<span style="font-size: medium;">Develop by team EWSN</span>
+
+</div>
 </body>
 <style>
 .content_div {
@@ -58,6 +61,7 @@
 .footer {
 	width: 100%;
 	height: 150px;
+	font-size: small;
 	background-color: gray;
 	color: white;
 	text-align: center;
