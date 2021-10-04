@@ -15,8 +15,9 @@ a {
 	text-decoration: none;
 	color: black;
 }
+
 td#cost {
-    vertical-align: middle;
+	vertical-align: middle;
 }
 
 td.table-light {
@@ -27,10 +28,15 @@ td.table-light {
 
 #openBtn {
 	float: right;
+	margin-top: 20px;
 }
-.custom-select{
-	width:300px;
-	}
+
+.custom-select {
+	width: 300px;
+}
+td {
+    vertical-align: middle !important;
+}
 </style>
 </head>
 <!-- modal -->
@@ -55,27 +61,27 @@ td.table-light {
 							<tr>
 								<input type="hidden" name="AI_no" value="${action.AC_no}" />
 								<td style="border-style: hidden">이행여부</td>
-								<td style="border-style: hidden">
-								<input type="radio" name="AI_check" value="Y">Y &nbsp;
-								<input type="radio" name="AI_check" value="N">N</td>
+								<td style="border-style: hidden"><input type="radio"
+									name="AI_check" value="Y">Y &nbsp; <input type="radio"
+									name="AI_check" value="N" checked>N</td>
 							<tr>
 								<td style="border-style: hidden">조치불가사유</td>
-								<td style="border-style: hidden">
-								<input type="text" class="form-control" name="AI_impossibleReason" placeholder="불가사유입력"></td>
+								<td style="border-style: hidden"><input type="text"
+									class="form-control" name="AI_impossibleReason"
+									placeholder="불가사유입력"></td>
 							<tr>
 								<td style="border-style: hidden">대안조치</td>
-								<td style="border-style: hidden">
-								
-								<select class="custom-select" id="select1" name="control"onChange="chnQnaType()">
-								<option>--통제 항목 분류를 선택해주세요--</option>
-								<option value="기술적">기술적</option>
-								<option value="운영적">운영적</option>
-								</select>
-								</td>
-								<tr>
+								<td style="border-style: hidden"><select
+									class="custom-select" id="select1" name="control"
+									onChange="chnQnaType()">
+										<option>--통제 항목 분류를 선택해주세요--</option>
+										<option value="기술적">기술적</option>
+										<option value="운영적">운영적</option>
+								</select></td>
+							<tr>
 								<td style="border-style: hidden">상세유형</td>
-								<td style="border-style: hidden">
-							<select class="custom-select" id="schQnaType" name="AI_AlterMeasures"></select>
+								<td style="border-style: hidden"><select
+									class="custom-select" id="schQnaType" name="AI_AlterMeasures"></select>
 							<tr>
 								<td style="border-style: hidden">이행결과</td>
 								<td style="border-style: hidden"><input type="text"
@@ -119,7 +125,8 @@ td.table-light {
 			<td class="table-light" colspan="2">조치 구분</td>
 			<td colspan="4"><c:out value='${action.AC_type}' /></td>
 			<td class="table-light" colspan="2">예상 비용</td>
-			<td colspan="4"><c:out value='${action.estimated_cost}' /></td>
+			<td colspan="4" id="cost"><c:out
+					value='${action.estimated_cost}' /></td>
 		</tr>
 		<tr>
 			<td class="table-light" colspan="2" rowspan="3">추진 방안</td>
@@ -144,35 +151,34 @@ td.table-light {
 			<td class="table-light" colspan="2">task3 조치일자</td>
 			<td colspan="2"><c:out value='${action.AC_expectedDate3}' /></td>
 		</tr>
+	</table>
+	<table class="table table-bordered"margin:auto">
 		<tr>
-			<td class="table-light" colspan="2">예상 비용</td>
-			<td colspan="10" id="cost"><c:out
-					value='${action.estimated_cost}' /></td>
+			<!-- <th style="text-align: center;">이행계획</th>  -->
+			<td colspan="12" style="text-align: center"><b>이행결과</b></td>
 		</tr>
 		<c:choose>
 			<c:when test='${ai.AI_no!=null}'>
-					<td colspan="12" style="text-align: center"><b>이행결과</b></td>
-				</tr>
 				<tr>
-				 <c:if test = "${ai.AI_impossibleReason!=null}">
-					<td class="table-light" colspan="2"
-						style="height: 80px; text-align: center">조치불가사유</td>
-					<td colspan="4"><c:out value='${ai.AI_impossibleReason}' /></td>
+					<c:if test="${ai.AI_impossibleReason!=null}">
+						<td class="table-light" colspan="2"
+							style="height: 80px; text-align: center">조치불가사유</td>
+						<td colspan="4"><c:out value='${ai.AI_impossibleReason}' /></td>
 					</c:if>
-					<c:if test = "${ai.AI_impossibleReason==null}">
-					<td class="table-light" colspan="2"
-						style="height: 80px; text-align: center">조치불가사유</td>
-					<td colspan="4">불가사유가 없습니다.</td>
+					<c:if test="${ai.AI_impossibleReason==null}">
+						<td class="table-light" colspan="2"
+							style="height: 80px; text-align: center">조치불가사유</td>
+						<td colspan="4">불가사유가 없습니다.</td>
 					</c:if>
 					<c:if test="${ai.AI_AlterMeasures!=null}">
-					<td class="table-light" colspan="2"
-						style="height: 80px; text-align: center">대안조치</td>
-					<td colspan="4"><c:out value='${ai.AI_AlterMeasures}' /></td>
+						<td class="table-light" colspan="2"
+							style="height: 80px; text-align: center">대안조치</td>
+						<td colspan="4"><c:out value='${ai.AI_AlterMeasures}' /></td>
 					</c:if>
 					<c:if test="${ai.AI_AlterMeasures==null}">
-					<td class="table-light" colspan="2"
-						style="height: 80px; text-align: center">대안조치</td>
-					<td colspan="4">대안조치가 없습니다.</td>
+						<td class="table-light" colspan="2"
+							style="height: 80px; text-align: center">대안조치</td>
+						<td colspan="4">대안조치가 없습니다.</td>
 					</c:if>
 				</tr>
 				<tr>
@@ -189,7 +195,8 @@ td.table-light {
 					<td colspan="12" style="height: 200px;">이행결과가 없습니다.</td>
 					<button type="button" id="openBtn" class="btn btn-danger"
 						data-toggle="modal" data-target="#exampleModal"
-						data-whatever="@getbootstrap" data-target="#staticBackdrop">등록</button>
+						data-whatever="@getbootstrap" data-target="#staticBackdrop">이행결과
+						등록</button>
 				</tr>
 				<div class="table_button_group"></div>
 			</c:otherwise>
@@ -199,25 +206,24 @@ td.table-light {
 <script>
 	$(document).ready(function() {
 		var price = $("#cost").text();
-		
+
 		var regexp = /\B(?=(\d{3})+(?!\d))/g;
 		console.log(price.toString().replace(regexp, ','));
 		$("#cost").text(price.toString().replace(regexp, ','));
 	});
 
-    $('input:radio[name=AI_check]').click(function(){
-   	if($("input[name=AI_check]:checked").val() == "Y"){
-   		//console.log("input[name=AI_check]:checked").val());
-   	 $("input:text[name=AI_impossibleReason]").attr("disabled",true);
-   	 $("select[name=AI_AlterMeasures]").attr("disabled",true);
-   	$("select[name=control]").attr("disabled",true);
-   	}
-   	else if($("input[name=AI_check]:checked").val() == "N"){
-      	 $("input:text[name=AI_impossibleReason]").attr("disabled",false);
-       	 $("select[name=AI_AlterMeasures]").attr("disabled",false);
-       	$("select[name=control]").attr("disabled",false);
-   	}
-    });
+	$('input:radio[name=AI_check]').click(function() {
+		if ($("input[name=AI_check]:checked").val() == "Y") {
+			//console.log("input[name=AI_check]:checked").val());
+			$("input:text[name=AI_impossibleReason]").attr("disabled", true);
+			$("select[name=AI_AlterMeasures]").attr("disabled", true);
+			$("select[name=control]").attr("disabled", true);
+		} else if ($("input[name=AI_check]:checked").val() == "N") {
+			$("input:text[name=AI_impossibleReason]").attr("disabled", false);
+			$("select[name=AI_AlterMeasures]").attr("disabled", false);
+			$("select[name=control]").attr("disabled", false);
+		}
+	});
 
 	var flag = 1; //판별 신호 (1=ep, 0=bop검사)
 
@@ -235,7 +241,7 @@ td.table-light {
 		}
 
 	}
-	
+
 	/* select 선택 시 변환 처리  */
 	function chnQnaType() {
 		var type = document.getElementById("select1");
@@ -254,28 +260,25 @@ td.table-light {
 			$('#schQnaType').append("<option value='1.5'>최소 권한</option>'");
 			$('#schQnaType').append("<option value='1.6'>접속실패 기록</option>'");
 			$('#schQnaType').append("<option value='1.7'>시스템 사용 공지</option>'");
-			$('#schQnaType')
-					.append("<option value='1.8'>이전 접속기록 공지</option>'");
+			$('#schQnaType').append("<option value='1.8'>이전 접속기록 공지</option>'");
 			$('#schQnaType').append("<option value='1.9'>세션 잠금</option>'");
 			$('#schQnaType').append(
 					"<option value='1.10'>접근통제 감독 및 검토</option>'");
 			$('#schQnaType').append(
 					"<option value='1.11' >식별이나 인증 없이 허가된 활동</option>'");
-			$('#schQnaType')
-					.append("<option value='1.12'>네트워크 접근통제</option>'");
+			$('#schQnaType').append("<option value='1.12'>네트워크 접근통제</option>'");
 			$('#schQnaType').append(
 					"<option value='1.13'>안전하지 않은 프로토콜의 제한</option>'");
 			$('#schQnaType').append("<option value='1.14'>무선연결 금지</option>'");
-			$('#schQnaType').append(
-					"<option value='1.15'>안전하지 않은 연결</option>'");
+			$('#schQnaType')
+					.append("<option value='1.15'>안전하지 않은 연결</option>'");
 			$('#schQnaType').append(
 					"<option value='1.16'>휴대용 매체 및 모바일 기기 접근 통제</option>'");
 			$('#schQnaType').append(
 					"<option value='1.17'>특정 프로토콜 가시성</option>'");
 			$('#schQnaType')
 					.append("<option value='1.18' >제3자 제품 사용</option>'");
-			$('#schQnaType')
-					.append("<option value='1.19'>외부시스템의 사용</option>'");
+			$('#schQnaType').append("<option value='1.19'>외부시스템의 사용</option>'");
 			$('#schQnaType').append(
 					"<option value='1.20' >사용자 식별 및 인증</option>'");
 			$('#schQnaType').append("<option value='1.21' >패스워드 요건</option>'");
@@ -323,7 +326,5 @@ td.table-light {
 			$('#schQnaType').append("<option value='2.14'>유관기관과의 협력</option>'");
 		}
 	}
-
-	
 </script>
 <%@include file="../includes/footer.jsp"%>
