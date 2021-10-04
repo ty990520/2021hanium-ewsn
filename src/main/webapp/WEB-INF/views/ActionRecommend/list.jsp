@@ -54,8 +54,7 @@
 		</c:forEach>
 		</tbody>
 	</table>
-	<br>
-<br><br><br><br><br>
+
 </div>
 <script>
    $('#myModal').on('shown.bs.modal', function() {
