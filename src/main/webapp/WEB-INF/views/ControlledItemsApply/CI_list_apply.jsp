@@ -91,7 +91,7 @@ td {
 			<div class="table_button_group">
 				<button type="button" id="btn_toggle" class="btn btn-danger"
 					data-toggle="modal" data-target="#staticBackdrop"
-					onclick="modal_search()">평가시작</button>
+					onclick="modal_search()" disabled>평가시작</button>
 			</div>
 		</div>
 
@@ -134,6 +134,7 @@ td {
 </div>
 
 <script>
+	
 	var datype;
 	var ciarr = [];
 	var ciid = [];
@@ -144,6 +145,7 @@ td {
 	var contentid_val = [];
 	var len = 0;
 
+	
 	$(function() {
 		$("#btn_toggle").click(function() {
 			$(".down").toggle();
@@ -151,40 +153,42 @@ td {
 	})
 
 	$(function() {
-		$("#a").on(
-				"click",
-				function() {
-					var result = $('#input_sear').val();
-					console.log(result);
-					$.ajax({
-						contentType : "application/json; charset=utf-8;",
-						dataType : "json",
-						type : "GET",
-						url : "/ControlledItemsApply/selectAr",
-						data : {
-							"daid" : result
-						},
-						success : function(data) {
-							if (!data) {
-								console.log("data없음");
+		$("#a").on("click", function() {
+			var result = $('#input_sear').val();
+			console.log(result);
+			$.ajax({
+				contentType : "application/json; charset=utf-8;",
+				dataType : "json",
+				type : "GET",
+				url : "/ControlledItemsApply/selectAr",
+				data : {
+					"daid" : result
+				},
+				success : function(data) {
+					if (!data) {
+						console.log("data없음");
 
-							}
-							console.log(data);
-							datype = data.daIdentifyType;
-							$("#daname").val(data.daname)
-							$("#daptype").val(data.daptype)
-							$("#daPDetailType").val(data.daPDetailType)
-							$("#daIdentifyType").val(data.daIdentifyType)
+					}
+					console.log(data);
+					datype = data.daIdentifyType;
+					$("#daname").val(data.daname)
+					$("#daptype").val(data.daptype)
+					$("#daPDetailType").val(data.daPDetailType)
+					$("#daIdentifyType").val(data.daIdentifyType)
+					$("#btn_toggle").attr("disabled", false);
+				},
+				error : function(request, status, error) {
+					$("#daname").val('')
+					$("#daptype").val('')
+					$("#daPDetailType").val('')
+					$("#daIdentifyType").val('')
+					alert("입력한 자산번호가 존재하지 않습니다.");
+					$("#btn_toggle").attr("disabled", true);
+					$(".down ").hide();
+				}
 
-						},
-						error : function(request, status, error) {
-							alert("code:" + request.status + "\n" + "message:"
-									+ request.responseText + "\n" + "error:"
-									+ error);
-						}
-
-					});
-				});
+			});
+		});
 	})
 
 	function modal_search() {
@@ -208,14 +212,15 @@ td {
 						for (var i = 0; i < response.length; i++) {
 							insTag += "<tr title='"+response[i].ci_content+"'>";
 							insTag += "<td >"
-									+ "<input type='hidden' name='CI_applyDetail_id' id='ci"+i+ "' value='"+response[i].ci_detail_id+"'>"+response[i].ci_detail_id + "</td>";
+									+ "<input type='hidden' name='CI_applyDetail_id' id='ci"+i+ "' value='"+response[i].ci_detail_id+"'>"
+									+ response[i].ci_detail_id + "</td>";
 							insTag += "<td>" + response[i].ci_type + "</td>";
 							insTag += "<td>" + response[i].ci_detailType
 									+ "</td>";
 							insTag += "<td><select name='CI_applyCheck' id='select"+i+ "'><option value='Y'>Y</option><option value='N'>N</option></select></td>";
 							insTag += "<td><textarea id='content"+i+ "' placeholder='해당 통제항목에 대한 보안 조치 내용을 작성해주세요.'></textarea></td>";
 							insTag += "</tr>";
-							ciid[i] = "ci"+i;
+							ciid[i] = "ci" + i;
 							selectid[i] = "select" + i;
 							contentid[i] = "content" + i;
 							//$("input[name=checkitems]").eq(i).attr("value","Y");
@@ -232,19 +237,15 @@ td {
 			/*document.getElementById(ciid[i]).value = $("#" + ciid[i]).text();
 			document.getElementsByName("CI_applyDetail_id")[i].value = $("#" + ciid[i]).text();
 			//$("#" + ciid[i]).val($("#" + ciid[i]).text()); */
-			
 
 			//$("#" + ciid[i]).val($("#" + ciid[i]).text()); 
-			
 			//selectid_val[i] = $("#" + selectid[i] + " option:selected").val();
 			//$("#" + selectid[i] + " option:selected").attr('name', "CI_applyCheck");
-
 			contentid_val[i] = $("#" + contentid[i]).val();
 			$("#" + contentid[i]).attr('name', "CI_applyContent");
-			
-			
+
 		}
-		
+
 		if (confirm("해당 디지털자산의 관리 통제항목에 대한 내용을 등록하시겠습니까?") == true) {
 			alert("등록이 완료되었습니다.");
 			document.getElementById('form').submit();
