@@ -38,11 +38,16 @@
 		CI_EP=#{CI_EP}
 		where CI_detail_id=#{CI_detail_id}
 	</update>
-	
 	<select id="type" resultType="com.hanium.domain.ControlledItemsVO">
 	select * from ControlledItems where ${type}='Y';
 	</select>
 	<select id="detail_id_count" resultType="int">
 	select count(*) from ControlledItems where CI_detail_id like CONCAT(#{CI_detail_id},'%')
 	</select>
+		<select id="getList_detailType"
+		resultType="com.hanium.domain.ControlledItemsVO">
+		select distinct CI_detailType from ControlledItems 
+		where CI_type=#{CI_type};
+	</select>
+	
 </mapper>
