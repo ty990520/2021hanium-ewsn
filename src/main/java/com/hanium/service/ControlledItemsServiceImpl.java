@@ -35,7 +35,7 @@ public class ControlledItemsServiceImpl implements ControlledItemsService{
 	public List<ControlledItemsVO> getList() {
 		return mapper.getList();
 	}
-
+	
 	@Override
 	public List<ControlledItemsVO> getCIDetailList(String number) {
 		return mapper.getCIDetailList(number);
@@ -50,5 +50,9 @@ public class ControlledItemsServiceImpl implements ControlledItemsService{
 	public int detail_id_count(String CI_detail_id) {
 		return mapper.detail_id_count(CI_detail_id);
 	}
-
+	
+	@Override
+	public List<ControlledItemsVO> getList_detailType() {
+		return mapper.getList();
+	}
 }

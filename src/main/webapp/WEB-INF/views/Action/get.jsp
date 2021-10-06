@@ -71,17 +71,18 @@ td {
 									placeholder="불가사유입력"></td>
 							<tr>
 								<td style="border-style: hidden">대안조치</td>
-								<td style="border-style: hidden"><select
-									class="custom-select" id="select1" name="control"
-									onChange="chnQnaType()">
-										<option>--통제 항목 분류를 선택해주세요--</option>
-										<option value="기술적">기술적</option>
-										<option value="운영적">운영적</option>
-								</select></td>
+								<td style="border-style: hidden">
+								<select class="custom-select" id="select1" name="control" onChange="chnQnaType()">
+								<option>--통제 항목 분류를 선택해주세요--</option>
+								<option value="기술적">기술적</option>
+								<option value="운영적">운영적</option>
+								</select>
+								</td>
+								
 							<tr>
 								<td style="border-style: hidden">상세유형</td>
-								<td style="border-style: hidden"><select
-									class="custom-select" id="schQnaType" name="AI_AlterMeasures"></select>
+								<td style="border-style: hidden">
+								<select class="custom-select" id="schQnaType" name="AI_AlterMeasures"></select>
 							<tr>
 								<td style="border-style: hidden">이행결과</td>
 								<td style="border-style: hidden"><input type="text"
@@ -152,7 +153,7 @@ td {
 			<td colspan="2"><c:out value='${action.AC_expectedDate3}' /></td>
 		</tr>
 	</table>
-	<table class="table table-bordered"margin:auto">
+	<table class="table table-bordered" margin:auto">
 		<tr>
 			<!-- <th style="text-align: center;">이행계획</th>  -->
 			<td colspan="12" style="text-align: center"><b>이행결과</b></td>
@@ -253,78 +254,77 @@ td {
 
 		if (type == '기술적') { // 기술적 
 			console.log('기술적');
-			$('#schQnaType').append("<option value='1.1'>계정관리</option>'");
-			$('#schQnaType').append("<option value='1.2'>접근통제 이행</option>'");
-			$('#schQnaType').append("<option value='1.3'>데이터 이동 통제</option>'");
-			$('#schQnaType').append("<option value='1.4'>기능의 분리</option>'");
-			$('#schQnaType').append("<option value='1.5'>최소 권한</option>'");
-			$('#schQnaType').append("<option value='1.6'>접속실패 기록</option>'");
-			$('#schQnaType').append("<option value='1.7'>시스템 사용 공지</option>'");
-			$('#schQnaType').append("<option value='1.8'>이전 접속기록 공지</option>'");
-			$('#schQnaType').append("<option value='1.9'>세션 잠금</option>'");
+			$('#schQnaType').append("<option value='계정관리'>계정관리</option>'");
+			$('#schQnaType').append("<option value='접근통제 이행'>접근통제 이행</option>'");
+			$('#schQnaType').append("<option value='데이터 이동 통제'>데이터 이동 통제</option>'");
+			$('#schQnaType').append("<option value='기능의 분리'>기능의 분리</option>'");
+			$('#schQnaType').append("<option value='최소 권한'>최소 권한</option>'");
+			$('#schQnaType').append("<option value='접속실패 기록'>접속실패 기록</option>'");
+			$('#schQnaType').append("<option value='시스템 사용 공지'>시스템 사용 공지</option>'");
+			$('#schQnaType').append("<option value='이전 접속기록 공지'>이전 접속기록 공지</option>'");
+			$('#schQnaType').append("<option value='세션 잠금'>세션 잠금</option>'");
+			$('#schQnaType').append("<option value='접근통제 감독 및 검토'>접근통제 감독 및 검토</option>'");
+			$('#schQnaType').append("<option value='식별이나 인증 없이 허가된 활동'>식별이나 인증 없이 허가된 활동</option>'");
+			$('#schQnaType').append("<option value='네트워크 접근통제'>네트워크 접근통제</option>'");
 			$('#schQnaType').append(
-					"<option value='1.10'>접근통제 감독 및 검토</option>'");
-			$('#schQnaType').append(
-					"<option value='1.11' >식별이나 인증 없이 허가된 활동</option>'");
-			$('#schQnaType').append("<option value='1.12'>네트워크 접근통제</option>'");
-			$('#schQnaType').append(
-					"<option value='1.13'>안전하지 않은 프로토콜의 제한</option>'");
-			$('#schQnaType').append("<option value='1.14'>무선연결 금지</option>'");
+					"<option value='안전하지 않은 프로토콜의 제한'>안전하지 않은 프로토콜의 제한</option>'");
+			$('#schQnaType').append("<option value='무선연결 금지'>무선연결 금지</option>'");
 			$('#schQnaType')
-					.append("<option value='1.15'>안전하지 않은 연결</option>'");
+					.append("<option value='안전하지 않은 연결'>안전하지 않은 연결</option>'");
 			$('#schQnaType').append(
-					"<option value='1.16'>휴대용 매체 및 모바일 기기 접근 통제</option>'");
+					"<option value='휴대용 매체 및 모바일 기기 접근 통제'>휴대용 매체 및 모바일 기기 접근 통제</option>'");
 			$('#schQnaType').append(
-					"<option value='1.17'>특정 프로토콜 가시성</option>'");
+					"<option value='특정 프로토콜 가시성'>특정 프로토콜 가시성</option>'");
 			$('#schQnaType')
-					.append("<option value='1.18' >제3자 제품 사용</option>'");
-			$('#schQnaType').append("<option value='1.19'>외부시스템의 사용</option>'");
+					.append("<option value='제3자 제품 사용' >제3자 제품 사용</option>'");
+			$('#schQnaType').append("<option value='외부시스템의 사용'>외부시스템의 사용</option>'");
 			$('#schQnaType').append(
-					"<option value='1.20' >사용자 식별 및 인증</option>'");
-			$('#schQnaType').append("<option value='1.21' >패스워드 요건</option>'");
+					"<option value='사용자 식별 및 인증'>사용자 식별 및 인증</option>'");
+			$('#schQnaType').append("<option value='패스워드 요건' >패스워드 요건</option>'");
 			$('#schQnaType')
 					.append(
-							"<option value='1.22'>인증 불가한 HMI(Human-Manchine Interface) 보안</option>'");
+							"<option value='인증 불가한 HMI(Human-Manchine Interface) 보안'>인증 불가한 HMI(Human-Manchine Interface) 보안</option>'");
 			$('#schQnaType').append(
-					"<option value='1.23' >기기 식별 및 인증</option>'");
-			$('#schQnaType').append("<option value='1.24'>식별자 관리</option>'");
-			$('#schQnaType').append("<option value='1.25'>인증자 관리</option>'");
+					"<option value='기기 식별 및 인증' >기기 식별 및 인증</option>'");
+			$('#schQnaType').append("<option value='식별자 관리'>식별자 관리</option>'");
+			$('#schQnaType').append("<option value='인증자 관리'>인증자 관리</option>'");
 			$('#schQnaType').append(
-					"<option value='1.26' >암호화 모듈 인증에 따라 암호화를 수행</option>'");
+					"<option value='암호화 모듈 인증에 따라 암호화를 수행' >암호화 모듈 인증에 따라 암호화를 수행</option>'");
 			$('#schQnaType').append(
-					"<option value='1.27' >불필요한 서비스 및 프로그램 제거</option>'");
+					"<option value='불필요한 서비스 및 프로그램 제거' >불필요한 서비스 및 프로그램 제거</option>'");
 			$('#schQnaType')
 					.append(
-							"<option value='1.28' >호스트기반 침임탐지시스템(HIDS, Host Intrusion Detection System)</option>'");
+							"<option value='호스트기반 침임탐지시스템' >호스트기반 침임탐지시스템(HIDS, Host Intrusion Detection System)</option>'");
 			$('#schQnaType').append(
-					"<option value='1.29' >파일시스템 및 운영체제 변경 승인</option>'");
-			$('#schQnaType').append("<option value='1.30' >하드웨어 구성</option>'");
+					"<option value='파일시스템 및 운영체제 변경 승인' >파일시스템 및 운영체제 변경 승인</option>'");
+			$('#schQnaType').append("<option value='하드웨어 구성' >하드웨어 구성</option>'");
 			$('#schQnaType')
 					.append(
-							"<option value='1.31' >운영체제, 응용프로그램 및 제3자 소프트웨어 설치 및 업데이트</option>'");
+							"<option value='운영체제, 응용프로그램 및 제3자 소프트웨어 설치 및 업데이트' >운영체제, 응용프로그램 및 제3자 소프트웨어 설치 및 업데이트</option>'");
 
 		} else if (type == '운영적') { // 운영적 
 			console.log('운영적');
-			$('#schQnaType').append("<option value='2.1'>결함 제거</option>'");
-			$('#schQnaType').append("<option value='2.2'>악성코드 유입 방지</option>'");
+			$('#schQnaType').append("<option value='결함 제거'>결함 제거</option>'");
+			$('#schQnaType').append("<option value='악성코드 유입 방지'>악성코드 유입 방지</option>'");
 			$('#schQnaType').append(
-					"<option value='2.3'>모니터링 도구 및 기술</option>'");
-			$('#schQnaType').append("<option value='2.4'>보안 경고</option>'");
-			$('#schQnaType').append("<option value='2.5'>보안기능 확인</option>'");
+					"<option value='모니터링 도구 및 기술'>모니터링 도구 및 기술</option>'");
+			$('#schQnaType').append("<option value='보안 경고'>보안 경고</option>'");
+			$('#schQnaType').append("<option value='보안기능 확인'>보안기능 확인</option>'");
 			$('#schQnaType').append(
-					"<option value='2.6'>소프트웨어 및 정보의 무결성</option>'");
-			$('#schQnaType').append("<option value='2.7'>정보의 입력 제한</option>'");
-			$('#schQnaType').append("<option value='2.8'>에러에 대한 조치</option>'");
+					"<option value='소프트웨어 및 정보의 무결성'>소프트웨어 및 정보의 무결성</option>'");
+			$('#schQnaType').append("<option value='정보의 입력 제한'>정보의 입력 제한</option>'");
+			$('#schQnaType').append("<option value='에러에 대한 조치>에러에 대한 조치</option>'");
 			$('#schQnaType').append(
-					"<option value='2.9'>인식제고 및 훈련 범위</option>'");
+					"<option value='인식제고 및 훈련 범위'>인식제고 및 훈련 범위</option>'");
 			$('#schQnaType').append(
-					"<option value='2.10'>인식제고 및 훈련 범위</option>'");
-			$('#schQnaType').append("<option value='2.11'>기술적 훈련 </option>'");
+					"<option value='인식제고 및 훈련 범위'>인식제고 및 훈련 범위</option>'");
+			$('#schQnaType').append("<option value='기술적 훈련'>기술적 훈련 </option>'");
 			$('#schQnaType').append(
-					"<option value='2.12'>특화된 사이버보안 훈련</option>'");
-			$('#schQnaType').append("<option value='2.13'>교육훈련 피드백</option>'");
-			$('#schQnaType').append("<option value='2.14'>유관기관과의 협력</option>'");
+					"<option value='특화된 사이버보안 훈련'>특화된 사이버보안 훈련</option>'");
+			$('#schQnaType').append("<option value='교육훈련 피드백'>교육훈련 피드백</option>'");
+			$('#schQnaType').append("<option value='유관기관과의 협력'>유관기관과의 협력</option>'");
 		}
 	}
+
 </script>
 <%@include file="../includes/footer.jsp"%>

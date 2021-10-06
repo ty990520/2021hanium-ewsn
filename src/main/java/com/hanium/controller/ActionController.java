@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.hanium.domain.ActionImplementVO;
 import com.hanium.domain.ActionRecommendVO;
 import com.hanium.domain.ActionVO;
+import com.hanium.domain.ControlledItemsVO;
 import com.hanium.service.ActionImplementService;
 import com.hanium.service.ActionRecommendService;
 import com.hanium.service.ActionService;
@@ -53,7 +54,7 @@ import lombok.extern.log4j.Log4j;
 		    log.info("[ CONTROLLER ] get ……..");
 		    model.addAttribute("action", service.get(AC_no));
 		    model.addAttribute("ai", service3.get(AC_no));
-		    model.addAttribute("controllItems", service4.getList());
+		   // model.addAttribute("controllItems", service4.		]);
 
 		}
 		@PostMapping("/modify")
@@ -62,14 +63,12 @@ import lombok.extern.log4j.Log4j;
 		    service.modify(action);
 		    return "redirect:/Action/list";
 		}
-		
 		@GetMapping(value = "/selectAr")
 		public @ResponseBody ActionRecommendVO selectAr(@RequestParam("AR_no") Long ar) {
 			ActionRecommendVO arvo= service2.get(ar);
 			log.info("Ar: "+arvo.getAR_daID());
 			return arvo;
 		}
-		
 		@PostMapping("/register2")	//글을 등록하는 경우에는 get방식이 아니라 post방식을 사용한다.
 		public String register2(ActionImplementVO ai) {	//RedirectAttributes : 
 		    log.info("[CONTROLLER]register : "+ai);

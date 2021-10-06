@@ -12,4 +12,8 @@ public interface ControlledItemsService {
 	public List<ControlledItemsVO> getCIDetailList(String number);
 	public List<ControlledItemsVO> type(String type);
 	public int detail_id_count(String CI_detail_id);
+	
+	public List<ControlledItemsVO> getList_detailType();
+
+	
 }

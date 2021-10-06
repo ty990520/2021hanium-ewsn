@@ -8,6 +8,7 @@ import com.hanium.domain.ControlledItemsVO;
 
 public interface ControlledItemsMapper {
 	public List<ControlledItemsVO> getList();
+	public List<ControlledItemsVO> getList_detailType();
 	public List<ControlledItemsVO> getCIDetailList(String number);
 	public ControlledItemsVO read(String CI_detail_id);
 	public void insert(ControlledItemsVO ci);	
