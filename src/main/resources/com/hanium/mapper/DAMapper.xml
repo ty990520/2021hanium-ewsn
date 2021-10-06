@@ -32,7 +32,7 @@
 	<select id="getVulTargetList_CI"
 		resultType="com.hanium.domain.DAVO">
 		select * from DA where daManufacturer=#{daManufacturer} and daModel=#{daModel} and
-		daSystemSW=#{daSystemSW} ;
+		daSystemSW=#{daSystemSW} AND daid NOT IN (select Vul_daID from ValTargetFacility where vul_id=#{vul_id}) ;
 	</select>
 	<select id="read" resultType="com.hanium.domain.DAVO">
 		select * from DA where daid =
