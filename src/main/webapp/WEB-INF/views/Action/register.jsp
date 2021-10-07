@@ -175,11 +175,11 @@ td.table-light {
 
 				<tr>
 					<td class="table-light" colspan="2">조치부서</td>
-					<td colspan="10"><input type="text"class="input_width100"  name="AC_dept"></td>
+					<td colspan="10"><input type="text"class="input_width100" placeholder="조치부서 입력"  name="AC_dept"></td>
 				</tr>
 				<tr>
 					<td colspan="2" class="table-light">조치담당자</td>
-					<td colspan="10"><input type="text"class="input_width100"  name="AC_manager"></td>
+					<td colspan="10"><input type="text"class="input_width100" placeholder="조치담당자 입력"  name="AC_manager"></td>
 				</tr>
 
 				<tr>
@@ -192,23 +192,23 @@ td.table-light {
 				</tr>
 				<tr>
 					<td class="table-light" rowspan="3" colspan="2">조치계획</td>
-					<td class="table-light" colspan="1">task1</td>
+					<td class="table-light" colspan="1">Task1</td>
 					<td colspan="9"><textarea class="input_width100" rows="10"
-						placeholder="취약점 내용 입력" name="AC_plan1"></textarea></td>
+						placeholder="조치계획 Task1 입력" name="AC_plan1"></textarea></td>
 				</tr>
 				<tr>
-					<td class="table-light" colspan="1">task2</td>
+					<td class="table-light" colspan="1">Task2</td>
 					<td colspan="9"><textarea class="input_width100" rows="10"
-						placeholder="취약점 내용 입력" name="AC_plan2"></textarea></td>
+						placeholder="조치계획 Task2 입력" name="AC_plan2"></textarea></td>
 				</tr>
 				<tr>
-					<td class="table-light" colspan="1">task3</td>
+					<td class="table-light" colspan="1">Task3</td>
 					<td colspan="9"><textarea class="input_width100" rows="10"
-						placeholder="취약점 내용 입력" name="AC_plan3"></textarea></td>
+						placeholder="조치계획 Task3 입력" name="AC_plan3"></textarea></td>
 				</tr>
 				<tr>
 					<td class="table-light" colspan="2">예상 비용</td>
-					<td colspan="10"><input class="input_width100" type="text" name="estimated_cost"></td>
+					<td colspan="10"><input class="input_width100" type="text" placeholder="예상비용 입력 (','제외한 숫자값으로 입력)" name="estimated_cost"></td>
 				</tr>
 				<tr>
 					<td class="table-light" rowspan="3" colspan="2">일정</td>
