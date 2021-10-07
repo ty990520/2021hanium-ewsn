@@ -2,7 +2,8 @@
 	pageEncoding="UTF-8"%>
 <div class="footer">
 	<p>Copyright © DA Management Program All Rights Reserved.</p>
-	<br> <span>Development team | 박태영 • 김혜진 • 박민지</span> <span>Algorithm
+	<br> <span>Mento | 김인수 멘토님</span> 
+	<span>Development team | 박태영 • 김혜진 • 박민지</span> <span>Algorithm
 		team | 김은지 • 이지은</span>
 	<span style="font-size: medium;">Develop by team EWSN</span>
 
