@@ -83,6 +83,7 @@
 ### 🖥  배포
 
 [https://hanium-ewsn.herokuapp.com/](https://hanium-ewsn.herokuapp.com/)
+(id : admin / pw : admin)
 
 <br>
 
