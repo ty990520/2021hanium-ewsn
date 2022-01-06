@@ -31,7 +31,6 @@
 - Spring MVC
 - JavaScript
 - ajax
-- REST API
 - Git, Git Flow
 
 <br>
