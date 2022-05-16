@@ -31,7 +31,10 @@
 - Spring MVC
 - JavaScript
 - ajax
-- Git, Git Flow
+- Mybatis
+- mysql
+- Jsp
+- heroku
 
 <br>
 
